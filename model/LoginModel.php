@@ -24,22 +24,21 @@ class LoginModel {
         $resultado = $stmt->get_result();
 
         if ($resultado->num_rows === 0) {
-            throw new Exception("Usuario no encontrado");
+            return false;
         }
     
         // Obtener el primer registro (debería ser único)
         $usuario = $resultado->fetch_assoc();
-        echo "Contraseña almacenada en la base de datos: " . $usuario["contrasenia"] . "<br>";
-        echo "Contraseña" . $contrasenia;
     
         // Verificar la contraseña
         if($contrasenia == $usuario["contrasenia"]){
-            return $usuario;
+            //return $usuario;
+            return true;
         }else{
-            throw new Exception("Contraseña incorrecta");
+            //throw new Exception("Contraseña incorrecta");
+            return false;
+            //header("location:/login/verifyForm/estado=error");
         }
     
-        // Las credenciales son válidas, se devuelve el usuario
-        return $usuario;
     }
 }

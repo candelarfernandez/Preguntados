@@ -11,14 +11,16 @@ class LoginController {
     }
 
     public function list() {
+       
         $this->renderer->render('login');
     }
     public function verifyForm(){
+        $data=array();
         if(isset($_GET["estado"])){
             if($_GET['estado'] == "exito"){
                 $data['exito'] = true;
             } else {
-                $data['error'] = error;
+                $data['error'] = true;
             }
         }
         $this->renderer->render("login",$data);
@@ -30,7 +32,12 @@ class LoginController {
 
         $result = $this->model->verify($nombreUsuario, $contrasenia);
 
-        header("location:/login/verifyForm/estado=exito");
+        if($result){
+            header("location:/login/verifyForm/estado=exito");
+        } else {
+            header("location:/login/verifyForm/estado=error");
+        }  
+
         exit();
     }
 }

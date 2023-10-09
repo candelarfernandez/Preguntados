@@ -16,14 +16,15 @@ class UsuariosController {
     }
 
     public function addForm(){
+        $data=array();
         if(isset($_GET["estado"])){
             if($_GET['estado'] == "exito"){
                 $data['exito'] = true;
             } else {
-                $data['error'] = error;
+                $data['error'] = true;
             }
-        }
-        $this->renderer->render("registro",$data);
+        }$this->renderer->render("registro",$data);
+        
     }
 
     public function add(){
@@ -34,13 +35,19 @@ class UsuariosController {
         $ciudad = $_POST["ciudad"];
         $mail = $_POST["mail"];
         $contrasenia = $_POST["contrasenia"];
+        $confirmar_contrasena= $POST["confirmar_contrasena"];
         $nombreUsuario = $_POST["nombreUsuario"];
         $foto = $_POST["foto"];
 
-        $result = $this->model->add($nombre, $anio, $sexo, $pais, $ciudad, $mail, $contrasenia, $nombreUsuario, $foto);
-
-        header("location:/usuarios/addForm/estado=exito");
-        exit();
+        if($contrasenia == $confirmar_contrasena){
+            $result = $this->model->add($nombre, $anio, $sexo, $pais, $ciudad, $mail, $contrasenia, $nombreUsuario, $foto);
+            header("location:/usuarios/addForm/estado=exito");
+            exit();
+        } else {
+            header("location:/usuarios/addForm/estado=error");
+            exit();
+        }
+      
     }
 
 
