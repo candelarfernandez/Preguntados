@@ -5,13 +5,13 @@ class LoginController {
     private $renderer;
     private $model;
 
-    public function __construct($renderer, $model) {
-        $this->renderer = $renderer;
+    public function __construct($model, $renderer) {
         $this->model = $model;
+        $this->renderer = $renderer;
     }
 
     public function list() {
-        $this->renderer->render("login");
+        $this->renderer->render('login');
     }
     public function verifyForm(){
         if(isset($_GET["estado"])){
