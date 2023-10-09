@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" type="text/css" href="../public/Main.css">
+    <link rel="stylesheet" type="text/css" href="../public/Registrarse.css">
+</head>
+<body>
+<main>
+    <h2 class="titulo-registro">Registro</h2>
+    {{#exito}}
+        <div class="w3-green">Se registro</div>
+    {{/exito}}
+
+    {{#error}}
+        <div class="w3-red">No se registro</div>
+    {{/error}}
+    <form class="registro-formulario" action="/usuarios/add" method="post" enctype="multipart/form-data">
+        <label for="nombre" class="registro-label">Nombre Completo:</label>
+        <input type="text" id="nombre" name="nombre" class="registro-input" required><br><br>
+
+        <label for="anio" class="registro-label">Año de Nacimiento:</label>
+        <input type="number" id="anio" name="anio" class="registro-input" required><br><br>
+
+
+        <label class="registro-label">Género:</label>
+        <div class="contenedor-genero">
+        <input type="radio" id="masculino" name="sexo" value="Masculino"> Masculino
+        <input type="radio" id="femenino" name="sexo" value="Femenino"> Femenino
+        <input type="radio" id="no_especificado" name="sexo" value="Prefiero no decirlo"> Prefiero no decirlo
+        </div>
+
+        <label for="pais" class="registro-label">País:</label>
+        <select id="pais" name="pais" class="registro-input" required>
+            <option value="Selecciona un país">Selecciona un país</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Chile">Chile</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Paraguay">Paraguay</option>
+        </select><br><br>
+
+        <label for="ciudad" class="registro-label">Ciudad:</label>
+        <input type="text" id="ciudad" name="ciudad" class="registro-input" required><br><br>
+
+        <label for="email" class="registro-label">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" class="registro-input" required><br><br>
+
+        <label for="contrasenia" class="registro-label">Contraseña:</label>
+        <input type="password" id="contrasenia" name="contrasenia" class="registro-input" required><br><br>
+
+        <label for="confirmar_contrasena" class="registro-label">Confirmar Contraseña:</label>
+        <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" class="registro-input" required><br><br>
+
+        <label for="nombreUsuario" class="registro-label">Nombre de Usuario:</label>
+        <input type="text" id="nombreUsuario" name="nombreUsuario" class="registro-input" required><br><br>
+
+        <label for="foto">Foto de Perfil:</label>
+        <input type="file" id="foto" name="foto" class="registro-input" accept="image/*"><br><br>
+
+        <input type="submit" value="Registrarse" class="boton-registrarse">
+    </form>
+</main>
+</body>
+</html>
