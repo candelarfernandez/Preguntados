@@ -10,7 +10,8 @@ class LoginModel {
 
     public function verify($nombreUsuario, $contrasenia) {
         // Preparar la consulta SQL
-        $query = "SELECT * FROM usuarios WHERE nombreUsuario = :nombreUsuario";
+        $query = "SELECT * FROM usuarios WHERE nombreUsuario = :nombreUsuario
+        AND contrasenia = :contrasenia";
 
         // Preparar la declaración SQL
         $stmt = $this->database->prepare($query);
@@ -24,16 +25,17 @@ class LoginModel {
         // Obtener el resultado como un arreglo asociativo
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Verificar si se encontró un usuario
-        if ($usuario) {
-            // Verificar la contraseña
-            if (password_verify($contrasenia, $usuario["contrasenia"])) {
-                // Las credenciales son válidas
-                return $usuario;
-            }
+        if (!$usuario) {
+            throw new Exception("Usuario no encontrado");
         }
+    
+        // Verificar la contraseña
+        if (!password_verify($contrasenia, $usuario["contrasenia"])) {
+            throw new Exception("Contraseña incorrecta");
+        }
+    
+        // Las credenciales son válidas, se devuelve el usuario
+        return $usuario;
 
-        // Las credenciales no son válidas
-        return false;
     }
 }
