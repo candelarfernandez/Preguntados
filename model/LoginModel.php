@@ -13,7 +13,7 @@ class LoginModel {
         $query = "SELECT * FROM usuarios WHERE nombreUsuario = :nombreUsuario";
 
         // Preparar la declaración SQL
-        $stmt = $this->db->prepare($query);
+        $stmt = $this->database->prepare($query);
 
         // Bind de los parámetros
         $stmt->bindParam(":nombreUsuario", $nombreUsuario);
@@ -27,7 +27,7 @@ class LoginModel {
         // Verificar si se encontró un usuario
         if ($usuario) {
             // Verificar la contraseña
-            if (password_verify($contrasenia, $usuario['contrasenia'])) {
+            if (password_verify($contrasenia, $usuario["contrasenia"])) {
                 // Las credenciales son válidas
                 return $usuario;
             }

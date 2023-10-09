@@ -25,8 +25,8 @@ class LoginController {
     }
 
     public function verify(){
-        $contrasenia = $_POST["contrasenia"];
         $nombreUsuario = $_POST["nombreUsuario"];
+        $contrasenia = $_POST["contrasenia"];
 
         $result = $this->model->verify($nombreUsuario, $contrasenia);
 

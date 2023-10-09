@@ -4,13 +4,11 @@ include_once("helpers/MustacheRender.php");
 include_once('helpers/Router.php');
 include_once('helpers/Logger.php');
 
-include_once ("model/ToursModel.php");
-include_once('model/SongsModel.php');
-include_once('model/IntegrantesModel.php');
+
 include_once('model/UsuariosModel.php');
 include_once('model/LoginModel.php');
 
-include_once('controller/IntegrantesController.php');
+
 include_once('controller/UsuariosController.php');
 include_once('controller/LoginController.php');
 
@@ -31,26 +29,7 @@ class Configuration {
         );
     }
 
-    public function getIntegrantesController(){
-        return new IntegrantesController(
-            new IntegrantesModel($this->getDatabase()),
-            $this->getRenderer()
-        );
-    }
-
-    public function getToursController() {
-        return new ToursController(
-            new ToursModel($this->getDatabase()),
-            $this->getRenderer());
-    }
-
-    public function getSongsController() {
-        return new SongsController(
-            new SongsModel($this->getDatabase()),
-            $this->getRenderer());
-    }
-
-    public function getLoginController() {
+       public function getLoginController() {
         return new LoginController(
             new LoginModel($this->getDatabase()),
             $this->getRenderer());
