@@ -10,32 +10,36 @@ class LoginModel {
 
     public function verify($nombreUsuario, $contrasenia) {
         // Preparar la consulta SQL
-        $query = "SELECT * FROM usuarios WHERE nombreUsuario = :nombreUsuario
-        AND contrasenia = :contrasenia";
+        $query = "SELECT * FROM usuarios WHERE nombreUsuario = ?";
 
         // Preparar la declaración SQL
         $stmt = $this->database->prepare($query);
 
         // Bind de los parámetros
-        $stmt->bindParam(":nombreUsuario", $nombreUsuario);
+        $stmt->bind_param("s", $nombreUsuario);
 
         // Ejecutar la consulta
         $stmt->execute();
 
-        // Obtener el resultado como un arreglo asociativo
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        $resultado = $stmt->get_result();
 
-        if (!$usuario) {
+        if ($resultado->num_rows === 0) {
             throw new Exception("Usuario no encontrado");
         }
     
+        // Obtener el primer registro (debería ser único)
+        $usuario = $resultado->fetch_assoc();
+        echo "Contraseña almacenada en la base de datos: " . $usuario["contrasenia"] . "<br>";
+        echo "Contraseña" . $contrasenia;
+    
         // Verificar la contraseña
-        if (!password_verify($contrasenia, $usuario["contrasenia"])) {
+        if($contrasenia == $usuario["contrasenia"]){
+            return $usuario;
+        }else{
             throw new Exception("Contraseña incorrecta");
         }
     
         // Las credenciales son válidas, se devuelve el usuario
         return $usuario;
-
     }
 }
