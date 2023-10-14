@@ -1,0 +1,90 @@
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='dagadg@adagda';
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='dagadg@adagda';
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='ailu@gmail.com';
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='dagadg@adagda.com';
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='dagadg@adagda.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'afaf',
+                '2023-10-03',
+                '',
+                'Argentina',
+                'sfafgs',
+                'dagadg@adagda.com',
+                '$2y$10$y7cXCHic/JXCiS/SvdTaKuarxyUIeBqOUIn0UXSTYkgamSODwtL/2',
+                'adfa',
+                '',
+                '402711')
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='dagadg@adagda.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'afaf',
+                '2023-10-03',
+                '',
+                'Argentina',
+                'sfafgs',
+                'dagadg@adagda.com',
+                '$2y$10$qJ5akef5miSprrnXsd1Ojewft1dBXSx2Di62yb78u17xGjl6ztwOO',
+                'adfa',
+                '',
+                '690706')
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='dagadg@adagda.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'afaf',
+                '2023-10-03',
+                '',
+                'Argentina',
+                'sfafgs',
+                'dagadg@adagda.com',
+                '$2y$10$bHbFD06blRlsZR00qm0jgOIYl7bXqu/In9eV6Zy3gdj5Cm0RMl3mq',
+                'adfa',
+                '',
+                '580816')
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='dagadg@adagda.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'afaf',
+                '2023-10-03',
+                '',
+                'Argentina',
+                'sfafgs',
+                'dagadg@adagda.com',
+                '$2y$10$iZGv0i8m6UfXvHuecDjG8.ECDTSYBW4wXkfmIgr5vLxWfCtC.sXR2',
+                'adfa',
+                '',
+                '133233')
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='dagadg@adagda.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'afaf',
+                '2023-10-03',
+                '',
+                'Argentina',
+                'sfafgs',
+                'dagadg@adagda.com',
+                '$2y$10$NlCmUSsIpUGs0qkDShKy.OjtSYHyG2dp3UsDjEb346Ka/k9tn491G',
+                'adfa',
+                '',
+                '915966')
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='dagadg@adagda.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'afaf',
+                '2023-10-03',
+                '',
+                'Argentina',
+                'sfafgs',
+                'dagadg@adagda.com',
+                '$2y$10$j2bIiZMtR7TofmOtonBC1eeTp388.qhgW2klLVjWGRc9NtMWCv9uK',
+                'adfa',
+                '',
+                '520669')
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='ailuvilches@gmail.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'afaf',
+                '2023-10-03',
+                '',
+                'Argentina',
+                'sfafgs',
+                'ailuvilches@gmail.com',
+                '$2y$10$muIbBV5f8t5d/jGYv..ns.pPxbiPpzGJv3XCLg8Wj6yV1582Mav22',
+                'adfa',
+                '',
+                '573818')
+[2023-10-14][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='ailuvilches@gmail.com';
+[2023-10-14][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='ailuvilches@gmail.com';
