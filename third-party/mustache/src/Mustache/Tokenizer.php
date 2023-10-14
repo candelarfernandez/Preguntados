@@ -300,10 +300,13 @@ class Mustache_Tokenizer
         $close      = '=' . $this->ctag;
         $closeIndex = strpos($text, $close, $index);
 
+<<<<<<< HEAD
         if ($closeIndex === false) {
             $this->throwUnclosedTagException();
         }
 
+=======
+>>>>>>> 7dd4d5d7d6dde9f387bad85384e7c46f0c1df683
         $token = array(
             self::TYPE => self::T_DELIM_CHANGE,
             self::LINE => $this->line,
@@ -373,6 +376,7 @@ class Mustache_Tokenizer
 
         return $end + $this->ctagLen - 1;
     }
+<<<<<<< HEAD
 
 
     private function throwUnclosedTagException()
@@ -405,4 +409,6 @@ class Mustache_Tokenizer
     {
         return isset(self::$tagNames[$tagType]) ? self::$tagNames[$tagType] : 'unknown';
     }
+=======
+>>>>>>> 7dd4d5d7d6dde9f387bad85384e7c46f0c1df683
 }

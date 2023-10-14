@@ -1,21 +1,58 @@
-<div class="w3-container w3-padding-16" style="max-width: 400px; margin: 0 auto;">
-    <h2 class='w3-wide'>Login</h2>
-    <p class='w3-justify'>Bienvenidos!</p>
-    {{#exito}}
-        <div class="w3-panel w3-green"> Se inició sesion</div>
-    {{/exito}}
+<div class="bg-violet-100 flex items-center justify-center h-screen">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+        <div class="text-center">
+            <img src="\public\img\login.png" alt="Logo" class="w-40 h-40 mx-auto mb-4">
+            <h1 class="text-2xl font-semibold">Iniciar Sesión</h1>
+        </div>
+        <form class="mt-6" action="/login/verify" method="post" enctype="multipart/form-data">
 
-    {{#error}}
-        <div class="w3-panel w3-red">Usuario y/o contraseña inválido</div>
-    {{/error}}
-        <form class="registro-formulario" action="/login/verify" method="post" enctype="multipart/form-data">
-         <label for="nombreUsuario" class="registro-label">Nombre de Usuario:</label>
-        <input type="text" id="nombreUsuario" name="nombreUsuario" class="w3-input w3-border w3-medium" required><br><br>
+            {{! Mensajes al usuario }}
+            {{#datos-incorrectos}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que alguno de los datos son incorrectos </p>
+            </div>        
+            {{/datos-incorrectos}}
 
-         <label for="contrasenia" class="registro-label">Contraseña:</label>
-        <input type="password" id="contrasenia" name="contrasenia" class="w3-input w3-border w3-medium" required><br><br>
+            {{#mail-no-validado}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que aún no validaste tu mail </p>
+            </div>
+            {{/mail-no-validado}}
 
-        <input type="submit" value="Login" class="w3-button w3-block w3-black w3-section w3-padding w3-xsmall">
+            {{#activar-cuenta}}
+            <div class="bg-green-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Hemos enviado un mail a tu casilla, <br>¡corre a activar tu cuenta! </p>
+            </div>
+            {{/activar-cuenta}}
 
+            {{#cuenta-activa}}
+            <div class="bg-green-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> ¡Iupi! Ya eres parte de Party Quiz,<br> <a href="" class="hover:underline">haz click aquí para comenzar a jugar.</a></p>
+            </div>
+            {{/cuenta-activa}}
+
+            {{! Contenido del formulario     }}
+
+            <div class="mb-4">
+                <label for="email" class="block text-gray-600 text-sm font-medium mb-2">Correo Electrónico</label>
+                <input type="email" id="email" name="email" class="w-full p-2 border rounded-md" placeholder="correo@example.com" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-600 text-sm font-medium mb-2">Contraseña</label>
+                <input type="password" id="password" name="password" class="w-full p-2 border rounded-md" placeholder="Contraseña" required>
+            </div>
+            <div>
+                <a href="#" class="text-violet-500 hover:underline">Olvidé mi contraseña</a>
+            </div>
+            <div>
+                <button type="submit" class="flex m-auto bg-violet-500 my-8 text-white py-2 px-4 rounded-md hover:bg-violet-600">Ingresar</button>
+            </div>
         </form>
+<<<<<<< HEAD
+=======
+        <div class="mt-6">
+            <p class="text-sm text-gray-600">¿No tienes una cuenta? <a href="/usuarios/addForm" class="text-violet-500 hover:underline">Regístrate aquí</a></p>
+        </div>
+    </div>
+>>>>>>> 7dd4d5d7d6dde9f387bad85384e7c46f0c1df683
 </div>
