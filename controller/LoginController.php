@@ -33,7 +33,7 @@ class LoginController {
         $result = $this->model->verify($nombreUsuario, $contrasenia);
 
         if($result){
-            header("location:/login/verifyForm/estado=exito");
+            header("location:/lobby/verifyForm/estado=exito");
         } else {
             header("location:/login/verifyForm/estado=error");
         }  

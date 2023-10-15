@@ -300,13 +300,6 @@ class Mustache_Tokenizer
         $close      = '=' . $this->ctag;
         $closeIndex = strpos($text, $close, $index);
 
-<<<<<<< HEAD
-        if ($closeIndex === false) {
-            $this->throwUnclosedTagException();
-        }
-
-=======
->>>>>>> 7dd4d5d7d6dde9f387bad85384e7c46f0c1df683
         $token = array(
             self::TYPE => self::T_DELIM_CHANGE,
             self::LINE => $this->line,
@@ -376,39 +369,4 @@ class Mustache_Tokenizer
 
         return $end + $this->ctagLen - 1;
     }
-<<<<<<< HEAD
-
-
-    private function throwUnclosedTagException()
-    {
-        $name = trim($this->buffer);
-        if ($name !== '') {
-            $msg = sprintf('Unclosed tag: %s on line %d', $name, $this->line);
-        } else {
-            $msg = sprintf('Unclosed tag on line %d', $this->line);
-        }
-
-        throw new Mustache_Exception_SyntaxException($msg, array(
-            self::TYPE  => $this->tagType,
-            self::NAME  => $name,
-            self::OTAG  => $this->otag,
-            self::CTAG  => $this->ctag,
-            self::LINE  => $this->line,
-            self::INDEX => $this->seenTag - $this->otagLen,
-        ));
-    }
-
-    /**
-     * Get the human readable name for a tag type.
-     *
-     * @param string $tagType One of the tokenizer T_* constants
-     *
-     * @return string
-     */
-    static function getTagName($tagType)
-    {
-        return isset(self::$tagNames[$tagType]) ? self::$tagNames[$tagType] : 'unknown';
-    }
-=======
->>>>>>> 7dd4d5d7d6dde9f387bad85384e7c46f0c1df683
 }
