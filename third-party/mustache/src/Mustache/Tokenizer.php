@@ -53,9 +53,26 @@ class Mustache_Tokenizer
         self::T_BLOCK_VAR    => true,
     );
 
+    private static $tagNames = array(
+        self::T_SECTION      => 'section',
+        self::T_INVERTED     => 'inverted section',
+        self::T_END_SECTION  => 'section end',
+        self::T_COMMENT      => 'comment',
+        self::T_PARTIAL      => 'partial',
+        self::T_PARENT       => 'parent',
+        self::T_DELIM_CHANGE => 'set delimiter',
+        self::T_ESCAPED      => 'variable',
+        self::T_UNESCAPED    => 'unescaped variable',
+        self::T_UNESCAPED_2  => 'unescaped variable',
+        self::T_PRAGMA       => 'pragma',
+        self::T_BLOCK_VAR    => 'block variable',
+        self::T_BLOCK_ARG    => 'block variable',
+    );
+
     // Token properties
     const TYPE    = 'type';
     const NAME    = 'name';
+    const DYNAMIC = 'dynamic';
     const OTAG    = 'otag';
     const CTAG    = 'ctag';
     const LINE    = 'line';
@@ -88,26 +105,31 @@ class Mustache_Tokenizer
      * @throws Mustache_Exception_InvalidArgumentException when $delimiters string is invalid
      *
      * @param string $text       Mustache template source to tokenize
-     * @param string $delimiters Optionally, pass initial opening and closing delimiters (default: null)
+     * @param string $delimiters Optionally, pass initial opening and closing delimiters (default: empty string)
      *
      * @return array Set of Mustache tokens
      */
-    public function scan($text, $delimiters = null)
+    public function scan($text, $delimiters = '')
     {
         // Setting mbstring.func_overload makes things *really* slow.
         // Let's do everyone a favor and scan this string as ASCII instead.
         //
+        // The INI directive was removed in PHP 8.0 so we don't need to check there (and can drop it
+        // when we remove support for older versions of PHP).
+        //
         // @codeCoverageIgnoreStart
         $encoding = null;
-        if (function_exists('mb_internal_encoding') && ini_get('mbstring.func_overload') & 2) {
-            $encoding = mb_internal_encoding();
-            mb_internal_encoding('ASCII');
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            if (function_exists('mb_internal_encoding') && ini_get('mbstring.func_overload') & 2) {
+                $encoding = mb_internal_encoding();
+                mb_internal_encoding('ASCII');
+            }
         }
         // @codeCoverageIgnoreEnd
 
         $this->reset();
 
-        if ($delimiters = trim($delimiters)) {
+        if (is_string($delimiters) && $delimiters = trim($delimiters)) {
             $this->setDelimiters($delimiters);
         }
 
@@ -208,6 +230,10 @@ class Mustache_Tokenizer
                     }
                     break;
             }
+        }
+
+        if ($this->state !== self::IN_TEXT) {
+            $this->throwUnclosedTagException();
         }
 
         $this->flushBuffer();
@@ -328,6 +354,10 @@ class Mustache_Tokenizer
     private function addPragma($text, $index)
     {
         $end    = strpos($text, $this->ctag, $index);
+        if ($end === false) {
+            $this->throwUnclosedTagException();
+        }
+
         $pragma = trim(substr($text, $index + 2, $end - $index - 2));
 
         // Pragmas are hoisted to the front of the template.

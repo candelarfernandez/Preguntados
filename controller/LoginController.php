@@ -11,6 +11,7 @@ class LoginController {
     }
 
     public function list() {
+       
         $this->renderer->render('login');
     }
 

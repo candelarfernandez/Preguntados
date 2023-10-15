@@ -88,3 +88,54 @@
                 '573818')
 [2023-10-14][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='ailuvilches@gmail.com';
 [2023-10-14][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='ailuvilches@gmail.com';
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Fernandez',
+                '2003-10-21',
+                '',
+                'Argentina',
+                'Morón',
+                'test@test.com',
+                '$2y$10$xolNpuViklf1lyvUzvmFmO9KhHfJMwiAu/8uJseyv/Rx3FlY5khQy',
+                'candelaxx',
+                '',
+                '301391')
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Fernandez',
+                '2002-10-23',
+                '',
+                'Argentina',
+                'Morón',
+                'test@test.com',
+                '$2y$10$s1AWc40lfQr/8oeMloEiAezy83wvYWWBZEwx5h1peVU5tT5KaBIPu',
+                'candelaxx',
+                '',
+                '183871')
+[2023-10-14][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test1@test1.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Maria Vazquez',
+                '1999-05-18',
+                '',
+                'Argentina',
+                'San Justo',
+                'test1@test1.com',
+                '$2y$10$4GpMpy7/gQbYo3pPThwmhORILOHQP1xHeRhl64cntduEb1Lhye/6G',
+                'mariax',
+                '',
+                '899870')
+[2023-10-14][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='test1@test1.com';
+[2023-10-14][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test1@test1.com';
+[2023-10-14][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Maria Vazquez',
+                '1999-05-18',
+                '',
+                'Argentina',
+                'San Justo',
+                'test1@test1.com',
+                '$2y$10$9hnXO0QoiQ/LkV0l2kGkTeP8dHFA0roTm.w/BbS9aWnGxLezaWncy',
+                'mariax',
+                '',
+                '902931')
+[2023-10-14][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='test1@test1.com';
