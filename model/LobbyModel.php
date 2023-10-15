@@ -14,7 +14,7 @@ class LobbyModel {
             JOIN respuesta r ON p.id = r.idPregunta
             ORDER BY RAND() LIMIT 1";
     
-            $resultado = $this->databse->query($sql);
+            $resultado = $this->database->query($sql);
     
             if ($resultado) {
                 return $resultado->fetch(PDO::FETCH_ASSOC);
