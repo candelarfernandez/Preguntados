@@ -8,38 +8,76 @@ class LoginModel {
         $this->database = $database;
     }
 
-    public function verify($nombreUsuario, $contrasenia) {
-        // Preparar la consulta SQL
-        $query = "SELECT * FROM usuarios WHERE nombreUsuario = ?";
+    public function ejecutarValidaciones($datos){
 
-        // Preparar la declaración SQL
-        $stmt = $this->database->prepare($query);
+        $errores = [];
 
-        // Bind de los parámetros
-        $stmt->bind_param("s", $nombreUsuario);
-
-        // Ejecutar la consulta
-        $stmt->execute();
-
-        $resultado = $stmt->get_result();
-
-        if ($resultado->num_rows === 0) {
-            throw new Exception("Usuario no encontrado");
-        }
-    
-        // Obtener el primer registro (debería ser único)
-        $usuario = $resultado->fetch_assoc();
-        echo "Contraseña almacenada en la base de datos: " . $usuario["contrasenia"] . "<br>";
-        echo "Contraseña" . $contrasenia;
-    
-        // Verificar la contraseña
-        if($contrasenia == $usuario["contrasenia"]){
-            return $usuario;
+        if(!$this->validarQueElMailEstaActivo($datos['mail'])){
+            $errores['mailNoActivo'] = true;
         }else{
-            throw new Exception("Contraseña incorrecta");
+            if(!$this->validarQueNoHayaDatosIncorrectos($datos)){
+                $errores['datosIncorrectos'] = true;
+            }
+        }
+
+
+        if(empty($errores)){
+            $this->ingresarAlLobby($datos);
+        }
+
+        return $errores;
+    }
+
+    public function validarQueNoHayaDatosIncorrectos($datos) {
+
+        $mail = $datos['mail'];
+        $contrasenia = password_hash($datos['contrasenia'], PASSWORD_DEFAULT);
+        $resultado = false;
+
+        if(filter_var($mail, FILTER_VALIDATE_EMAIL) && !empty($contrasenia)){
+            
+            $sql = "SELECT * FROM `usuarios` WHERE mail='{$mail}';";
+
+            $consulta = $this->database->execute($sql);
+
+            if(!empty($consulta) && $consulta['contrasenia'] == $contrasenia){
+                $resultado = true;
+                return $resultado;
+            }
+        }
+        else{
+            return false;
+        }
+
+    }
+        
+
+        public function validarQueElMailEstaActivo($mail) {
+
+            $resultado = false;
+    
+            if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
+                
+                $sql = "SELECT * FROM `usuarios` WHERE mail='{$mail}';";
+    
+                $consulta = $this->database->execute($sql);
+    
+                if(!empty($consulta) && $consulta['estaActiva'] == true){
+                    unset($_SESSION['activarCuenta']);
+                    $resultado = true;
+                }
+            }
+            else{
+                return false;
+            }
+            
+    
+            }
+
+            public function validarCuenta($codigo){
+                $sql = "UPDATE `usuarios` SET `estaActiva`= true WHERE codigo='{$codigo}';";
+                $this->database->execute($sql);
+            }   
+
         }
     
-        // Las credenciales son válidas, se devuelve el usuario
-        return $usuario;
-    }
-}

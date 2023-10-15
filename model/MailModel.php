@@ -41,10 +41,26 @@ class MailModel
         $mail->isHTML(true);
         $asunto = "Bienvenido/a a Party Quiz, valida tu cuenta";
         $link = 'http://localhost/login/validarCuenta?codigo=' . $codigo;
-        $buttonHtml = '<a href="' . $link . '"><button style="padding: 10px; background-color: #337ab7; color: white; border: none; cursor: pointer;">Haz clic aquí para validar tu cuenta</button></a>';
+        $Html = '<body>
+        <div style="background-color: #007BFF; color: #fff; text-align: center; padding: 20px;">
+            <h1>Bienvenido a Party Quiz</h1>
+        </div>
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+            <p>Hola!</p>
+            <p>Gracias por unirte a Party Quiz. Estamos emocionados de tenerte como parte de nuestra comunidad.</p>
+            <p>Para activar tu cuenta, haz clic en el enlace de abajo:</p>
+            <p><a href="' . $link . '">Activar mi cuenta</a></p>
+            <p>Una vez que actives tu cuenta, podrás acceder a todos los beneficios de Party Quiz.</p>
+            <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en ponerte en contacto con nuestro equipo de soporte: quuiz.party@gmail.com</p>
+            <p>¡Gracias de nuevo por unirte a nosotros!</p>
+        </div>
+        <div style="background-color: #f5f5f5; text-align: center; padding: 20px;">
+            <p>Party Quiz</p>
+        </div>
+    </body>';
 
         $mail->Subject = $asunto;
-        $mail->Body = $buttonHtml;
+        $mail->Body = $Html;
 
         if($mail->send()){
             $result = true;
