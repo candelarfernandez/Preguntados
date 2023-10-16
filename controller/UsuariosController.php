@@ -19,11 +19,9 @@ class UsuariosController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $datos = $_POST['registro'];
 
-            // Ejecutar validaciones y obtener errores
             $errores = $this->model->ejecutarValidaciones($datos);
 
             if (empty($errores)) {
-                // No hay errores, el registro fue exitoso
                 header('location: /mail/sendMail&usuario=' . urldecode($_POST['registro']['mail']));
                 exit();
             } else{

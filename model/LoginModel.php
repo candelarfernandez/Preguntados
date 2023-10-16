@@ -81,7 +81,6 @@ class LoginModel {
                         unset($_SESSION['activarCuenta']);
                         return true;
                 } else {
-                   echo "Error en la consulta: " . $this->database->error;
                    return false;
                 }            
     
@@ -89,7 +88,9 @@ class LoginModel {
         }
 
             public function validarCuenta($codigo){
-                $sql = "UPDATE usuarios SET estaActiva= true WHERE codigo='{$codigo}'";
+
+                $sql = "UPDATE usuarios SET estaActiva = 1 WHERE codigo='{$codigo}'";
+
                 $this->database->execute($sql);
             }   
 

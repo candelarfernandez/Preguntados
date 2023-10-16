@@ -40,7 +40,7 @@ class MailModel
         //Contenido del mail
         $mail->isHTML(true);
         $asunto = "Bienvenido/a a Party Quiz, valida tu cuenta";
-        $link = 'http://localhost/login/validarCuenta?codigo=' . $codigo;
+        $link = 'http://localhost/login/validarCuenta&codigo=' . $codigo;
         $Html = '<body>
         <div style="background-color: #007BFF; color: #fff; text-align: center; padding: 20px;">
             <h1>Bienvenido a Party Quiz</h1>
@@ -75,9 +75,9 @@ class MailModel
 
     private function obtenerCodigoUsuario($email)
     {
-        $sql = "SELECT codigo FROM `usuarios` WHERE mail='{$email}';";
+        $sql = "SELECT * FROM usuarios where mail='{$email}'";
 
-        $result = $this->database->execute($sql);
+        $result = $this->database->queryUnSoloRegistro($sql);
 
         return $result['codigo'];
     }
