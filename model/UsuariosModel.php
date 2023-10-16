@@ -110,7 +110,7 @@ class UsuariosModel {
 
         $datos['codigo'] = $this->generarCodigoDeValidacion();
 
-        $datos['contrasenia'] = password_hash($datos['contrasenia'], PASSWORD_DEFAULT);
+        $datos['contrasenia'] = md5($datos['contrasenia']);
 
         if(empty($errores)){
             $this->registrarUsuario($datos);
