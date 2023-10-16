@@ -11,11 +11,12 @@
 
     </div>
     {{#respuestas}}
-        <form class="mt-6" action="/partida/jugar" method="post" >
+        <form class="mt-6" action="" method="post" >
             <input type="hidden" name="id_pregunta" value="{{pregunta.id}}">
             <input type="hidden" name="bool" value="{{esCorrecta}}">
 
             <button type="submit" class="boton-juego"> {{texto}} </button>
         </form>
+    {{/respuestas}}
     </div>
     </div>

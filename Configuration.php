@@ -33,6 +33,12 @@ class Configuration {
             $this->getRenderer()
         );
     }
+    public function getLobbyController(){
+        return new LobbyController(
+            new LobbyModel($this->getDatabase()),
+            $this->getRenderer()
+        );
+    }
 
        public function getLoginController() {
         return new LoginController(

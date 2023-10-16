@@ -13,7 +13,7 @@ class LoginModel {
 
         $errores = [];
 
-        if(!$this->validarQueElMailEstaActivo($datos['mail'])){
+        if(!$this->validarQueElMailEstaActivo($datos)){
             $errores['mailNoActivo'] = true;
         }else{
             if(!$this->validarQueNoHayaDatosIncorrectos($datos)){
@@ -51,29 +51,26 @@ class LoginModel {
         }
 
     }
-        
 
-        public function validarQueElMailEstaActivo($mail) {
 
-            $resultado = false;
-    
-            if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
-                
-                $sql = "SELECT * FROM `usuarios` WHERE mail='{$mail}';";
-    
-                $consulta = $this->database->execute($sql);
-    
-                if(!empty($consulta) && $consulta['estaActiva'] == true){
-                    unset($_SESSION['activarCuenta']);
-                    $resultado = true;
-                }
-            }
-            else{
+    public function validarQueElMailEstaActivo($datos) {
+
+        $mail = $datos['mail'];
+
+        if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
+
+            $sql = "SELECT * FROM usuarios where mail='{$mail}'";
+            $resultado = $this->database->query($sql);
+
+            if ($resultado && $resultado[0]['estaActiva'] == 1) {
+                unset($_SESSION['activarCuenta']);
+                return true;
+            } else {
                 return false;
             }
-            
-    
-            }
+
+        }
+    }
 
             public function validarCuenta($codigo){
                 $sql = "UPDATE `usuarios` SET `estaActiva`= true WHERE codigo='{$codigo}';";

@@ -4,31 +4,21 @@ class LobbyController {
 
     private $renderer;
     private $model;
-    private $lobbyModel;
 
-    public function __construct($model, $renderer,$lobbyModel) {
+    public function __construct($model, $renderer) {
         $this->model = $model;
         $this->renderer = $renderer;
-        $this->lobbyModel=$lobbyModel;
+
     }
-
-    public function comenzarPartida(){
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-
-            $this->model->jugar;
-            header('Location: /partida/jugar');
-            exit();
-        }
-    }
-
     public function jugar(){
-        $this->renderer->render('partida',$this->traerDatosPreguntas());
+        $datosPregunta= $this->traerDatosPreguntas();
+        $this->renderer->render('partida',$datosPregunta);
     }
 
 
     public function traerDatosPreguntas(){
-   $pregunta= $this->lobbyModel->traerPreguntaAleatoria();
-   $respuestas= $this->lobbyModel->traerRespuestas($pregunta['id']);
+   $pregunta= $this->model->traerPreguntaAleatoria();
+   $respuestas= $this->model->traerRespuestas($pregunta['id']);
     return $datosPregunta =[
         'pregunta'=> $pregunta,
         'respuestas'=>$respuestas
