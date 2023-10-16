@@ -24,6 +24,7 @@ class LoginController {
             exit();
         }
     }
+   
 
 
     public function verificarDatos(){

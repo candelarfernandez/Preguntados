@@ -12,13 +12,13 @@ class PartidaModel {
         $sql = "SELECT * FROM preguntas";
         $listadoPreguntas= $this->database->query($sql);
         $numAleatorio = rand(0, sizeof($listadoPreguntas)-1);
-        var_dump($listadoPreguntas[$numAleatorio]);
+      //  var_dump($listadoPreguntas[$numAleatorio]);
         return $listadoPreguntas[$numAleatorio];
     }
     
     public function traerRespuestas($idPregunta) {
     $sql = "SELECT * FROM respuestas WHERE idPregunta = '{$idPregunta}'";
-    var_dump($this->database->query($sql));
+    //var_dump($this->database->query($sql));
     return $this->database->query($sql);
     }
 

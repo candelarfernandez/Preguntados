@@ -1,0 +1,113 @@
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Fernandez',
+                '2002-10-23',
+                '',
+                'Argentina',
+                'Moron',
+                'test@test.com',
+                'cc03e747a6afbbcbf8be7668acfebee5',
+                'candelax',
+                '',
+                '363722')
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Fernandez',
+                '2002-10-23',
+                '',
+                'Argentina',
+                'Moron',
+                'test@test.com',
+                'cc03e747a6afbbcbf8be7668acfebee5',
+                'candelax',
+                '',
+                '607754')
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Fernandez',
+                '2002-10-23',
+                '',
+                'Argentina',
+                'Moron',
+                'test@test.com',
+                'cc03e747a6afbbcbf8be7668acfebee5',
+                'candelax',
+                '',
+                '272284')
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Fernandez',
+                '2002-10-23',
+                '',
+                'Argentina',
+                'Moron',
+                'test@test.com',
+                'cc03e747a6afbbcbf8be7668acfebee5',
+                'candelax',
+                '',
+                '633647')
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Fernandez',
+                '2002-10-23',
+                '',
+                'Argentina',
+                'Moron',
+                'test@test.com',
+                'cc03e747a6afbbcbf8be7668acfebee5',
+                'candelax',
+                '',
+                '662530')
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test.com'
+[2023-10-16][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo=''
+[2023-10-16][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo=''
+[2023-10-16][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo=''
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '0'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '0'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '11'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '11'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '33'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '2'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '2'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '10'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '10'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '31'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '47'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '24'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '24'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '88'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '49'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '49'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '19'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '19'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '9'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '29'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '17'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '62'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '21'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '77'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'

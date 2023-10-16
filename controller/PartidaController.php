@@ -20,21 +20,20 @@ class PartidaController {
     }
 
     public function respuesta(){
-        $alertas = [
-            'error' => true,
-            'mensaje' => true,
-            'seguirJugando' => true
-        ];
+        $alertas = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $datos = $_POST;
         $esCorrecta = $this->model->verSiEsCorrecta($datos);
         if($esCorrecta){
-            $this->renderer->render('partida', $alertas['mensaje'], $alertas['seguirJugando']);
+            $alertas['mensaje'] = true;
+            $alertas['seguirJugando'] = true;
+            $this->renderer->render('partida', $alertas);
         }else{
-            $this->renderer->render('partida', $alertas['error'], $alertas['seguirJugando']);
+            $alertas['error'] = true;
+            $alertas['seguirJugando'] = true;
+            $this->renderer->render('partida', $alertas);
     }
 }}
-
     public function traerDatosPreguntas(){
     $pregunta= $this->model->traerPreguntaAleatoria();
     $respuestas= $this->model->traerRespuestas($pregunta['id']);
