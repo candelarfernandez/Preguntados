@@ -12,6 +12,14 @@ class LobbyController {
         $this->lobbyModel=$lobbyModel;
     }
 
+    public function comenzarPartida(){
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            $this->model->jugar;
+            header('Location: /partida/jugar');
+            exit();
+        }
+    }
 
     public function jugar(){
         $this->renderer->render('partida',$this->traerDatosPreguntas());
