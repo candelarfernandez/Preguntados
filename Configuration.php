@@ -9,13 +9,11 @@ include_once('helpers/Logger.php');
 include_once('model/UsuariosModel.php');
 include_once('model/LoginModel.php');
 include_once('model/MailModel.php');
-include_once('model/LobbyModel.php');
 
 //Controllers
 include_once('controller/UsuariosController.php');
 include_once('controller/LoginController.php');
 include_once('controller/MailController.php');
-include_once('controller/LobbyController.php');
 
 //Third-party
 include_once('third-party/mustache/src/Mustache/Autoloader.php');
@@ -35,13 +33,6 @@ class Configuration {
             $this->getRenderer()
         );
     }
-
-       public function getLoginController() {
-        return new LoginController(
-            new LoginModel($this->getDatabase()),
-            $this->getRenderer());
-    }
-
     public function getLobbyController(){
         return new LobbyController(
             new LobbyModel($this->getDatabase()),
@@ -49,6 +40,11 @@ class Configuration {
         );
     }
 
+       public function getLoginController() {
+        return new LoginController(
+            new LoginModel($this->getDatabase()),
+            $this->getRenderer());
+    }
 
     public function getMailController(){
         return new MailController(

@@ -8,16 +8,30 @@ class LobbyController {
     public function __construct($model, $renderer) {
         $this->model = $model;
         $this->renderer = $renderer;
+
+    }
+    public function jugar(){
+        $datosPregunta= $this->traerDatosPreguntas();
+        $this->renderer->render('partida',$datosPregunta);
     }
 
-    public function list() {
-        //aca habria que listar la pregunta con sus respectivas opciones
-        $this->renderer->render('lobby');
+
+    public function traerDatosPreguntas(){
+   $pregunta= $this->model->traerPreguntaAleatoria();
+   $respuestas= $this->model->traerRespuestas($pregunta['id']);
+    return $datosPregunta =[
+        'pregunta'=> $pregunta,
+        'respuestas'=>$respuestas
+        ];
     }
 
-    public function traerPreguntas(){
-     //aca habria que mostrar las preguntas con sus respectivas opciones para que el usuario pueda elegir. hay que traerlas de la base
-     $mostrarPreguntas = $model->mostrarPregunta();
-     //como se muestran con la vista???? no entiendo eso jeje
-    }
+
+
+/*
+public function list() {
+    //aca habria que listar la pregunta con sus respectivas opciones
+    $this->renderer->render('lobby');
+}
+
+*/
 }

@@ -20,7 +20,7 @@ class LoginController {
 
             $this->model->validarCuenta($codigo);
             $_SESSION['CuentaActivada'] = true;
-            header('Location: /login/list');
+            header('Location: /login/list1');
             exit();
         }
     }
@@ -31,7 +31,6 @@ class LoginController {
             $datos = $_POST['login'];
 
             $errores = $this->model->ejecutarValidaciones($datos);
-
             if (empty($errores)) {
                 header('location: /lobby/list');
                 exit();

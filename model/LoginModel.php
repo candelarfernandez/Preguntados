@@ -8,17 +8,6 @@ class LoginModel {
         $this->database = $database;
     }
 
-    // public function getDatabase(){
-    //     $sql = "SELECT * FROM usuarios";
-    //     $resultado = $this->database->query($sql);
-
-    //     if ($resultado) {
-    //         // La consulta se ejecutó correctamente, puedes procesar los resultados.
-    //     } else {
-    //         // Hubo un error en la consulta.
-    //         echo "Error en la consulta: " . $this->database->error;
-    //     }
-    // }
 
     public function ejecutarValidaciones($datos){
 
@@ -26,56 +15,45 @@ class LoginModel {
 
         if(!$this->validarQueElMailEstaActivo($datos)){
             $errores['mailNoActivo'] = true;
+        }else{
+            if(!$this->validarQueNoHayaDatosIncorrectos($datos)){
+                $errores['datosIncorrectos'] = true;
+            }
         }
 
-        if(!$this->validarQueNoHayaDatosIncorrectos($datos)){
-            $errores['datosIncorrectos'] = true;
-        }
 
         if(empty($errores)){
-            $this->ingresarAlLobby();
+            $this->ingresarAlLobby($datos);
         }
 
         return $errores;
     }
 
-    public function ingresarAlLobby(){
-        header('location: /lobby/list');
-        exit();
-    }
-
     public function validarQueNoHayaDatosIncorrectos($datos) {
 
         $mail = $datos['mail'];
-        $contrasenia = md5($datos['contrasenia']);
+        $contrasenia = password_hash($datos['contrasenia'], PASSWORD_DEFAULT);
         $resultado = false;
 
-        if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
-                
-            $sql = "SELECT * FROM usuarios where mail='{$mail}'";
-            $consulta = $this->database->query($sql);
+        if(filter_var($mail, FILTER_VALIDATE_EMAIL) && !empty($contrasenia)){
+            
+            $sql = "SELECT * FROM `usuarios` WHERE mail='{$mail}';";
 
-            if(!empty($consulta) && $consulta[0]['contrasenia'] == $contrasenia){
+            $consulta = $this->database->execute($sql);
+
+            if(!empty($consulta) && $consulta['contrasenia'] == $contrasenia){
                 $resultado = true;
                 return $resultado;
             }
         }
         else{
-            echo "Error en la consulta: " . $this->database->error;
             return false;
         }
 
     }
-        
 
-        public function validarQueElMailEstaActivo($datos) {
 
-            $mail = $datos['mail'];
-    
-            if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
-                
-                $sql = "SELECT * FROM usuarios where mail='{$mail}'";
-                $resultado = $this->database->query($sql);
+    public function validarQueElMailEstaActivo($datos) {
 
                 if ($resultado && $resultado[0]['estaActiva'] == 1) {
                         unset($_SESSION['activarCuenta']);
@@ -85,7 +63,8 @@ class LoginModel {
                 }            
     
             }
-        }
+
+
 
             public function validarCuenta($codigo){
 
