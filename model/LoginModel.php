@@ -8,17 +8,17 @@ class LoginModel {
         $this->database = $database;
     }
 
-    public function getDatabase(){
-        $sql = "SELECT * FROM usuarios";
-        $resultado = $this->database->query($sql);
+    // public function getDatabase(){
+    //     $sql = "SELECT * FROM usuarios";
+    //     $resultado = $this->database->query($sql);
 
-        if ($resultado) {
-            // La consulta se ejecutó correctamente, puedes procesar los resultados.
-        } else {
-            // Hubo un error en la consulta.
-            echo "Error en la consulta: " . $this->database->error;
-        }
-    }
+    //     if ($resultado) {
+    //         // La consulta se ejecutó correctamente, puedes procesar los resultados.
+    //     } else {
+    //         // Hubo un error en la consulta.
+    //         echo "Error en la consulta: " . $this->database->error;
+    //     }
+    // }
 
     public function ejecutarValidaciones($datos){
 

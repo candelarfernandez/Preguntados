@@ -11,7 +11,6 @@ class LoginController {
     }
 
     public function list() {
-        var_dump($this->model->getDatabase());
         $this->renderer->render('login');
     }
 
