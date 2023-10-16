@@ -8,20 +8,18 @@ class LobbyModel {
         $this->database = $database;
     }
 
-    public function mostrarPregunta() {
-            $sql = "SELECT p.pregunta, r.respuesta 
-            FROM pregunta p
-            JOIN respuesta r ON p.id = r.idPregunta
-            ORDER BY RAND() LIMIT 1";
-    
-            $resultado = $this->database->query($sql);
-    
-            if ($resultado) {
-                return $resultado->fetch(PDO::FETCH_ASSOC);
-            } else {
-                return false;
-            }
-        
-    
+    public function traerPreguntaAleatoria() {
+            $sql = "SELECT * FROM preguntas";
+            $listadoPreguntas= $this->database->query($sql);
+            $numAleatorio = rand(0, sizeof($listadoPreguntas)-1);
+            return $listadoPreguntas[$numAleatorio];
     }
-}
+    public function traerRespuestas($idPregunta) {
+        $sql = "SELECT * FROM respuestas WHERE idPregunta = '$idPregunta'";
+        return $this->database->query($sql);
+    }
+    }
+
+
+
+
