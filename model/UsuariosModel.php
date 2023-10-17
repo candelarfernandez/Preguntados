@@ -58,31 +58,27 @@ class UsuariosModel {
     }
 
     public function validarQueNoExistaMail($mail){
-        $sql = "SELECT COUNT(*) FROM `usuarios` WHERE mail = ?";
-        $consultaPreparada = $this->database->prepare($sql);
-        $consultaPreparada->bind_param("s", $mail);
-        if ($consultaPreparada->execute()) {
-            $consultaPreparada->store_result();
-
-            if ($consultaPreparada->num_rows > 0) {
-                $consultaPreparada->close();
+            $query = "SELECT COUNT(*) AS count FROM usuarios WHERE mail = ?";
+            $stmt = $this->database->prepare($query);
+            $stmt->bind_param("s", $mail);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            if ($row['count'] > 0) {
                 return false;
             } else {
-                $consultaPreparada->close();
                 return true;
             }
-        } else {
-            $consultaPreparada->close();
-            return false;
-        }
     }
 
-    public function subirFotoDePerfil($foto){
+    public function subirFotoDePerfil($datos){
+        $foto = $datos['foto'];
+
         $nombreFoto = $foto['name'];
         $rutaFoto = $foto['tmp_name'];
         $destino = './public/fotos-de-perfil/' . $nombreFoto;
-        move_uploaded_file($rutaFoto, $destino);
-        return $nombreFoto;
+        if(move_uploaded_file($rutaFoto, $destino))
+            return $nombreFoto;
     }
 
     public function generarCodigoDeValidacion(){
