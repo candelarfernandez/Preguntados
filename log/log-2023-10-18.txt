@@ -1,0 +1,16 @@
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='cande.fdz12@gmail.com';
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Fernandez',
+                '2023-10-01',
+                'Femenino',
+                'Argentina',
+                'Morón',
+                'cande.fdz12@gmail.com',
+                'ae2b1fca515949e5d54fb22b8ed95575',
+                'candelaxx',
+                '',
+                '668899')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-18][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='668899'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'

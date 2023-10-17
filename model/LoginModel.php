@@ -8,38 +8,91 @@ class LoginModel {
         $this->database = $database;
     }
 
-    public function verify($nombreUsuario, $contrasenia) {
-        // Preparar la consulta SQL
-        $query = "SELECT * FROM usuarios WHERE nombreUsuario = ?";
+    // public function getDatabase(){
+    //     $sql = "SELECT * FROM usuarios";
+    //     $resultado = $this->database->query($sql);
 
-        // Preparar la declaración SQL
-        $stmt = $this->database->prepare($query);
+    //     if ($resultado) {
+    //         // La consulta se ejecutó correctamente, puedes procesar los resultados.
+    //     } else {
+    //         // Hubo un error en la consulta.
+    //         echo "Error en la consulta: " . $this->database->error;
+    //     }
+    // }
 
-        // Bind de los parámetros
-        $stmt->bind_param("s", $nombreUsuario);
+    public function ejecutarValidaciones($datos){
 
-        // Ejecutar la consulta
-        $stmt->execute();
+        $errores = [];
 
-        $resultado = $stmt->get_result();
-
-        if ($resultado->num_rows === 0) {
-            throw new Exception("Usuario no encontrado");
+        if(!$this->validarQueElMailEstaActivo($datos)){
+            $errores['mailNoActivo'] = true;
         }
-    
-        // Obtener el primer registro (debería ser único)
-        $usuario = $resultado->fetch_assoc();
-        echo "Contraseña almacenada en la base de datos: " . $usuario["contrasenia"] . "<br>";
-        echo "Contraseña" . $contrasenia;
-    
-        // Verificar la contraseña
-        if($contrasenia == $usuario["contrasenia"]){
-            return $usuario;
-        }else{
-            throw new Exception("Contraseña incorrecta");
+
+        if(!$this->validarQueNoHayaDatosIncorrectos($datos)){
+            $errores['datosIncorrectos'] = true;
         }
-    
-        // Las credenciales son válidas, se devuelve el usuario
-        return $usuario;
+
+        if(empty($errores)){
+            $this->ingresarAlLobby();
+        }
+
+        return $errores;
     }
-}
+
+    public function ingresarAlLobby(){
+        header('location: /lobby/list');
+        exit();
+    }
+
+    public function validarQueNoHayaDatosIncorrectos($datos) {
+
+        $mail = $datos['mail'];
+        $contrasenia = md5($datos['contrasenia']);
+        $resultado = false;
+
+        if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
+                
+            $sql = "SELECT * FROM usuarios where mail='{$mail}'";
+            $consulta = $this->database->query($sql);
+
+            if(!empty($consulta) && $consulta[0]['contrasenia'] == $contrasenia){
+                $resultado = true;
+                return $resultado;
+            }
+        }
+        else{
+            echo "Error en la consulta: " . $this->database->error;
+            return false;
+        }
+
+    }
+        
+
+        public function validarQueElMailEstaActivo($datos) {
+
+            $mail = $datos['mail'];
+    
+            if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
+                
+                $sql = "SELECT * FROM usuarios where mail='{$mail}'";
+                $resultado = $this->database->query($sql);
+
+                if ($resultado && $resultado[0]['estaActiva'] == 1) {
+                        unset($_SESSION['activarCuenta']);
+                        return true;
+                } else {
+                   return false;
+                }            
+    
+            }
+        }
+
+            public function validarCuenta($codigo){
+
+                $sql = "UPDATE usuarios SET estaActiva = 1 WHERE codigo='{$codigo}'";
+
+                $this->database->execute($sql);
+            }   
+
+        }
+    

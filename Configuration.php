@@ -1,22 +1,31 @@
 <?php
+//Global
 include_once('helpers/MySqlDatabase.php');
 include_once("helpers/MustacheRender.php");
 include_once('helpers/Router.php');
 include_once('helpers/Logger.php');
 
-
+//Models
 include_once('model/UsuariosModel.php');
 include_once('model/LoginModel.php');
+include_once('model/MailModel.php');
+include_once('model/LobbyModel.php');
+include_once('model/PartidaModel.php');
 
-
+//Controllers
 include_once('controller/UsuariosController.php');
 include_once('controller/LoginController.php');
+include_once('controller/MailController.php');
+include_once('controller/LobbyController.php');
+include_once('controller/PartidaController.php');
 
+//Third-party
 include_once('third-party/mustache/src/Mustache/Autoloader.php');
 include_once('third-party/mustache/src/Mustache/Parser.php');
 
 
 class Configuration {
+
     private $configFile = 'config/config.ini';
 
     public function __construct() {
@@ -33,6 +42,26 @@ class Configuration {
         return new LoginController(
             new LoginModel($this->getDatabase()),
             $this->getRenderer());
+    }
+
+    public function getLobbyController(){
+        return new LobbyController(
+            new LobbyModel($this->getDatabase()),
+            $this->getRenderer()
+        );
+    }
+
+    public function getPartidaController(){
+        return new PartidaController(
+            new PartidaModel($this->getDatabase()),
+            $this->getRenderer()
+        );
+    }
+
+    public function getMailController(){
+        return new MailController(
+            new MailModel($this->getDatabase()),
+        );
     }
 
     private function getArrayConfig() {

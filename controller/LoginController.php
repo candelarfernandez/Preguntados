@@ -13,24 +13,32 @@ class LoginController {
     public function list() {
         $this->renderer->render('login');
     }
-    public function verifyForm(){
-        if(isset($_GET["estado"])){
-            if($_GET['estado'] == "exito"){
-                $data['exito'] = true;
-            } else {
-                $data['error'] = error;
+
+    public function validarCuenta(){
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $codigo = $_GET['codigo'];
+
+            $this->model->validarCuenta($codigo);
+            $_SESSION['CuentaActivada'] = true;
+            header('Location: /login/list');
+            exit();
+        }
+    }
+   
+
+
+    public function verificarDatos(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $datos = $_POST['login'];
+
+            $errores = $this->model->ejecutarValidaciones($datos);
+
+            if (empty($errores)) {
+                header('location: /lobby/list');
+                exit();
+            } else{
+                $this->renderer->render("login", $errores);
             }
         }
-        $this->renderer->render("login",$data);
-    }
-
-    public function verify(){
-        $nombreUsuario = $_POST["nombreUsuario"];
-        $contrasenia = $_POST["contrasenia"];
-
-        $result = $this->model->verify($nombreUsuario, $contrasenia);
-
-        header("location:/login/verifyForm/estado=exito");
-        exit();
     }
 }
