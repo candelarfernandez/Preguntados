@@ -58,13 +58,22 @@ class UsuariosModel {
     }
 
     public function validarQueNoExistaMail($mail){
-        $sql = "SELECT * FROM `usuarios` WHERE mail='{$mail}';";
-        $result = $this->database->query($sql);
-        if($result->num_rows > 0){
+        $sql = "SELECT COUNT(*) FROM `usuarios` WHERE mail = ?";
+        $consultaPreparada = $this->database->prepare($sql);
+        $consultaPreparada->bind_param("s", $mail);
+        if ($consultaPreparada->execute()) {
+            $consultaPreparada->store_result();
+
+            if ($consultaPreparada->num_rows > 0) {
+                $consultaPreparada->close();
+                return false;
+            } else {
+                $consultaPreparada->close();
+                return true;
+            }
+        } else {
+            $consultaPreparada->close();
             return false;
-        }
-        else{
-            return true;
         }
     }
 
