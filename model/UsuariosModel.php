@@ -59,8 +59,8 @@ class UsuariosModel {
 
     public function validarQueNoExistaMail($mail){
         $sql = "SELECT * FROM `usuarios` WHERE mail='{$mail}';";
-        $result = $this->database->query($sql);
-        if($result->num_rows > 0){
+        $result = $this->database->queryUnSoloregistro($sql);
+        if($result){
             return false;
         }
         else{
@@ -68,13 +68,23 @@ class UsuariosModel {
         }
     }
 
-    public function subirFotoDePerfil($foto){
-        $nombreFoto = $foto['name'];
-        $rutaFoto = $foto['tmp_name'];
-        $destino = './public/fotos-de-perfil/' . $nombreFoto;
-        move_uploaded_file($rutaFoto, $destino);
-        return $nombreFoto;
+    public function subirFotoDePerfil($datos){
+        if (isset($datos['foto']['name']) && $datos['foto']['name']) {
+            $imagen = $datos['foto'];
+            $extensionesPermitidas = array("jpeg", "jpg", "png");
+    
+            $nombreImagen = basename($imagen['name']);
+            $extension = pathinfo($nombreImagen, PATHINFO_EXTENSION);
+    
+            if (in_array($extension, $extensionesPermitidas)) {
+                $imagenPath = "./public/fotos-de-perfil/" . $nombreImagen;
+                if (move_uploaded_file($imagen['tmp_name'], $imagenPath)) {
+                    return $nombreImagen;
+                } 
+            } 
+        }return false;
     }
+
 
     public function generarCodigoDeValidacion(){
         $codigo = rand(100000, 999999);
@@ -108,7 +118,12 @@ class UsuariosModel {
         if(!$this->validarContraseña($datos)){
             $errores['contraseniaInvalida'] = true;
         }
-
+        if(isset($datos['foto']['name']) && $datos['foto']['name']){
+            if(!$this->subirFotoDePerfil($datos)){
+                $errores['imagenInvalida'] = true;
+            }
+        }
+        
         $datos['codigo'] = $this->generarCodigoDeValidacion();
 
         $datos['contrasenia'] = md5($datos['contrasenia']);

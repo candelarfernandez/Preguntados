@@ -34,6 +34,11 @@
                 <p class="text-white font-medium text-center"> Ups, parece que las contraseñas no coinciden </p>
             </div>        
         {{/contraseniaInvalida}}           
+          {{#imagenInvalida}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que el formato de imagen es invalido</p>
+            </div>        
+        {{/imagenInvalida}}     
     
 <form class="mt-6 px-4 grid grid-cols-2 gap-8" action="/usuarios/verificarDatos" method="post" enctype="multipart/form-data">
     <!-- Columna 1 -->
