@@ -1,0 +1,101 @@
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'andrea',
+                '1994-03-14',
+                '',
+                'Argentina',
+                'bs',
+                'andrea@mail.com',
+                '$2y$10$fEcXRguKzC6WluhkYfDdhO1GcW61YbROpNyAKPuazzc51pjKBpEEy',
+                'andrea',
+                '',
+                '751766')
+[2023-10-16][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'andrea',
+                '1994-03-14',
+                '',
+                'Argentina',
+                'bs',
+                'andrea@mail.com',
+                '$2y$10$pbgxFF5bnb8moWJ22qfk6OuQZl7sNFBeBlqR5J9eHqrDrTbb32M7m',
+                'andrea',
+                '',
+                '989911')
+[2023-10-16][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'andrea',
+                '1994-03-14',
+                '',
+                'Argentina',
+                'bs',
+                'andrea@mail.com',
+                '$2y$10$.hVNBmsWLi3xOEYl8ABBfe625O6z4B2OaCkIA3dqTrDDQ0z4bUbfy',
+                'andrea',
+                '',
+                '356522')
+[2023-10-16][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: select * from usuarios where id=1;
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios;
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios;
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea2@mail.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'andrea',
+                '1994-03-14',
+                '',
+                'Argentina',
+                'nnn',
+                'andrea2@mail.com',
+                '$2y$10$0qa0mJs75Xjosw6xT0ZbP.QH/GespdtATz2jeHWXb54dTzDL1lbYi',
+                'an',
+                '',
+                '164756')
+[2023-10-16][INFO]Ejecutando query: SELECT codigo FROM `usuarios` WHERE mail='andrea2@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andrea@mail.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='andreasosaortiz94@gmail.com';
+[2023-10-16][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'andrea',
+                '1994-03-14',
+                '',
+                'Argentina',
+                'bs',
+                'andreasosaortiz94@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'andrea',
+                '',
+                '430522')
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='430522'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
