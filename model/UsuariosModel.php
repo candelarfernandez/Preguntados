@@ -58,14 +58,17 @@ class UsuariosModel {
     }
 
     public function validarQueNoExistaMail($mail){
-        $sql = "SELECT * FROM `usuarios` WHERE mail='{$mail}';";
-        $result = $this->database->queryUnSoloregistro($sql);
-        if($result){
-            return false;
-        }
-        else{
-            return true;
-        }
+        $query = "SELECT COUNT(*) AS count FROM usuarios WHERE mail = ?";
+            $stmt = $this->database->prepare($query);
+            $stmt->bind_param("s", $mail);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            if ($row['count'] > 0) {
+                return false;
+            } else {
+                return true;
+            }
     }
 
     public function subirFotoDePerfil($datos){
