@@ -298,3 +298,29 @@
                 '',
                 '377532')
 [2023-10-17][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test23g2k.com'
+[2023-10-17][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@testing123.com';
+[2023-10-17][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Rocio',
+                '2023-08-31',
+                '',
+                'Uruguay',
+                'Morón',
+                'test@testing123.com',
+                'ae2b1fca515949e5d54fb22b8ed95575',
+                'candelarx',
+                '',
+                '910597')
+[2023-10-17][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@testing123.com'
+[2023-10-17][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test1@test12.com';
+[2023-10-17][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Florencia Micaela',
+                '2006-06-14',
+                'Femenino',
+                'Chile',
+                'Morón',
+                'test1@test12.com',
+                'ae2b1fca515949e5d54fb22b8ed95575',
+                'florenciax',
+                '',
+                '136555')
+[2023-10-17][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test1@test12.com'
