@@ -22,7 +22,6 @@ class UsuariosModel {
                 '{$datos['codigo']}')";
 
         $this->database->execute($sql);
-        $_SESSION['activarCuenta'] = true;
     }
 
     public function validarQueNoHayaCamposVacios($datos){

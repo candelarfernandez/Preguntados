@@ -20,6 +20,7 @@ class LoginController {
 
             $this->model->validarCuenta($codigo);
             $_SESSION['CuentaActivada'] = true;
+            unset($_SESSION['activarCuenta']);
             header('Location: /login/list');
             exit();
         }
