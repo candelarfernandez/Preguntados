@@ -34,6 +34,11 @@
                 <p class="text-white font-medium text-center"> Ups, parece que las contraseñas no coinciden </p>
             </div>        
         {{/contraseniaInvalida}}           
+          {{#imagenInvalida}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que el formato de imagen es invalido</p>
+            </div>        
+        {{/imagenInvalida}}     
     
 <form class="mt-6 px-4 grid grid-cols-2 gap-8" action="/usuarios/verificarDatos" method="post" enctype="multipart/form-data">
     <!-- Columna 1 -->
@@ -45,9 +50,9 @@
         <label for="anio" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Fecha de Nacimiento:</label>
         <input type="date" name="registro[anio]" class="w-full p-2 border rounded-md" required>
         
-        <label class="block text-gray-600 text-sm font-medium mb-2 mt-2">Género:</label>
+        <label for="sexo" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Género:</label>
         <div class="contenedor-genero">
-        <select id="genero" name="registro[genero]" class="w-full p-2 border rounded-md" required>
+        <select id="sexo" name="registro[sexo]" class="w-full p-2 border rounded-md" required>
             <option value="Selecciona un género">Selecciona un género</option>
             <option value="Masculino"> Masculino </option>
             <option value="Femenino"> Femenino </option>

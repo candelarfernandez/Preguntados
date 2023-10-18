@@ -1,0 +1,307 @@
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='cande.fdz12@gmail.com';
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Candela Fernandez',
+                '2023-10-01',
+                'Femenino',
+                'Argentina',
+                'Morón',
+                'cande.fdz12@gmail.com',
+                'ae2b1fca515949e5d54fb22b8ed95575',
+                'candelaxx',
+                '',
+                '668899')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-18][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='668899'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '827ccb0eea8a706c4c34a16891f84e7b',
+                'LeoV',
+                '',
+                '668047')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='668047'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '22'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '82'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '11'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '33'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '18'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '65'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '10'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '32'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '8'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '25'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '27'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '100'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '12'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '35'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '19'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '68'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '14'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '43'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '47'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '84'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '7'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '21'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '8'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '25'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '47'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '17'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '60'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '93'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '8'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '25'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '24'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '88'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '27'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '100'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '13'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '39'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '10'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '31'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '17'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '61'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '1'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '2'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '93'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '85'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '13'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '41'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '5'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '16'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '12'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '36'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '28'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '105'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '20'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '73'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '19'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '69'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '6'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '18'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '18'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '65'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '11'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '33'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '85'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '92'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '6'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '18'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '14'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '43'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '92'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '12'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '35'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '8'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '21'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '77'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '9'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '827ccb0eea8a706c4c34a16891f84e7b',
+                'LeoV',
+                '',
+                '588926')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '667582')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '290847')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '477322')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '81dc9bdb52d04dc20036dbd8313ed055',
+                'LeoV',
+                '',
+                '646565')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '457647')
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '705816')
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '722695')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '109818')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '795240')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '745480')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='745480'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '787231')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='787231'

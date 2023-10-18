@@ -11,7 +11,8 @@ class LoginController {
     }
 
     public function list() {
-        $this->renderer->render('login');
+        $data['activarCuenta'] = isset($_SESSION['activarCuenta']) ? $_SESSION['activarCuenta'] : false;
+        $this->renderer->render('login' , $data);
     }
 
     public function validarCuenta(){
@@ -20,6 +21,7 @@ class LoginController {
 
             $this->model->validarCuenta($codigo);
             $_SESSION['CuentaActivada'] = true;
+            unset($_SESSION['activarCuenta']);
             header('Location: /login/list');
             exit();
         }

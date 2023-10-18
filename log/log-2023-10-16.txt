@@ -111,3 +111,19 @@
 [2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '77'
 [2023-10-16][INFO]Ejecutando query: SELECT * FROM preguntas
 [2023-10-16][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test1@test1.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test1@test1.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test2.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test2.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test2.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test2.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test2.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test2.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test2.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test2.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test.com';
+[2023-10-16][INFO]Ejecutando query: SELECT * FROM `usuarios` WHERE mail='test@test2.com';
