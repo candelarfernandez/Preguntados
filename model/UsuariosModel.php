@@ -22,7 +22,7 @@ class UsuariosModel {
                 '{$datos['codigo']}')";
 
         $this->database->execute($sql);
-        $_SESSION['activarCuenta'] = true;
+ 
     }
 
     public function validarQueNoHayaCamposVacios($datos){
@@ -71,14 +71,14 @@ class UsuariosModel {
             }
     }
 
-    public function subirFotoDePerfil($datos){
+    public function subirFotoDePerfil($imagen){
         if (isset($datos['foto']['name']) && $datos['foto']['name']) {
             $imagen = $datos['foto'];
             $extensionesPermitidas = array("jpeg", "jpg", "png");
-    
+
             $nombreImagen = basename($imagen['name']);
             $extension = pathinfo($nombreImagen, PATHINFO_EXTENSION);
-    
+
             if (in_array($extension, $extensionesPermitidas)) {
                 $imagenPath = "./public/fotos-de-perfil/" . $nombreImagen;
                 if (move_uploaded_file($imagen['tmp_name'], $imagenPath)) {
@@ -87,7 +87,6 @@ class UsuariosModel {
             } 
         }return false;
     }
-
 
     public function generarCodigoDeValidacion(){
         $codigo = rand(100000, 999999);
@@ -126,7 +125,6 @@ class UsuariosModel {
                 $errores['imagenInvalida'] = true;
             }
         }
-        
         $datos['codigo'] = $this->generarCodigoDeValidacion();
 
         $datos['contrasenia'] = md5($datos['contrasenia']);
