@@ -10,3 +10,21 @@
                 '',
                 '382424')
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test2k.com'
+[2023-10-19][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Maria Vazquez',
+                '2023-10-04',
+                'Femenino',
+                'Argentina',
+                'Morón',
+                'test@test11.com',
+                'ae2b1fca515949e5d54fb22b8ed95575',
+                'candelaxx',
+                '',
+                '275318')
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test11.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
