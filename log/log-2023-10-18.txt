@@ -221,3 +221,74 @@
                 '',
                 '646565')
 [2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '457647')
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '705816')
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '722695')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '109818')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '795240')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Argentina',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '745480')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-18][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='745480'
