@@ -30,8 +30,9 @@ class PartidaController {
             $this->renderer->render('partida', $alertas);
         }else{
             $alertas['error'] = true;
-            $alertas['seguirJugando'] = true;
-            $this->renderer->render('partida', $alertas);
+            $this->renderer->render('lobby', $alertas);
+
+
     }
 }}
     public function traerDatosPreguntas(){
