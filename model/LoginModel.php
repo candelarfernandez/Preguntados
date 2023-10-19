@@ -78,7 +78,7 @@ class LoginModel {
                 $resultado = $this->database->query($sql);
 
                 if ($resultado && $resultado[0]['estaActiva'] == 1) {
-                     
+
                         return true;
                 } else {
                    return false;

@@ -22,7 +22,7 @@ class UsuariosModel {
                 '{$datos['codigo']}')";
 
         $this->database->execute($sql);
- 
+
     }
 
     public function validarQueNoHayaCamposVacios($datos){
@@ -58,7 +58,9 @@ class UsuariosModel {
     }
 
     public function validarQueNoExistaMail($mail){
+
         $query = "SELECT COUNT(*) AS count FROM usuarios WHERE mail = ?";
+
             $stmt = $this->database->prepare($query);
             $stmt->bind_param("s", $mail);
             $stmt->execute();
@@ -72,6 +74,7 @@ class UsuariosModel {
     }
 
     public function subirFotoDePerfil($imagen){
+
         if (isset($datos['foto']['name']) && $datos['foto']['name']) {
             $imagen = $datos['foto'];
             $extensionesPermitidas = array("jpeg", "jpg", "png");
@@ -86,6 +89,7 @@ class UsuariosModel {
                 } 
             } 
         }return false;
+
     }
 
     public function generarCodigoDeValidacion(){
