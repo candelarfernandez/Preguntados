@@ -41,11 +41,11 @@ class PartidaController {
     public function traerDatosPreguntas(){
     $pregunta= $this->model->traerPreguntaAleatoria();
     $respuestas= $this->model->traerRespuestas($pregunta['id']);
-    $tiempo= $this->model->traertiempoLimitePorPregunta();
+    //$tiempo= $this->model->traertiempoLimitePorPregunta();
     return $datosPregunta =[
         'pregunta'=> $pregunta,
-        'respuestas'=>$respuestas,
-        'tiempo_limite'=>$tiempo
+        'respuestas'=>$respuestas
+        //'tiempo_limite'=>$tiempo
         ];
     }
 
