@@ -14,3 +14,68 @@
 [2023-10-18][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='668899'
 [2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
 [2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '22'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '80'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '28'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '105'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '20'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '72'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '86'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '93'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '14'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '43'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '22'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '81'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '11'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '33'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '8'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '27'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '7'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '8'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '28'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '19'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '68'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '86'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Maria Vazquez',
+                '2023-09-28',
+                'Masculino',
+                'Chile',
+                'Morón',
+                'test@test2.com',
+                'ae2b1fca515949e5d54fb22b8ed95575',
+                'mariax',
+                '',
+                '763178')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test2.com'
+[2023-10-18][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Maria Vazquez',
+                '2023-10-01',
+                'Masculino',
+                'Argentina',
+                'Morón',
+                'test@test2k.com',
+                '827ccb0eea8a706c4c34a16891f84e7b',
+                'testing',
+                '',
+                '544706')
+[2023-10-18][INFO]Ejecutando query: SELECT * FROM usuarios where mail='test@test2k.com'

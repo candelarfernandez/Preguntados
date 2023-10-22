@@ -15,6 +15,7 @@ class MailController
        $usuario = $_GET['usuario'];
 
          $this->model->enviarMailVerificacion($usuario);
+         $_SESSION["activarCuenta"] = true;
          header('Location: /login/list');
          exit();
     }

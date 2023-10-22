@@ -22,7 +22,7 @@ class UsuariosModel {
                 '{$datos['codigo']}')";
 
         $this->database->execute($sql);
-        $_SESSION['activarCuenta'] = true;
+ 
     }
 
     public function validarQueNoHayaCamposVacios($datos){
@@ -71,14 +71,15 @@ class UsuariosModel {
             }
     }
 
-    public function subirFotoDePerfil($datos){
+    
+    public function subirFotoDePerfil($imagen){
         if (isset($datos['foto']['name']) && $datos['foto']['name']) {
             $imagen = $datos['foto'];
             $extensionesPermitidas = array("jpeg", "jpg", "png");
-    
+
             $nombreImagen = basename($imagen['name']);
             $extension = pathinfo($nombreImagen, PATHINFO_EXTENSION);
-    
+
             if (in_array($extension, $extensionesPermitidas)) {
                 $imagenPath = "./public/fotos-de-perfil/" . $nombreImagen;
                 if (move_uploaded_file($imagen['tmp_name'], $imagenPath)) {
@@ -87,7 +88,35 @@ class UsuariosModel {
             } 
         }return false;
     }
-
+/*
+    public function subirFotoDePerfil($imagen) {
+        if ($imagen['error'] === UPLOAD_ERR_OK) {
+            $extensionesPermitidas = array("jpeg", "jpg", "png");
+            $nombreImagen = basename($imagen['name']);
+            $extension = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));
+    
+            // Verificar si la extensión es válida
+            if (in_array($extension, $extensionesPermitidas)) {
+                $directorioDestino = "./public/fotos-de-perfil/";
+                $rutaImagen = $directorioDestino . $nombreImagen;
+    
+                // Mover el archivo cargado al directorio de destino
+                if (move_uploaded_file($imagen['tmp_name'], $rutaImagen)) {
+                    return $nombreImagen;
+                } else {
+                    // Error al mover el archivo
+                    return false;
+                }
+            } else {
+                // Extensión no permitida
+                return false;
+            }
+        } else {
+            // Error en la carga del archivo
+            return false;
+        }
+    }
+    */
 
     public function generarCodigoDeValidacion(){
         $codigo = rand(100000, 999999);
@@ -126,7 +155,6 @@ class UsuariosModel {
                 $errores['imagenInvalida'] = true;
             }
         }
-        
         $datos['codigo'] = $this->generarCodigoDeValidacion();
 
         $datos['contrasenia'] = md5($datos['contrasenia']);
