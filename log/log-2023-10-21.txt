@@ -153,3 +153,21 @@
 [2023-10-21][INFO]Ejecutando query: SELECT * FROM preguntas
 [2023-10-21][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
 [2023-10-21][INFO]Ejecutando query: SELECT tiempo_limite FROM preguntas
+
+[2023-10-21][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-21][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-21][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-21][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '28' and idPartida = '' ;
+[2023-10-21][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '28','');
+[2023-10-21][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '28'
+[2023-10-21][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-21][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-21][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-21][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '1' and idPartida = '' ;
+[2023-10-21][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '1','');
+[2023-10-21][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '1'
+[2023-10-21][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-21][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+

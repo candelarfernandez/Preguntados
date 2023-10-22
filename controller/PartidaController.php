@@ -13,11 +13,17 @@ class PartidaController {
     }
 
     public function list() {
-        $this->renderer->render('partida');
+       // $data2['idUsuario'] = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : false;
+
+        $this->renderer->render('partida', $_SESSION['idUsuario']);
     }
 
     public function jugar(){
+
         $datosPregunta= $this->traerDatosPreguntas();
+        /*$this->model->crearpartida($_SESSION['idUsuario']);
+        $partidaId = $this->model->consultarIdPartida($_SESSION['idUsuario']);
+        $_SESSION['partida'] = $this->$partidaId;*/
         $this->renderer->render('partida',$datosPregunta);
         
     }
@@ -52,6 +58,7 @@ class PartidaController {
     $pregunta= $this->model->traerPreguntaAleatoria();
     $respuestas= $this->model->traerRespuestas($pregunta['id']);
     //$tiempo= $this->model->traertiempoLimitePorPregunta();
+
     return $datosPregunta =[
         'pregunta'=> $pregunta,
         'respuestas'=>$respuestas

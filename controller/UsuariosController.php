@@ -22,10 +22,12 @@ class UsuariosController {
                 $imagenNombre = $this->model->subirFotoDePerfil($_FILES['registro']['foto']);
                 $datos['foto'] = $imagenNombre; 
             }
-        
+
             $errores = $this->model->ejecutarValidaciones($datos);
-        
+
+
             if (empty($errores)) {
+
                 header('location: /mail/sendMail&usuario=' . urldecode($_POST['registro']['mail']));
                 exit();
             } else {

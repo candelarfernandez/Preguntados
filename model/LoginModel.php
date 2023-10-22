@@ -75,7 +75,7 @@ class LoginModel {
                 $resultado = $this->database->query($sql);
 
                 if ($resultado && $resultado[0]['estaActiva'] == 1) {
-                     
+
                         return true;
                 } else {
                    return false;
@@ -92,5 +92,32 @@ class LoginModel {
         }
         
 
+
+
+   /* public function traerIdConMail($datos){
+        $mail = $datos['mail'];
+         $sql = " SELECT id FROM `usuarios` WHERE mail like '{$mail}'";
+         $id=  $this->database->execute($sql);
+         return $id;
+    }*/
+    public function traerIdConMail($email){
+        var_dump("$email");
+        $sql = "SELECT id FROM `usuarios` WHERE mail = '{$email}';";
+        $result = $this->database->queryUnSoloRegistro($sql);
+
+        if ($result != null) {
+
+            return $result;
+            var_dump("$result");
+
+
+        } else {
+            var_dump("error en el id");
+            return null;
         }
+    }
+
+
+
+}
     

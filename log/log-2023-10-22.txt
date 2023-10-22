@@ -93,6 +93,296 @@
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '95'
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '6' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '6','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '6'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '16' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '16','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '1' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '1','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '1'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '22' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '22','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '22'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '13' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '13','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '13'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '20' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '20','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '20'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '13' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '13','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '13'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '12' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '12','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '12'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (Array,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' = Array ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '14' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '14','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '14'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (Array,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' = Array ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '7' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '7','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '7'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (Array,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' = Array ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '10' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '10','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '10'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (Array,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' = Array ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '5' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '5','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '5'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (Array,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' = Array ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '26' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '26','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '26'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (Array,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' = Array ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '9' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '9','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '9'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (Array,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' = Array ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '11' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '11','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '11'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (Array,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' = Array ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '15' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '15','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (Array,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' = Array ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '21' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '21','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '21'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '15' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '15','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '24' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '24','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '24'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '6' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '6','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '6'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '4' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '4','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '4'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '23' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '23','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '3' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '3','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '22' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '22','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '22'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '15' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '15','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '27' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '27','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '27'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '27' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '27','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '27'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '4' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '4','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '4'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '18' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '18','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '18'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '12' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '12','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '12'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '22' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '22','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '22'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '28' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '28','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '28'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '3' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '3','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '11' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '11','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '11'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '17' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '17','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '17'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '4' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '4','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '4'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '5' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '5','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '5'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '16' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '16','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '24' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '24','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '24'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM `preguntasusadas` WHERE idPregunta = '20' and idPartida = '' ;
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` ) 
+                VALUES ( '20','');
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '20'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '28'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO `partida`(idUsuario, puntaje) VALUES (,0);
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '20'
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '72'
@@ -235,3 +525,14 @@
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '27'
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '100'
 [2023-10-22][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('27', '9')
+
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '53'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '7'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '23'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '22'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '82'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
