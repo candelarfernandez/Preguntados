@@ -21,7 +21,7 @@ class LobbyController {
      $mostrarPreguntas = $this->model->mostrarPregunta();
      //como se muestran con la vista???? no entiendo eso jeje
     }
-    public function validarCuenta(){ 
+    public function validarCuenta(){
      $this->model->validarCuenta($codigo);
      $_SESSION['CuentaActivada'] = true;
      unset($_SESSION['activarCuenta']);
@@ -30,8 +30,8 @@ class LobbyController {
      }*/
      public function list() {
         //aca habria que listar la pregunta con sus respectivas opciones
-        $data['activarCuenta'] = isset($_SESSION['activarCuenta']) ? $_SESSION['activarCuenta'] : false;
-        $this->renderer->render('lobby');
+
+         $this->renderer->render('lobby');
     }
 
     public function traerPreguntas(){

@@ -28,3 +28,65 @@
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
