@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2023-10-20][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
 [2023-10-20][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
 [2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
@@ -26,3 +27,16 @@
 [2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
 [2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '4'
 [2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '11'
+=======
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '19'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '10'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '31'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '5'
+>>>>>>> 0ede65030bc8b5f819896ec6360f64752746ac51
