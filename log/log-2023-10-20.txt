@@ -1,0 +1,28 @@
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '18'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '64'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '24'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '88'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '86'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '11'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '33'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '93'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '2'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '5'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '12'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '38'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '4'
+[2023-10-20][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '11'
