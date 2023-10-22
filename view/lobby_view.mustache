@@ -13,8 +13,20 @@
     <form action="/partida/jugar" method="get">
         <button type="submit" class="bg-violet-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Crear Partida</button>
     </form>
+
+    <form action="/ranking/list" method="get">
+        <button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Ver Ranking</button>
+    </form>
+
+    <h1>Mis partidas</h1>
     
-   
+       {{#partidas}}
+
+        <p>{{fecha}}</p>
+        <p>{{puntos}}</p>
+       
+        {{/partidas}}
+
     <div class="flex justify-center">
         <button class="bg-violet-500 text-white py-2 px-4 rounded-md flex items-center mr-4 hover:bg-violet-600">
             Duelo

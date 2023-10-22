@@ -1,0 +1,16 @@
+<div class="bg-center flex flex-col items-center justify-center h-screen" style="background-image: url('https://esports.eldesmarque.com/wp-content/uploads/2022/05/recompensas-pre-registro-Fall-Guys.jpg')">
+   
+    <div class="bg-violet-100 rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md">
+
+    <h1>Ranking</h1>
+
+    {{#ranking}}
+
+        <a href="/usuarios/verUsuario&id={{id}}" class="text-violet-500 hover:underline">{{nombreUsuario}}</a>
+        <p>{{puntos}}</p>
+       
+    {{/ranking}}
+    
+    </div>
+  
+</div>

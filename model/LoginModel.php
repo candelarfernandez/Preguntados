@@ -32,10 +32,7 @@ class LoginModel {
             $errores['datosIncorrectos'] = true;
         }
 
-        if(empty($errores)){
-            $this->ingresarAlLobby();
-        }
-
+    
         return $errores;
     }
 
@@ -87,12 +84,19 @@ class LoginModel {
             }
         }
 
-            public function validarCuenta($codigo){
+        public function validarCuenta($codigo){
 
-                $sql = "UPDATE usuarios SET estaActiva = 1 WHERE codigo='{$codigo}'";
+            $sql = "UPDATE usuarios SET estaActiva = 1 WHERE codigo='{$codigo}'";
 
-                $this->database->execute($sql);
-            }   
+            $this->database->execute($sql);
+        }
+            
+        public function buscarUsuarioPorEmail($mail){
+            $sql = "SELECT * FROM usuarios where mail='{$mail}'";
+            $usuario = $this->database->queryUnSoloRegistro($sql);
+            return $usuario;
+            
+        }
 
         }
     
