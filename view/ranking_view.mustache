@@ -1,16 +1,23 @@
 <div class="bg-center flex flex-col items-center justify-center h-screen" style="background-image: url('https://esports.eldesmarque.com/wp-content/uploads/2022/05/recompensas-pre-registro-Fall-Guys.jpg')">
    
-    <div class="bg-violet-100 rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md">
+    <div class="bg-violet-100 rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md w-2/4">
 
-    <h1>Ranking</h1>
+    <h1 class="text-2xl">Ranking</h1>
 
-    {{#ranking}}
+ {{#usuarios}}
 
-        <a href="/usuarios/verUsuario&id={{id}}" class="text-violet-500 hover:underline">{{nombreUsuario}}</a>
-        <p>{{puntos}}</p>
-       
-    {{/ranking}}
-    
+    <div class="bg-white rounded-md m-2 flex flex-row items-center justify-center p-8 shadow-md w-3/4 h-min">
+        <a href="/ranking/verUsuario&id={{id}}">
+        <div class="mb-2 text-center">
+            <img src="\{{foto}}" alt="Foto de perfil" class="w-16 h-16 mx-auto rounded-full mb-2">
+            <h1 class="text-xl font-semibold"> {{nombre}}</h1>
+            <div class="text-white bg-violet-500 rounded-sm p-1 text-xs">Puntaje: {{puntajeTotal}}</div>
+        </div>
+        </a>
+    </div>
+
+{{/usuarios}}
+
     </div>
   
 </div>

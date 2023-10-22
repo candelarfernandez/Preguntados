@@ -90,13 +90,7 @@ class LoginModel {
 
             $this->database->execute($sql);
         }
-            
-        public function buscarUsuarioPorEmail($mail){
-            $sql = "SELECT * FROM usuarios where mail='{$mail}'";
-            $usuario = $this->database->queryUnSoloRegistro($sql);
-            return $usuario;
-            
-        }
+        
 
         }
     

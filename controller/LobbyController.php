@@ -15,11 +15,8 @@ class LobbyController {
             header('location: /login/list');
             exit();
         }
-        $data = [$usuario, $partidas];
         $usuario = $this->model->buscarUsuarioPorMail($_SESSION['usuario']);
-        $partidas = [ ];
-        var_dump($data);
-        $this->renderer->render('lobby', $data);
+        $this->renderer->render('lobby', $usuario);
     }
 
 }
