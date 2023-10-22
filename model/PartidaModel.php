@@ -40,6 +40,13 @@ class PartidaModel {
             return false;
         }
     }
+
+    public function guardarPuntaje($datos){
+        $idUsuario = $datos['idUsuario'];
+        $puntaje = $datos['puntaje'];
+        $sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('{$idUsuario}', '{$puntaje}')";
+        $this->database->execute($sql);
+    }
 /*
     public function seTerminoElTiempoLimite($datos){
         $tiempo_limite = $this->traertiempoLimitePorPregunta();

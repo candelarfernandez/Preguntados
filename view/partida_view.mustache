@@ -42,7 +42,7 @@
 
     </div>
     {{#respuestas}}
-        <form class="mt-6" action="/partida/respuesta" method="POST" >
+        <form class="mt-6" action="/partida/respuesta" method="POST">
             <div class="flex m-auto bg-violet-500 my-8 text-white py-2 px-4 rounded-md hover:bg-violet-600">
                 <button type="submit"> {{respuesta}} </button>
                 <input type="hidden" name="id" value="{{id}}">
@@ -51,13 +51,20 @@
 
         </form>
     {{/respuestas}}
+          <form class="mt-6" action="/partida/respuesta" method="POST">
+            <div class="flex m-auto bg-yellow-500 my-8 text-white py-2 px-4 rounded-md hover:bg-violet-600">
+               <p>El puntaje es {{puntaje}}</p>
+            </div>
+             </form>
+     
+    
     {{#seguirJugando}}
-            <form class="mt-6" action="/partida/jugar" method="get" >
+            <form class="mt-6" action="/partida/jugar" method="get">
             <div class="flex m-auto bg-yellow-500 my-8 text-white py-2 px-4 rounded-md hover:bg-violet-600">
                 <button type="submit">Siguiente Pregunta</button>
             </div>
             </form>      
-            {{/seguirJugando}}
+     {{/seguirJugando}}
 
     </div>
     </div>
