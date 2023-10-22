@@ -26,7 +26,6 @@ class LoginController {
     }
    
 
-
     public function verificarDatos(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $datos = $_POST['login'];
@@ -34,6 +33,7 @@ class LoginController {
             $errores = $this->model->ejecutarValidaciones($datos);
 
             if (empty($errores)) {
+                $_SESSION['usuario'] = $datos['mail'];
                 header('location: /lobby/list');
                 exit();
             } else{
