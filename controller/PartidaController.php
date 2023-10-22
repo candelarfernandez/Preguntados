@@ -28,7 +28,7 @@ class PartidaController {
             $datos = $_POST;
             
            $datosPartida =[
-                'idUsuario'=> $id_Usuario = $_SESSION['usuario']['id'],
+                'idUsuario'=> $id_Usuario = $_SESSION['usuarioId'],
                 'puntaje'=> $_SESSION['puntaje']
                 ];
         $esCorrecta = $this->model->verSiEsCorrecta($datos);
