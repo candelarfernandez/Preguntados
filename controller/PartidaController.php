@@ -37,8 +37,9 @@ class PartidaController {
         if($esCorrecta){
             $alertas['mensaje'] = true;
             $alertas['seguirJugando'] = true;
+            $alertas['puntaje'] = $_SESSION['puntaje'];
             $this->renderer->render('partida', $alertas);
-            $suma = $this->sumar();
+            $suma = $this->sumar();         
         }else {
             $alertas['error'] = true;
             var_dump($datosPartida);
@@ -59,27 +60,9 @@ class PartidaController {
     }
 
     public function sumar(){
-        var_dump("hola");
         $this->puntaje++;
-        $_SESSION['puntaje'] =  $this->puntaje;
+        $_SESSION['puntaje'] +=  $this->puntaje;
         var_dump( $_SESSION['puntaje']);
-          /* $datos = array();
-
-            $resultado = $respuesta[0]["esCorrecta"];
-
-            if ($resultado == 'true') {
-                $prueba="hola";
-                var_dump($prueba);
-                $this->puntaje++;
-                $_SESSION['puntaje'] =  $this->puntaje;
-                var_dump($this->puntaje);
-                $this->renderer->render('partida', $datos);
-            } else {
-                $datos['puntaje'] = $_SESSION['puntaje'];
-                $_SESSION['puntaje'] =  $this->puntaje;
-                $_SESSION['idUsuario'] = $datos['idUsuario'];
-                 guardarPuntaje($datos);
-            }*/
     }
 
       

@@ -183,3 +183,55 @@
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '7'
 [2023-10-22][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('', '')
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '76'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '26'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '96'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '19'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '71'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('', '1')
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '1'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '3'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('', '1')
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '5'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '15'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '21'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '76'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '76'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '76'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '10'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '31'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '17'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '51'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('', '6')
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '8'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('', '6')
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '94'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '5'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '15'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '14'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '43'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '27'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '100'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('27', '9')

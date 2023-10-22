@@ -34,7 +34,6 @@ class LoginController {
 
             if (empty($errores)) {
                 $_SESSION['usuario'] = $datos['mail'];
-                $_SESSION['usuarioId'] = $datos['id'];
                 header('location: /lobby/list');
                 exit();
             } else{
