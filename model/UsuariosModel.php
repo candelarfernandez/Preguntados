@@ -73,8 +73,9 @@ class UsuariosModel {
             }
     }
 
-//public function subirFotoDePerfil($imagen){}
+
     public function subirFotoDePerfil($datos){
+
 
         if (isset($datos['foto']['name']) && $datos['foto']['name']) {
             $imagen = $datos['foto'];
