@@ -19,6 +19,7 @@ class PartidaController {
     }
 
     public function jugar(){
+        unset($_SESSION['partidaId']) ;
         if (!isset($_SESSION['partidaId'])){
             $this->crearPartidaSiNoExiste();
         }
@@ -57,10 +58,12 @@ class PartidaController {
             $alertas['seguirJugando'] = true;
             $alertas['puntaje'] = $_SESSION['puntaje'];
             $this->renderer->render('partida', $alertas);
-            $suma = $this->sumar();         
+            $this->sumar();
+
         }else {
             $alertas['error'] = true;
            // var_dump($datosPartida);
+            var_dump($datosPartida);
             $this->model->guardarPuntaje($datosPartida);
             $this->renderer->render('lobby', $alertas);
             unset($_SESSION['partidaId']);

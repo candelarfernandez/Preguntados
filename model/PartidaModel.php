@@ -1,36 +1,71 @@
 <?php
 
-class PartidaModel {
+class PartidaModel
+{
 
     private $database;
-    
-    public function __construct($database) {
+
+    public function __construct($database)
+    {
         $this->database = $database;
     }
 
-    public function traerPreguntaAleatoria($partidaId) {
-        $sql = "SELECT * FROM preguntas";
-        $listadoPreguntas = $this->database->query($sql);
-        $numAleatorio = rand(0, sizeof($listadoPreguntas) - 1);
-        $pregunta = $listadoPreguntas[$numAleatorio];
-        
+    public function traerPreguntaAleatoria($partidaId)
+    {
+
+        $pregunta = $this->buscPregunta();
         // Agrega el tiempo límite a la pregunta.
-
-        $estaUsada =$this->verSiEstaUsadaLaPreguntaEnLaPartida($pregunta['id'],$partidaId);
+        $estaUsada = $this->verSiEstaUsadaLaPreguntaEnLaPartida($pregunta['id'], $partidaId);
         var_dump($estaUsada);
-        if ($estaUsada){
+        if (isset($estaUsada)) {
+            $pregunta= $this->buscPregunta();
             var_dump("entro por usada");
-            $this->traerPreguntaAleatoria($partidaId);
-
-        } else{
+            // $this->traerPreguntaAleatoria($partidaId);
+            // Agrega el tiempo límite a la pregunta.
+            $estaUsada = $this->verSiEstaUsadaLaPreguntaEnLaPartida($pregunta['id'], $partidaId);
+        } else {
             $consulta = "INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` )   VALUES ( '{$pregunta['id']}','{$partidaId}');";
 
             $this->database->execute($consulta);
             return $pregunta;
         }
-        
-       // return $pregunta;
+
     }
+public function buscPregunta(){
+
+    $sql = "SELECT * FROM preguntas";
+    $listadoPreguntas = $this->database->query($sql);
+    $numAleatorio = rand(0, sizeof($listadoPreguntas) -1);
+    $pregunta = $listadoPreguntas[$numAleatorio];
+    return $pregunta;
+}
+/*
+    public function traerPreguntaAleatoria($partidaId) {
+        $sql = "SELECT * FROM preguntas";
+        $listadoPreguntas = $this->database->query($sql);
+        $numAleatorio = rand(0, sizeof($listadoPreguntas) -1);
+        $pregunta = $listadoPreguntas[$numAleatorio];
+
+        $estaUsada = $this->verSiEstaUsadaLaPreguntaEnLaPartida($pregunta['id'], $partidaId);
+        var_dump($estaUsada);
+        while ($estaUsada) {
+            $sql = "SELECT * FROM preguntas";
+            $listadoPreguntas = $this->database->query($sql);
+            $numAleatorio = rand(0, sizeof($listadoPreguntas) -1);
+            $pregunta = $listadoPreguntas[$numAleatorio];
+            $this->verSiEstaUsadaLaPreguntaEnLaPartida($pregunta['id'], $partidaId);
+
+        }
+
+        $consulta = "INSERT INTO `preguntasusadas` (`idPregunta`, `idPartida`) VALUES ('{$pregunta['id']}', '{$partidaId}');";
+        $this->database->execute($consulta);
+
+        return $pregunta;
+    }
+
+*/
+
+
 /*
     public function traertiempoLimitePorPregunta() {
         $sql = "SELECT tiempo_limite FROM preguntas";
@@ -75,9 +110,11 @@ class PartidaModel {
 
 
     public function traerRespuestas($idPregunta) {
+        if (!is_null($idPregunta)){
         $sql = "SELECT * FROM respuestas WHERE idPregunta = '{$idPregunta}'";
         //var_dump($this->database->query($sql));
-        return $this->database->query($sql);
+        return $this->database->query($sql);}
+
     }
 
     public function verSiEsCorrecta($datos){
@@ -91,10 +128,9 @@ class PartidaModel {
     }
 
     public function guardarPuntaje($datos){
-        $idUsuario = $datos['idUsuario'];
         $puntaje = $datos['puntaje'];
         $partidaId = $datos ['partidaId'];
-        //$sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('{$idUsuario}', '{$puntaje}')";
+    //$sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('{$idUsuario}', '{$puntaje}')";
         $sql = "UPDATE partida SET puntaje = '$puntaje' WHERE id = '$partidaId'";
         $this->database->execute($sql);
     }
