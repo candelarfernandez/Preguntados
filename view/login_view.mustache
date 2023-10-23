@@ -1,0 +1,55 @@
+<div class="bg-violet-100 flex items-center justify-center h-screen">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+        <div class="text-center">
+            <img src="\public\img\login.png" alt="Logo" class="w-40 h-40 mx-auto mb-4">
+            <h1 class="text-2xl font-semibold">Iniciar Sesión</h1>
+        </div>
+        <form class="mt-6" action="/login/verificarDatos" method="post" enctype="multipart/form-data">
+
+            {{! Mensajes al usuario }}
+            {{#datosIncorrectos}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que alguno de los datos son incorrectos </p>
+            </div>        
+            {{/datosIncorrectos}}
+
+            {{#mailNoActivo}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que aún no validaste tu mail </p>
+            </div>
+            {{/mailNoActivo}}
+
+            {{#activarCuenta}}
+            <div class="bg-green-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Hemos enviado un mail a tu casilla, <br>¡corre a activar tu cuenta! </p>
+            </div>
+            {{/activarCuenta}}
+
+            {{#CuentaActivada}}
+            <div class="bg-green-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> ¡Iupi! Ya eres parte de Party Quiz,<br> <a href="" class="hover:underline">haz click aquí para comenzar a jugar.</a></p>
+            </div>
+            {{/CuentaActivada}}
+
+            {{! Contenido del formulario     }}
+
+            <div class="mb-4">
+                <label for="email" class="block text-gray-600 text-sm font-medium mb-2">Correo Electrónico</label>
+                <input type="email" id="email" name="login[mail]" class="w-full p-2 border rounded-md" placeholder="correo@example.com" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-600 text-sm font-medium mb-2">Contraseña</label>
+                <input type="password" id="password" name="login[contrasenia]" class="w-full p-2 border rounded-md" placeholder="Contraseña" required>
+            </div>
+            <div>
+                <a href="#" class="text-violet-500 hover:underline">Olvidé mi contraseña</a>
+            </div>
+            <div>
+                <button type="submit" class="flex m-auto bg-violet-500 my-8 text-white py-2 px-4 rounded-md hover:bg-violet-600">Ingresar</button>
+            </div>
+        </form>
+        <div class="mt-6">
+            <p class="text-sm text-gray-600">¿No tienes una cuenta? <a href="/usuarios/addForm" class="text-violet-500 hover:underline">Regístrate aquí</a></p>
+        </div>
+    </div>
+</div>

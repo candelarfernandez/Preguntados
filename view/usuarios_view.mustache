@@ -1,0 +1,18 @@
+
+<div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
+    <h2 class='w3-wide'>Usuarios</h2>
+    <table class='w3-table'>
+        <tr>
+            <th>Nombre</th>
+            <th>Contraseña</th>
+        </tr>
+
+        {{#usuarios}}
+        <tr>
+            <td>{{nombreUsuario}}</td>
+            <td>{{contrasenia}}</td>
+        </tr>
+        {{/usuarios}}
+
+    </table>
+</div>

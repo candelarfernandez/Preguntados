@@ -1,0 +1,98 @@
+
+<div class="bg-violet-100 flex items-center justify-center h-screen">
+    <div class="w-2/4  bg-white rounded-lg shadow-md p-6">
+        <div class="text-center">
+            <img src="\public\img\login.png" alt="Logo" class="w-40 h-40 mx-auto mb-4">
+            <h1 class="text-2xl font-semibold">Registrarse</h1>
+        </div>
+         {{#camposVacios}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que falta completar algunos datos </p>
+            </div>        
+        {{/camposVacios}}
+
+        {{#mailInvalido}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que el formato del mail no es correcto </p>
+            </div>        
+        {{/mailInvalido}}
+
+        {{#mailExistente}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que este mail ya fue utilizado antes </p>
+            </div>        
+        {{/mailExistente}}
+
+        {{#menorDeEdad}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Lo lamento, debes ser mayor de edad para jugar </p>
+            </div>        
+        {{/menorDeEdad}}
+
+        {{#contraseniaInvalida}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que las contraseñas no coinciden </p>
+            </div>        
+        {{/contraseniaInvalida}}           
+          {{#imagenInvalida}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que el formato de imagen es invalido</p>
+            </div>        
+        {{/imagenInvalida}}     
+    
+<form class="mt-6 px-4 grid grid-cols-2 gap-8" action="/usuarios/verificarDatos" method="post" enctype="multipart/form-data">
+    <!-- Columna 1 -->
+    <div class="col-span-1 px-4">
+
+        <label for="nombre" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Nombre Completo:</label>
+        <input type="text" name="registro[nombre]" class="w-full p-2 border rounded-md" required>
+
+        <label for="anio" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Fecha de Nacimiento:</label>
+        <input type="date" name="registro[anio]" class="w-full p-2 border rounded-md" required>
+        
+        <label for="sexo" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Género:</label>
+        <div class="contenedor-genero">
+        <select id="sexo" name="registro[sexo]" class="w-full p-2 border rounded-md" required>
+            <option value="Selecciona un género">Selecciona un género</option>
+            <option value="Masculino"> Masculino </option>
+            <option value="Femenino"> Femenino </option>
+            <option value="Prefiero no decirlo"> Prefiero no decirlo </option>
+        </select>
+        </div>
+        
+        <label for="pais" class="block text-gray-600 text-sm font-medium mb-2 mt-2">País:</label>
+        <select id="pais" name="registro[pais]" class="w-full p-2 border rounded-md" required>
+            <option value="Selecciona un país">Selecciona un país</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Chile">Chile</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Paraguay">Paraguay</option>
+        </select>
+        
+        <label for="ciudad" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Ciudad:</label>
+        <input type="text" id="ciudad" name="registro[ciudad]" class="w-full p-2 border rounded-md" required>
+    </div>
+    
+    <!-- Columna 2 -->
+    <div class="col-span-1 px-4">
+        <label for="email" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Correo Electrónico:</label>
+        <input type="email" id="email" name="registro[mail]" class="w-full p-2 border rounded-md" required>
+        
+        <label for="contrasenia" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Contraseña:</label>
+        <input type="password" id="contrasenia" name="registro[contrasenia]" class="w-full p-2 border rounded-md" required>
+        
+        <label for="confirmar_contrasena" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Confirmar Contraseña:</label>
+        <input type="password" id="confirmar_contrasena" name="registro[confirmar_contrasena]" class="w-full p-2 border rounded-md" required>
+        
+        <label for="nombreUsuario" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Nombre de Usuario:</label>
+        <input type="text" id="nombreUsuario" name="registro[nombreUsuario]" class="w-full p-2 border rounded-md" required>
+        
+        <label for="foto" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Foto de Perfil:</label>
+        <input type="file" id="foto" name="registro[foto]" class="w-full p-2 border rounded-md" accept="image/*">
+        <input type="submit" value="Registrarse" class="flex mt-4 bg-violet-500 text-white py-2 px-4 rounded-md hover:bg-violet-600">        
+    </div>
+
+</form>
+
+</div>
+</div>
