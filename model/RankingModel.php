@@ -16,7 +16,14 @@ class RankingModel {
 
     public function obtenerDatosDelUsuarioPorID($id){
         $sql = "SELECT * FROM usuarios WHERE id = '{$id}'";
-        $resultado = $this->database->queryUnSoloRegistro($sql);
+        $resultado['usuario'] = $this->database->queryUnSoloRegistro($sql);
+        $resultado['partidas'] = $this->obtenerPartidasDelUsuario($id);
         return $resultado;
+    }
+
+    private function obtenerPartidasDelUsuario($id){
+        $sql = "SELECT * FROM partida WHERE idUsuario = '{$id}' LIMIT 5";
+        $partidas = $this->database->query($sql);
+        return $partidas;
     }
 }

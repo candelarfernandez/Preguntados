@@ -13,17 +13,13 @@ class PartidaController {
     }
 
     public function list() {
-       // $data2['idUsuario'] = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : false;
-
         $this->renderer->render('partida', $_SESSION['idUsuario']);
     }
 
     public function jugar(){
 
         $datosPregunta= $this->traerDatosPreguntas();
-        /*$this->model->crearpartida($_SESSION['idUsuario']);
-        $partidaId = $this->model->consultarIdPartida($_SESSION['idUsuario']);
-        $_SESSION['partida'] = $this->$partidaId;*/
+        $datosPregunta['mostrarImagen'] = true;
         $this->renderer->render('partida',$datosPregunta);
         
     }
@@ -38,7 +34,6 @@ class PartidaController {
                 'puntaje'=> $_SESSION['puntaje']
                 ];
         $esCorrecta = $this->model->verSiEsCorrecta($datos);
-       // $tiempo = $this->model->seTerminoElTiempoLimite($datos);
        
         if($esCorrecta){
             $alertas['mensaje'] = true;
@@ -47,22 +42,20 @@ class PartidaController {
             $this->renderer->render('partida', $alertas);
             $suma = $this->sumar();         
         }else {
-            $alertas['error'] = true;
-            var_dump($datosPartida);
             $this->model->guardarPuntaje($datosPartida);
-            $this->renderer->render('lobby', $alertas);
+            $this->restablecerPuntaje();
+            header('location: /lobby/list?rtaIncorrecta=true');
+            exit();
     }
 
 }}
     public function traerDatosPreguntas(){
     $pregunta= $this->model->traerPreguntaAleatoria();
     $respuestas= $this->model->traerRespuestas($pregunta['id']);
-    //$tiempo= $this->model->traertiempoLimitePorPregunta();
 
     return $datosPregunta =[
         'pregunta'=> $pregunta,
         'respuestas'=>$respuestas
-        //'tiempo_limite'=>$tiempo
         ];
     }
 
@@ -72,6 +65,9 @@ class PartidaController {
         var_dump( $_SESSION['puntaje']);
     }
 
-      
+    private function restablecerPuntaje(){
+        $this->puntaje = 0;
+        $_SESSION['puntaje'] = 0;
+    }      
 
 }

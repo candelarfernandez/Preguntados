@@ -74,8 +74,6 @@ class UsuariosModel {
     }
 
 
-    public function subirFotoDePerfil($imagen){
-//public function subirFotoDePerfil($imagen){}
     public function subirFotoDePerfil($datos){
 
 
@@ -95,35 +93,6 @@ class UsuariosModel {
         }return false;
 
     }
-/*
-    public function subirFotoDePerfil($imagen) {
-        if ($imagen['error'] === UPLOAD_ERR_OK) {
-            $extensionesPermitidas = array("jpeg", "jpg", "png");
-            $nombreImagen = basename($imagen['name']);
-            $extension = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));
-    
-            // Verificar si la extensión es válida
-            if (in_array($extension, $extensionesPermitidas)) {
-                $directorioDestino = "./public/fotos-de-perfil/";
-                $rutaImagen = $directorioDestino . $nombreImagen;
-    
-                // Mover el archivo cargado al directorio de destino
-                if (move_uploaded_file($imagen['tmp_name'], $rutaImagen)) {
-                    return $nombreImagen;
-                } else {
-                    // Error al mover el archivo
-                    return false;
-                }
-            } else {
-                // Extensión no permitida
-                return false;
-            }
-        } else {
-            // Error en la carga del archivo
-            return false;
-        }
-    }
-    */
 
     public function generarCodigoDeValidacion(){
         $codigo = rand(100000, 999999);

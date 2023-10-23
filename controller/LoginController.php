@@ -12,7 +12,6 @@ class LoginController {
 
     public function list() {
         $data['activarCuenta'] = isset($_SESSION['activarCuenta']) ? $_SESSION['activarCuenta'] : false;
-        var_dump($this->model->traerIdConMail("andreasosaortiz94@gmail.com"));
         $this->renderer->render('login' , $data);
     }
 
