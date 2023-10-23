@@ -28,6 +28,30 @@
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='cande.fdz12@gmail.com'
+[2023-10-19][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` )
+                VALUES ( 'rocio españa',
+                '2001-08-19',
+                'Femenino',
+                'Argentina',
+                'buenos aires',
+                'ro.espana.ero@gmail.com',
+                'ff1ed7268a76b2a10552876f95ada1f3',
+                'rocioespa',
+                '',
+                '909331')
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-19][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='909331'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '93'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '53'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '12'
+[2023-10-19][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '35'
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
 [2023-10-19][INFO]Ejecutando query: SELECT * FROM preguntas

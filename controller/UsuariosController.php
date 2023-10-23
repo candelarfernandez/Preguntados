@@ -13,7 +13,7 @@ class UsuariosController {
     public function list(){
         $data = [];
         $this->renderer->render("registro", $data);
-}
+    }
 
     public function verificarDatos(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

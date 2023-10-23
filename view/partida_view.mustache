@@ -1,23 +1,37 @@
+
+<script>
+    let tiempoRestante = 20;
+
+    const interval = setInterval(function() {
+        tiempoRestante--;
+        document.getElementById("tiempo-restante").textContent = tiempoRestante;
+
+        if (tiempoRestante <= 0) {
+            clearInterval(interval); 
+        }
+    }, 1000); 
+</script>
+
 <div class="bg-violet-100 flex items-center justify-center h-screen">
 <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-    <div class="text-center">
-        <img src="\public\img\login.png" alt="Logo" class="w-40 h-40 mx-auto mb-4">
-        <h1 class="text-2xl font-semibold">Hora de responder</h1>
-    </div>
 
+        {{#mostrarImagen}}
+        <div class="mb-6 text-center">
+             <div>Tiempo Restante: <span id="tiempo-restante">15</span> segundos</div>    
+        </div>
+
+        <div class="text-center">
+            <img src="{{pregunta.categoria.urlImagen}}" alt="{{pregunta.pregunta}}" class="w-40 mx-auto mb-4">
+            <p class="text-violet-500 font-medium m-4">{{pregunta.categoria.nombre_categoria}}</p>
+        </div>
+        {{/mostrarImagen}}
 
     <div>
 
-        {{#mensaje}}
-            <div class="bg-green-400 rounded-md py-2 my-2 text-sm">
-                <p class="text-white font-medium text-center"> Respuesta correcta </p>
-            </div>        
-            {{/mensaje}}
-
-        <h2>{{pregunta.pregunta}}</h2>
+        <h2 class="text-2xl font-semibold">{{pregunta.pregunta}}</h2>
 
     </div>
-    {{#respuestas}}
+   {{#respuestas}}
         <form class="mt-6" action="/partida/respuesta" method="POST" >
             <div class="flex m-auto bg-violet-500 my-8 text-white py-2 px-4 rounded-md hover:bg-violet-600">
                 <button type="submit"> {{respuesta}} </button>
@@ -26,16 +40,26 @@
             </div>
 
         </form>
-    {{/respuestas}}
+    {{/respuestas}}    
     {{#seguirJugando}}
+            <img src="\public\img\correcto.png" alt="Ganaste" class="w-40 mx-auto mb-4">
+            {{#mensaje}}
+            <div class="bg-green-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> ¡RESPUESTA CORRECTA! </p>
+            </div>        
+            {{/mensaje}}
             <form class="mt-6" action="/partida/jugar" method="get" >
-            <div class="flex m-auto bg-yellow-500 my-8 text-white py-2 px-4 rounded-md hover:bg-violet-600">
-                <button type="submit">Siguiente Pregunta</button>
+            <div class="bg-yellow-500 my-8 text-white py-2 px-4 rounded-md hover:bg-yellow-600">
+                <button type="submit" class="flex text-white font-medium text-center">Siguiente Pregunta</button>
             </div>
-            </form>      
-            {{/seguirJugando}}
+            </form>
+            <div>
+               <p>El puntaje es {{puntaje}}</p>
+            </div>
+    {{/seguirJugando}}
 
     </div>
     </div>
 
             
+

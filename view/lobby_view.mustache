@@ -1,35 +1,26 @@
 <div class="bg-center flex flex-col items-center justify-center h-screen" style="background-image: url('https://esports.eldesmarque.com/wp-content/uploads/2022/05/recompensas-pre-registro-Fall-Guys.jpg')">
    
-    <div class="bg-violet-100 rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md">
+    <div class="bg-violet-100 rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md w-1/4">
     {{#error}}
             <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
-                <p class="text-white font-medium text-center"> Respuesta Incorrecta, vuelve a intentarlo! </p>
+                <p class="text-white font-medium text-center p-4"> Respuesta Incorrecta, vuelve a intentarlo! </p>
             </div>
-        {{/error}}
+    {{/error}}
 
     <div class="mb-6 text-center">
-        <img src="\public\img\avatar.png" alt="Foto de perfil" class="w-16 h-16 mx-auto rounded-full mb-2">
-        <div class="text-white bg-blue-500 rounded-full p-1 text-xs">Nivel 10</div>
-        <div>Vidas: 3</div>
-        <div>Ranking: #5</div>
+        <h1 class="text-2xl mb-2">{{nombre}}</h1>
+        <img src="\{{foto}}" alt="Foto de perfil" class="w-16 h-16 mx-auto rounded-full mb-2">
+        <div class="text-white bg-blue-500 rounded-full p-1 text-xs">Puntaje: {{puntajeTotal}}</div>
     </div>
     
    
     <form action="/partida/jugar" method="get">
         <button type="submit" class="bg-violet-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Crear Partida</button>
     </form>
-    
-   
-    <div class="flex justify-center">
-        <button class="bg-violet-500 text-white py-2 px-4 rounded-md flex items-center mr-4 hover:bg-violet-600">
-            Duelo
-            <i class="ml-2 fas fa-crosshairs"></i> 
-        </button>
-        <button class="bg-violet-500 text-white py-2 px-4 rounded-md flex items-center hover:bg-violet-600">
-            Desafío Diario
-            <i class="ml-2 far fa-calendar-check"></i> 
-        </button>
-    </div>
+
+    <form action="/ranking/list" method="get">
+        <button type="submit" class="bg-orange-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Ver Ranking</button>
+    </form>
     
     </div>
   
