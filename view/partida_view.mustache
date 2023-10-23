@@ -1,5 +1,4 @@
 
-
 <script>
     let tiempoRestante = 20;
 
@@ -9,6 +8,8 @@
 
         if (tiempoRestante <= 0) {
             clearInterval(interval); 
+             window.location.href = '/lobby/list?tiempoAgotado';
+            
         }
     }, 1000); 
 </script>
@@ -18,7 +19,7 @@
 
         {{#mostrarImagen}}
         <div class="mb-6 text-center">
-             <div>Tiempo Restante: <span id="tiempo-restante">15</span> segundos</div>    
+             <div>Tiempo Restante: <span id="tiempo-restante">20</span> segundos</div>    
         </div>
 
         <div class="text-center">

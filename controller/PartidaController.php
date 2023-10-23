@@ -5,15 +5,18 @@ class PartidaController {
     private $renderer;
     private $model;
     private $puntaje;
+    private $tiempoRestante;
 
     public function __construct($model, $renderer) {
         $this->model = $model;
         $this->renderer = $renderer;
         $this->puntaje = 0;
+        $this->tiempoRestante = 20;
     }
 
     public function list() {
         $this->renderer->render('partida', $_SESSION['idUsuario']);
+       
     }
 
     public function jugar(){
@@ -44,7 +47,13 @@ class PartidaController {
         }else {
             $this->model->guardarPuntaje($datosPartida);
             $this->restablecerPuntaje();
-            header('location: /lobby/list?rtaIncorrecta=true');
+            if(isset($_GET['tiempoAgotado']) && $_GET['tiempoAgotado'] == 'true'){
+                header('location: /lobby/list?tiempoAgotado=true');
+                
+            }else{
+                header('location: /lobby/list?rtaIncorrecta=true');
+            }
+            
             exit();
     }
 

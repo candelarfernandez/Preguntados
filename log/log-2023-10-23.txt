@@ -776,3 +776,320 @@
                       )
                       WHERE u.id = '32'
 [2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '4'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '13'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '22'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '26'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '22'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '13'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '21'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '5'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '52'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '47'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '2'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '6'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '84'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '3')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios ORDER BY puntajeTotal DESC
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '6'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '52'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '20'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '75'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '5'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '2'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'ro.espana.ero@gmail.com';
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '26'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '96'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '18'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '65'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '3')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios ORDER BY puntajeTotal DESC
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'ro.espana.ero@gmail.com';
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '26'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '96'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '24'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '88'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '28'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '104'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '7'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '8'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '3')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '8'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '26'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '0')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '92'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '0')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '20'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '75'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '47'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '13'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '41'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '2')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '19'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '70'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '0')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '20'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '75'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '10'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '31'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '27'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '18'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '18'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '6'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '18'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '27'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '8'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '26'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '3')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '25'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '95'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '0')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '3'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '9'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '47'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '53'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '2')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '23'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '85'
+[2023-10-23][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('32', '0')
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios AS u
+                      SET u.puntajeTotal = (
+                          SELECT SUM(puntaje)
+                          FROM partida AS p
+                          WHERE p.idUsuario = u.id
+                      )
+                      WHERE u.id = '32'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '28'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '104'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '9'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '29'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-23][INFO]Ejecutando query: SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '1'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'

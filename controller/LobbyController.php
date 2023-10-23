@@ -28,6 +28,9 @@ class LobbyController
         if (isset($_GET['rtaIncorrecta'])) {
             $usuario['error'] = true;
         }
+        if(isset($_GET['tiempoAgotado'])){
+            $usuario['errorTiempo'] = true;
+        }
 
         $this->renderer->render('lobby', $usuario);
     }
