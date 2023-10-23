@@ -8,17 +8,30 @@ class PartidaModel {
         $this->database = $database;
     }
 
-    public function traerPreguntaAleatoria() {
+    public function traerPreguntaAleatoria($partidaId) {
         $sql = "SELECT * FROM preguntas";
         $listadoPreguntas = $this->database->query($sql);
         $numAleatorio = rand(0, sizeof($listadoPreguntas) - 1);
         $pregunta = $listadoPreguntas[$numAleatorio];
         
-        // Agrega el tiempo límite a la pregunta
-        
-        return $pregunta;
-    }
+        // Agrega el tiempo límite a la pregunta.
 
+        $estaUsada =$this->verSiEstaUsadaLaPreguntaEnLaPartida($pregunta['id'],$partidaId);
+        var_dump($estaUsada);
+        if ($estaUsada){
+            var_dump("entro por usada");
+            $this->traerPreguntaAleatoria($partidaId);
+
+        } else{
+            $consulta = "INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` )   VALUES ( '{$pregunta['id']}','{$partidaId}');";
+
+            $this->database->execute($consulta);
+            return $pregunta;
+        }
+        
+       // return $pregunta;
+    }
+/*
     public function traertiempoLimitePorPregunta() {
         $sql = "SELECT tiempo_limite FROM preguntas";
         $tiempo = $this->database->query($sql);
@@ -26,8 +39,8 @@ class PartidaModel {
         $listadoPreguntas= $this->database->query($sql);
         $numAleatorio = rand(0, sizeof($listadoPreguntas)-1);
         $pregunta =$listadoPreguntas[$numAleatorio];
-        return $pregunta;
-        /*$estaUsada =$this->verSiEstaUsadaLaPreguntaEnLaPartida($pregunta['id'],$idPartida);
+        //return $pregunta;
+        $estaUsada =$this->verSiEstaUsadaLaPreguntaEnLaPartida($pregunta['id'],$idPartida);
         if (isset($estaUsada ) & $estaUsada != null ){
             $this->traerPreguntaAleatoria();
 
@@ -36,19 +49,29 @@ class PartidaModel {
                 VALUES ( '{$pregunta['id']}','{$idPartida}');";
             $this->database->execute($consulta);
             return $pregunta;
-        }*/
+        }
 
 
 
-    }
-    /*
-    private function verSiEstaUsadaLaPreguntaEnLaPartida($idPregunta, $idPartida){
-        $sql = "SELECT * FROM `preguntasusadas` WHERE idPregunta = '{$idPregunta}' and idPartida = '{$idPartida}' ;";
-        $resultado =  $this->database->query($sql);
+    }*/
+
+    /*private function verSiEstaUsadaLaPreguntaEnLaPartida($idPregunta, $partidaId){
+        $sql = "SELECT * FROM `preguntasusadas` WHERE idPregunta = '{$idPregunta}' and idPartida = '{$partidaId}' ;";
+        $resultado =  $this->database->queryUnSoloRegistro($sql);
         return $resultado;
 
+    }*/
+    private function verSiEstaUsadaLaPreguntaEnLaPartida($idPregunta, $partidaId){
+        // Asegúrate de que $idPregunta y $partidaId sean valores escalares
+        $idPregunta = (string)$idPregunta; // Convierte a cadena si es necesario
+        $partidaId = (string)$partidaId;   // Convierte a cadena si es necesario
+
+        $sql = "SELECT * FROM `preguntasusadas` WHERE idPregunta = '{$idPregunta}' and idPartida = '{$partidaId}' ;";
+        $resultado = $this->database->query($sql);
+        return $resultado;
     }
-*/
+
+
 
 
     public function traerRespuestas($idPregunta) {
@@ -70,43 +93,50 @@ class PartidaModel {
     public function guardarPuntaje($datos){
         $idUsuario = $datos['idUsuario'];
         $puntaje = $datos['puntaje'];
-        $sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('{$idUsuario}', '{$puntaje}')";
+        $partidaId = $datos ['partidaId'];
+        //$sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('{$idUsuario}', '{$puntaje}')";
+        $sql = "UPDATE partida SET puntaje = '$puntaje' WHERE id = '$partidaId'";
         $this->database->execute($sql);
     }
-/*
-    public function seTerminoElTiempoLimite($datos){
-        $tiempo_limite = $this->traertiempoLimitePorPregunta();
-        echo "<script>
-        const tiempoLimite = $tiempo_limite;
-        let tiempoRestante = tiempoLimite;
 
-        const interval = setInterval(function() {
-            tiempoRestante--;
-            document.getElementById('tiempo-restante').textContent = tiempoRestante;
 
-            if (tiempoRestante <= 0) {
-                clearInterval(interval);
-                // Realizar alguna acción, como marcar la respuesta como incorrecta y avanzar a la siguiente pregunta
-            }
-        }, 1000);
-    </script>";
-return $tiempo_limite;
-    }*/
-    
 
-  
-    
-    
+    /*
+        public function seTerminoElTiempoLimite($datos){
+            $tiempo_limite = $this->traertiempoLimitePorPregunta();
+            echo "<script>
+            const tiempoLimite = $tiempo_limite;
+            let tiempoRestante = tiempoLimite;
 
-     public function  crearPartida($idUsuario){
-         $sql = "INSERT INTO `partida`(idUsuario, puntaje) VALUES ($idUsuario,0);";
-         $this->database->execute($sql);
-     }
+            const interval = setInterval(function() {
+                tiempoRestante--;
+                document.getElementById('tiempo-restante').textContent = tiempoRestante;
 
-    public function ConsultarIdPartida($idUsuario){
-      $sql =  "SELECT id FROM `partida` WHERE 'idUsuario' = $idUsuario ORDER BY id DESC LIMIT 1;";
-     $idBuscado =  $this->database->query($sql);
-     return $idBuscado;
+                if (tiempoRestante <= 0) {
+                    clearInterval(interval);
+                    // Realizar alguna acción, como marcar la respuesta como incorrecta y avanzar a la siguiente pregunta
+                }
+            }, 1000);
+        </script>";
+    return $tiempo_limite;
+        }*/
+
+
+     public function  crearPartida($datosPartida){
+             $idUsuario = $datosPartida['idUsuario'];
+             $puntaje = $datosPartida['puntaje'];
+             $sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('$idUsuario[id]', '$puntaje');";
+             $this->database->execute($sql);
+         }
+
+
+    public function consultarIdPartida($idUsuario){
+      $sql =  "SELECT id FROM partida WHERE idUsuario = '$idUsuario[id]' ORDER BY id DESC  LIMIT 1 ;";
+     $partidaBuscada =  $this->database->query($sql);
+        var_dump($partidaBuscada);
+        $idPart = ($partidaBuscada[0]['id']);
+
+        return $idPart;
 
     }
 

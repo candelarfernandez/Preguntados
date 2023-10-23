@@ -74,7 +74,6 @@ class UsuariosModel {
     }
 
 
-    public function subirFotoDePerfil($imagen){
 //public function subirFotoDePerfil($imagen){}
     public function subirFotoDePerfil($datos){
 

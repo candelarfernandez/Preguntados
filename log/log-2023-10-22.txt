@@ -536,3 +536,25 @@
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE id = '82'
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
 [2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '16'
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '24'
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '8'
+[2023-10-22][INFO]Ejecutando query: INSERT INTO partida (idUsuario, puntaje) VALUES ('2', '')
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `partida` WHERE 'idUsuario' =  ORDER BY id DESC LIMIT 1;
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
+[2023-10-22][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'andreasosaortiz94@gmail.com';
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM preguntas
+[2023-10-22][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '7'

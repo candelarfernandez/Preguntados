@@ -27,17 +27,13 @@ class LobbyController {
      $mostrarPreguntas = $this->model->mostrarPregunta();
      //como se muestran con la vista???? no entiendo eso jeje
     }
-    public function validarCuenta(){
+    public function validarCuenta($codigo){
      $this->model->validarCuenta($codigo);
      $_SESSION['CuentaActivada'] = true;
      unset($_SESSION['activarCuenta']);
      header('Location: /login/list');
     exit();
-     }*/
-     public function list() {
-        //aca habria que listar la pregunta con sus respectivas opciones
+     }
 
-         $this->renderer->render('lobby');
-    }
 
 }
