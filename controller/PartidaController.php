@@ -39,14 +39,16 @@ class PartidaController {
         $esCorrecta = $this->model->verSiEsCorrecta($datos);
        
         if($esCorrecta){
+            $this->sumar();
             $alertas['mensaje'] = true;
             $alertas['seguirJugando'] = true;
             $alertas['puntaje'] = $_SESSION['puntaje'];
             $this->renderer->render('partida', $alertas);
-            $suma = $this->sumar();         
+
         }else {
             $this->model->guardarPuntaje($datosPartida);
             $this->restablecerPuntaje();
+            unset($_SESSION['puntaje']);
             if(isset($_GET['tiempoAgotado']) && $_GET['tiempoAgotado'] == 'true'){
                 header('location: /lobby/list?tiempoAgotado=true');
                 
@@ -70,7 +72,9 @@ class PartidaController {
 
     public function sumar(){
         $this->puntaje++;
-        $_SESSION['puntaje'] +=  $this->puntaje;
+       // $_SESSION['puntaje'] +=  $this->puntaje;
+        $_SESSION['puntaje'] +=  1;
+
         var_dump( $_SESSION['puntaje']);
     }
 

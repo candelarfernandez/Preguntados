@@ -22,7 +22,7 @@ class RankingModel {
     }
 
     private function obtenerPartidasDelUsuario($id){
-        $sql = "SELECT * FROM partida WHERE idUsuario = '{$id}' LIMIT 5";
+        $sql = "SELECT * FROM partida WHERE idUsuario = '{$id}' ORDER BY puntaje DESC LIMIT 5 ";
         $partidas = $this->database->query($sql);
         return $partidas;
     }

@@ -1,2 +1,4 @@
 # Ignorar el archivo config.ini
 config.ini
+log/
+.txt
