@@ -729,3 +729,20 @@
 [2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios WHERE id = '2'
 [2023-10-23][INFO]Ejecutando query: SELECT * FROM partida WHERE idUsuario = '2' LIMIT 5
 [2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios ORDER BY puntajeTotal DESC
+[2023-10-23][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+                VALUES ( 'Leo',
+                '2000-09-02',
+                'Masculino',
+                'Uruguay',
+                'Buenos Aires',
+                'vilteleonardo92@gmail.com',
+                '202cb962ac59075b964b07152d234b70',
+                'LeoV',
+                '',
+                '562936')
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-23][INFO]Ejecutando query: UPDATE usuarios SET estaActiva = 1 WHERE codigo='562936'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'
+[2023-10-23][INFO]Ejecutando query: SELECT id FROM `usuarios` WHERE mail = 'vilteleonardo92@gmail.com';
+[2023-10-23][INFO]Ejecutando query: SELECT * FROM usuarios where mail='vilteleonardo92@gmail.com'

@@ -22,9 +22,7 @@ class UsuariosController {
                 $imagenNombre = $this->model->subirFotoDePerfil($_FILES['registro']['foto']);
                 $datos['foto'] = $imagenNombre; 
             }
-
             $errores = $this->model->ejecutarValidaciones($datos);
-
 
             if (empty($errores)) {
 
@@ -35,7 +33,4 @@ class UsuariosController {
             }
         }
     }
-
-
-    
 }
