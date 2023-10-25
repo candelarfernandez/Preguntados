@@ -69,14 +69,6 @@ class PartidaModel {
 
     }
 
-    public function  crearPartida($datosPartida){
-        $idUsuario = $datosPartida['idUsuario'];
-        $puntaje = $datosPartida['puntaje'];
-        $sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('$idUsuario', '$puntaje');";
-        $this->database->execute($sql);
-    }
-
-
     public function consultarIdPartida($idUsuario){
         $sql =  "SELECT id FROM partida WHERE idUsuario = '$idUsuario' ORDER BY id DESC  LIMIT 1 ;";
         $partidaBuscada =  $this->database->query($sql);
@@ -101,8 +93,38 @@ class PartidaModel {
             return  true;
 
         }
+    }
 
+    public function crearPartida(){
+        $_SESSION['puntaje'] =  0;
+        $datosPartida =[
+            'idUsuario'=> $id_Usuario = $_SESSION['usuarioId'],
+            'puntaje'=>  $_SESSION['puntaje']
+        ];
+        $partida = $this->consultarIdPartida($_SESSION['usuarioId']);
+        $_SESSION['partidaId'] = $partida;
+    }
 
-}
+    public function traerDatosPreguntas($idPartid){
 
+        $maxAttempts = 10;
+        $attempts = 0;
+
+        do {
+            $pregunta = $this->traerPreguntaAleatoria();
+            $estaUsadaLapregunta = $this->ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($idPartid, $pregunta['id']);
+            $attempts++;
+            if ($attempts >= $maxAttempts) {
+                break;
+            }
+        }while (($estaUsadaLapregunta));
+        if ($attempts >= $maxAttempts) {
+            var_dump("error");
+        }
+        $respuestas = $this->traerRespuestas($pregunta['id']);
+        return $datosPregunta =[
+            'pregunta'=> $pregunta,
+            'respuestas'=>$respuestas
+        ];
+    }
 }

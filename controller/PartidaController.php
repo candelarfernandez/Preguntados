@@ -20,28 +20,16 @@ class PartidaController {
     }
 
     public function jugar(){
-
         if (!isset( $_SESSION['partidaId'])){
-        $this->crearPartida();}
-        $idPartid = $_SESSION['partidaId'];
-        var_dump($_SESSION['partidaId']);
-        var_dump($_SESSION['usuarioId']);
+        $this->model->crearPartida();
+        }
 
-        $datosPregunta= $this->traerDatosPreguntas($idPartid);
+        $idPartid = $_SESSION['partidaId'];
+
+        $datosPregunta= $this->model->traerDatosPreguntas($idPartid);
         $datosPregunta['mostrarImagen'] = true;
         $this->renderer->render('partida',$datosPregunta);
         
-    }
-    public function crearPartida(){
-        $_SESSION['puntaje'] =  $this->puntaje;
-        $datosPartida =[
-            'idUsuario'=> $id_Usuario = $_SESSION['usuarioId'],
-            'puntaje'=>  $_SESSION['puntaje']
-        ];
-        $this->model->crearPartida($datosPartida);
-        $partida = $this->model->consultarIdPartida($_SESSION['usuarioId']);
-        $_SESSION['partidaId'] = $partida;
-
     }
 
     public function respuesta(){
@@ -79,39 +67,13 @@ class PartidaController {
     }
 
 }}
-    public function traerDatosPreguntas($idPartid){
 
-        $maxAttempts = 10;
-
-        $attempts = 0;
-        do {
-            $pregunta = $this->model->traerPreguntaAleatoria();
-            $estaUsadaLapregunta = $this->model->ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($idPartid, $pregunta['id']);
-            $attempts++;
-            if ($attempts >= $maxAttempts) {
-                break;
-            }
-        }while (($estaUsadaLapregunta));
-        if ($attempts >= $maxAttempts) {
-var_dump("error");
-        }
-        $respuestas = $this->model->traerRespuestas($pregunta['id']);
-        return $datosPregunta =[
-        'pregunta'=> $pregunta,
-        'respuestas'=>$respuestas
-        ];
-    }
 
     public function sumar(){
-        $this->puntaje++;
-       // $_SESSION['puntaje'] +=  $this->puntaje;
         $_SESSION['puntaje'] +=  1;
-
-        var_dump( $_SESSION['puntaje']);
     }
 
     private function restablecerPuntaje(){
-        $this->puntaje = 0;
         $_SESSION['puntaje'] = 0;
     }      
 
