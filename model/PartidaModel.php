@@ -38,10 +38,11 @@ class PartidaModel {
     }
 
     public function guardarPuntaje($datos){
-        $idUsuario = $datos['idUsuario'];
         $puntaje = $datos['puntaje'];
-    
-        $sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('{$idUsuario}', '{$puntaje}')";
+        $partidaId = $datos ['idPartida'];
+        $idUsuario =$datos ['idUsuario'];
+        //$sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('{$idUsuario}', '{$puntaje}')";
+        $sql = "UPDATE partida SET puntaje = '$puntaje' WHERE id = '$partidaId'";
         $this->database->execute($sql);
     
         $updateSql = "UPDATE usuarios AS u
@@ -55,17 +56,6 @@ class PartidaModel {
     }
     
 
-     public function  crearPartida($idUsuario){
-         $sql = "INSERT INTO `partida`(idUsuario, puntaje) VALUES ($idUsuario,0);";
-         $this->database->execute($sql);
-     }
-
-    public function ConsultarIdPartida($idUsuario){
-      $sql =  "SELECT id FROM `partida` WHERE 'idUsuario' = $idUsuario ORDER BY id DESC LIMIT 1;";
-     $idBuscado =  $this->database->query($sql);
-     return $idBuscado;
-
-    }
 
     public function traertiempoLimitePorPregunta() {
         $sql = "SELECT tiempo_limite FROM preguntas";
@@ -78,5 +68,41 @@ class PartidaModel {
         return $resultado;
 
     }
+
+    public function  crearPartida($datosPartida){
+        $idUsuario = $datosPartida['idUsuario'];
+        $puntaje = $datosPartida['puntaje'];
+        $sql = "INSERT INTO partida (idUsuario, puntaje) VALUES ('$idUsuario', '$puntaje');";
+        $this->database->execute($sql);
+    }
+
+
+    public function consultarIdPartida($idUsuario){
+        $sql =  "SELECT id FROM partida WHERE idUsuario = '$idUsuario' ORDER BY id DESC  LIMIT 1 ;";
+        $partidaBuscada =  $this->database->query($sql);
+        var_dump($partidaBuscada);
+        $idPart = ($partidaBuscada[0]['id']);
+
+        return $idPart;
+
+    }
+    public function ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($partidaId, $idPregunta){
+       /* $idPregunta = (string)$idPregunta; // Convierte a cadena si es necesario
+        $partidaId = (string)$partidaId;   // Convierte a cadena si es necesario*/
+
+        $sql = "SELECT * FROM `preguntasusadas` WHERE idPregunta = '{$idPregunta}' and idPartida = '{$partidaId}' ;";
+        $resultado = $this->database->query($sql);
+        if ( is_null($resultado)){
+            $consulta = "INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` )   VALUES ( '{$idPregunta}','{$partidaId}');";
+
+            $this->database->execute($consulta);
+            return false;
+        }else {
+            return  true;
+
+        }
+
+
+}
 
 }
