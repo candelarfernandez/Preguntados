@@ -72,7 +72,6 @@ class PartidaModel {
     public function consultarIdPartida($idUsuario){
         $sql =  "SELECT id FROM partida WHERE idUsuario = '$idUsuario' ORDER BY id DESC  LIMIT 1 ;";
         $partidaBuscada =  $this->database->query($sql);
-        var_dump($partidaBuscada);
         $idPart = ($partidaBuscada[0]['id']);
 
         return $idPart;
@@ -82,10 +81,10 @@ class PartidaModel {
        /* $idPregunta = (string)$idPregunta; // Convierte a cadena si es necesario
         $partidaId = (string)$partidaId;   // Convierte a cadena si es necesario*/
 
-        $sql = "SELECT * FROM `preguntasusadas` WHERE idPregunta = '{$idPregunta}' and idPartida = '{$partidaId}' ;";
-        $resultado = $this->database->query($sql);
-        if ( is_null($resultado)){
-            $consulta = "INSERT INTO `preguntasusadas`( `idPregunta`, `idPartida` )   VALUES ( '{$idPregunta}','{$partidaId}');";
+        $sql = "SELECT * FROM `preguntasusadas` WHERE idPartida = '{$partidaId}' and idPregunta = '{$idPregunta}' ;";
+        $resultado = $this->database->queryUnSoloRegistro($sql);
+        if (is_null($resultado)){
+            $consulta = "INSERT INTO `preguntasusadas`( `idPregunta`,`idPartida` )   VALUES ( '{$idPregunta}','{$partidaId}');";
 
             $this->database->execute($consulta);
             return false;
@@ -102,6 +101,12 @@ class PartidaModel {
             'puntaje'=>  $_SESSION['puntaje']
         ];
         $partida = $this->consultarIdPartida($_SESSION['usuarioId']);
+
+        if(isset($partida)){
+            $sql = "INSERT INTO `partida` (`idUsuario`, `puntaje`) VALUES ('{$datosPartida ['idUsuario']}','{$datosPartida['puntaje']}') ";
+            $this->database->execute($sql);
+        }
+
         $_SESSION['partidaId'] = $partida;
     }
 
@@ -112,7 +117,7 @@ class PartidaModel {
 
         do {
             $pregunta = $this->traerPreguntaAleatoria();
-            $estaUsadaLapregunta = $this->ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($idPartid, $pregunta['id']);
+            $estaUsadaLapregunta = $this->ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($idPartid, $pregunta["id"]);
             $attempts++;
             if ($attempts >= $maxAttempts) {
                 break;
