@@ -8,8 +8,18 @@ class RankingModel {
         $this->database = $database;
     }
 
+    public function cargarPrimerosPuestos(){
+        $sql = "SELECT * FROM usuarios ORDER BY puntajeTotal DESC LIMIT 3";
+        $resultado = $this->database->query($sql);
+        $puestos['primero'] = $resultado[0];
+        $puestos['segundo'] = $resultado[1];
+        $puestos['tercero'] = $resultado[2];
+        return $puestos; 
+    }
+
     public function cargarUsuarios(){
-        $sql = "SELECT * FROM usuarios ORDER BY puntajeTotal DESC";
+        $sql = "SELECT * FROM usuarios
+        ORDER BY puntajeTotal DESC";
         $resultado = $this->database->query($sql);
         return $resultado; 
     }
