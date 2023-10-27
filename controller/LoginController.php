@@ -43,7 +43,7 @@ class LoginController {
 
                 $email = $datos['mail'];
             $usuarioId = $this->model->traerIdConMail($email);
-                $_SESSION['idUsuario']=  $this->$usuarioId;
+                $_SESSION['usuarioId']=  $this->$usuarioId;
 
 
                 header('location: /lobby/list');

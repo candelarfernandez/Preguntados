@@ -19,7 +19,6 @@ class UsuariosController {
         if ($datos = $_POST['registro']) {  
             $errores = $this->model->ejecutarValidaciones($datos);
 
-
             if (empty($errores)) {
 
                 header('location: /mail/sendMail&usuario=' . urldecode($_POST['registro']['mail']));
@@ -29,7 +28,4 @@ class UsuariosController {
             }
         }
     }
-
-
-    
 }
