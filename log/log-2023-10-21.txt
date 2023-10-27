@@ -1,3 +1,4 @@
+
 [2023-10-21][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
 [2023-10-21][INFO]Ejecutando query: SELECT * FROM usuarios where mail='ro.espana.ero@gmail.com'
 [2023-10-21][INFO]Ejecutando query: INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
@@ -153,6 +154,7 @@
 [2023-10-21][INFO]Ejecutando query: SELECT * FROM preguntas
 [2023-10-21][INFO]Ejecutando query: SELECT * FROM respuestas WHERE idPregunta = '15'
 [2023-10-21][INFO]Ejecutando query: SELECT tiempo_limite FROM preguntas
+
 
 [2023-10-21][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'
 [2023-10-21][INFO]Ejecutando query: SELECT * FROM usuarios where mail='andreasosaortiz94@gmail.com'

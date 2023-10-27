@@ -74,23 +74,18 @@ class UsuariosModel {
     }
 
 
-    public function subirFotoDePerfil($datos){
+    public function subirFotoDePerfil($foto){
 
+        $archivo_temporal = $foto['tmp_name'];
+        $nombre = $foto['name'];
+        $carpeta_destino = "./public/img/";
 
-        if (isset($datos['foto']['name']) && $datos['foto']['name']) {
-            $imagen = $datos['foto'];
-            $extensionesPermitidas = array("jpeg", "jpg", "png");
-
-            $nombreImagen = basename($imagen['name']);
-            $extension = pathinfo($nombreImagen, PATHINFO_EXTENSION);
-
-            if (in_array($extension, $extensionesPermitidas)) {
-                $imagenPath = "./public/fotos-de-perfil/" . $nombreImagen;
-                if (move_uploaded_file($imagen['tmp_name'], $imagenPath)) {
-                    return $nombreImagen;
-                } 
-            } 
-        }return false;
+        if(move_uploaded_file($archivo_temporal, $carpeta_destino.$nombre)){
+            return $carpeta_destino . $nombre;
+        }
+        else{
+            return false;
+        }
 
     }
 
@@ -104,8 +99,10 @@ class UsuariosModel {
     }
 
     public function ejecutarValidaciones($datos){
+        var_dump($datos);
 
         $errores = [];
+        $datos['foto'] = $_FILES['foto'];
 
         if(!$this->validarQueNoHayaCamposVacios($datos)){
             $errores['camposVacios'] = true;
@@ -126,11 +123,11 @@ class UsuariosModel {
         if(!$this->validarContraseña($datos)){
             $errores['contraseniaInvalida'] = true;
         }
-        if(isset($datos['foto']['name']) && $datos['foto']['name']){
-            if(!$this->subirFotoDePerfil($datos)){
-                $errores['imagenInvalida'] = true;
-            }
-        }
+
+        $urlFoto = $this->subirFotoDePerfil($datos['foto']);
+
+        $datos['foto'] = $urlFoto;
+
         $datos['codigo'] = $this->generarCodigoDeValidacion();
 
         $datos['contrasenia'] = md5($datos['contrasenia']);
