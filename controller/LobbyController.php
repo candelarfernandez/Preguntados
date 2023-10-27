@@ -23,6 +23,7 @@ class LobbyController
         }
 
         $usuario = $this->model->buscarUsuarioPorMail($_SESSION['usuario']);
+        $usuario['ranking'] = $this->model->obtenerPosicion();
         $_SESSION['usuarioId'] = $usuario['id'];
 
         if (isset($_GET['rtaIncorrecta'])) {
