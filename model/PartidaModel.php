@@ -87,7 +87,7 @@ class PartidaModel {
     }
 
     private function traerRespuestas($idPregunta) {
-        $sql = "SELECT * FROM respuestas WHERE idPregunta = '{$idPregunta}'";
+        $sql = "SELECT * FROM respuestas WHERE idPregunta = '{$idPregunta}' ORDER BY RAND()";
         return $this->database->query($sql);
     }
 

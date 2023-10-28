@@ -69,7 +69,6 @@ class PartidaController {
 
     private function sumar(){
         $_SESSION['puntaje'] +=  1;
-        var_dump($_SESSION['puntaje']);
     }
 
     private function restablecerPartida(){

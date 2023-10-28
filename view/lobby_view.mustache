@@ -1,17 +1,6 @@
 <div class="bg-center flex flex-col items-center justify-center h-screen" style="background-image: url('https://esports.eldesmarque.com/wp-content/uploads/2022/05/recompensas-pre-registro-Fall-Guys.jpg')">
    
     <div class="bg-violet-100 rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md w-1/4 relative">
-    {{#error}}
-            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
-                <p class="text-white font-medium text-center p-4"> Respuesta Incorrecta, vuelve a intentarlo! </p>
-            </div>
-    {{/error}}
-    
-     {{#errorTiempo}}
-            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
-                <p class="text-white font-medium text-center p-4"> Se agoto el tiempo. Vuelve a intentarlo! </p>
-            </div>
-    {{/errorTiempo}}
 
     <img src="\{{foto}}" alt="Foto de perfil" class="w-32 h-32 mx-auto rounded-full mb-2 absolute top-[-60px]">
 
@@ -56,6 +45,17 @@
     </form>
    </div>
     
+        {{#error}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center p-4"> Respuesta Incorrecta, vuelve a intentarlo! </p>
+            </div>
+    {{/error}}
+    
+     {{#errorTiempo}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center p-4"> Se agoto el tiempo. Vuelve a intentarlo! </p>
+            </div>
+    {{/errorTiempo}}
     </div>
   
 </div>
