@@ -1,6 +1,6 @@
 
 <script>
-    let tiempoRestante = 20;
+let tiempoRestante = 20;
 
     const interval = setInterval(function() {
         tiempoRestante--;
@@ -40,9 +40,14 @@
                 <input type="hidden" name="id" value="{{id}}">
                 <input type="hidden" name="respuesta" value="{{respuesta}}">
             </div>
-
         </form>
-    {{/respuestas}}    
+    {{/respuestas}}  
+    <form action="/partida/reportarPregunta" method="get">
+    <button type="submit" id="reportar" name="reportar">Reportar</button> 
+     <input type="hidden" id="idPregunta" name="idPregunta" value="{{pregunta.id}}">
+    </form>
+  
+  
     {{#seguirJugando}}
             <img src="\public\img\correcto.png" alt="Ganaste" class="w-40 mx-auto mb-4">
             {{#mensaje}}

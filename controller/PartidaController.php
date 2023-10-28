@@ -76,5 +76,14 @@ class PartidaController {
     private function restablecerPuntaje(){
         $_SESSION['puntaje'] = 0;
     }      
+   
+    public function reportarPregunta(){
+        $datos = $_GET;
+        $this->model->agregarPreguntaReportada($datos['idPregunta']);
+        $mensaje = [];
+        $mensaje['preguntaReportada'] = true;
+        $this->renderer->render('lobby', $mensaje);
+    }
+
 
 }  

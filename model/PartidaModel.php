@@ -22,6 +22,7 @@ class PartidaModel {
         return $pregunta;
     }
 
+
     public function traerRespuestas($idPregunta) {
         $sql = "SELECT * FROM respuestas WHERE idPregunta = '{$idPregunta}'";
         return $this->database->query($sql);
@@ -132,4 +133,10 @@ class PartidaModel {
             'respuestas'=>$respuestas
         ];
     }
+    public function agregarPreguntaReportada($idPreguntaReportada){
+        $sql = "UPDATE preguntas SET reportada = 1 WHERE id = '$idPreguntaReportada'";
+        $this->database->execute($sql);
+    }
+
+   
 }
