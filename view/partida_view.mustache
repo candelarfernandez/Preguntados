@@ -19,11 +19,11 @@ let tiempoRestante = 20;
 
         {{#mostrarImagen}}
         <div class="mb-6 text-center">
-             <div>Tiempo Restante: <span id="tiempo-restante">20</span> segundos</div>    
+             <h1 class="text-3xl font-semibold text-violet-500">00:<span class="text-3xl font-semibold text-violet-500" id="tiempo-restante">20</span></h1>    
         </div>
 
         <div class="text-center">
-            <img src="{{pregunta.categoria.urlImagen}}" alt="{{pregunta.pregunta}}" class="w-40 mx-auto mb-4">
+            <img src="{{pregunta.categoria.urlImagen}}" alt="{{pregunta.pregunta}}" class="w-40 mx-auto mb-4 rounded-md">
             <p class="text-violet-500 font-medium m-4">{{pregunta.categoria.nombre_categoria}}</p>
         </div>
         {{/mostrarImagen}}

@@ -14,4 +14,16 @@ class LobbyModel {
         $usuario = $this->database->queryUnSoloRegistro($sql);
         return $usuario;
     }
+
+    public function obtenerPosicion(){
+        $sql = "SELECT * FROM usuarios ORDER BY puntajeTotal DESC";
+        $usuarios = $this->database->query($sql);
+        $posicion = 1;
+        foreach ($usuarios as $usuario) {
+            if($usuario['mail'] == $_SESSION['usuario']){
+                return $posicion;
+            }
+            $posicion++;
+        }
+    }
 }

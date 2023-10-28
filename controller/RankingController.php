@@ -15,8 +15,9 @@ class RankingController {
             header('location: /login/list');
             exit();
         }
-        $usuarios = $this->model->cargarUsuarios();
-        $this->renderer->render('ranking', ['usuarios' => $usuarios]);
+        $data['usuarios'] = $this->model->cargarUsuarios();
+        $data['primerosPuestos'] = $this->model->cargarPrimerosPuestos();
+        $this->renderer->render('ranking', $data);
     }
 
     public function verUsuario() {

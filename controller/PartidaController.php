@@ -4,22 +4,22 @@ class PartidaController {
 
     private $renderer;
     private $model;
-    private $puntaje;
-    private $tiempoRestante;
+    // private $puntaje;
+    // private $tiempoRestante;
 
     public function __construct($model, $renderer) {
         $this->model = $model;
         $this->renderer = $renderer;
-        $this->puntaje = 0;
-        $this->tiempoRestante = 20;
+        // $this->puntaje = 0;
+        // $this->tiempoRestante = 20;
     }
 
     public function list() {
         $this->renderer->render('partida', $_SESSION['usuarioId']);
-       
     }
 
     public function jugar(){
+        //Si no existe partida, crearla
         if (!isset( $_SESSION['partidaId'])){
         $this->model->crearPartida();
         }
@@ -28,8 +28,7 @@ class PartidaController {
 
         $datosPregunta= $this->model->traerDatosPreguntas($idPartid);
         $datosPregunta['mostrarImagen'] = true;
-        $this->renderer->render('partida',$datosPregunta);
-        
+        $this->renderer->render('partida',$datosPregunta);     
     }
 
     public function respuesta(){
@@ -38,10 +37,11 @@ class PartidaController {
             $datos = $_POST;
             
            $datosPartida =[
-                'idUsuario'=> $id_Usuario = $_SESSION['usuarioId'],
+                'idUsuario'=> $_SESSION['usuarioId'],
                 'puntaje'=> $_SESSION['puntaje'],
-               'idPartida'=> $_SESSION['partidaId']
+                'idPartida'=> $_SESSION['partidaId']
                 ];
+                
         $esCorrecta = $this->model->verSiEsCorrecta($datos);
        
         if($esCorrecta){
@@ -50,31 +50,30 @@ class PartidaController {
             $alertas['seguirJugando'] = true;
             $alertas['puntaje'] = $_SESSION['puntaje'];
             $this->renderer->render('partida', $alertas);
-
-        }else {
+        }
+        else {
             $this->model->guardarPuntaje($datosPartida);
-            $this->restablecerPuntaje();
-            unset($_SESSION['partidaId']);
-            unset($_SESSION['puntaje']);
+            $this->restablecerPartida();
             if(isset($_GET['tiempoAgotado']) && $_GET['tiempoAgotado'] == 'true'){
                 header('location: /lobby/list?tiempoAgotado=true');
-                
-            }else{
-                header('location: /lobby/list?rtaIncorrecta=true');
             }
-            
+                else{
+                header('location: /lobby/list?rtaIncorrecta=true');
+                }
             exit();
-    }
+        }
 
-}}
+    }}
 
+    //Métodos privados
 
-    public function sumar(){
+    private function sumar(){
         $_SESSION['puntaje'] +=  1;
     }
 
-    private function restablecerPuntaje(){
-        $_SESSION['puntaje'] = 0;
+    private function restablecerPartida(){
+        unset($_SESSION['partidaId']);
+        unset($_SESSION['puntaje']);
     }      
    
     public function reportarPregunta(){
