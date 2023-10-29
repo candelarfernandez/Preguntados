@@ -79,9 +79,7 @@ class PartidaController {
     public function reportarPregunta(){
         $datos = $_GET;
         $this->model->agregarPreguntaReportada($datos['idPregunta']);
-        $mensaje = [];
-        $mensaje['preguntaReportada'] = true;
-        $this->renderer->render('lobby', $mensaje);
+        header('location: /lobby/list?preguntaReportada=true');
     }
 
 

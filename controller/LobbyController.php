@@ -36,6 +36,10 @@ class LobbyController
             $usuario['preguntaSugerida'] = true;
         }
 
+        if (isset($_GET['preguntaReportada'])) {
+            $usuario['preguntaReportada'] = true;
+        }
+
         $this->renderer->render('lobby', $usuario);
     }
 

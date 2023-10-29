@@ -16,10 +16,18 @@ class PreguntaController {
     public function editorList() {
         $preguntasSugeridas = $this->model->traerPreguntasSugeridas();
         $preguntasReportadas = $this->model->traerPreguntasReportadas();
+        $preguntasDelJuego = $this->model->traerPreguntas();
         $data = [
             'preguntasSugeridas' => $preguntasSugeridas,
-            'preguntasReportadas' => $preguntasReportadas
+            'preguntasReportadas' => $preguntasReportadas,
+            'preguntasDelJuego' => $preguntasDelJuego
         ];
+        if(isset($preguntasSugeridas)){
+            $data['mostrarpreguntasSugeridas'] = true;
+        }
+        if(isset($preguntasReportadas)){
+            $data['mostrarPreguntasReportadas'] = true;
+        }
         $this->renderer->render('editor', $data);
     }
 
@@ -29,4 +37,32 @@ class PreguntaController {
         header('location: /lobby/list?preguntaSugerida=true');
     }
 
+    public function darDeAltaPreguntaSugerida(){
+        $pregunta = $_POST['pregunta'];
+        $idPregunta = $pregunta['idPreguntaSugerida'];
+        $idCategoria = $pregunta ['idCategoria'];
+        var_dump($pregunta);
+        $this->model->darDeAltaPreguntaSugerida($idPregunta,$idCategoria);
+    }
+
+    public function aprobarPreguntaReportada(){
+        $idPregunta = $_GET['id'];
+        $this->model->aprobarPreguntaReportada($idPregunta);
+    }
+
+    public function darDeAltaPreguntaReportada(){
+        $idPregunta = $_GET['id'];
+        $this->model->eliminarPreguntaReportada($idPregunta);
+    }
+
+    public function darDeBajaPregunta(){
+        $idPregunta = $_GET['id'];
+        $this->model->eliminarPregunta($idPregunta);
+    }
+
+    public function darDeAltaNuevaPregunta(){
+        $datos = $_POST['datos'];
+        var_dump($datos);
+        $this->model->agregarPregunta($datos);
+    }
 }
