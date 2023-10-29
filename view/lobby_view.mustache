@@ -39,11 +39,16 @@
     <form class="mx-2" action="/partida/jugar" method="get">
         <button type="submit" class="bg-pink-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-pink-600">Crear Partida</button>
     </form>
-
     <form class="mx-2" action="/ranking/list" method="get">
         <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-blue-600">Ver Ranking</button>
     </form>
    </div>
+      <div class="bg-purple-600 text-white py-2 px-4 rounded-md mb-4 hover:bg-purple-700">
+            <a href="/pregunta/list" class="text-white">Sugerir pregunta</a>
+    </div>
+     <div class="bg-purple-600 text-white py-2 px-4 rounded-md mb-4 hover:bg-purple-700">
+            <a href="/pregunta/editorList" class="text-white">Editar</a>
+    </div>
     
         {{#error}}
             <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
@@ -61,6 +66,11 @@
                 <p class="text-white font-medium text-center p-4"> La pregunta ha sido resportada. </p>
             </div>
     {{/preguntaReportada}}
+    {{#preguntaSugerida}}
+            <div class="bg-green-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center p-4"> Se agrego la pregunta sugerida con exito! </p>
+            </div>
+    {{/preguntaSugerida}}
     
     </div>
   

@@ -32,6 +32,9 @@ class LobbyController
         if(isset($_GET['tiempoAgotado'])){
             $usuario['errorTiempo'] = true;
         }
+        if (isset($_GET['preguntaSugerida'])) {
+            $usuario['preguntaSugerida'] = true;
+        }
 
         $this->renderer->render('lobby', $usuario);
     }

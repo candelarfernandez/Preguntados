@@ -1,0 +1,57 @@
+<div class="p-4">
+    <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Sugeridas</h1>
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">PreguntaId</th>
+                <th class="px-4 py-2">Pregunta</th>
+                <th class="px-4 py-2">Modificar</th>
+                <th class="px-4 py-2">Dar de Alta</th>
+                <th class="px-4 py-2">Dar de Baja</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#preguntasSugeridas}}
+            <tr>
+                <td class="border px-4 py-2">{{id}}</td>
+                <td class="border px-4 py-2">{{descripcion}}</td>
+                <td class="border px-4 py-2">
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Modificar</button>
+                </td>
+                <td class="border px-4 py-2">
+                    <button class="bg-green-500 text-white px-4 py-2 rounded">Dar de Alta</button>
+                </td>
+                <td class="border px-4 py-2">
+                    <button class="bg-red-500 text-white px-4 py-2 rounded">Dar de Baja</button>
+                </td>
+            </tr>
+        {{/preguntasSugeridas}}
+        </tbody>
+    </table>
+       <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Reportadas</h1>
+      <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">PreguntaId</th>
+                <th class="px-4 py-2">Pregunta</th>
+              
+                <th class="px-4 py-2">Aprobar</th>
+                <th class="px-4 py-2">Dar de Baja</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#preguntasReportadas}}
+            <tr>
+                <td class="border px-4 py-2">{{id}}</td>
+                <td class="border px-4 py-2">{{pregunta}}</td>
+                <td class="border px-4 py-2">
+                    <button class="bg-green-500 text-white px-4 py-2 rounded">Aprobar</button>
+                </td>
+                <td class="border px-4 py-2">
+                    <button class="bg-red-500 text-white px-4 py-2 rounded">Dar de Baja</button>
+                </td>
+            </tr>
+        {{/preguntasReportadas}}
+        </tbody>
+    </table>
+</div>
