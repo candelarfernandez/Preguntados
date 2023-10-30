@@ -41,7 +41,6 @@ class PreguntaController {
         $pregunta = $_POST['pregunta'];
         $idPregunta = $pregunta['idPreguntaSugerida'];
         $idCategoria = $pregunta ['idCategoria'];
-        var_dump($pregunta);
         $this->model->darDeAltaPreguntaSugerida($idPregunta,$idCategoria);
     }
 
@@ -62,7 +61,10 @@ class PreguntaController {
 
     public function darDeAltaNuevaPregunta(){
         $datos = $_POST['datos'];
-        var_dump($datos);
         $this->model->agregarPregunta($datos);
+    }
+    public function modificarPregunta(){
+        $datos = $_POST['datos'];
+        $this->model->modificarPregunta($datos);
     }
 }

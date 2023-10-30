@@ -75,6 +75,15 @@ class PreguntaModel {
         }
         header('location: /pregunta/editorList?preguntaAgregada=true');
     }
+
+    public function modificarPregunta($datos){
+        $idPreguntaModificada = $datos['idPregunta'];
+        $nuevaDescripcion = $datos['descripcion'];
+        $idCategoriaModificada = $datos['idCategoria'];
+        $sql = "UPDATE `preguntas` SET `pregunta` = '$nuevaDescripcion', `id_categoria` = $idCategoriaModificada WHERE `id` = $idPreguntaModificada";
+        $this->database->execute($sql);
+        header('location: /pregunta/editorList?preguntaModificada=true');
+    }
     
     
 }
