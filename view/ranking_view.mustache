@@ -1,17 +1,50 @@
 <div class="bg-center flex flex-col items-center justify-center h-screen" style="background-image: url('https://esports.eldesmarque.com/wp-content/uploads/2022/05/recompensas-pre-registro-Fall-Guys.jpg')">
    
-    <div class="bg-violet-100 rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md w-2/4">
+    <div class="bg-violet-100 rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md w-2/4 relative">
+        <a href="/lobby/list" class="absolute top-4 right-4">
+            <button class="bg-violet-700 rounded-full p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+            </button>
+        </a>
+    <h1 class="text-2xl">Top 3</h1>
+    <div class="my-4 flex justify-center space-x-4">
+    {{! 2doPuesto }}
+    <div class="flex flex-col items-center justify-center">
+        <p class="text-violet-700 text-xs">{{primerosPuestos.segundo.nombreUsuario}}</p>
+        <img src="\{{primerosPuestos.segundo.foto}}" alt="Foto de perfil" class="w-16 h-16 mx-auto rounded-full shadow-md">
+        <p class="bg-violet-600 rounded-full p-2 font-semibold text-white text-xs">2do</p>
+    </div>
+    {{! 1er Puesto }}
+    <div class="flex flex-col items-center justify-center">
+        <p class="text-violet-700">{{primerosPuestos.primero.nombreUsuario}}</p>
+        <img src="\{{primerosPuestos.primero.foto}}" alt="Foto de perfil" class="w-28 h-28 mx-auto rounded-full shadow-md border-white">
+        <p class="bg-violet-600 rounded-full p-2 font-semibold text-white">1er</p>
+    </div>
+    {{! 3erPuesto }}
+    <div class="flex flex-col items-center justify-center">
+        <p class="text-violet-700 text-xs">{{primerosPuestos.tercero.nombreUsuario}}</p>
+        <img src="\{{primerosPuestos.tercero.foto}}" alt="Foto de perfil" class="w-16 h-16 mx-auto rounded-full shadow-md">
+        <p class="bg-violet-600 rounded-full p-2 font-semibold text-white text-xs">3ro</p>
+    </div>
+    </div>
 
-    <h1 class="text-2xl">Ranking</h1>
-
+    <h1 class="text-xl">Ranking</h1>
+    
  {{#usuarios}}
 
     <div class="bg-white rounded-md m-2 flex flex-row items-center justify-center p-8 shadow-md w-3/4 h-min">
+        <p></p>
         <a href="/ranking/verUsuario&id={{id}}">
-        <div class="mb-2 text-center">
-            <img src="\{{foto}}" alt="Foto de perfil" class="w-16 h-16 mx-auto rounded-full mb-2">
-            <h1 class="text-xl font-semibold"> {{nombre}}</h1>
-            <div class="text-white bg-violet-500 rounded-sm p-1 text-xs">Puntaje: {{puntajeTotal}}</div>
+        <div class="mb-2 flex flex-row">
+        <div>
+            <img src="\{{foto}}" alt="Foto de perfil" class="w-16 h-16 mx-auto rounded-full mr-4">
+        </div>
+        <div>
+            <h3 class="font-semibold"> {{nombre}}</h3>
+            <div class="text-gray-500 text-xs">{{puntajeTotal}} puntos</div>
+        </div>
         </div>
         </a>
     </div>

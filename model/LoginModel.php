@@ -8,18 +8,6 @@ class LoginModel {
         $this->database = $database;
     }
 
-    // public function getDatabase(){
-    //     $sql = "SELECT * FROM usuarios";
-    //     $resultado = $this->database->query($sql);
-
-    //     if ($resultado) {
-    //         // La consulta se ejecutó correctamente, puedes procesar los resultados.
-    //     } else {
-    //         // Hubo un error en la consulta.
-    //         echo "Error en la consulta: " . $this->database->error;
-    //     }
-    // }
-
     public function ejecutarValidaciones($datos){
 
         $errores = [];
@@ -92,23 +80,14 @@ class LoginModel {
         }
         
 
-
-
-   /* public function traerIdConMail($datos){
-        $mail = $datos['mail'];
-         $sql = " SELECT id FROM `usuarios` WHERE mail like '{$mail}'";
-         $id=  $this->database->execute($sql);
-         return $id;
-    }*/
     public function traerIdConMail($email){
-        var_dump("$email");
         $sql = "SELECT id FROM `usuarios` WHERE mail = '{$email}';";
         $result = $this->database->queryUnSoloRegistro($sql);
 
         if ($result != null) {
 
+            var_dump($result);
             return $result;
-            var_dump("$result");
 
 
         } else {

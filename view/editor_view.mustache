@@ -1,0 +1,240 @@
+<div class="p-4">
+    {{#mostrarpreguntasSugeridas}}
+    <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Sugeridas</h1>
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">PreguntaId</th>
+                <th class="px-4 py-2">Pregunta</th>
+                <th class="px-4 py-2">Aprobar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#preguntasSugeridas}}
+            <tr>
+                <td class="border px-4 py-2">{{id}}</td>
+                <td class="border px-4 py-2">{{descripcion}}</td>
+                <td class="border px-4 py-2">
+                    <button class="bg-green-500 text-white px-4 py-2 rounded" onclick="elegirCategoria('{{id}}','{{descripcion}}')">Aprobar</button>
+                </td>
+            </tr>
+        {{/preguntasSugeridas}}
+        </tbody>
+    </table>
+        {{/mostrarpreguntasSugeridas}}
+        {{#mostrarpreguntasReportadas}}
+       <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Reportadas</h1>
+      <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">PreguntaId</th>
+                <th class="px-4 py-2">Pregunta</th>
+              
+                <th class="px-4 py-2">Aprobar</th>
+                <th class="px-4 py-2">Dar de Baja</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#preguntasReportadas}}
+            <tr>
+                <td class="border px-4 py-2">{{id}}</td>
+                <td class="border px-4 py-2">{{pregunta}}</td>
+                <td class="border px-4 py-2">
+                    <a href="/pregunta/aprobarPreguntaReportada?id={{id}}">
+                    <button class="bg-green-500 text-white px-4 py-2 rounded">Aprobar</button>
+                    </a>
+                </td>
+                <td class="border px-4 py-2">
+                    <a href="/pregunta/darDeAltaPreguntaReportada?id={{id}}">
+                    <button class="bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
+                    </a>
+                </td>
+            </tr>
+        {{/preguntasReportadas}}
+        </tbody>
+    </table>
+    {{/mostrarpreguntasReportadas}}
+</div>
+<h1 class="text-2xl font-bold mb-4">Listado de preguntas</h1>
+        <button class="bg-green-500 text-white px-4 py-2 rounded" onclick="crearNuevaPregunta()">Nueva Pregunta</button>
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">PreguntaId</th>
+                <th class="px-4 py-2">Pregunta</th>
+                <th class="px-4 py-2">Modificar</th>
+                <th class="px-4 py-2">Dar de Baja</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#preguntasDelJuego}}
+            <tr>
+                <td class="border px-4 py-2">{{id}}</td>
+                <td class="border px-4 py-2">{{pregunta}}</td>
+                <td class="border px-4 py-2">
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="openModal('{{id}}')">Modificar</button>
+                </td>
+                <td class="border px-4 py-2">
+                    <a href="/pregunta/darDeBajaPregunta?id={{id}}">
+                    <button class="bg-red-500 text-white px-4 py-2 rounded">Dar de Baja</button></a>
+                </td>
+            </tr>
+        {{/preguntasDelJuego}}
+        </tbody>
+    </table>
+
+<!-- Modal para la edición del formulario -->
+<div id="myModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+        <div class="modal-content py-4 text-left px-6">
+            <!-- Encabezado del modal -->
+            <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold">Editar Pregunta</p>
+                <div class="modal-close cursor-pointer z-50" onclick="closeModal()">
+                    <svg class="fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M13.415 12l4.293 4.293a1 1 0 0 1-1.414 1.414L12 13.415l-4.293 4.292a1 1 0 1 1-1.414-1.414L10.586 12l-4.293-4.293a1 1 0 0 1 1.414-1.414L12 10.585l4.293-4.292a1 1 0 0 1 1.414 1.414L13.414 12z"/>
+                    </svg>
+                </div>
+            </div>
+            <!-- Contenido del modal (formulario) -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">ID Pregunta:</label>
+                <p id="idPregunta" class="py-2 px-3 text-gray-700">{{idPregunta}}</p>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcion">Descripción:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="descripcion" name="descripcion">
+            </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="idCategoria">Categoría:</label>
+                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idCategoria" name="idCategoria">
+                        <option value="1">Programacion</option>
+                        <option value="2">Historia</option>
+                        <option value="3">Deportes</option>
+                        <option value="4">Espectaculos</option>
+                        <option value="5">Ciencias Naturales</option>
+                    </select>
+                </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para la edición del formulario -->
+<div id="ModalCategoria" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+        <div class="modal-content py-4 text-left px-6">
+            <!-- Encabezado del modal -->
+            <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold">Elegir categoria</p>
+                <div class="modal-close cursor-pointer z-50" onclick="closeModalCategoria()">
+                    <svg class="fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M13.415 12l4.293 4.293a1 1 0 0 1-1.414 1.414L12 13.415l-4.293 4.292a1 1 0 1 1-1.414-1.414L10.586 12l-4.293-4.293a1 1 0 0 1 1.414-1.414L12 10.585l4.293-4.292a1 1 0 0 1 1.414 1.414L13.414 12z"/>
+                    </svg>
+                </div>
+            </div>
+            <!-- Contenido del modal (formulario) -->
+            <form action="/pregunta/darDeAltaPreguntaSugerida" method="POST">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">ID Pregunta:</label>
+                <p id="idPreguntaSugerida" class="py-2 px-3 text-gray-700"></p>
+                <input type="hidden" id="valuePreguntaSugerida" name="pregunta[idPreguntaSugerida]">
+            </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="idCategoria">Categoría:</label>
+                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idCategoria" name="pregunta[idCategoria]">
+                        <option value="1">Programacion</option>
+                        <option value="2">Historia</option>
+                        <option value="3">Deportes</option>
+                        <option value="4">Espectaculos</option>
+                        <option value="5">Ciencias Naturales</option>
+                    </select>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para la nueva pregunta -->
+<div id="modalNuevaPregunta" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+        <div class="modal-content py-4 text-left px-6">
+            <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold">Crear Pregunta</p>
+                <div class="modal-close cursor-pointer z-50" onclick="closeModalNuevaPregunta()">
+                    <svg class="fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M13.415 12l4.293 4.293a1 1 0 0 1-1.414 1.414L12 13.415l-4.293 4.292a1 1 0 1 1-1.414-1.414L10.586 12l-4.293-4.293a1 1 0 0 1 1.414-1.414L12 10.585l4.293-4.292a1 1 0 0 1 1.414 1.414L13.414 12z"/>
+                    </svg>
+                </div>
+            </div>
+            <form action="/pregunta/darDeAltaNuevaPregunta" method="POST">
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="nuevaPregunta">Pregunta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nuevaPregunta" name="datos[nuevaPregunta]" required>
+                </div>
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rta1">Respuesta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rta1" name="datos[rta1]" required>
+                </div>
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rta2">Respuesta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rta2" name="datos[rta2]" required>
+                </div>
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rta3">Respuesta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rta3" name="datos[rta3]">
+                </div>
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rta4">Respuesta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rta4" name="datos[rta4]">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="idCategoria">Categoría:</label>
+                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idCategoria" name="datos[idCategoria]">
+                        <option value="1">Programacion</option>
+                        <option value="2">Historia</option>
+                        <option value="3">Deportes</option>
+                        <option value="4">Espectaculos</option>
+                        <option value="5">Ciencias Naturales</option>
+                    </select>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Modal para editar pregunta existente
+    function openModal(id) {
+        document.getElementById("myModal").classList.remove("hidden");
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").classList.add("hidden");
+    }
+
+     // Modal para elegir categoria de pregunta sugerida 
+    function elegirCategoria(id, descripcion) {
+        document.getElementById("ModalCategoria").classList.remove("hidden");
+        document.getElementById("idPreguntaSugerida").innerText = id;
+        document.getElementById("valuePreguntaSugerida").value = id;
+    }
+
+    function closeModalCategoria() {
+        document.getElementById("ModalCategoria").classList.add("hidden");
+    }
+
+    //Modal para crear nueva pregunta
+    function crearNuevaPregunta() {
+    document.getElementById("modalNuevaPregunta").classList.remove("hidden");
+    }
+
+    function closeModalNuevaPregunta() {
+    document.getElementById("modalNuevaPregunta").classList.add("hidden");
+    }
+</script>

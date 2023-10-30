@@ -40,4 +40,10 @@ class MySqlDatabase {
     {
         return mysqli_prepare($this->connection, $sql);
     }
+
+    public function lastInsertId(){
+        return mysqli_insert_id($this->connection);
+    }
+   
+    
 }

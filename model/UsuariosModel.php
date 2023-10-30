@@ -74,55 +74,20 @@ class UsuariosModel {
     }
 
 
-//public function subirFotoDePerfil($imagen){}
-    public function subirFotoDePerfil($datos){
+    public function subirFotoDePerfil($foto){
 
+        $archivo_temporal = $foto['tmp_name'];
+        $nombre = $foto['name'];
+        $carpeta_destino = "./public/img/";
 
-        if (isset($datos['foto']['name']) && $datos['foto']['name']) {
-            $imagen = $datos['foto'];
-            $extensionesPermitidas = array("jpeg", "jpg", "png");
-
-            $nombreImagen = basename($imagen['name']);
-            $extension = pathinfo($nombreImagen, PATHINFO_EXTENSION);
-
-            if (in_array($extension, $extensionesPermitidas)) {
-                $imagenPath = "./public/fotos-de-perfil/" . $nombreImagen;
-                if (move_uploaded_file($imagen['tmp_name'], $imagenPath)) {
-                    return $nombreImagen;
-                } 
-            } 
-        }return false;
-
-    }
-/*
-    public function subirFotoDePerfil($imagen) {
-        if ($imagen['error'] === UPLOAD_ERR_OK) {
-            $extensionesPermitidas = array("jpeg", "jpg", "png");
-            $nombreImagen = basename($imagen['name']);
-            $extension = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));
-    
-            // Verificar si la extensión es válida
-            if (in_array($extension, $extensionesPermitidas)) {
-                $directorioDestino = "./public/fotos-de-perfil/";
-                $rutaImagen = $directorioDestino . $nombreImagen;
-    
-                // Mover el archivo cargado al directorio de destino
-                if (move_uploaded_file($imagen['tmp_name'], $rutaImagen)) {
-                    return $nombreImagen;
-                } else {
-                    // Error al mover el archivo
-                    return false;
-                }
-            } else {
-                // Extensión no permitida
-                return false;
-            }
-        } else {
-            // Error en la carga del archivo
+        if(move_uploaded_file($archivo_temporal, $carpeta_destino.$nombre)){
+            return $carpeta_destino . $nombre;
+        }
+        else{
             return false;
         }
+
     }
-    */
 
     public function generarCodigoDeValidacion(){
         $codigo = rand(100000, 999999);
@@ -134,8 +99,10 @@ class UsuariosModel {
     }
 
     public function ejecutarValidaciones($datos){
+        var_dump($datos);
 
         $errores = [];
+        $datos['foto'] = $_FILES['foto'];
 
         if(!$this->validarQueNoHayaCamposVacios($datos)){
             $errores['camposVacios'] = true;
@@ -156,11 +123,11 @@ class UsuariosModel {
         if(!$this->validarContraseña($datos)){
             $errores['contraseniaInvalida'] = true;
         }
-        if(isset($datos['foto']['name']) && $datos['foto']['name']){
-            if(!$this->subirFotoDePerfil($datos)){
-                $errores['imagenInvalida'] = true;
-            }
-        }
+
+        $urlFoto = $this->subirFotoDePerfil($datos['foto']);
+
+        $datos['foto'] = $urlFoto;
+
         $datos['codigo'] = $this->generarCodigoDeValidacion();
 
         $datos['contrasenia'] = md5($datos['contrasenia']);
