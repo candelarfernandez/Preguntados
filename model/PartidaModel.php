@@ -150,5 +150,5 @@ class PartidaModel {
         $this->database->execute($sql);
     }
 
-   
 }
+

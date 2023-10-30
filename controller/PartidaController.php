@@ -19,8 +19,27 @@ class PartidaController {
     }
 
     public function jugar(){
-        //Si no existe partida, crearla
-        if (!isset( $_SESSION['partidaId'])){
+        if (!isset($_SESSION['partidaId'])) {
+            $this->model->crearPartida();
+        }
+    
+        $idPartid = $_SESSION['partidaId'];
+    
+        // Verificar si ya hay una pregunta en la sesión
+        if (!isset($_SESSION['preguntaActual'])) {
+           // Obtener una nueva pregunta
+            $datosPregunta = $this->model->traerDatosPreguntas($idPartid);
+            $datosPregunta['mostrarImagen'] = true;
+            $_SESSION['preguntaActual'] = $datosPregunta; // Guardar la pregunta en la sesión
+        } else {
+            
+            // Mostrar la pregunta existente
+            $datosPregunta = $_SESSION['preguntaActual'];
+        }
+       
+        $this->renderer->render('partida', $datosPregunta);
+      
+      /*  if (!isset( $_SESSION['partidaId'])){
         $this->model->crearPartida();
         }
 
@@ -28,9 +47,9 @@ class PartidaController {
 
         $datosPregunta= $this->model->traerDatosPreguntas($idPartid);
         $datosPregunta['mostrarImagen'] = true;
-        $this->renderer->render('partida',$datosPregunta);     
+        $this->renderer->render('partida',$datosPregunta);  */   
     }
-
+ 
     public function respuesta(){
         $alertas = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -49,9 +68,12 @@ class PartidaController {
             $alertas['mensaje'] = true;
             $alertas['seguirJugando'] = true;
             $alertas['puntaje'] = $_SESSION['puntaje'];
+            unset($_SESSION['preguntaActual']);
             $this->renderer->render('partida', $alertas);
+           
         }
         else {
+           
             $this->model->guardarPuntaje($datosPartida);
             $this->restablecerPartida();
             if(isset($_GET['tiempoAgotado']) && $_GET['tiempoAgotado'] == 'true'){
