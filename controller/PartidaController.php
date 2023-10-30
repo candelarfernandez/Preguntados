@@ -28,11 +28,12 @@ class PartidaController {
         // Verificar si ya hay una pregunta en la sesión
         if (!isset($_SESSION['preguntaActual'])) {
            // Obtener una nueva pregunta
+          
             $datosPregunta = $this->model->traerDatosPreguntas($idPartid);
             $datosPregunta['mostrarImagen'] = true;
-            $_SESSION['preguntaActual'] = $datosPregunta; // Guardar la pregunta en la sesión
+            $_SESSION['preguntaActual'] = $datosPregunta; 
+         // Guardar la pregunta en la sesión
         } else {
-            
             // Mostrar la pregunta existente
             $datosPregunta = $_SESSION['preguntaActual'];
         }
@@ -73,7 +74,7 @@ class PartidaController {
            
         }
         else {
-           
+            
             $this->model->guardarPuntaje($datosPartida);
             $this->restablecerPartida();
             if(isset($_GET['tiempoAgotado']) && $_GET['tiempoAgotado'] == 'true'){
@@ -82,6 +83,7 @@ class PartidaController {
                 else{
                 header('location: /lobby/list?rtaIncorrecta=true');
                 }
+                unset($_SESSION['preguntaActual']);
             exit();
         }
 
