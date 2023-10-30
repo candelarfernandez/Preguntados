@@ -43,5 +43,12 @@ class LobbyController
         $this->renderer->render('lobby', $usuario);
     }
 
+    public function cerrarSesion()
+    {
+        session_destroy();
+        header('location: /login/list');
+        exit();
+    }
+
 }
 

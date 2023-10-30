@@ -12,8 +12,6 @@ class LoginController {
 
     public function list() {
         $data['activarCuenta'] = isset($_SESSION['activarCuenta']) ? $_SESSION['activarCuenta'] : false;
-
-        //var_dump($this->model->traerIdConMail("andreasosaortiz94@gmail.com"));
         $this->renderer->render('login' , $data);
     }
 
@@ -40,15 +38,22 @@ class LoginController {
 
             if (empty($errores)) {
                 $_SESSION['usuario'] = $datos['mail'];
-
                 $email = $datos['mail'];
-            $usuarioId = $this->model->traerIdConMail($email);
-                $_SESSION['usuarioId']=  $this->$usuarioId;
-
-
-                header('location: /lobby/list');
-
-                exit();
+                $usuarioId = $this->model->traerIdConMail($email);
+                $_SESSION['usuarioId'] =  $usuarioId;
+                $idRol = $this->model->verificarRol($email);
+            
+                switch($idRol["idRol"]){
+                case '1':
+                    header('location: /lobby/list');
+                    exit();
+                case '2':
+                    header('location: /pregunta/editorList');
+                    exit();
+                case '3':
+                    header('location: /admin/list');
+                    exit();
+                }
             } else{
                 $this->renderer->render("login", $errores);
             }

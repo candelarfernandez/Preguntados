@@ -1,88 +1,99 @@
-<div class="p-4">
+<div class="bg-violet-100 flex flex-col items-center">
+   <a href="/login/cerrarSesion" class="absolute top-4 right-4">
+            <button class="bg-violet-700 rounded-full p-2 text-white">Cerrar Sesión
+                <i class="fas fa-sign-out-alt text-white"></i>
+            </button>
+     </a>
     {{#mostrarpreguntasSugeridas}}
-    <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Sugeridas</h1>
-    <table class="table-auto w-full">
-        <thead>
-            <tr>
-                <th class="px-4 py-2">PreguntaId</th>
-                <th class="px-4 py-2">Pregunta</th>
-                <th class="px-4 py-2">Aprobar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#preguntasSugeridas}}
-            <tr>
-                <td class="border px-4 py-2">{{id}}</td>
-                <td class="border px-4 py-2">{{descripcion}}</td>
-                <td class="border px-4 py-2">
-                    <button class="bg-green-500 text-white px-4 py-2 rounded" onclick="elegirCategoria('{{id}}','{{descripcion}}')">Aprobar</button>
-                </td>
-            </tr>
-        {{/preguntasSugeridas}}
-        </tbody>
+    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4">
+            <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Sugeridas</h1>
+            <table class="table-auto w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2">PreguntaId</th>
+                        <th class="px-4 py-2">Pregunta</th>
+                        <th class="px-4 py-2">Aprobar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#preguntasSugeridas}}
+                    <tr>
+                        <td class="border px-4 py-2">{{id}}</td>
+                        <td class="border px-4 py-2">{{descripcion}}</td>
+                        <td class="border px-4 py-2">
+                            <button class="bg-green-500 text-white px-4 py-2 rounded" onclick="elegirCategoria('{{id}}','{{descripcion}}')">Aprobar</button>
+                        </td>
+                    </tr>
+                {{/preguntasSugeridas}}
+                </tbody>
+            </table>
+    </div>
+    {{/mostrarpreguntasSugeridas}}
+    
+    {{#mostrarPreguntasReportadas}}
+    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4"> 
+        <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Reportadas</h1>
+            <table class="table-auto w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2">PreguntaId</th>
+                        <th class="px-4 py-2">Pregunta</th>
+                    
+                        <th class="px-4 py-2">Aprobar</th>
+                        <th class="px-4 py-2">Dar de Baja</th>
+                    </tr>
+                </thead>
+            <tbody>
+                {{#preguntasReportadas}}
+                <tr>
+                    <td class="border px-4 py-2">{{id}}</td>
+                    <td class="border px-4 py-2">{{pregunta}}</td>
+                    <td class="border px-4 py-2">
+                        <a href="/pregunta/aprobarPreguntaReportada?id={{id}}">
+                        <button class="bg-green-500 text-white px-4 py-2 rounded">Aprobar</button>
+                        </a>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <a href="/pregunta/darDeAltaPreguntaReportada?id={{id}}">
+                        <button class="bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
+                        </a>
+                    </td>
+                </tr>
+                {{/preguntasReportadas}}
+            </tbody>
     </table>
-        {{/mostrarpreguntasSugeridas}}
-        {{#mostrarpreguntasReportadas}}
-       <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Reportadas</h1>
-      <table class="table-auto w-full">
-        <thead>
-            <tr>
-                <th class="px-4 py-2">PreguntaId</th>
-                <th class="px-4 py-2">Pregunta</th>
-              
-                <th class="px-4 py-2">Aprobar</th>
-                <th class="px-4 py-2">Dar de Baja</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#preguntasReportadas}}
-            <tr>
-                <td class="border px-4 py-2">{{id}}</td>
-                <td class="border px-4 py-2">{{pregunta}}</td>
-                <td class="border px-4 py-2">
-                    <a href="/pregunta/aprobarPreguntaReportada?id={{id}}">
-                    <button class="bg-green-500 text-white px-4 py-2 rounded">Aprobar</button>
-                    </a>
-                </td>
-                <td class="border px-4 py-2">
-                    <a href="/pregunta/darDeAltaPreguntaReportada?id={{id}}">
-                    <button class="bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
-                    </a>
-                </td>
-            </tr>
-        {{/preguntasReportadas}}
-        </tbody>
+    </div>
+    {{/mostrarPreguntasReportadas}}
+    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4 flex flex-col items-center"> 
+    <h1 class="text-2xl font-bold mb-4">Listado de preguntas</h1>
+        <button class="bg-green-500 text-white px-4 py-2 rounded mb-4" onclick="crearNuevaPregunta()">Nueva Pregunta</button>
+        <table class="table-auto w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">PreguntaId</th>
+                    <th class="px-4 py-2">Pregunta</th>
+                    <th class="px-4 py-2">Modificar</th>
+                    <th class="px-4 py-2">Dar de Baja</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#preguntasDelJuego}}
+                <tr>
+                    <td class="border px-4 py-2">{{id}}</td>
+                    <td class="border px-4 py-2">{{pregunta}}</td>
+                    <td class="border px-4 py-2">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="openModal('{{id}}')">Modificar</button>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <a href="/pregunta/darDeBajaPregunta?id={{id}}">
+                        <button class="bg-red-500 text-white px-4 py-2 rounded">Dar de Baja</button></a>
+                    </td>
+                </tr>
+            {{/preguntasDelJuego}}
+            </tbody>
     </table>
-    {{/mostrarpreguntasReportadas}}
+    </div>
 </div>
-<h1 class="text-2xl font-bold mb-4">Listado de preguntas</h1>
-        <button class="bg-green-500 text-white px-4 py-2 rounded" onclick="crearNuevaPregunta()">Nueva Pregunta</button>
-    <table class="table-auto w-full">
-        <thead>
-            <tr>
-                <th class="px-4 py-2">PreguntaId</th>
-                <th class="px-4 py-2">Pregunta</th>
-                <th class="px-4 py-2">Modificar</th>
-                <th class="px-4 py-2">Dar de Baja</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#preguntasDelJuego}}
-            <tr>
-                <td class="border px-4 py-2">{{id}}</td>
-                <td class="border px-4 py-2">{{pregunta}}</td>
-                <td class="border px-4 py-2">
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="openModal('{{id}}')">Modificar</button>
-                </td>
-                <td class="border px-4 py-2">
-                    <a href="/pregunta/darDeBajaPregunta?id={{id}}">
-                    <button class="bg-red-500 text-white px-4 py-2 rounded">Dar de Baja</button></a>
-                </td>
-            </tr>
-        {{/preguntasDelJuego}}
-        </tbody>
-    </table>
-
 <!-- Modal para la edición del formulario -->
 <div id="myModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
     <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
