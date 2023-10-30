@@ -48,10 +48,10 @@ class LoginController {
                     header('location: /lobby/list');
                     exit();
                 case '2':
-                    header('location: /pregunta/editorList');
+                    header('location: /admin/list');
                     exit();
                 case '3':
-                    header('location: /admin/list');
+                    header('location: /pregunta/editorList');
                     exit();
                 }
             } else{

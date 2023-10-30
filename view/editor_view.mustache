@@ -108,18 +108,20 @@
                     </svg>
                 </div>
             </div>
+             <form action="/pregunta/modificarPregunta" method="POST">
             <!-- Contenido del modal (formulario) -->
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">ID Pregunta:</label>
                 <p id="idPregunta" class="py-2 px-3 text-gray-700">{{idPregunta}}</p>
+                  <input type="hidden" id="idPreguntaModificada" name="datos[idPregunta]">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcion">Descripción:</label>
-                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="descripcion" name="descripcion">
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="descripcion" name="datos[descripcion]">
             </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="idCategoria">Categoría:</label>
-                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idCategoria" name="idCategoria">
+                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idCategoria" name="datos[idCategoria]">
                         <option value="1">Programacion</option>
                         <option value="2">Historia</option>
                         <option value="3">Deportes</option>
@@ -128,6 +130,7 @@
                     </select>
                 </div>
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
+            </form>
         </div>
     </div>
 </div>
@@ -222,6 +225,10 @@
 <script>
     // Modal para editar pregunta existente
     function openModal(id) {
+        var idPreguntaElement = document.getElementById("idPregunta");
+        idPreguntaElement.textContent = id;
+        var idPregunta = id;
+        document.getElementById("idPreguntaModificada").value = idPregunta;
         document.getElementById("myModal").classList.remove("hidden");
     }
 
