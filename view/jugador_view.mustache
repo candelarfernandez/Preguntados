@@ -1,7 +1,7 @@
 <div class="bg-violet-100 flex flex-col items-center justify-center h-screen">
    
  <div class="bg-white rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md w-2/4 relative">
-        <a href="/lobby/cerrarSesion" class="absolute top-4 right-4">
+        <a href="/ranking/list" class="absolute top-4 right-4">
             <button class="bg-violet-700 rounded-full p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
@@ -14,8 +14,10 @@
                  <img src="\{{usuario.foto}}" alt="Foto de perfil" class="w-32 h-32 mx-auto rounded-full mb-2">
                 <p class="text-lg m-2"><span class="font-semibold">Nombre:</span> {{usuario.nombre}}</p>
                 <p class="text-lg m-2"><span class="font-semibold">País:</span> {{usuario.pais}}</p>
+                <div id="map" class="mt-4" style="width: 400px; height: 200px;"></div>
                 <p class="text-lg m-2"><span class="font-semibold">Correo Electrónico:</span> {{usuario.mail}}</p>
                 <p class="text-lg m-2"><span class="text-white bg-violet-500 rounded-md p-1 text-lg px-2">Puntaje Total: {{usuario.puntajeTotal}}</span></p>
+                {{#mostrarPartidas}}
                 <h1>Mejores partidas</h1>
              {{#partidas}}
                 <div class="m-2 border-b border-gray-300 py-2 flex flex-row">
@@ -23,6 +25,7 @@
                 <p class="text-gray-700 m-2"><span class="font-semibold">{{puntaje}}</span> puntos</p>
                 </div>
              {{/partidas}}
+             {{/mostrarPartidas}}
         </div>
     </div>
 
@@ -30,4 +33,12 @@
   
 </div>
 
-       
+<script>
+  var map = L.map('map').setView([{{usuario.latitud}}, {{usuario.longitud}}], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+  }).addTo(map);
+
+  var marker = L.marker([{{usuario.latitud}}, {{usuario.longitud}}]).addTo(map);
+</script>
+   

@@ -71,6 +71,9 @@
         
         <label for="ciudad" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Ciudad:</label>
         <input type="text" id="ciudad" name="registro[ciudad]" class="w-full p-2 border rounded-md" required>
+        <div id="map" class="mt-4" style="width: 400px; height: 200px;"></div>
+            <input type="hidden" id="lat" name="registro[lat]" />
+            <input type="hidden" id="lng" name="registro[lng]" />
     </div>
     
     <!-- Columna 2 -->
@@ -96,3 +99,21 @@
 
 </div>
 </div>
+
+<script>
+  var map = L.map('map').setView([-34.6118, -58.4173], 13); // Buenos Aires
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+  }).addTo(map);
+
+  var marker;
+
+  map.on('click', function(e) {
+    if (marker) {
+      map.removeLayer(marker);
+    }
+    marker = L.marker(e.latlng).addTo(map);
+    document.getElementById('lat').value = e.latlng.lat;
+    document.getElementById('lng').value = e.latlng.lng;
+  });
+</script>

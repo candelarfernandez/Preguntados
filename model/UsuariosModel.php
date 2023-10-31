@@ -9,7 +9,7 @@ class UsuariosModel {
     }
 
     public function registrarUsuario($datos) {
-        $sql = "INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+        $sql = "INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo`, `latitud`, `longitud` ) 
                 VALUES ( '{$datos['nombre']}',
                 '{$datos['anio']}',
                 '{$datos['sexo']}',
@@ -19,7 +19,9 @@ class UsuariosModel {
                 '{$datos['contrasenia']}',
                 '{$datos['nombreUsuario']}',
                 '{$datos['foto']}',
-                '{$datos['codigo']}')";
+                '{$datos['codigo']}',
+                '{$datos['lat']}',
+                '{$datos['lng']}')";
 
         $this->database->execute($sql);
 

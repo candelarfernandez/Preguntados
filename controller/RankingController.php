@@ -27,6 +27,9 @@ class RankingController {
         }
         $id_Usuario = $_GET['id'];
         $usuario = $this->model->obtenerDatosDelUsuarioPorID($id_Usuario);
+        if(count($usuario['partidas']) > 0){
+            $usuario['mostrarPartidas'] = true;
+        }
         $this->renderer->render('jugador', $usuario);
     }
 
