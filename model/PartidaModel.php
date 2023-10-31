@@ -24,7 +24,10 @@ class PartidaModel {
         if ($attempts >= $maxAttempts) {
             var_dump("error");
         }
+
         $respuestas = $this->traerRespuestas($pregunta['id']);
+        $this->actualizarAparicionesDeLaPregunta($pregunta['id']);
+        $this->calcularDificultadPregunta($pregunta["id"]);
         return $datosPregunta =[
             'pregunta'=> $pregunta,
             'respuestas'=>$respuestas
@@ -38,7 +41,6 @@ class PartidaModel {
             'idUsuario'=> $_SESSION['usuarioId'],
             'puntaje'=>  $_SESSION['puntaje']
         ];
-
         //Crear la partida
         $sql = "INSERT INTO `partida` (`idUsuario`, `puntaje`, `fecha`) VALUES ('{$datosPartida['idUsuario']}', '{$datosPartida['puntaje']}', NOW())";
         $this->database->execute($sql);
@@ -53,6 +55,7 @@ class PartidaModel {
         $sql = "SELECT * FROM respuestas WHERE id = '{$datos['id']}'";
         $respuesta = $this->database->queryUnSoloRegistro($sql);
         if($respuesta['esCorrecta'] == "true"){
+            $this->actualizarAciertosPregunta($respuesta['idPregunta']);
             return true;
         }else{
             return false;
@@ -149,6 +152,47 @@ class PartidaModel {
         $sql = "UPDATE preguntas SET reportada = 1 WHERE id = '$idPreguntaReportada'";
         $this->database->execute($sql);
     }
+    private function actualizarAparicionesDeLaPregunta($idPregunta){
+        $sql0 = "SELECT apariciones FROM preguntas WHERE id = $idPregunta";
+        $resultado = $this->database->queryUnSoloRegistro($sql0);
+        $apariciones =$resultado["apariciones"] +1 ;
 
+        $sql = "UPDATE preguntas SET apariciones = $apariciones WHERE id = $idPregunta";
+        $this->database->execute($sql);
+    }
+    private function actualizarAciertosPregunta($idPregunta){
+        $sql0 = "SELECT aciertos FROM preguntas WHERE id = $idPregunta";
+        $resultado = $this->database->queryUnSoloRegistro($sql0);
+        $aciertos =$resultado["aciertos"] +1 ;
+
+        $sql = "UPDATE preguntas SET aciertos = $aciertos WHERE id = $idPregunta";
+        $this->database->execute($sql);
+    }
+
+    private function calcularDificultadPregunta($idPregunta){
+        $sql = "SELECT apariciones FROM preguntas WHERE id = $idPregunta";
+        $resultadoApariciones = $this->database->queryUnSoloRegistro($sql);
+
+        $sql1 = "SELECT aciertos FROM preguntas WHERE id = $idPregunta";
+        $resultadoAciertos = $this->database->queryUnSoloRegistro($sql1);
+
+        if($resultadoApariciones["apariciones"]>10){
+            $division = ($resultadoAciertos["aciertos"] / $resultadoApariciones["apariciones"]) * 100;
+            $sqlUpdate = "";
+            var_dump($division);
+
+            if ($division <= 30) {
+                $sqlUpdate = "UPDATE preguntas SET dificultad = 3 WHERE id = $idPregunta";
+            } elseif ($division> 30 && $division < 60) {
+                $sqlUpdate = "UPDATE preguntas SET dificultad = 2 WHERE id = $idPregunta";
+            } elseif ($division >= 60) {
+                $sqlUpdate = "UPDATE preguntas SET dificultad = 1 WHERE id = $idPregunta";
+            }
+            $this->database->execute($sqlUpdate);
+
+
+        }
+
+    }
 }
 
