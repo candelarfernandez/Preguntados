@@ -7,6 +7,7 @@
 
     <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4 flex flex-col items-center">
         <h1 class="text-2xl font-bold mb-4">Listado de Usuarios</h1>
+        <p>Total de usuarios {{totalUsuarios}}</p>
         <table class="table-auto w-full">
             <thead>
             <tr>
@@ -23,7 +24,6 @@
                     <td class="border px-4 py-2">{{nombreUsuario}}</td>
                     <td class="border px-4 py-2">{{mail}}</td>
                     <td class="border px-4 py-2">{{nivel}}</td>
-
                 </tr>
             {{/jugadores}}
             </tbody>
