@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3307
--- Tiempo de generación: 29-10-2023 a las 16:38:27
+-- Servidor: localhost
+-- Tiempo de generación: 01-11-2023 a las 02:41:49
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -72,7 +72,43 @@ INSERT INTO `partida` (`id`, `idUsuario`, `puntaje`, `fecha`) VALUES
 (39, 27, 2, '2023-10-28'),
 (40, 27, 0, '2023-10-28'),
 (41, 27, 0, '2023-10-28'),
-(42, 27, 0, '2023-10-29');
+(42, 27, 0, '2023-10-29'),
+(43, 33, 0, '2023-10-29'),
+(44, 33, 2, '2023-10-31'),
+(45, 33, 0, '2023-10-31'),
+(46, 33, 1, '2023-10-31'),
+(47, 33, 1, '2023-10-31'),
+(48, 33, 3, '2023-10-31'),
+(49, 33, 0, '2023-10-31'),
+(50, 33, 3, '2023-10-31'),
+(51, 33, 0, '2023-10-31'),
+(52, 33, 6, '2023-10-31'),
+(53, 33, 4, '2023-10-31'),
+(54, 33, 1, '2023-10-31'),
+(55, 33, 2, '2023-10-31'),
+(56, 33, 7, '2023-10-31'),
+(57, 33, 8, '2023-10-31'),
+(58, 33, 3, '2023-10-31'),
+(59, 33, 7, '2023-10-31'),
+(60, 33, 1, '2023-10-31'),
+(61, 33, 3, '2023-10-31'),
+(62, 33, 1, '2023-10-31'),
+(63, 33, 0, '2023-10-31'),
+(64, 33, 8, '2023-10-31'),
+(65, 33, 0, '2023-10-31'),
+(66, 33, 5, '2023-10-31'),
+(67, 33, 1, '2023-10-31'),
+(68, 33, 0, '2023-10-31'),
+(69, 33, 0, '2023-10-31'),
+(70, 33, 0, '2023-10-31'),
+(71, 33, 0, '2023-10-31'),
+(72, 33, 0, '2023-10-31'),
+(73, 33, 1, '2023-10-31'),
+(74, 33, 1, '2023-10-31'),
+(75, 33, 2, '2023-10-31'),
+(76, 33, 5, '2023-10-31'),
+(77, 33, 4, '2023-10-31'),
+(78, 33, 2, '2023-10-31');
 
 -- --------------------------------------------------------
 
@@ -85,44 +121,44 @@ CREATE TABLE `preguntas` (
   `id` int(10) NOT NULL,
   `id_categoria` int(11) DEFAULT 1,
   `reportada` int(11) NOT NULL DEFAULT 0,
-  `vecesRespondida` int(11) NOT NULL,
-  `vecesNoRespondida` int(11) NOT NULL,
-  `dificultad` int(11) NOT NULL
+  `aciertos` int(11) NOT NULL,
+  `apariciones` int(11) NOT NULL,
+  `dificultad` int(11) NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `preguntas`
 --
 
-INSERT INTO `preguntas` (`pregunta`, `id`, `id_categoria`, `reportada`, `vecesRespondida`, `vecesNoRespondida`, `dificultad`) VALUES
-('Si en un script PHP encuentra una llamada a un m?todo de clase de la siguiente manera:\nUsuario::traerUsuario();\nSe trata de:', 1, 1, 0, 0, 0, 0),
-('Cuando utilizo una Clase en forma est?tica siempre se ejecuta el m?todo __construct()', 2, 1, 0, 0, 0, 0),
-('La S del acr?nimo SOLID es por el concepto Single Responsability, que indica:', 3, 1, 0, 0, 0, 0),
-('El concepto de acoplamiento refiere a:', 4, 1, 0, 0, 0, 0),
-('Como concepto general podemos decir que a menos acoplamiento mejor software', 5, 1, 1, 0, 0, 0),
-('En software se entiende por patr?n de dise?o a:', 6, 1, 1, 0, 0, 0),
-('El patr?n MVC se utiliza mucho en aplicaciones web porque:', 7, 1, 1, 0, 0, 0),
-('En un modelo MVC el que recibe normalmente la petici?n del cliente es:', 8, 1, 1, 0, 0, 0),
-('El modelo en un esquema MVC es el encargado de almacenar y ejecutar la l?gica del negocio', 9, 1, 0, 0, 0, 0),
-('Uno de los objetivos del modelo MVC es separar en la aplicaci?n el modelo de negocios de las interfaces de usuario', 10, 1, 1, 0, 0, 0),
-('El enrutador en un modelo MVC es el encargado de ejecutar las operaciones de acceso a la base de datos', 11, 1, 0, 0, 0, 0),
-('El folding en una aplicaci?n web se refiere a:', 12, 1, 1, 0, 0, 0),
-('Si estoy desarrollando usando TDD estoy', 13, 1, 0, 0, 0, 0),
+INSERT INTO `preguntas` (`pregunta`, `id`, `id_categoria`, `reportada`, `aciertos`, `apariciones`, `dificultad`) VALUES
+('Si en un script PHP encuentra una llamada a un m?todo de clase de la siguiente manera:\nUsuario::traerUsuario();\nSe trata de:', 1, 1, 0, 2, 3, 0),
+('Cuando utilizo una Clase en forma est?tica siempre se ejecuta el m?todo __construct()', 2, 1, 0, 2, 28, 3),
+('La S del acr?nimo SOLID es por el concepto Single Responsability, que indica:', 3, 1, 0, 1, 30, 3),
+('El concepto de acoplamiento refiere a:', 4, 1, 0, 2, 83, 3),
+('Como concepto general podemos decir que a menos acoplamiento mejor software', 5, 1, 1, 1, 21, 3),
+('En software se entiende por patr?n de dise?o a:', 6, 1, 1, 15, 223, 3),
+('El patr?n MVC se utiliza mucho en aplicaciones web porque:', 7, 1, 1, 38, 61, 1),
+('En un modelo MVC el que recibe normalmente la petici?n del cliente es:', 8, 1, 1, 18, 21, 1),
+('El modelo en un esquema MVC es el encargado de almacenar y ejecutar la l?gica del negocio', 9, 1, 0, 5, 5, 0),
+('Uno de los objetivos del modelo MVC es separar en la aplicaci?n el modelo de negocios de las interfaces de usuario', 10, 1, 1, 2, 2, 0),
+('El enrutador en un modelo MVC es el encargado de ejecutar las operaciones de acceso a la base de datos', 11, 1, 0, 1, 2, 0),
+('El folding en una aplicaci?n web se refiere a:', 12, 1, 1, 1, 1, 0),
+('Si estoy desarrollando usando TDD estoy', 13, 1, 0, 1, 3, 0),
 ('El patr?n MVC esta compuesto por:', 14, 1, 0, 0, 0, 0),
-('En un patr?n MVC la Vista es la encargada de ', 15, 1, 0, 0, 0, 0),
-('La principal diferencia entre los enfoques Responsive y Mobile First es', 16, 1, 0, 0, 0, 0),
-('La principal diferencia entre una Aplicaci?n Web y una Aplicaci?n monol?tica (por ejemplo una Win32) es:', 17, 1, 0, 0, 0, 0),
-('El protocolo a trav?s del cu?l se realiza todo el intercambio de datos entre un servidor web y un cliente es:', 18, 1, 1, 0, 0, 0),
-('El protocolo HTTP tiene entre sus caracteristicas ser:', 19, 1, 0, 0, 0, 0),
-('El protocolo DNS es:', 20, 1, 0, 0, 0, 0),
-('El protocolo HTTP implementa comandos, entre ellos:', 21, 1, 0, 0, 0, 0),
-('El protyocolo HTTP implementa codigos de error de respuesta, si recibo un codigo de la serie 500, ha ocurrido:', 22, 1, 1, 0, 0, 0),
-('El protyocolo HTTP implementa codigos de error de respuesta, si recibo un codigo de la serie 400, ha ocurrido:', 23, 1, 0, 0, 0, 0),
-('El protyocolo HTTP implementa codigos de error de respuesta, si recibo un codigo de la serie 200, ha ocurrido:', 24, 1, 0, 0, 0, 0),
-('En una petici?n GET, los parametros de la petici?n se pasan a trav?s de....', 25, 1, 0, 0, 0, 0),
-('Se denomina Scripting del lado del cliente, o programaci?n Front-end o Client Side Scripting a :', 26, 1, 0, 0, 0, 0),
-('Se denomina Scripting del lado del servidor, o programaci?n Back-end o Server Side Scripting a :', 27, 1, 1, 0, 0, 0),
-('La petici?n de un recurso determinado a un sitio Web (imagen, archivo, etc.) se canaliza mediante:', 28, 1, 1, 0, 0, 0);
+('En un patr?n MVC la Vista es la encargada de ', 15, 1, 0, 1, 2, 0),
+('La principal diferencia entre los enfoques Responsive y Mobile First es', 16, 1, 0, 2, 3, 0),
+('La principal diferencia entre una Aplicaci?n Web y una Aplicaci?n monol?tica (por ejemplo una Win32) es:', 17, 1, 0, 2, 3, 0),
+('El protocolo a trav?s del cu?l se realiza todo el intercambio de datos entre un servidor web y un cliente es:', 18, 1, 1, 3, 4, 0),
+('El protocolo HTTP tiene entre sus caracteristicas ser:', 19, 1, 0, 2, 2, 0),
+('El protocolo DNS es:', 20, 1, 0, 3, 4, 0),
+('El protocolo HTTP implementa comandos, entre ellos:', 21, 1, 0, 1, 2, 0),
+('El protyocolo HTTP implementa codigos de error de respuesta, si recibo un codigo de la serie 500, ha ocurrido:', 22, 1, 1, 4, 4, 0),
+('El protyocolo HTTP implementa codigos de error de respuesta, si recibo un codigo de la serie 400, ha ocurrido:', 23, 1, 0, 2, 6, 0),
+('El protyocolo HTTP implementa codigos de error de respuesta, si recibo un codigo de la serie 200, ha ocurrido:', 24, 1, 0, 2, 4, 0),
+('En una petici?n GET, los parametros de la petici?n se pasan a trav?s de....', 25, 1, 0, 2, 4, 0),
+('Se denomina Scripting del lado del cliente, o programaci?n Front-end o Client Side Scripting a :', 26, 1, 0, 0, 2, 0),
+('Se denomina Scripting del lado del servidor, o programaci?n Back-end o Server Side Scripting a :', 27, 1, 1, 2, 3, 0),
+('La petici?n de un recurso determinado a un sitio Web (imagen, archivo, etc.) se canaliza mediante:', 28, 1, 1, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -164,103 +200,17 @@ CREATE TABLE `preguntasusadas` (
 --
 
 INSERT INTO `preguntasusadas` (`id`, `idPregunta`, `idPartida`) VALUES
-(155, 25, 14),
-(156, 20, 14),
-(157, 13, 14),
-(158, 10, 14),
-(159, 24, 14),
-(160, 23, 14),
-(161, 21, 14),
-(162, 6, 14),
-(163, 2, 14),
-(164, 9, 14),
-(165, 3, 14),
-(166, 16, 14),
-(167, 5, 14),
-(168, 12, 14),
-(169, 4, 14),
-(170, 27, 14),
-(171, 28, 14),
-(172, 8, 14),
-(173, 19, 14),
-(174, 1, 14),
-(175, 26, 14),
-(177, 19, 31),
-(178, 3, 31),
-(179, 26, 31),
-(180, 11, 31),
-(181, 24, 31),
-(182, 23, 31),
-(183, 12, 31),
-(184, 14, 31),
-(185, 28, 31),
-(186, 18, 14),
-(187, 7, 14),
-(188, 22, 14),
-(189, 17, 14),
-(190, 11, 14),
-(191, 5, 33),
-(192, 13, 33),
-(193, 24, 34),
-(194, 14, 34),
-(195, 15, 34),
-(196, 27, 34),
-(197, 3, 34),
-(198, 17, 34),
-(199, 6, 34),
-(200, 5, 34),
-(201, 18, 34),
-(202, 10, 34),
-(203, 19, 34),
-(204, 12, 34),
-(205, 28, 34),
-(206, 2, 34),
-(207, 23, 34),
-(208, 18, 35),
-(209, 11, 35),
-(210, 22, 35),
-(211, 23, 35),
-(212, 25, 35),
-(213, 17, 35),
-(214, 24, 35),
-(215, 1, 35),
-(216, 10, 35),
-(217, 19, 35),
-(218, 4, 35),
-(219, 27, 35),
-(232, 15, 36),
-(233, 27, 36),
-(234, 16, 36),
-(235, 19, 37),
-(236, 26, 37),
-(237, 9, 37),
-(238, 17, 37),
-(239, 22, 38),
-(240, 9, 39),
-(241, 8, 39),
-(242, 15, 39),
-(243, 17, 39),
-(244, 3, 39),
-(245, 13, 39),
-(246, 11, 39),
-(247, 4, 39),
-(248, 16, 39),
-(249, 28, 39),
-(250, 1, 39),
-(251, 12, 39),
-(252, 23, 39),
-(253, 27, 39),
-(254, 7, 39),
-(255, 5, 39),
-(256, 14, 39),
-(257, 22, 39),
-(258, 6, 39),
-(259, 18, 39),
-(260, 10, 39),
-(261, 26, 39),
-(262, 28, 41),
-(263, 18, 41),
-(264, 12, 42);
+(365, 4, 74),
+(366, 3, 74),
+(367, 6, 75),
+(368, 4, 75),
+(369, 3, 75),
+(370, 7, 76),
+(371, 8, 76),
+(372, 8, 77),
+(373, 7, 77),
+(374, 7, 78),
+(375, 8, 78);
 
 -- --------------------------------------------------------
 
@@ -426,17 +376,19 @@ CREATE TABLE `usuarios` (
   `puntajeTotal` int(11) NOT NULL,
   `cantRespuestas` int(11) NOT NULL,
   `cantRespuestasCorrectas` int(11) NOT NULL,
-  `idRol` int(11) NOT NULL DEFAULT 1
+  `idRol` int(11) NOT NULL DEFAULT 1,
+  `nivel` varchar(255) NOT NULL DEFAULT 'principiante'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `estaActiva`, `nombreUsuario`, `foto`, `codigo`, `puntajeTotal`, `cantRespuestas`, `cantRespuestasCorrectas`, `idRol`) VALUES
-(27, 'Candela Fernandez', '2023-10-01', 'Femenino', 'Argentina', 'Morón', 'cande.fdz12@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '668899', 13, 0, 0, 1),
-(31, 'Maria Vazquez', '2023-10-04', 'Femenino', 'Argentina', 'Morón', 'test@test11.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '275318', 0, 0, 0, 1),
-(32, 'Florencia Micaela', '2004-06-16', 'Femenino', 'Argentina', 'Morón', 'test@test2.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'florenciax', './public/img/Horarios .jpg', '296924', 0, 0, 0, 1);
+INSERT INTO `usuarios` (`id`, `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `estaActiva`, `nombreUsuario`, `foto`, `codigo`, `puntajeTotal`, `cantRespuestas`, `cantRespuestasCorrectas`, `idRol`, `nivel`) VALUES
+(27, 'Candela Fernandez', '2023-10-01', 'Femenino', 'Argentina', 'Morón', 'cande.fdz12@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '668899', 13, 0, 0, 1, 'principiante'),
+(31, 'Maria Vazquez', '2023-10-04', 'Femenino', 'Argentina', 'Morón', 'test@test11.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '275318', 0, 0, 0, 1, 'principiante'),
+(32, 'Florencia Micaela', '2004-06-16', 'Femenino', 'Argentina', 'Morón', 'test@test2.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'florenciax', './public/img/Horarios .jpg', '296924', 0, 0, 0, 1, 'principiante'),
+(33, 'Leo', '2000-09-02', 'Masculino', 'Argentina', 'Buenos Aires', 'vilteleonardo92@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'LeoV', './public/img/hipo-perritos-Blog04.jpg', '549467', 82, 218, 29, 1, 'principiante');
 
 --
 -- Índices para tablas volcadas
@@ -516,7 +468,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `partida`
 --
 ALTER TABLE `partida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntasreportadas`
@@ -534,7 +486,7 @@ ALTER TABLE `preguntassugeridas`
 -- AUTO_INCREMENT de la tabla `preguntasusadas`
 --
 ALTER TABLE `preguntasusadas`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=376;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -546,7 +498,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Restricciones para tablas volcadas
