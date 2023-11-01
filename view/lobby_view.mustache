@@ -72,7 +72,11 @@
                 <p class="text-white font-medium text-center p-4"> Se agrego la pregunta sugerida con exito! </p>
             </div>
     {{/preguntaSugerida}}
-    
+        {{#noHayMasPreguntas}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center p-4"> Se acabaron las preguntas</p>
+            </div>
+        {{/noHayMasPreguntas}}
     </div>
   
 </div>

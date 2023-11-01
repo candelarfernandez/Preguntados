@@ -28,7 +28,6 @@ class PreguntaModel {
     public function darDeAltaPreguntaSugerida($idPregunta, $idCategoria){
         $sql = "SELECT * FROM `preguntassugeridas` WHERE id = {$idPregunta}";
         $datos = $this->database->queryUnSoloRegistro($sql);
-        var_dump($datos);
         $pregunta = $datos['descripcion'];
         $sql2 = "INSERT INTO `preguntas`(`pregunta`, `id_categoria`) VALUES ('{$pregunta}', {$idCategoria})";
         $this->database->execute($sql2);

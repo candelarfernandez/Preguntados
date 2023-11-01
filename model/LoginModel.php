@@ -89,14 +89,12 @@ class LoginModel {
 
 
         } else {
-            var_dump("error en el id");
             return null;
         }
     }
 
     public function verificarRol($mail){
         $sql = "SELECT idRol FROM `usuarios` WHERE mail = '{$mail}';";
-        var_dump($this->database->queryUnSoloRegistro($sql));
         return $this->database->queryUnSoloRegistro($sql);
     }
 
