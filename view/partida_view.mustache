@@ -1,19 +1,31 @@
 
 <script>
 let tiempoRestante = 10;
-let tiempoAgotado = false;
 
-    const interval = setInterval(function() {
-        tiempoRestante--;
-        document.getElementById("tiempo-restante").textContent = tiempoRestante;
+const interval = setInterval(function() {
+    tiempoRestante--;
+    document.getElementById("tiempo-restante").textContent = tiempoRestante;
 
-        if (tiempoRestante <= 0) {
-            clearInterval(interval); 
-            tiempoAgotado = true;
-            window.location.href = '/lobby/list?tiempoAgotado=true';
-           
-        }
-    }, 1000); 
+    if (tiempoRestante <= 0) {
+        clearInterval(interval); 
+        tiempoAgotado = true;
+
+        // Realizar una petición POST para guardar el puntaje y restablecer la pregunta
+        fetch('/partida/tiempoAgotado', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/lobby/list?tiempoAgotado=true';
+            }
+        })
+        
+    }
+}, 1000);
 </script>
 
 <div class="bg-violet-100 flex items-center justify-center ">

@@ -25,30 +25,20 @@ class PartidaController {
     
         $idPartid = $_SESSION['partidaId'];
         $idUsuario = $_SESSION['usuarioId'];
-        // Verificar si ya hay una pregunta en la sesión
+       
         if (!isset($_SESSION['preguntaActual'])) {
-           // Obtener una nueva pregunta
           
-            $datosPregunta = $this->model->traerDatosPreguntas($idPartid,$idUsuario);
+          
+            $datosPregunta = $this->model->traerDatosPreguntas($idPartid, $idUsuario);
             $datosPregunta['mostrarImagen'] = true;
             $_SESSION['preguntaActual'] = $datosPregunta; 
-         // Guardar la pregunta en la sesión
+       
         } else {
-            // Mostrar la pregunta existente
+            
             $datosPregunta = $_SESSION['preguntaActual'];
         }
        
         $this->renderer->render('partida', $datosPregunta);
-      
-      /*  if (!isset( $_SESSION['partidaId'])){
-        $this->model->crearPartida();
-        }
-
-        $idPartid = $_SESSION['partidaId'];
-
-        $datosPregunta= $this->model->traerDatosPreguntas($idPartid);
-        $datosPregunta['mostrarImagen'] = true;
-        $this->renderer->render('partida',$datosPregunta);  */   
     }
  
     public function respuesta(){
@@ -61,8 +51,8 @@ class PartidaController {
                 'puntaje'=> $_SESSION['puntaje'],
                 'idPartida'=> $_SESSION['partidaId']
                 ];
-                
-        $esCorrecta = $this->model->verSiEsCorrecta($datos);
+        $idUsuario = $_SESSION['usuarioId'];
+        $esCorrecta = $this->model->verSiEsCorrecta($datos,$idUsuario);
        
         if($esCorrecta){
             $this->sumar();
@@ -74,21 +64,39 @@ class PartidaController {
            
         }
         else {
-            
+            if($tiempoAgotado){
+                $this->tiempoAgotado();
+                
+            } else {
+                header('location: /lobby/list?rtaIncorrecta=true');
+            }
+
             $this->model->guardarPuntaje($datosPartida);
             $this->restablecerPartida();
-            if(isset($_GET['tiempoAgotado']) && $_GET['tiempoAgotado'] == 'true'){
-                header('location: /lobby/list?tiempoAgotado=true');
-            }
-                else{
-                header('location: /lobby/list?rtaIncorrecta=true');
-                }
+              
                 unset($_SESSION['preguntaActual']);
             exit();
         }
+        unset($_SESSION['preguntaActual']);
 
     }}
 
+    public function tiempoAgotado() {
+
+        $datosPartida = [
+            'idUsuario' => $_SESSION['usuarioId'],
+            'puntaje' => $_SESSION['puntaje'],
+            'idPartida' => $_SESSION['partidaId']
+        ];
+    
+        $this->model->guardarPuntaje($datosPartida);
+        $this->restablecerPartida();
+    
+       
+        echo json_encode(['success' => true]);
+        exit();
+    }
+    
     //Métodos privados
 
     private function sumar(){

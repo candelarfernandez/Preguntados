@@ -81,7 +81,7 @@ class PartidaModel {
     }
 
     //Métodos privados
-    //Métodos utilizados en traerDatosPreguntas($idPartid)
+    //Métodos utilizados en ($idPartid)
 
     private function traerPreguntaAleatoria($idUsuario) {
         $nivel = $this->consultarNivelUsuario($idUsuario);
