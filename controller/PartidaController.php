@@ -26,6 +26,19 @@ class PartidaController {
            // Obtener una nueva pregunta
           
             $datosPregunta = $this->model->traerDatosPreguntas($idPartid,$idUsuario);
+            if($datosPregunta['error']){
+                $datosPartida =[
+                    'idUsuario'=> $_SESSION['usuarioId'],
+                    'puntaje'=> $_SESSION['puntaje'],
+                    'idPartida'=> $_SESSION['partidaId']
+                ];
+                $this->model->guardarPuntaje($datosPartida);
+                header('location: /lobby/list?noHayMasPreguntas=true');
+
+            }
+
+
+
             $datosPregunta['mostrarImagen'] = true;
             $_SESSION['preguntaActual'] = $datosPregunta; 
          // Guardar la pregunta en la sesión

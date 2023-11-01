@@ -10,19 +10,21 @@ class PartidaModel {
 
     public function traerDatosPreguntas($idPartid, $idUsuario){
 
+
+        $error = false;
         $maxAttempts = 10;
+        var_dump($maxAttempts);
         $attempts = 0;
 
         do {
-            $pregunta = $this->traerPreguntaAleatoria();
+            $pregunta = $this->traerPreguntaAleatoria($idUsuario);
             $estaUsadaLapregunta = $this->ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($idPartid, $pregunta["id"]);
             $attempts++;
             if ($attempts >= $maxAttempts) {
+                $error = true;
                 break;
             }
         }while (($estaUsadaLapregunta));
-        if ($attempts >= $maxAttempts) {
-        }
 
         $respuestas = $this->traerRespuestas($pregunta['id']);
 
@@ -31,7 +33,8 @@ class PartidaModel {
         $this->calcularDificultadPregunta($pregunta["id"]);
         return $datosPregunta =[
             'pregunta'=> $pregunta,
-            'respuestas'=>$respuestas
+            'respuestas'=>$respuestas,
+            'error'  => $error
         ];
     }
 
@@ -79,8 +82,10 @@ class PartidaModel {
     //Métodos privados
     //Métodos utilizados en traerDatosPreguntas($idPartid)
 
-    private function traerPreguntaAleatoria() {
-        $sql = "SELECT * FROM preguntas";
+    private function traerPreguntaAleatoria($idUsuario) {
+        $nivel = $this->consultarNivelUsuario($idUsuario);
+        $sql = $this->traerPreguntasPorNivel($nivel);
+
         $listadoPreguntas = $this->database->query($sql);
         $numAleatorio = rand(0, sizeof($listadoPreguntas) - 1);
         $pregunta = $listadoPreguntas[$numAleatorio];
@@ -230,6 +235,27 @@ class PartidaModel {
             }
             $this->database->execute($sqlUpdate);
         }
+    }
+
+    private function consultarNivelUsuario($idUsuario){
+        $sql = "SELECT nivel FROM usuarios WHERE id = $idUsuario";
+        $nivelUsuario =$this->database->queryUnSoloRegistro($sql);
+
+    return $nivelUsuario["nivel"];
+
+    }
+    private function traerPreguntasPorNivel($nivel){
+        $sql = "";
+
+        switch ($nivel){
+            case "principiante": $sql = "SELECT * FROM preguntas WHERE dificultad IN (1,2)";
+                break;
+            case "avanzado": $sql = "SELECT * FROM preguntas WHERE dificultad IN (2,3)";
+                break;
+            case "experto" : $sql = "SELECT * FROM preguntas WHERE dificultad IN (3)";
+                break;
+        }
+    return $sql;
     }
 
 }

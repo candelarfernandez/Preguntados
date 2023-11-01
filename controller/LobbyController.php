@@ -39,6 +39,9 @@ class LobbyController
         if (isset($_GET['preguntaReportada'])) {
             $usuario['preguntaReportada'] = true;
         }
+        if(isset($_GET['noHayMasPreguntas'])){
+            $usuario['noHayMasPreguntas'] = true;
+        }
 
         $this->renderer->render('lobby', $usuario);
     }
