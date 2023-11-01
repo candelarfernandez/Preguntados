@@ -8,6 +8,7 @@ class PartidaModel {
         $this->database = $database;
     }
 
+
     public function traerDatosPreguntas($idPartid, $idUsuario){
 
 
@@ -28,6 +29,8 @@ class PartidaModel {
 
         $respuestas = $this->traerRespuestas($pregunta['id']);
 
+        $this->actualizarPreguntasEntregadasAlUsuario($idUsuario);
+        $this->actualizarAparicionesDeLaPregunta($pregunta['id']);
         $this->calcularDificultadPregunta($pregunta["id"]);
         return $datosPregunta =[
             'pregunta'=> $pregunta,
