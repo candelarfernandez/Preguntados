@@ -73,11 +73,10 @@ class PartidaController {
 
             $this->model->guardarPuntaje($datosPartida);
             $this->restablecerPartida();
-              
-                unset($_SESSION['preguntaActual']);
+            unset($_SESSION['preguntaActual']);
             exit();
         }
-        unset($_SESSION['preguntaActual']);
+       
 
     }}
 
