@@ -101,7 +101,6 @@ class UsuariosModel {
     }
 
     public function ejecutarValidaciones($datos){
-        var_dump($datos);
 
         $errores = [];
         $datos['foto'] = $_FILES['foto'];

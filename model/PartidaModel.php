@@ -8,7 +8,7 @@ class PartidaModel {
         $this->database = $database;
     }
 
-    public function traerDatosPreguntas($idPartid){
+    public function traerDatosPreguntas($idPartid, $idUsuario){
 
         $maxAttempts = 10;
         $attempts = 0;
@@ -22,10 +22,11 @@ class PartidaModel {
             }
         }while (($estaUsadaLapregunta));
         if ($attempts >= $maxAttempts) {
-            var_dump("error");
         }
 
         $respuestas = $this->traerRespuestas($pregunta['id']);
+
+        $this->actualizarPreguntasEntregadasAlUsuario($idUsuario);
         $this->actualizarAparicionesDeLaPregunta($pregunta['id']);
         $this->calcularDificultadPregunta($pregunta["id"]);
         return $datosPregunta =[
@@ -51,11 +52,13 @@ class PartidaModel {
         $_SESSION['partidaId'] = $partida;
     }
 
-    public function verSiEsCorrecta($datos){
+    public function verSiEsCorrecta($datos, $idUsuario){
         $sql = "SELECT * FROM respuestas WHERE id = '{$datos['id']}'";
         $respuesta = $this->database->queryUnSoloRegistro($sql);
         if($respuesta['esCorrecta'] == "true"){
+
             $this->actualizarAciertosPregunta($respuesta['idPregunta']);
+            $this->actualizarAciertosUsuario($idUsuario);
             return true;
         }else{
             return false;
@@ -70,6 +73,7 @@ class PartidaModel {
         $sql = "UPDATE partida SET puntaje = '$puntaje' WHERE id = '$partidaId'";
         $this->database->execute($sql);
         $this->actualizarPuntajeTotalUsuario($idUsuario);
+        $this->calcularNivelUsuario($idUsuario);
     }
 
     //Métodos privados
@@ -179,7 +183,6 @@ class PartidaModel {
         if($resultadoApariciones["apariciones"]>10){
             $division = ($resultadoAciertos["aciertos"] / $resultadoApariciones["apariciones"]) * 100;
             $sqlUpdate = "";
-            var_dump($division);
 
             if ($division <= 30) {
                 $sqlUpdate = "UPDATE preguntas SET dificultad = 3 WHERE id = $idPregunta";
@@ -189,10 +192,45 @@ class PartidaModel {
                 $sqlUpdate = "UPDATE preguntas SET dificultad = 1 WHERE id = $idPregunta";
             }
             $this->database->execute($sqlUpdate);
-
-
         }
-
     }
+    private function actualizarPreguntasEntregadasAlUsuario($idUsuario){
+        $sql0 = "SELECT cantRespuestas FROM usuarios WHERE id = $idUsuario";
+        $resultado = $this->database->queryUnSoloRegistro($sql0);
+        $cantRespuestas =$resultado["cantRespuestas"] + 1 ;
+
+        $sql = "UPDATE usuarios SET cantRespuestas = $cantRespuestas WHERE id = $idUsuario";
+        $this->database->execute($sql);
+    }
+    private function actualizarAciertosUsuario($idUsuario){
+        $sql0 = "SELECT cantRespuestasCorrectas FROM usuarios WHERE id = $idUsuario";
+        $resultado = $this->database->queryUnSoloRegistro($sql0);
+        $cantRespuestasCorrectas =$resultado["cantRespuestasCorrectas"] + 1 ;
+
+        $sql = "UPDATE usuarios SET cantRespuestasCorrectas = $cantRespuestasCorrectas WHERE id = $idUsuario";
+        $this->database->execute($sql);
+    }
+    private function calcularNivelUsuario($idUsuario){
+        $sql = "SELECT cantRespuestas FROM usuarios WHERE id = $idUsuario";
+        $cantRespuestas  = $this->database->queryUnSoloRegistro($sql);
+
+        $sql1 = "SELECT cantRespuestasCorrectas FROM usuarios WHERE id = $idUsuario";
+        $cantRespuestasCorrectas = $this->database->queryUnSoloRegistro($sql1);
+
+        if($cantRespuestas["cantRespuestas"]>10){
+            $division = ($cantRespuestasCorrectas["cantRespuestasCorrectas"] / $cantRespuestas["cantRespuestas"]) * 100;
+            $sqlUpdate = "";
+
+            if ($division <= 30) {
+                $sqlUpdate = "UPDATE usuarios SET nivel = 'principiante' WHERE id = $idUsuario";
+            } elseif ($division> 30 && $division < 60) {
+                $sqlUpdate = "UPDATE usuarios SET nivel = 'avanzado' WHERE id = $idUsuario";
+            } elseif ($division >= 60) {
+                $sqlUpdate = "UPDATE usuarios SET nivel = 'experto' WHERE id = $idUsuario";
+            }
+            $this->database->execute($sqlUpdate);
+        }
+    }
+
 }
 

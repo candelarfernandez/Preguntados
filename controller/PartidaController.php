@@ -4,14 +4,10 @@ class PartidaController {
 
     private $renderer;
     private $model;
-    // private $puntaje;
-    // private $tiempoRestante;
 
     public function __construct($model, $renderer) {
         $this->model = $model;
         $this->renderer = $renderer;
-        // $this->puntaje = 0;
-        // $this->tiempoRestante = 20;
     }
 
     public function list() {
@@ -24,12 +20,12 @@ class PartidaController {
         }
     
         $idPartid = $_SESSION['partidaId'];
-    
+        $idUsuario = $_SESSION['usuarioId'];
         // Verificar si ya hay una pregunta en la sesión
         if (!isset($_SESSION['preguntaActual'])) {
            // Obtener una nueva pregunta
           
-            $datosPregunta = $this->model->traerDatosPreguntas($idPartid);
+            $datosPregunta = $this->model->traerDatosPreguntas($idPartid,$idUsuario);
             $datosPregunta['mostrarImagen'] = true;
             $_SESSION['preguntaActual'] = $datosPregunta; 
          // Guardar la pregunta en la sesión
@@ -39,16 +35,7 @@ class PartidaController {
         }
        
         $this->renderer->render('partida', $datosPregunta);
-      
-      /*  if (!isset( $_SESSION['partidaId'])){
-        $this->model->crearPartida();
-        }
 
-        $idPartid = $_SESSION['partidaId'];
-
-        $datosPregunta= $this->model->traerDatosPreguntas($idPartid);
-        $datosPregunta['mostrarImagen'] = true;
-        $this->renderer->render('partida',$datosPregunta);  */   
     }
  
     public function respuesta(){
@@ -61,8 +48,8 @@ class PartidaController {
                 'puntaje'=> $_SESSION['puntaje'],
                 'idPartida'=> $_SESSION['partidaId']
                 ];
-                
-        $esCorrecta = $this->model->verSiEsCorrecta($datos);
+        $idUsuario = $_SESSION['usuarioId'];
+        $esCorrecta = $this->model->verSiEsCorrecta($datos,$idUsuario);
        
         if($esCorrecta){
             $this->sumar();
