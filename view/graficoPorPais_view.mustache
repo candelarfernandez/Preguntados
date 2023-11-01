@@ -1,0 +1,36 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+
+
+        function drawChart() {
+            var jsonData = document.getElementById("datos").textContent ;
+            console.log(jsonData)
+            var data = google.visualization.arrayToDataTable(
+
+                    jsonData
+
+            );
+
+            var options = {
+                title: 'My Daily Activities',
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+
+{{#datos_json}}
+    <p id="datos">{{nombre}}nombre1</p>
+{{/datos_json}}
+
+<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
