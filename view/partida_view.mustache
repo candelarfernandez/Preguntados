@@ -1,6 +1,7 @@
 
 <script>
-let tiempoRestante = 20;
+let tiempoRestante = 10;
+let tiempoAgotado = false;
 
     const interval = setInterval(function() {
         tiempoRestante--;
@@ -8,8 +9,9 @@ let tiempoRestante = 20;
 
         if (tiempoRestante <= 0) {
             clearInterval(interval); 
-             window.location.href = '/lobby/list?tiempoAgotado';
-            
+            tiempoAgotado = true;
+            window.location.href = '/lobby/list?tiempoAgotado=true';
+           
         }
     }, 1000); 
 </script>
@@ -19,7 +21,7 @@ let tiempoRestante = 20;
 
         {{#mostrarImagen}}
         <div class="mb-6 text-center">
-             <h1 class="text-3xl font-semibold text-violet-500">00:<span class="text-3xl font-semibold text-violet-500" id="tiempo-restante">20</span></h1>    
+             <h1 class="text-3xl font-semibold text-violet-500">00:<span class="text-3xl font-semibold text-violet-500" id="tiempo-restante">10</span></h1>    
         </div>
 
         <div class="text-center">
