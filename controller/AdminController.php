@@ -46,27 +46,13 @@ class AdminController
     
         $this->renderer->render('listadoPartidas', $datosPartidas);
        }
-/*
-    public function listarPreguntas() {
-
-        $preguntasDelJuego = $this->model->traerPreguntas();
-        $data = [
-
-            'preguntasDelJuego' => $preguntasDelJuego
-        ];
-
-        $this->renderer->render('PreguntasListado', $data);
-    }
-
-*/
 
 
     public function listadoPaises(){
 
-        $datos = $this->model->obtenerUsuariosPorPais();
+        $usuariosPorPaises = $this->model->obtenerUsuariosPorPais();
 
-      $datos_json = array("nombre"=>"andre","cantidad"=>5);
-        var_dump($datos_json);
+        $datos_json['usuariosPorPaises'] = $usuariosPorPaises;
 
         $this->renderer->render('graficoPorPais', $datos_json);
 

@@ -26,17 +26,28 @@ class AdminModel
         return $this->database->query($sql);
     }
 
-
-
-
     public function obtenerUsuariosPorPais()
     {
         $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuarios GROUP BY pais";
 
-        return $this->database->query($consulta);
+        $query = $this->database->query($consulta);
 
+        $cabecera = ['Pais', 'Cantidad'];
 
+        return $this->convertirArrayAJSON($query, $cabecera);
     }
 
+    //Métodos privados
+
+    private function convertirArrayAJSON($array, $cabecera) {
+        $result = [];
+        $result[] = $cabecera; 
+        
+        foreach ($array as $element) {
+            $result[] = [$element[0], (int)$element[1]];
+        }
+        
+        return json_encode($result);
+    }
 
 }
