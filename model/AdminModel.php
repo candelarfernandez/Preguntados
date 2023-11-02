@@ -22,7 +22,7 @@ class AdminModel
         return $this->database->query($sql);
     }
     public function traerPreguntas(){
-        $sql = "SELECT * FROM `preguntas`";
+        $sql = "SELECT * FROM preguntas";
         return $this->database->query($sql);
     }
 
@@ -36,6 +36,31 @@ class AdminModel
 
         return $this->convertirArrayAJSON($query, $cabecera);
     }
+
+    public function obtenerUsuariosPorSexo()
+    {
+        $consulta = "SELECT sexo, COUNT(*) AS cantidad FROM usuarios GROUP BY sexo";
+
+        $query = $this->database->query($consulta);
+
+        $cabecera = ['sexo', 'Cantidad'];
+
+        return $this->convertirArrayAJSON($query, $cabecera);
+    }
+    public function obtenerUsuariosPorEdad()
+    {
+        $consulta = "SELECT CASE WHEN DATEDIFF(CURDATE(), anio) < 6570 THEN 'Menores' 
+    WHEN DATEDIFF(CURDATE(), anio) >= 6570 AND DATEDIFF(CURDATE(), anio) <= 21900 THEN 'Mayores' 
+    WHEN DATEDIFF(CURDATE(), anio) > 21900 THEN 'Jubilados' 
+    END AS Grupo, COUNT(*) AS Cantidad FROM usuarios GROUP BY Grupo";
+
+        $query = $this->database->query($consulta);
+
+        $cabecera = ['Grupo', 'Cantidad'];
+
+        return $this->convertirArrayAJSON($query, $cabecera);
+    }
+
 
     //Métodos privados
 
