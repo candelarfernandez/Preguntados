@@ -1,35 +1,44 @@
 
 
 
-
-<div class="border-l border-gray-300 h-200"></div>
-
-        <form class="mx-2" action="/admin/traerJugadores" method="get">
-            <button type="submit" class="bg-blue-500 w-200 h-100 text-white py-2 px-4 rounded-md mb-4 hover:bg-blue-600">Ver Listado Jugadores</button>
-        </form>
-
-        <form class="mx-2" action="/admin/traerPartidas" method="get">
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-blue-600">Ver Listado Partidas</button>
-        </form>
-
-        <form class="mx-2" action="/admin/traerPreguntas" method="get">
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-blue-600">Ver Listado Preguntas</button>
-        </form>
-
-        <form class="mx-2" action="/admin/listadoPaises" method="get">
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-blue-600">Ver Grafico Paises</button>
-        </form>
-
-        <form class="mx-2" action="/admin/listadoPorGrupoDeEdad" method="get">
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-blue-600">Ver grafico Por edades</button>
-        </form>
+<div class="bg-violet-100 flex flex-col items-center">
+    <a href="/login/cerrarSesion" class="absolute top-4 right-4">
+        <button class="bg-violet-700 rounded-full p-2 text-white">Cerrar Sesión
+            <i class="fas fa-sign-out-alt text-white"></i>
+        </button>
+    </a>
 
 
-        <form class="mx-2" action="/admin/listadoPorSexo" method="get">
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md mb-4 hover:bg-blue-600">Ver grafico Por Sexo</button>
-        </form>
+    <div class="bg-white rounded-lg shadow-md p-6 h-full w-3/4 mt-5 mb-40 flex flex-col items-center">
+        <table class="table-auto w-full ">
+            <form class="table-auto w-full" action="/admin/traerJugadores" method="get">
+                <button type="submit" class="bg-violet-500 table-auto w-full text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Ver Listado Jugadores</button>
+            </form>
 
+            <form class="mx-2" action="/admin/traerPartidas" method="get">
+                <button type="submit" class="bg-violet-500 table-auto w-full text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Ver Listado Partidas</button>
+            </form>
+
+            <form class="mx-2" action="/admin/traerPreguntas" method="get">
+                <button type="submit" class="bg-violet-500 table-auto w-full text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Ver Listado Preguntas</button>
+            </form>
+
+            <form class="mx-2" action="/admin/listadoPaises" method="get">
+                <button type="submit" class="bg-violet-500 table-auto w-full text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Ver Grafico Paises</button>
+            </form>
+
+            <form class="mx-2" action="/admin/listadoPorGrupoDeEdad" method="get">
+                <button type="submit" class="bg-violet-500 table-auto w-full text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Ver grafico Por edades</button>
+            </form>
+
+
+            <form class="mx-2" action="/admin/listadoPorSexo" method="get">
+                <button type="submit" class="bg-violet-500 table-auto w-full text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Ver grafico Por Sexo</button>
+            </form>
+        </table>
+    </div>
 </div>
+
 
 
 
