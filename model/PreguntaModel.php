@@ -7,10 +7,25 @@ class PreguntaModel {
         $this->database = $database;
     }
 
-    public function agregarPreguntaSugerida($preguntaSugerida){
-        $sql = "INSERT INTO `preguntassugeridas`(`descripcion`) VALUES ('{$preguntaSugerida}')";
+    public function agregarPreguntaSugerida($datos){
+        $sql = "INSERT INTO `preguntassugeridas` (`descripcion`) VALUES ('{$datos['nuevaPreguntaSugerida']}')";
         $this->database->execute($sql);
+        $idPreguntaSugerida = $this->database->lastInsertId();
+        $rtaCorrecta = "INSERT INTO `respuestassugeridas` (`idPreguntaSugerida`, `respuesta`, `esCorrecta`) VALUES ('{$idPreguntaSugerida}', '{$datos['rta1']}', 'true')";
+        $this->database->execute($rtaCorrecta);
+        $rta2 = "INSERT INTO `respuestassugeridas` (`idPreguntaSugerida`, `respuesta`, `esCorrecta`) VALUES ('{$idPreguntaSugerida}', '{$datos['rta2']}', 'false')";
+        $this->database->execute($rta2);
+        if(!empty($datos['rta3'])){
+            $rta3 = "INSERT INTO `respuestassugeridas` (`idPreguntaSugerida`, `respuesta`, `esCorrecta`) VALUES ('{$idPreguntaSugerida}', '{$datos['rta3']}', 'false')";
+            $this->database->execute($rta3);
+        }
+        if(!empty($datos['rta4'])){
+            $rta4 = "INSERT INTO `respuestassugeridas` (`idPreguntaSugerida`, `respuesta`, `esCorrecta`) VALUES ('{$idPreguntaSugerida}', '{$datos['rta4']}', 'false')";
+            $this->database->execute($rta4);
+        }
     }
+
+
     public function traerPreguntasSugeridas(){
         $sql = "SELECT * FROM `preguntassugeridas`";
         return $this->database->query($sql);
@@ -24,13 +39,31 @@ class PreguntaModel {
         $sql = "SELECT * FROM `preguntas`";
         return $this->database->query($sql);
     }
+    public function traerRespuestasDePreguntaSugerida($idPregunta){
+        $sql3 = "SELECT * FROM `respuestassugeridas` WHERE idPreguntaSugerida = {$idPregunta}";
+        return $this->database->query($sql3);
+    }
 
-    public function darDeAltaPreguntaSugerida($idPregunta, $idCategoria){
+    public function darDeAltaPreguntaSugerida($idPregunta, $idCategoria, $respuestas){
         $sql = "SELECT * FROM `preguntassugeridas` WHERE id = {$idPregunta}";
         $datos = $this->database->queryUnSoloRegistro($sql);
         $pregunta = $datos['descripcion'];
         $sql2 = "INSERT INTO `preguntas`(`pregunta`, `id_categoria`) VALUES ('{$pregunta}', {$idCategoria})";
         $this->database->execute($sql2);
+        $idPreguntaNueva = $this->database->lastInsertId();
+
+        $rtaCorrecta = "INSERT INTO `respuestas` (`idPregunta`, `respuesta`, `esCorrecta`) VALUES ('{$idPreguntaNueva}', '{$respuestas[0]['respuesta']}', 'true')";
+        $this->database->execute($rtaCorrecta);
+        $rta2 = "INSERT INTO `respuestas` (`idPregunta`, `respuesta`, `esCorrecta`) VALUES ('{$idPreguntaNueva}', '{$respuestas[1]['respuesta']}', 'false')";
+        $this->database->execute($rta2);
+        if(!empty($respuestas[2])){
+            $rta3 = "INSERT INTO `respuestas` (`idPregunta`, `respuesta`, `esCorrecta`) VALUES ('{$idPreguntaNueva}', '{$respuestas[2]['respuesta']}', 'false')";
+            $this->database->execute($rta3);
+        }
+        if(!empty($respuestas[3])){
+            $rta4 = "INSERT INTO `respuestas` (`idPregunta`, `respuesta`, `esCorrecta`) VALUES ('{$idPreguntaNueva}', '{$respuestas[3]['respuesta']}', 'false')";
+            $this->database->execute($rta4);
+        }
         header('location: /pregunta/editorList?preguntaSugeridaAprobada=true');
     }
 

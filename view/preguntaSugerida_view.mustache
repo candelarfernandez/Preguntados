@@ -1,17 +1,58 @@
 <div class="bg-violet-100 flex items-center justify-center h-screen">
+<a href="/lobby/list" class="absolute top-4 right-4">
+            <button class="bg-violet-700 rounded-full p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+            </button>
+        </a>
     <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
       <div class="text-center">
             <h1 class="text-2xl font-semibold">Sugerir Pregunta</h1>
         </div>
 
     
-<form class="mt-6 px-4" action="/pregunta/sugerirPregunta" method="post" enctype="multipart/form-data">
+<!--<form class="mt-6 px-4" action="/pregunta/sugerirPregunta" method="post" enctype="multipart/form-data">
     <div class="px-4">
         <label for="preguntaSugerida" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Escriba su pregunta:</label>
         <textarea id="preguntaSugerida" name="preguntaSugerida" class="m-auto" required></textarea>
         <input type="submit" value="Enviar" class="flex mt-4 bg-violet-500 text-white py-2 px-4 rounded-md hover:bg-violet-600 m-auto">    
     </div>
-</form>
+</form>-->
+
+      <form action="/pregunta/sugerirPregunta" method="POST">
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="nuevaPreguntaSugerida">Pregunta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nuevaPreguntaSugerida" name="datos[nuevaPreguntaSugerida]" required>
+                </div>
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rta1">Respuesta Correcta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rta1" name="datos[rta1]" required>
+                </div>
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rta2">Respuesta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rta2" name="datos[rta2]" required>
+                </div>
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rta3">Respuesta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rta3" name="datos[rta3]">
+                </div>
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rta4">Respuesta:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rta4" name="datos[rta4]">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="idCategoria">Categoría:</label>
+                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idCategoria" name="datos[idCategoria]">
+                        <option value="1">Programacion</option>
+                        <option value="2">Historia</option>
+                        <option value="3">Deportes</option>
+                        <option value="4">Espectaculos</option>
+                        <option value="5">Ciencias Naturales</option>
+                    </select>
+                </div>
+                <input type="submit" value="Enviar" class="flex mt-4 bg-violet-500 text-white py-2 px-4 rounded-md hover:bg-violet-600 m-auto">   
+            </form>
 
     </div>
 </div>
