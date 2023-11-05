@@ -25,6 +25,14 @@ class AdminController
          $this->renderer->render('PreguntasListado', $preguntasDelJuego);
      }
 
+     public function traerPreguntasCreadas(){
+        $preguntasSug = $this->model->traerPreguntasSugeridas();
+        $preguntasSugeridas = [
+            'preguntasSugeridas' => $preguntasSug
+        ];
+        $this->renderer->render('preguntasSugeridasListado', $preguntasSugeridas);
+     }
+
 
     public function traerJugadores() {
         $jugadores = $this->model->traerTodosLosJugadores();

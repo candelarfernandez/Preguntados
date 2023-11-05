@@ -25,6 +25,10 @@ class AdminModel
         $sql = "SELECT * FROM preguntas";
         return $this->database->query($sql);
     }
+    public function traerPreguntasSugeridas(){
+        $sql = "SELECT * FROM preguntassugeridas";
+        return $this->database->query($sql);
+    }
 
     public function obtenerUsuariosPorPais()
     {
