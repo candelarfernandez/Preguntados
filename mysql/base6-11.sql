@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3307
--- Tiempo de generación: 05-11-2023 a las 20:52:22
+-- Tiempo de generación: 06-11-2023 a las 13:52:26
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -407,18 +407,19 @@ CREATE TABLE `usuarios` (
   `cantRespuestas` int(11) NOT NULL,
   `cantRespuestasCorrectas` int(11) NOT NULL,
   `idRol` int(11) NOT NULL DEFAULT 1,
-  `nivel` varchar(255) NOT NULL DEFAULT 'principiante'
+  `nivel` varchar(255) NOT NULL DEFAULT 'principiante',
+  `fechaRegistro` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `estaActiva`, `nombreUsuario`, `foto`, `codigo`, `puntajeTotal`, `cantRespuestas`, `cantRespuestasCorrectas`, `idRol`, `nivel`) VALUES
-(27, 'Candela Fernandez', '2023-10-01', 'Femenino', 'Argentina', 'Morón', 'cande.fdz12@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '668899', 13, 0, 0, 1, 'principiante'),
-(31, 'Maria Vazquez', '2023-10-04', 'Femenino', 'Argentina', 'Morón', 'test@test11.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '275318', 0, 0, 0, 2, 'principiante'),
-(32, 'Florencia Micaela', '2004-06-16', 'Femenino', 'Argentina', 'Morón', 'test@test2.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'florenciax', './public/img/Horarios .jpg', '296924', 0, 0, 0, 3, 'principiante'),
-(33, 'Leo', '2000-09-02', 'Masculino', 'Argentina', 'Buenos Aires', 'vilteleonardo92@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'LeoV', './public/img/hipo-perritos-Blog04.jpg', '549467', 82, 218, 29, 1, 'principiante');
+INSERT INTO `usuarios` (`id`, `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `estaActiva`, `nombreUsuario`, `foto`, `codigo`, `puntajeTotal`, `cantRespuestas`, `cantRespuestasCorrectas`, `idRol`, `nivel`, `fechaRegistro`) VALUES
+(27, 'Candela Fernandez', '2023-10-01', 'Femenino', 'Argentina', 'Morón', 'cande.fdz12@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '668899', 13, 0, 0, 1, 'principiante', '2023-10-05 09:32:57'),
+(31, 'Maria Vazquez', '2023-10-04', 'Femenino', 'Argentina', 'Morón', 'test@test11.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '275318', 0, 0, 0, 2, 'principiante', '2023-10-12 09:32:57'),
+(32, 'Florencia Micaela', '2004-06-16', 'Femenino', 'Argentina', 'Morón', 'test@test2.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'florenciax', './public/img/Horarios .jpg', '296924', 0, 0, 0, 3, 'principiante', '2023-11-05 09:32:57'),
+(33, 'Leo', '2000-09-02', 'Masculino', 'Argentina', 'Buenos Aires', 'vilteleonardo92@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'LeoV', './public/img/hipo-perritos-Blog04.jpg', '549467', 82, 218, 29, 1, 'principiante', '2023-11-06 09:32:57');
 
 --
 -- Índices para tablas volcadas
