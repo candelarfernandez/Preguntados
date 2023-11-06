@@ -28,6 +28,7 @@ include_once('controller/AdminController.php');
 //Third-party
 include_once('third-party/mustache/src/Mustache/Autoloader.php');
 include_once('third-party/mustache/src/Mustache/Parser.php');
+include_once('third-party/phpqrcode/qrlib.php');
 
 
 class Configuration {
