@@ -110,7 +110,17 @@ class AdminController
     }
 
     public function respuestasCorrectasPorUsuario(){
-        $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario();
+        
+        $fechaRegistro = $_GET['fechaRegistro']; // Obtén la fecha del formulario
+
+        // Verifica si se proporcionó una fecha y si es válida
+        if (!empty($fechaRegistro) && strtotime($fechaRegistro)) {
+            $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario($fechaRegistro);
+        } else {
+            // Si no se proporcionó una fecha válida, muestra los datos sin filtro
+            $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario();
+        }
+       
 
         $datos_json['respuestasCorrectasPorUsuario'] = $respuestasPorUsuario;
 

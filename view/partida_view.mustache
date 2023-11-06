@@ -1,15 +1,13 @@
 
 <script>
-let tiempoRestante = 10;
+let tiempoRestante = sessionStorage.getItem("tiempoRestante") || 10; // Obtener el valor del tiempo restante de sessionStorage o usar 10 como valor predeterminado
 
 const interval = setInterval(function() {
     tiempoRestante--;
     document.getElementById("tiempo-restante").textContent = tiempoRestante;
 
     if (tiempoRestante <= 0) {
-        clearInterval(interval); 
-        tiempoAgotado = true;
-
+        clearInterval(interval);
         
         fetch('/partida/tiempoAgotado', {
             method: 'POST',
@@ -26,6 +24,11 @@ const interval = setInterval(function() {
         
     }
 }, 1000);
+
+// Al hacer clic en una respuesta
+function guardarTiempoRestante() {
+    sessionStorage.setItem("tiempoRestante", tiempoRestante); // Guardar el tiempo restante en sessionStorage
+}
 </script>
 
 <div class="bg-violet-100 flex items-center justify-center ">

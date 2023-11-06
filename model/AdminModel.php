@@ -64,7 +64,12 @@ class AdminModel
 
         return $this->convertirArrayAJSON($query, $cabecera);
     }
-    public function obtenerRespuestasCorrectasPorUsuario(){
+    public function obtenerRespuestasCorrectasPorUsuario($fechaRegistro = null){
+        $whereClause = '';
+    
+        if (!empty($fechaRegistro)) {
+            $whereClause = "WHERE DATE(fechaRegistro) = DATE('$fechaRegistro')";
+        }
         $consulta = "SELECT nombre, (SUM(cantRespuestasCorrectas) / SUM(cantRespuestas)) * 100 AS porcentajeRespuestasCorrectas FROM usuarios GROUP BY nombre";
 
         $query = $this->database->query($consulta);
