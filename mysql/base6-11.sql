@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 01-11-2023 a las 02:41:49
+-- Servidor: localhost:3307
+-- Tiempo de generación: 06-11-2023 a las 13:52:26
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -118,7 +118,7 @@ INSERT INTO `partida` (`id`, `idUsuario`, `puntaje`, `fecha`) VALUES
 
 CREATE TABLE `preguntas` (
   `pregunta` text NOT NULL,
-  `id` int(10) NOT NULL,
+  `id` int(11) NOT NULL,
   `id_categoria` int(11) DEFAULT 1,
   `reportada` int(11) NOT NULL DEFAULT 0,
   `aciertos` int(11) NOT NULL,
@@ -182,6 +182,13 @@ CREATE TABLE `preguntassugeridas` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `preguntassugeridas`
+--
+
+INSERT INTO `preguntassugeridas` (`id`, `descripcion`) VALUES
+(1, 'como estas?');
 
 -- --------------------------------------------------------
 
@@ -337,6 +344,29 @@ INSERT INTO `respuestas` (`id`, `idPregunta`, `respuesta`, `esCorrecta`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `respuestassugeridas`
+--
+
+CREATE TABLE `respuestassugeridas` (
+  `id` int(11) NOT NULL,
+  `idPreguntaSugerida` int(11) NOT NULL,
+  `respuesta` varchar(255) NOT NULL,
+  `esCorrecta` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `respuestassugeridas`
+--
+
+INSERT INTO `respuestassugeridas` (`id`, `idPreguntaSugerida`, `respuesta`, `esCorrecta`) VALUES
+(1, 1, 'bien', 'true'),
+(2, 1, 'mal', 'false'),
+(3, 1, 'mal', 'false'),
+(4, 1, 'mal', 'false');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `rol`
 --
 
@@ -377,18 +407,19 @@ CREATE TABLE `usuarios` (
   `cantRespuestas` int(11) NOT NULL,
   `cantRespuestasCorrectas` int(11) NOT NULL,
   `idRol` int(11) NOT NULL DEFAULT 1,
-  `nivel` varchar(255) NOT NULL DEFAULT 'principiante'
+  `nivel` varchar(255) NOT NULL DEFAULT 'principiante',
+  `fechaRegistro` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `estaActiva`, `nombreUsuario`, `foto`, `codigo`, `puntajeTotal`, `cantRespuestas`, `cantRespuestasCorrectas`, `idRol`, `nivel`) VALUES
-(27, 'Candela Fernandez', '2023-10-01', 'Femenino', 'Argentina', 'Morón', 'cande.fdz12@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '668899', 13, 0, 0, 1, 'principiante'),
-(31, 'Maria Vazquez', '2023-10-04', 'Femenino', 'Argentina', 'Morón', 'test@test11.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '275318', 0, 0, 0, 1, 'principiante'),
-(32, 'Florencia Micaela', '2004-06-16', 'Femenino', 'Argentina', 'Morón', 'test@test2.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'florenciax', './public/img/Horarios .jpg', '296924', 0, 0, 0, 1, 'principiante'),
-(33, 'Leo', '2000-09-02', 'Masculino', 'Argentina', 'Buenos Aires', 'vilteleonardo92@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'LeoV', './public/img/hipo-perritos-Blog04.jpg', '549467', 82, 218, 29, 1, 'principiante');
+INSERT INTO `usuarios` (`id`, `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `estaActiva`, `nombreUsuario`, `foto`, `codigo`, `puntajeTotal`, `cantRespuestas`, `cantRespuestasCorrectas`, `idRol`, `nivel`, `fechaRegistro`) VALUES
+(27, 'Candela Fernandez', '2023-10-01', 'Femenino', 'Argentina', 'Morón', 'cande.fdz12@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '668899', 13, 0, 0, 1, 'principiante', '2023-10-05 09:32:57'),
+(31, 'Maria Vazquez', '2023-10-04', 'Femenino', 'Argentina', 'Morón', 'test@test11.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '275318', 0, 0, 0, 2, 'principiante', '2023-10-12 09:32:57'),
+(32, 'Florencia Micaela', '2004-06-16', 'Femenino', 'Argentina', 'Morón', 'test@test2.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'florenciax', './public/img/Horarios .jpg', '296924', 0, 0, 0, 3, 'principiante', '2023-11-05 09:32:57'),
+(33, 'Leo', '2000-09-02', 'Masculino', 'Argentina', 'Buenos Aires', 'vilteleonardo92@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'LeoV', './public/img/hipo-perritos-Blog04.jpg', '549467', 82, 218, 29, 1, 'principiante', '2023-11-06 09:32:57');
 
 --
 -- Índices para tablas volcadas
@@ -442,6 +473,13 @@ ALTER TABLE `respuestas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `respuestassugeridas`
+--
+ALTER TABLE `respuestassugeridas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idPreguntaSugerida` (`idPreguntaSugerida`);
+
+--
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
@@ -471,6 +509,12 @@ ALTER TABLE `partida`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
+-- AUTO_INCREMENT de la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+
+--
 -- AUTO_INCREMENT de la tabla `preguntasreportadas`
 --
 ALTER TABLE `preguntasreportadas`
@@ -480,13 +524,25 @@ ALTER TABLE `preguntasreportadas`
 -- AUTO_INCREMENT de la tabla `preguntassugeridas`
 --
 ALTER TABLE `preguntassugeridas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntasusadas`
 --
 ALTER TABLE `preguntasusadas`
   MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=376;
+
+--
+-- AUTO_INCREMENT de la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+
+--
+-- AUTO_INCREMENT de la tabla `respuestassugeridas`
+--
+ALTER TABLE `respuestassugeridas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -528,6 +584,12 @@ ALTER TABLE `preguntasreportadas`
 ALTER TABLE `preguntasusadas`
   ADD CONSTRAINT `preguntasusadas_ibfk_1` FOREIGN KEY (`idPregunta`) REFERENCES `preguntas` (`id`),
   ADD CONSTRAINT `preguntasusadas_ibfk_2` FOREIGN KEY (`idPartida`) REFERENCES `partida` (`id`);
+
+--
+-- Filtros para la tabla `respuestassugeridas`
+--
+ALTER TABLE `respuestassugeridas`
+  ADD CONSTRAINT `respuestassugeridas_ibfk_1` FOREIGN KEY (`idPreguntaSugerida`) REFERENCES `preguntassugeridas` (`id`);
 
 --
 -- Filtros para la tabla `usuarios`

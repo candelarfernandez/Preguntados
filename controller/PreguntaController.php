@@ -32,16 +32,17 @@ class PreguntaController {
     }
 
     public function sugerirPregunta(){
-        $preguntaSugerida = $_POST['preguntaSugerida'];
-        $this->model->agregarPreguntaSugerida($preguntaSugerida);
+        $datos = $_POST['datos'];
+        $this->model->agregarPreguntaSugerida($datos);
         header('location: /lobby/list?preguntaSugerida=true');
     }
 
     public function darDeAltaPreguntaSugerida(){
         $pregunta = $_POST['pregunta'];
         $idPregunta = $pregunta['idPreguntaSugerida'];
+        $respuestas = $this->model->traerRespuestasDePreguntaSugerida($idPregunta);
         $idCategoria = $pregunta ['idCategoria'];
-        $this->model->darDeAltaPreguntaSugerida($idPregunta,$idCategoria);
+        $this->model->darDeAltaPreguntaSugerida($idPregunta,$idCategoria, $respuestas);
     }
 
     public function aprobarPreguntaReportada(){

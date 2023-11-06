@@ -1,0 +1,32 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable({{{usuariosPorEdad}}});
+
+            var options = {
+                title: 'Jugadores por países',
+                pieHole: 0.4,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+<div class="bg-white rounded-lg shadow-md p-6 h-full w-3/4 mt-5 mb-40 flex flex-col items-center ml-20">
+<div id="donutchart" style="width: 800px; height: 500px;"></div>
+    </div>
+<a href="/admin/listarPreguntas" class="absolute top-4 left-4">
+    <button class="bg-violet-700 rounded-full p-2 text-white">volver
+        <i class="fas fa-sign-out-alt text-white"></i>
+    </button>
+</a>
+</body>
+</html>
+
+
