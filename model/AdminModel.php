@@ -64,6 +64,15 @@ class AdminModel
 
         return $this->convertirArrayAJSON($query, $cabecera);
     }
+    public function obtenerRespuestasCorrectasPorUsuario(){
+        $consulta = "SELECT nombre, (SUM(cantRespuestasCorrectas) / SUM(cantRespuestas)) * 100 AS porcentajeRespuestasCorrectas FROM usuarios GROUP BY nombre";
+
+        $query = $this->database->query($consulta);
+
+        $cabecera = ['nombre', 'porcentajeRespuestasCorrectas'];
+
+        return $this->convertirArrayAJSON($query, $cabecera);
+    }
 
 
     //Métodos privados

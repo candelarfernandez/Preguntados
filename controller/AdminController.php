@@ -109,5 +109,13 @@ class AdminController
 
     }
 
+    public function respuestasCorrectasPorUsuario(){
+        $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario();
+
+        $datos_json['respuestasCorrectasPorUsuario'] = $respuestasPorUsuario;
+
+        $this->renderer->render('graficoPorRespuestas', $datos_json);
+    }
+
 
 }
