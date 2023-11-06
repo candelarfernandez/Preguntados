@@ -74,6 +74,11 @@ class AdminModel
         return $this->convertirArrayAJSON($query, $cabecera);
     }
 
+    public function obtenerUsuariosNuevos(){
+        $consulta = "SELECT * FROM usuarios WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 3 DAY)";
+        return $this->database->query($consulta);
+    }
+
 
     //Métodos privados
 

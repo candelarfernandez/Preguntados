@@ -117,5 +117,13 @@ class AdminController
         $this->renderer->render('graficoPorRespuestas', $datos_json);
     }
 
+    public function traerUsuariosNuevos(){
+        $usuariosNuevos = $this->model->obtenerUsuariosNuevos();
+        $nuevosUsuarios = [
+            'usuariosNuevos' => $usuariosNuevos
+        ];
+        $this->renderer->render('listadoUsuariosNuevos', $nuevosUsuarios);
+    }
+
 
 }
