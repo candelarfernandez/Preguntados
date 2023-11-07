@@ -44,6 +44,11 @@ class PreguntaModel {
         return $this->database->query($sql3);
     }
 
+    public function traerCategorias(){
+        $sql = "SELECT * FROM `categorias`";
+        return $this->database->query($sql);
+    }
+
     public function darDeAltaPreguntaSugerida($idPregunta, $idCategoria, $respuestas){
         $sql = "SELECT * FROM `preguntassugeridas` WHERE id = {$idPregunta}";
         $datos = $this->database->queryUnSoloRegistro($sql);
@@ -117,5 +122,61 @@ class PreguntaModel {
         header('location: /pregunta/editorList?preguntaModificada=true');
     }
     
+    public function agregarCategoria($datos){
+        var_dump($datos);
+        $datos['foto'] = $_FILES['foto'];
+        $nombre = $datos["datos"]["nombre"];
+
+        $urlFoto = $this->subirFotoCategoria($datos['foto']);
+
+        $datos['foto'] = $urlFoto;
+
+        if($urlFoto !== false){
     
+            $sql = "INSERT INTO `categorias` (`nombre_categoria`, `urlImagen`) VALUES ('{$nombre}', '{$datos['foto']}')";
+            $this->database->execute($sql);
+    
+            header('location: /pregunta/editorList?categoriaAgregada=true');
+        }
+        else{
+            header('location: /pregunta/editorList?errorAlAgregarCategoria=true');
+        }
+
+    }
+
+    public function eliminarCategoria($idCategoria){
+        $sqlCheck = "SELECT COUNT(*) FROM preguntas WHERE id_categoria = {$idCategoria}";
+        $result = $this->database->query($sqlCheck);
+        
+        if ($result == 0) {
+            $sqlDelete = "DELETE FROM `categorias` WHERE id_categoria = {$idCategoria}";
+            $this->database->execute($sqlDelete);
+            header('location: /pregunta/editorList?categoriaEliminada=true');
+        } else {
+            header('location: /pregunta/editorList?errorAlEliminar=true');
+        }
+    }
+
+    public function modificarCategoria($datos){
+        $idCategoriaModificada = $datos['idCategoria'];
+        $nuevoNombre = $datos['nombre'];
+        $sql = "UPDATE `categorias` SET `nombre_categoria` = '$nuevoNombre' WHERE `id_categoria` = $idCategoriaModificada";
+        $this->database->execute($sql);
+        header('location: /pregunta/editorList?categoriaModificada=true');
+    }
+    
+    private function subirFotoCategoria($foto){
+
+        $archivo_temporal = $foto['tmp_name'];
+        $nombre = $foto['name'];
+        $carpeta_destino = "/public/img/";
+
+        if(move_uploaded_file($archivo_temporal, $carpeta_destino.$nombre)){
+            return $carpeta_destino . $nombre;
+        }
+        else{
+            return false;
+        }
+
+    }
 }

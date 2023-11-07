@@ -1,13 +1,17 @@
-<div class="bg-violet-100 flex flex-col items-center">
+<div class="bg-violet-100 h-[4800px]">
+<div class="flex flex-col items-center">
    <a href="/login/cerrarSesion" class="absolute top-4 right-4">
             <button class="bg-violet-700 rounded-full p-2 text-white">Cerrar Sesión
                 <i class="fas fa-sign-out-alt text-white"></i>
             </button>
      </a>
     {{#mostrarpreguntasSugeridas}}
-    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4">
-            <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Sugeridas</h1>
-            <table class="table-auto w-full">
+<div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4 relative">
+    <h1 class="text-2xl font-bold mb-4">
+        Tabla de Preguntas Sugeridas
+        <button id="togglePreguntasSugeridas" onclick="toggleSection('mostrarpreguntasSugeridas')" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#7561db}</style><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg></button>
+    </h1>
+      <table id="mostrarpreguntasSugeridas" class="table-auto w-full hidden">
                 <thead>
                     <tr>
                         <th class="px-4 py-2">PreguntaId</th>
@@ -31,9 +35,11 @@
     {{/mostrarpreguntasSugeridas}}
     
     {{#mostrarPreguntasReportadas}}
-    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4"> 
-        <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Reportadas</h1>
-            <table class="table-auto w-full">
+    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4 relative"> 
+        <h1 class="text-2xl font-bold mb-4">Tabla de Preguntas Reportadas
+                <button id="togglePreguntasReportadas" onclick="toggleSection('mostrarPreguntasReportadas')" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#7561db}</style><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg></button>
+        </h1>
+            <table id="mostrarPreguntasReportadas" class="table-auto w-full hidden">
                 <thead>
                     <tr>
                         <th class="px-4 py-2">PreguntaId</th>
@@ -64,10 +70,12 @@
     </table>
     </div>
     {{/mostrarPreguntasReportadas}}
-    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4 flex flex-col items-center"> 
-    <h1 class="text-2xl font-bold mb-4">Listado de preguntas</h1>
+    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4 flex flex-col items-center relative"> 
+    <h1 class="text-2xl font-bold mb-4">Listado de preguntas
+    <button id="togglePreguntasDelJuego" onclick="toggleSection('preguntasDelJuego')" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#7561db}</style><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg></button>
+    </h1>
         <button class="bg-green-500 text-white px-4 py-2 rounded mb-4" onclick="crearNuevaPregunta()">Nueva Pregunta</button>
-        <table class="table-auto w-full">
+        <table id="preguntasDelJuego" class="table-auto w-full hidden">
             <thead>
                 <tr>
                     <th class="px-4 py-2">PreguntaId</th>
@@ -90,6 +98,38 @@
                     </td>
                 </tr>
             {{/preguntasDelJuego}}
+            </tbody>
+    </table>
+    </div>
+    
+    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4 flex flex-col items-center relative"> 
+    <h1 class="text-2xl font-bold mb-4">Listado de categorías
+    <button id="toggleCategorias" onclick="toggleSection('Categorias')" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#7561db}</style><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg></button>
+    </h1>
+        <button class="bg-green-500 text-white px-4 py-2 rounded mb-4" onclick="crearNuevaCategoria()">Nueva Categoría</button>
+        <table id="Categorias" class="table-auto w-full hidden">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">CategoriaId</th>
+                    <th class="px-4 py-2">Categoria</th>
+                    <th class="px-4 py-2">Modificar</th>
+                    <th class="px-4 py-2">Dar de Baja</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#categoriasDelJuego}}
+                <tr>
+                    <td class="border px-4 py-2">{{id_categoria}}</td>
+                    <td class="border px-4 py-2">{{nombre_categoria}}</td>
+                    <td class="border px-4 py-2">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="openModalCategoria('{{id_categoria}}')">Modificar</button>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <a href="/pregunta/darDeBajaCategoria?id={{id_categoria}}">
+                        <button class="bg-red-500 text-white px-4 py-2 rounded">Dar de Baja</button></a>
+                    </td>
+                </tr>
+            {{/categoriasDelJuego}}
             </tbody>
     </table>
     </div>
@@ -222,6 +262,66 @@
     </div>
 </div>
 
+
+<!-- Modal para laCategoria -->
+<div id="modalNuevaCategoria" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+        <div class="modal-content py-4 text-left px-6">
+            <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold">Crear Categoria</p>
+                <div class="modal-close cursor-pointer z-50" onclick="closeModalNuevaCategoria()">
+                    <svg class="fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M13.415 12l4.293 4.293a1 1 0 0 1-1.414 1.414L12 13.415l-4.293 4.292a1 1 0 1 1-1.414-1.414L10.586 12l-4.293-4.293a1 1 0 0 1 1.414-1.414L12 10.585l4.293-4.292a1 1 0 0 1 1.414 1.414L13.414 12z"/>
+                    </svg>
+                </div>
+            </div>
+            <form action="/pregunta/darDeAltaCategoria" method="post" enctype="multipart/form-data">
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="nuevaPregunta">Nombre de la categoría:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nuevaPregunta" name="datos[nombre]" required>
+                </div>
+                <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rta1">Imagen:</label>
+                <input type="file" id="foto" name="foto" class="w-full p-2 border rounded-md" accept="image/*" required>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para la edición de la categoria -->
+<div id="editarCategoria" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+        <div class="modal-content py-4 text-left px-6">
+            <!-- Encabezado del modal -->
+            <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold">Editar Categoria</p>
+                <div class="modal-close cursor-pointer z-50" onclick="closeModalEditarCategoria()">
+                    <svg class="fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M13.415 12l4.293 4.293a1 1 0 0 1-1.414 1.414L12 13.415l-4.293 4.292a1 1 0 1 1-1.414-1.414L10.586 12l-4.293-4.293a1 1 0 0 1 1.414-1.414L12 10.585l4.293-4.292a1 1 0 0 1 1.414 1.414L13.414 12z"/>
+                    </svg>
+                </div>
+            </div>
+             <form action="/pregunta/modificarCategoria" method="POST">
+            <!-- Contenido del modal (formulario) -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">ID Categoria:</label>
+                <p id="idCategoriaEdicion" class="py-2 px-3 text-gray-700">{{idCategoriaEdicion}}</p>
+                  <input type="hidden" id="idCategoriaModificada" name="datos[idCategoria]">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcion">Descripción:</label>
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="descripcion" name="datos[nombre]">
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
     // Modal para editar pregunta existente
     function openModal(id) {
@@ -234,6 +334,19 @@
 
     function closeModal() {
         document.getElementById("myModal").classList.add("hidden");
+    }
+
+    // Modal para editar categoria existente
+    function openModalCategoria(id) {
+        var idCategoriaElement = document.getElementById("idCategoriaEdicion");
+        idCategoriaElement.textContent = id;
+        var idCategoria = id;
+        document.getElementById("idCategoriaModificada").value = idCategoria;
+        document.getElementById("editarCategoria").classList.remove("hidden");
+    }
+
+    function closeModalEditarCategoria() {
+        document.getElementById("editarCategoria").classList.add("hidden");
     }
 
      // Modal para elegir categoria de pregunta sugerida 
@@ -255,4 +368,23 @@
     function closeModalNuevaPregunta() {
     document.getElementById("modalNuevaPregunta").classList.add("hidden");
     }
+
+    //Modal para crear nueva Categoria
+    function crearNuevaCategoria() {
+    document.getElementById("modalNuevaCategoria").classList.remove("hidden");
+    }
+
+    function closeModalNuevaCategoria() {
+    document.getElementById("modalNuevaCategoria").classList.add("hidden");
+    }
+
+    function toggleSection(sectionId) {
+        var section = document.getElementById(sectionId);
+        if (section.classList.contains('hidden')) {
+            section.classList.remove('hidden');
+        } else {
+            section.classList.add('hidden');
+        }
+    }
+
 </script>
