@@ -30,6 +30,10 @@ class PreguntaController {
         if(isset($preguntasReportadas)){
             $data['mostrarPreguntasReportadas'] = true;
         }
+        $data += $this->renderizarMensajes();
+        if($this->renderizarMensajes() != null){
+            $data['mostrarMensajes'] = true;
+        }
         $this->renderer->render('editor', $data);
     }
 
@@ -93,5 +97,43 @@ class PreguntaController {
     public function modificarCategoria(){
         $datos = $_POST['datos'];
         $this->model->modificarCategoria($datos);
+    }
+
+    private function renderizarMensajes(){
+        $data = [];
+        if (isset($_GET['preguntaSugeridaAprobada'])) {
+            $data['preguntaSugeridaAprobada'] = true;
+        }
+        if (isset($_GET['preguntaReportada'])) {
+            $data['preguntaReportada'] = true;
+        }
+        if (isset($_GET['preguntaReportadaEliminada'])) {
+            $data['preguntaReportadaEliminada'] = true;
+        }
+        if (isset($_GET['preguntaEliminada'])) {
+            $data['preguntaEliminada'] = true;
+        }
+        if (isset($_GET['preguntaAgregada'])) {
+            $data['preguntaAgregada'] = true;
+        }
+        if (isset($_GET['preguntaModificada'])) {
+            $data['preguntaModificada'] = true;
+        }
+        if (isset($_GET['categoriaAgregada'])) {
+            $data['categoriaAgregada'] = true;
+        }
+        if (isset($_GET['errorAlAgregarCategoria'])) {
+            $data['errorAlAgregarCategoria'] = true;
+        }
+        if (isset($_GET['categoriaEliminada'])) {
+            $data['categoriaEliminada'] = true;
+        }
+        if (isset($_GET['errorAlEliminar'])) {
+            $data['errorAlEliminar'] = true;
+        }
+        if (isset($_GET['categoriaModificada'])) {
+            $data['categoriaModificada'] = true;
+        }
+        return $data;
     }
 }

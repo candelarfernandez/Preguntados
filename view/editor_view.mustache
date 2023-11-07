@@ -1,4 +1,75 @@
-<div class="bg-violet-100 h-[4800px]">
+<div class="bg-violet-100 h-[4800px] py-8">
+{{! Mensajes }}
+{{#mostrarMensajes}}
+<div class="relative">
+{{#preguntaSugeridaAprobada}}
+    <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> La pregunta fue dada de alta con éxito. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/preguntaSugeridaAprobada}}
+{{#preguntaReportada}}
+    <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> La pregunta continua siendo parte del juego. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/preguntaReportada}}
+{{#preguntaReportadaEliminada}}
+    <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> La pregunta fue retirada del juego. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/preguntaReportadaEliminada}}
+{{#preguntaEliminada}}
+    <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> Has eliminado la pregunta. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/preguntaEliminada}}
+{{#preguntaAgregada}}
+    <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> Pregunta agregada con éxito. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/preguntaAgregada}}
+{{#preguntaModificada}}
+    <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> Pregunta modificada con éxito. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/preguntaModificada}}
+{{#categoriaAgregada}}
+    <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> Categoria agregada con éxito. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/categoriaAgregada}}
+{{#categoriaModificada}}
+    <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> Categoria modificada con éxito. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/categoriaModificada}}
+{{#categoriaEliminada}}
+    <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> Categoria eliminada con éxito. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/categoriaEliminada}}
+{{#errorAlAgregarCategoria}}
+    <div class="bg-red-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> No pudimos agregar la categoría :( Prueba más tarde. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/errorAlAgregarCategoria}}
+{{#errorAlEliminar}}
+    <div class="bg-red-400 rounded-md py-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+        <p class="text-white font-medium text-center p-4"> No puedes eliminar categorías que tengan preguntas relacionadas.</p>
+        <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+    </div>
+{{/errorAlEliminar}}
+</div>
+{{/mostrarMensajes}}
 <div class="flex flex-col items-center">
    <a href="/login/cerrarSesion" class="absolute top-4 right-4">
             <button class="bg-violet-700 rounded-full p-2 text-white">Cerrar Sesión
@@ -384,6 +455,15 @@
             section.classList.remove('hidden');
         } else {
             section.classList.add('hidden');
+        }
+    }
+
+    function toggleMensaje() {
+        var mensaje = document.querySelector('.mensaje');
+        if (mensaje.classList.contains('hidden')) {
+            mensaje.classList.remove('hidden');
+        } else {
+            mensaje.classList.add('hidden');
         }
     }
 
