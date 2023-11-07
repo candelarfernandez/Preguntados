@@ -28,11 +28,9 @@ class PartidaController {
        
         if (!isset($_SESSION['preguntaActual'])) {
           
-          
             $datosPregunta = $this->model->traerDatosPreguntas($idPartid, $idUsuario);
             $datosPregunta['mostrarImagen'] = true;
             $_SESSION['preguntaActual'] = $datosPregunta; 
-       
         } else {
             
             $datosPregunta = $_SESSION['preguntaActual'];
@@ -59,6 +57,7 @@ class PartidaController {
             $alertas['mensaje'] = true;
             $alertas['seguirJugando'] = true;
             $alertas['puntaje'] = $_SESSION['puntaje'];
+            $alertas['reportar'] = false;
             unset($_SESSION['preguntaActual']);
             $this->renderer->render('partida', $alertas);
            

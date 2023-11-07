@@ -31,7 +31,7 @@ function guardarTiempoRestante() {
 }
 </script>
 
-<div class="bg-violet-100 flex items-center justify-center ">
+<div class="bg-violet-100 flex items-center justify-center h-screen" style="background-color:{{categoria}}">
 <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
 
         {{#mostrarImagen}}
@@ -58,12 +58,13 @@ function guardarTiempoRestante() {
                 <input type="hidden" name="respuesta" value="{{respuesta}}">
             </div>
         </form>
-    {{/respuestas}}  
+    {{/respuestas}}
+    {{#reportar}}  
     <form action="/partida/reportarPregunta" method="get">
-    <button type="submit" id="reportar" name="reportar">Reportar</button> 
+    <button class="flex m-auto bg-orange-500 my-4 text-white py-2 px-4 rounded-md hover:bg-orange-600" type="submit" id="reportar" name="reportar">Reportar</button> 
      <input type="hidden" id="idPregunta" name="idPregunta" value="{{pregunta.id}}">
     </form>
-  
+   {{/reportar}}  
   
     {{#seguirJugando}}
             <img src="\public\img\correcto.png" alt="Ganaste" class="w-40 mx-auto mb-4">
@@ -73,12 +74,12 @@ function guardarTiempoRestante() {
             </div>        
             {{/mensaje}}
             <form class="mt-6" action="/partida/jugar" method="get" >
-            <div class="bg-yellow-500 my-8 text-white py-2 px-4 rounded-md hover:bg-yellow-600">
-                <button type="submit" class="flex text-white font-medium text-center">Siguiente Pregunta</button>
+            <div>
+                <button type="submit" class="flex text-white font-medium text-center mx-auto bg-yellow-500 my-8 text-white py-2 px-4 rounded-md hover:bg-yellow-600">Seguir jugando</button>
             </div>
             </form>
             <div>
-               <p>El puntaje es {{puntaje}}</p>
+               <p class="text-purple-400 text-center">Puntaje: <span class="font-bold"> {{puntaje}}</span></p>
             </div>
     {{/seguirJugando}}
 

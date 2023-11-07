@@ -14,16 +14,15 @@ class PartidaModel {
 
         $error = false;
         $maxAttempts = 10;
-        var_dump($maxAttempts);
         $attempts = 0;
 
         do {
             $pregunta = $this->traerPreguntaAleatoria($idUsuario);
-            $estaUsadaLapregunta = $this->ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($idPartid, $pregunta["id"]);
-            $attempts++;
-            if ($attempts >= $maxAttempts) {
-                $error = true;
-                break;
+                $estaUsadaLapregunta = $this->ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($idPartid, $pregunta["id"]);
+                $attempts++;
+                if ($attempts >= $maxAttempts) {
+                    $error = true;
+                    break;
             }
         }while (($estaUsadaLapregunta));
 
@@ -32,10 +31,11 @@ class PartidaModel {
         $this->actualizarPreguntasEntregadasAlUsuario($idUsuario);
         $this->actualizarAparicionesDeLaPregunta($pregunta['id']);
         $this->calcularDificultadPregunta($pregunta["id"]);
+        $categoria = $this->colorCategoria($pregunta["id_categoria"]);
         return $datosPregunta =[
             'pregunta'=> $pregunta,
             'respuestas'=>$respuestas,
-            'error'  => $error
+            'categoria' => $categoria
         ];
     }
 
@@ -86,16 +86,21 @@ class PartidaModel {
     private function traerPreguntaAleatoria($idUsuario) {
         $nivel = $this->consultarNivelUsuario($idUsuario);
         $sql = $this->traerPreguntasPorNivel($nivel);
-
+    
         $listadoPreguntas = $this->database->query($sql);
+        
+        if (empty($listadoPreguntas)) {
+            return false;
+        }
+        
         $numAleatorio = rand(0, sizeof($listadoPreguntas) - 1);
         $pregunta = $listadoPreguntas[$numAleatorio];
-
-        $sqlCategoria = "SELECT c.nombre_categoria, c.urlImagen FROM categorias c WHERE c.id_categoria = '{$pregunta['id_categoria']}'";   
+    
+        $sqlCategoria = "SELECT * FROM categorias c WHERE c.id_categoria = '{$pregunta['id_categoria']}'";   
         $categoria = $this->database->queryUnSoloRegistro($sqlCategoria);
     
         $pregunta['categoria'] = $categoria;
-        
+    
         return $pregunta;
     }
 
@@ -257,6 +262,35 @@ class PartidaModel {
                 break;
         }
     return $sql;
+    }
+
+    private function colorCategoria($idCategoria){
+        $color = "";
+
+        switch($idCategoria){
+            case 1: $color = "#FCA5A5";
+                break;
+            case 2: $color = "#FDBA74";
+                break;
+            case 3: $color = "#FCD34D";
+                break;
+            case 4: $color = "#C4B5FD";
+                break;
+            case 5: $color = "#BEF264";
+                break;
+            case 6: $color = "#67E8F9";
+                break;
+            case 7: $color = "#A5B4FC"; 
+                break;
+            case 8: $color = "#D8B4FE";
+                break;
+            case 9: $color = "#F9A8D4";
+                break;
+            case 10: $color = "#5EEAD4";
+                break;
+        }
+
+        return $color;
     }
 
 }
