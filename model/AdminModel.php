@@ -47,7 +47,7 @@ class AdminModel
 
         $query = $this->database->query($consulta);
 
-        $cabecera = ['sexo', 'Cantidad'];
+        $cabecera = ['Sexo', 'Cantidad'];
 
         return $this->convertirArrayAJSON($query, $cabecera);
     }
