@@ -93,9 +93,22 @@ class LoginModel {
         }
     }
 
-    public function verificarRol($mail){
+    public function verificarRol($mail) {
         $sql = "SELECT idRol FROM `usuarios` WHERE mail = '{$mail}';";
-        return $this->database->queryUnSoloRegistro($sql);
+        $idRol = $this->database->queryUnSoloRegistro($sql);
+    
+            switch($idRol["idRol"]){
+                case '1':
+                    header('location: /lobby/list');
+                    exit();
+                case '2':
+                    header('location: /admin/list');
+                    exit();
+                case '3':
+                    header('location: /pregunta/editorList');
+                    exit();
+            
+                }
     }
 
 

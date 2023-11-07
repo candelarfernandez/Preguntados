@@ -41,22 +41,18 @@ class LoginController {
                 $email = $datos['mail'];
                 $usuarioId = $this->model->traerIdConMail($email);
                 $_SESSION['usuarioId'] =  $usuarioId;
-                $idRol = $this->model->verificarRol($email);
-            
-                switch($idRol["idRol"]){
-                case '1':
-                    header('location: /lobby/list');
+
+                if (isset($_SESSION['redirect_url'])) {
+                    $redirectUrl = $_SESSION['redirect_url'];
+                    unset($_SESSION['redirect_url']); 
+                    header('location: ' . $redirectUrl);
                     exit();
-                case '2':
-                    header('location: /admin/list');
-                    exit();
-                case '3':
-                    header('location: /pregunta/editorList');
-                    exit();
+                }else{
+                    $this->model->verificarRol($email);
                 }
             } else{
                 $this->renderer->render("login", $errores);
             }
         }
     }
-}
+    }

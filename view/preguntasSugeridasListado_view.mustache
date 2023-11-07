@@ -1,0 +1,35 @@
+
+<div class="bg-violet-100 flex flex-col items-center">
+    <a href="/login/cerrarSesion" class="absolute top-4 right-4">
+        <button class="bg-violet-700 rounded-full p-2 text-white">Cerrar Sesión
+            <i class="fas fa-sign-out-alt text-white"></i>
+        </button>
+    </a>
+    <a href="/admin/list" class="absolute top-4 left-4">
+        <button class="bg-violet-700 rounded-full p-2 text-white">volver
+            <i class="fas fa-sign-out-alt text-white"></i>
+        </button>
+    </a>
+
+    <div class="bg-white rounded-lg shadow-md p-6 w-3/4 mt-4 flex flex-col items-center">
+        <h1 class="text-2xl font-bold mb-4">Listado de preguntas</h1>
+        <table class="table-auto w-full">
+            <thead>
+            <tr>
+                <th class="px-4 py-2">PreguntaId</th>
+                <th class="px-4 py-2">Pregunta</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {{#preguntasSugeridas}}
+                <tr>
+                    <td class="border px-4 py-2">{{id}}</td>
+                    <td class="border px-4 py-2">{{descripcion}}</td>
+
+                </tr>
+            {{/preguntasSugeridas}}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -26,4 +26,23 @@ class LobbyModel {
             $posicion++;
         }
     }
+
+    public function generarQR($id)
+    {
+        $dir = 'public/qrs/';
+
+        if (!file_exists($dir)) {
+            mkdir($dir);
+        }
+        
+        $filename = $dir . $id . '.png';
+
+        if (!file_exists($filename)) {
+            $size = 9;
+            $level = 'M';
+            $frameSize = 1;
+            $content = "localhost/ranking/verUsuario&id=" . $id;
+            QRcode::png($content, $filename, $level, $size, $frameSize);
+        }
+    }
 }

@@ -21,7 +21,9 @@ class RankingController {
     }
 
     public function verUsuario() {
-        IF($_SESSION['usuario'] == null){
+        if ($_SESSION['usuario'] == null) {
+            $urlOriginal = $_SERVER['REQUEST_URI'];  
+            $_SESSION['redirect_url'] = $urlOriginal; 
             header('location: /login/list');
             exit();
         }

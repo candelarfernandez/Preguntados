@@ -17,10 +17,12 @@ class PreguntaController {
         $preguntasSugeridas = $this->model->traerPreguntasSugeridas();
         $preguntasReportadas = $this->model->traerPreguntasReportadas();
         $preguntasDelJuego = $this->model->traerPreguntas();
+        $categoriasDelJuego = $this->model->traerCategorias();
         $data = [
             'preguntasSugeridas' => $preguntasSugeridas,
             'preguntasReportadas' => $preguntasReportadas,
-            'preguntasDelJuego' => $preguntasDelJuego
+            'preguntasDelJuego' => $preguntasDelJuego,
+            'categoriasDelJuego' => $categoriasDelJuego
         ];
         if(isset($preguntasSugeridas)){
             $data['mostrarpreguntasSugeridas'] = true;
@@ -31,18 +33,23 @@ class PreguntaController {
         $this->renderer->render('editor', $data);
     }
 
+    //PREGUNTAS SUGERIDAS
+
     public function sugerirPregunta(){
-        $preguntaSugerida = $_POST['preguntaSugerida'];
-        $this->model->agregarPreguntaSugerida($preguntaSugerida);
+        $datos = $_POST['datos'];
+        $this->model->agregarPreguntaSugerida($datos);
         header('location: /lobby/list?preguntaSugerida=true');
     }
 
     public function darDeAltaPreguntaSugerida(){
         $pregunta = $_POST['pregunta'];
         $idPregunta = $pregunta['idPreguntaSugerida'];
+        $respuestas = $this->model->traerRespuestasDePreguntaSugerida($idPregunta);
         $idCategoria = $pregunta ['idCategoria'];
-        $this->model->darDeAltaPreguntaSugerida($idPregunta,$idCategoria);
+        $this->model->darDeAltaPreguntaSugerida($idPregunta,$idCategoria, $respuestas);
     }
+
+    //PREGUNTAS REPORTADAS
 
     public function aprobarPreguntaReportada(){
         $idPregunta = $_GET['id'];
@@ -53,6 +60,8 @@ class PreguntaController {
         $idPregunta = $_GET['id'];
         $this->model->eliminarPreguntaReportada($idPregunta);
     }
+
+    //PREGUNTAS
 
     public function darDeBajaPregunta(){
         $idPregunta = $_GET['id'];
@@ -66,5 +75,23 @@ class PreguntaController {
     public function modificarPregunta(){
         $datos = $_POST['datos'];
         $this->model->modificarPregunta($datos);
+    }
+
+    //CATEGORIAS
+
+    public function darDeAltaCategoria(){
+        $datos = $_POST;
+        $datos['foto'] = $_FILES['foto'];
+        $this->model->agregarCategoria($datos);
+    }
+
+    public function darDeBajaCategoria(){
+        $idCategoria = $_GET['id'];
+        $this->model->eliminarCategoria($idCategoria);
+    }
+
+    public function modificarCategoria(){
+        $datos = $_POST['datos'];
+        $this->model->modificarCategoria($datos);
     }
 }

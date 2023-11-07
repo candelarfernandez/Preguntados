@@ -1,0 +1,37 @@
+<html>
+<head>
+ 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable({{{respuestasCorrectasPorUsuario}}});
+
+            var options = {
+                title: 'Respuestas respondidas por usuario',
+                pieHole: 0.4,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <select name="fechaRegistro" class="rounded-md">
+        <option value="">Selecciona una fecha de registro</option>
+        
+            <option value="<?php echo $usuario['fechaRegistro']; ?>"><?php echo $usuario['fechaRegistro']; ?></option>
+        
+    </select>
+</head>
+<body>
+<div class="bg-white rounded-lg shadow-md p-6 h-full w-3/4 mt-5 mb-40 flex flex-col items-center ml-20">
+<div id="donutchart" style="width: 800px; height: 500px;"></div>
+    </div>
+<a href="/admin/list" class="absolute top-4 left-4">
+    <button class="bg-violet-700 rounded-full p-2 text-white">volver
+        <i class="fas fa-sign-out-alt text-white"></i>
+    </button>
+</a>
+</body>
+</html>

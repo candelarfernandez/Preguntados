@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 01-11-2023 a las 02:41:49
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 06-11-2023 a las 20:03:02
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -108,7 +108,13 @@ INSERT INTO `partida` (`id`, `idUsuario`, `puntaje`, `fecha`) VALUES
 (75, 33, 2, '2023-10-31'),
 (76, 33, 5, '2023-10-31'),
 (77, 33, 4, '2023-10-31'),
-(78, 33, 2, '2023-10-31');
+(78, 33, 2, '2023-10-31'),
+(79, 34, 0, '2023-11-06'),
+(80, 34, 0, '2023-11-06'),
+(81, 34, 0, '2023-11-06'),
+(82, 34, 0, '2023-11-06'),
+(83, 34, 1, '2023-11-06'),
+(84, 34, 0, '2023-11-06');
 
 -- --------------------------------------------------------
 
@@ -118,7 +124,7 @@ INSERT INTO `partida` (`id`, `idUsuario`, `puntaje`, `fecha`) VALUES
 
 CREATE TABLE `preguntas` (
   `pregunta` text NOT NULL,
-  `id` int(10) NOT NULL,
+  `id` int(11) NOT NULL,
   `id_categoria` int(11) DEFAULT 1,
   `reportada` int(11) NOT NULL DEFAULT 0,
   `aciertos` int(11) NOT NULL,
@@ -137,8 +143,8 @@ INSERT INTO `preguntas` (`pregunta`, `id`, `id_categoria`, `reportada`, `acierto
 ('El concepto de acoplamiento refiere a:', 4, 1, 0, 2, 83, 3),
 ('Como concepto general podemos decir que a menos acoplamiento mejor software', 5, 1, 1, 1, 21, 3),
 ('En software se entiende por patr?n de dise?o a:', 6, 1, 1, 15, 223, 3),
-('El patr?n MVC se utiliza mucho en aplicaciones web porque:', 7, 1, 1, 38, 61, 1),
-('En un modelo MVC el que recibe normalmente la petici?n del cliente es:', 8, 1, 1, 18, 21, 1),
+('El patr?n MVC se utiliza mucho en aplicaciones web porque:', 7, 1, 1, 39, 62, 1),
+('En un modelo MVC el que recibe normalmente la petici?n del cliente es:', 8, 1, 1, 18, 24, 1),
 ('El modelo en un esquema MVC es el encargado de almacenar y ejecutar la l?gica del negocio', 9, 1, 0, 5, 5, 0),
 ('Uno de los objetivos del modelo MVC es separar en la aplicaci?n el modelo de negocios de las interfaces de usuario', 10, 1, 1, 2, 2, 0),
 ('El enrutador en un modelo MVC es el encargado de ejecutar las operaciones de acceso a la base de datos', 11, 1, 0, 1, 2, 0),
@@ -183,6 +189,13 @@ CREATE TABLE `preguntassugeridas` (
   `descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `preguntassugeridas`
+--
+
+INSERT INTO `preguntassugeridas` (`id`, `descripcion`) VALUES
+(1, 'como estas?');
+
 -- --------------------------------------------------------
 
 --
@@ -210,7 +223,11 @@ INSERT INTO `preguntasusadas` (`id`, `idPregunta`, `idPartida`) VALUES
 (372, 8, 77),
 (373, 7, 77),
 (374, 7, 78),
-(375, 8, 78);
+(375, 8, 78),
+(376, 8, 79),
+(377, 7, 83),
+(378, 8, 83),
+(379, 8, 84);
 
 -- --------------------------------------------------------
 
@@ -337,6 +354,29 @@ INSERT INTO `respuestas` (`id`, `idPregunta`, `respuesta`, `esCorrecta`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `respuestassugeridas`
+--
+
+CREATE TABLE `respuestassugeridas` (
+  `id` int(11) NOT NULL,
+  `idPreguntaSugerida` int(11) NOT NULL,
+  `respuesta` varchar(255) NOT NULL,
+  `esCorrecta` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `respuestassugeridas`
+--
+
+INSERT INTO `respuestassugeridas` (`id`, `idPreguntaSugerida`, `respuesta`, `esCorrecta`) VALUES
+(1, 1, 'bien', 'true'),
+(2, 1, 'mal', 'false'),
+(3, 1, 'mal', 'false'),
+(4, 1, 'mal', 'false');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `rol`
 --
 
@@ -377,18 +417,22 @@ CREATE TABLE `usuarios` (
   `cantRespuestas` int(11) NOT NULL,
   `cantRespuestasCorrectas` int(11) NOT NULL,
   `idRol` int(11) NOT NULL DEFAULT 1,
-  `nivel` varchar(255) NOT NULL DEFAULT 'principiante'
+  `latitud` int(11) NOT NULL,
+  `longitud` int(11) NOT NULL,
+  `nivel` varchar(255) NOT NULL DEFAULT 'principiante',
+  `fechaRegistro` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `estaActiva`, `nombreUsuario`, `foto`, `codigo`, `puntajeTotal`, `cantRespuestas`, `cantRespuestasCorrectas`, `idRol`, `nivel`) VALUES
-(27, 'Candela Fernandez', '2023-10-01', 'Femenino', 'Argentina', 'Morón', 'cande.fdz12@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '668899', 13, 0, 0, 1, 'principiante'),
-(31, 'Maria Vazquez', '2023-10-04', 'Femenino', 'Argentina', 'Morón', 'test@test11.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '275318', 0, 0, 0, 1, 'principiante'),
-(32, 'Florencia Micaela', '2004-06-16', 'Femenino', 'Argentina', 'Morón', 'test@test2.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'florenciax', './public/img/Horarios .jpg', '296924', 0, 0, 0, 1, 'principiante'),
-(33, 'Leo', '2000-09-02', 'Masculino', 'Argentina', 'Buenos Aires', 'vilteleonardo92@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'LeoV', './public/img/hipo-perritos-Blog04.jpg', '549467', 82, 218, 29, 1, 'principiante');
+INSERT INTO `usuarios` (`id`, `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `estaActiva`, `nombreUsuario`, `foto`, `codigo`, `puntajeTotal`, `cantRespuestas`, `cantRespuestasCorrectas`, `idRol`, `latitud`, `longitud`, `nivel`, `fechaRegistro`) VALUES
+(27, 'Candela Fernandez', '2023-10-01', 'Femenino', 'Argentina', 'Morón', 'cande.fdz12@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '668899', 13, 0, 0, 1, 0, 0, 'principiante', '2023-10-05 09:32:57'),
+(31, 'Maria Vazquez', '2023-10-04', 'Femenino', 'Argentina', 'Morón', 'test@test11.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '275318', 0, 0, 0, 2, 0, 0, 'principiante', '2023-10-12 09:32:57'),
+(32, 'Florencia Micaela', '2004-06-16', 'Femenino', 'Argentina', 'Morón', 'test@test2.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'florenciax', './public/img/Horarios .jpg', '296924', 0, 0, 0, 3, 0, 0, 'principiante', '2023-11-05 09:32:57'),
+(33, 'Leo', '2000-09-02', 'Masculino', 'Argentina', 'Buenos Aires', 'vilteleonardo92@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'LeoV', './public/img/hipo-perritos-Blog04.jpg', '549467', 82, 218, 29, 1, 0, 0, 'principiante', '2023-11-06 09:32:57'),
+(34, 'rocio', '2023-11-06', 'Femenino', 'Argentina', 'buenos aires', 'ro.espana.ero@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'rocioesp', '', '698219', 1, 4, 1, 1, -35, -58, 'principiante', '2023-11-06 10:38:53');
 
 --
 -- Índices para tablas volcadas
@@ -442,6 +486,13 @@ ALTER TABLE `respuestas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `respuestassugeridas`
+--
+ALTER TABLE `respuestassugeridas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idPreguntaSugerida` (`idPreguntaSugerida`);
+
+--
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
@@ -468,7 +519,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `partida`
 --
 ALTER TABLE `partida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+
+--
+-- AUTO_INCREMENT de la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntasreportadas`
@@ -480,13 +537,25 @@ ALTER TABLE `preguntasreportadas`
 -- AUTO_INCREMENT de la tabla `preguntassugeridas`
 --
 ALTER TABLE `preguntassugeridas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntasusadas`
 --
 ALTER TABLE `preguntasusadas`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=376;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=380;
+
+--
+-- AUTO_INCREMENT de la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+
+--
+-- AUTO_INCREMENT de la tabla `respuestassugeridas`
+--
+ALTER TABLE `respuestassugeridas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -498,7 +567,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Restricciones para tablas volcadas
@@ -528,6 +597,12 @@ ALTER TABLE `preguntasreportadas`
 ALTER TABLE `preguntasusadas`
   ADD CONSTRAINT `preguntasusadas_ibfk_1` FOREIGN KEY (`idPregunta`) REFERENCES `preguntas` (`id`),
   ADD CONSTRAINT `preguntasusadas_ibfk_2` FOREIGN KEY (`idPartida`) REFERENCES `partida` (`id`);
+
+--
+-- Filtros para la tabla `respuestassugeridas`
+--
+ALTER TABLE `respuestassugeridas`
+  ADD CONSTRAINT `respuestassugeridas_ibfk_1` FOREIGN KEY (`idPreguntaSugerida`) REFERENCES `preguntassugeridas` (`id`);
 
 --
 -- Filtros para la tabla `usuarios`
