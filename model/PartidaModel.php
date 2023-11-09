@@ -79,6 +79,16 @@ class PartidaModel {
         $this->actualizarPuntajeTotalUsuario($idUsuario);
         $this->calcularNivelUsuario($idUsuario);
     }
+    public function calcularTiempoDeRespuesta($datosPartida){
+
+        $tiempoinicial = $_SESSION["tiempoInicial"];
+        $tiempoFinal = microtime(true);
+        $tiempoDeRespuesta = $tiempoFinal - $tiempoinicial;
+        $idPartida = $datosPartida['idPartida'];
+
+        $sql = "UPDATE preguntasusadas SET tiempo = $tiempoDeRespuesta WHERE idPartida = $idPartida";
+        $this->database->execute($sql);
+    }
 
     //Métodos privados
     //Métodos utilizados en ($idPartid)
@@ -100,7 +110,7 @@ class PartidaModel {
         $categoria = $this->database->queryUnSoloRegistro($sqlCategoria);
     
         $pregunta['categoria'] = $categoria;
-    
+
         return $pregunta;
     }
 
@@ -116,6 +126,9 @@ class PartidaModel {
          $sql = "SELECT * FROM `preguntasusadas` WHERE idPartida = '{$partidaId}' and idPregunta = '{$idPregunta}' ;";
          $resultado = $this->database->queryUnSoloRegistro($sql);
          if (is_null($resultado)){
+             $tiempoInicial = microtime(true);
+             $_SESSION['tiempoInicial'] = $tiempoInicial;
+
              $consulta = "INSERT INTO `preguntasusadas`( `idPregunta`,`idPartida` )   VALUES ( '{$idPregunta}','{$partidaId}');";
  
              $this->database->execute($consulta);
@@ -125,6 +138,9 @@ class PartidaModel {
  
          }
      }
+
+
+
 
      //Métodos utilizados en crearPartida()
 

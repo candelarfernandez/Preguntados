@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 06-11-2023 a las 20:03:02
+-- Servidor: localhost
+-- Tiempo de generación: 08-11-2023 a las 09:39:05
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -114,7 +114,11 @@ INSERT INTO `partida` (`id`, `idUsuario`, `puntaje`, `fecha`) VALUES
 (81, 34, 0, '2023-11-06'),
 (82, 34, 0, '2023-11-06'),
 (83, 34, 1, '2023-11-06'),
-(84, 34, 0, '2023-11-06');
+(84, 34, 0, '2023-11-06'),
+(85, 33, 5, '2023-11-08'),
+(86, 33, 2, '2023-11-08'),
+(87, 33, 1, '2023-11-08'),
+(88, 33, 4, '2023-11-08');
 
 -- --------------------------------------------------------
 
@@ -138,13 +142,13 @@ CREATE TABLE `preguntas` (
 
 INSERT INTO `preguntas` (`pregunta`, `id`, `id_categoria`, `reportada`, `aciertos`, `apariciones`, `dificultad`) VALUES
 ('Si en un script PHP encuentra una llamada a un m?todo de clase de la siguiente manera:\nUsuario::traerUsuario();\nSe trata de:', 1, 1, 0, 2, 3, 0),
-('Cuando utilizo una Clase en forma est?tica siempre se ejecuta el m?todo __construct()', 2, 1, 0, 2, 28, 3),
-('La S del acr?nimo SOLID es por el concepto Single Responsability, que indica:', 3, 1, 0, 1, 30, 3),
-('El concepto de acoplamiento refiere a:', 4, 1, 0, 2, 83, 3),
+('Cuando utilizo una Clase en forma est?tica siempre se ejecuta el m?todo __construct()', 2, 1, 0, 4, 30, 3),
+('La S del acr?nimo SOLID es por el concepto Single Responsability, que indica:', 3, 1, 0, 3, 32, 3),
+('El concepto de acoplamiento refiere a:', 4, 1, 0, 2, 84, 3),
 ('Como concepto general podemos decir que a menos acoplamiento mejor software', 5, 1, 1, 1, 21, 3),
-('En software se entiende por patr?n de dise?o a:', 6, 1, 1, 15, 223, 3),
-('El patr?n MVC se utiliza mucho en aplicaciones web porque:', 7, 1, 1, 39, 62, 1),
-('En un modelo MVC el que recibe normalmente la petici?n del cliente es:', 8, 1, 1, 18, 24, 1),
+('En software se entiende por patr?n de dise?o a:', 6, 1, 1, 16, 224, 3),
+('El patr?n MVC se utiliza mucho en aplicaciones web porque:', 7, 1, 1, 43, 67, 1),
+('En un modelo MVC el que recibe normalmente la petici?n del cliente es:', 8, 1, 1, 21, 28, 1),
 ('El modelo en un esquema MVC es el encargado de almacenar y ejecutar la l?gica del negocio', 9, 1, 0, 5, 5, 0),
 ('Uno de los objetivos del modelo MVC es separar en la aplicaci?n el modelo de negocios de las interfaces de usuario', 10, 1, 1, 2, 2, 0),
 ('El enrutador en un modelo MVC es el encargado de ejecutar las operaciones de acceso a la base de datos', 11, 1, 0, 1, 2, 0),
@@ -205,29 +209,40 @@ INSERT INTO `preguntassugeridas` (`id`, `descripcion`) VALUES
 CREATE TABLE `preguntasusadas` (
   `id` int(25) NOT NULL,
   `idPregunta` int(25) NOT NULL,
-  `idPartida` int(25) NOT NULL
+  `idPartida` int(25) NOT NULL,
+  `tiempo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `preguntasusadas`
 --
 
-INSERT INTO `preguntasusadas` (`id`, `idPregunta`, `idPartida`) VALUES
-(365, 4, 74),
-(366, 3, 74),
-(367, 6, 75),
-(368, 4, 75),
-(369, 3, 75),
-(370, 7, 76),
-(371, 8, 76),
-(372, 8, 77),
-(373, 7, 77),
-(374, 7, 78),
-(375, 8, 78),
-(376, 8, 79),
-(377, 7, 83),
-(378, 8, 83),
-(379, 8, 84);
+INSERT INTO `preguntasusadas` (`id`, `idPregunta`, `idPartida`, `tiempo`) VALUES
+(365, 4, 74, NULL),
+(366, 3, 74, NULL),
+(367, 6, 75, NULL),
+(368, 4, 75, NULL),
+(369, 3, 75, NULL),
+(370, 7, 76, NULL),
+(371, 8, 76, NULL),
+(372, 8, 77, NULL),
+(373, 7, 77, NULL),
+(374, 7, 78, NULL),
+(375, 8, 78, NULL),
+(376, 8, 79, NULL),
+(377, 7, 83, NULL),
+(378, 8, 83, NULL),
+(379, 8, 84, NULL),
+(380, 8, 85, '18.686429977417'),
+(381, 7, 85, '18.686429977417'),
+(382, 8, 86, '4.0707697868347'),
+(383, 7, 86, '4.0707697868347'),
+(384, 2, 87, '4.2789590358734'),
+(385, 3, 87, NULL),
+(386, 3, 88, '2.3272559642792'),
+(387, 6, 88, '2.3272559642792'),
+(388, 2, 88, '2.3272559642792'),
+(389, 4, 88, '2.3272559642792');
 
 -- --------------------------------------------------------
 
@@ -431,7 +446,7 @@ INSERT INTO `usuarios` (`id`, `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`
 (27, 'Candela Fernandez', '2023-10-01', 'Femenino', 'Argentina', 'Morón', 'cande.fdz12@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '668899', 13, 0, 0, 1, 0, 0, 'principiante', '2023-10-05 09:32:57'),
 (31, 'Maria Vazquez', '2023-10-04', 'Femenino', 'Argentina', 'Morón', 'test@test11.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'candelaxx', '', '275318', 0, 0, 0, 2, 0, 0, 'principiante', '2023-10-12 09:32:57'),
 (32, 'Florencia Micaela', '2004-06-16', 'Femenino', 'Argentina', 'Morón', 'test@test2.com', 'ae2b1fca515949e5d54fb22b8ed95575', 1, 'florenciax', './public/img/Horarios .jpg', '296924', 0, 0, 0, 3, 0, 0, 'principiante', '2023-11-05 09:32:57'),
-(33, 'Leo', '2000-09-02', 'Masculino', 'Argentina', 'Buenos Aires', 'vilteleonardo92@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'LeoV', './public/img/hipo-perritos-Blog04.jpg', '549467', 82, 218, 29, 1, 0, 0, 'principiante', '2023-11-06 09:32:57'),
+(33, 'Leo', '2000-09-02', 'Masculino', 'Argentina', 'Buenos Aires', 'vilteleonardo92@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'LeoV', './public/img/hipo-perritos-Blog04.jpg', '549467', 94, 233, 207, 1, 0, 0, 'experto', '2023-11-06 09:32:57'),
 (34, 'rocio', '2023-11-06', 'Femenino', 'Argentina', 'buenos aires', 'ro.espana.ero@gmail.com', '202cb962ac59075b964b07152d234b70', 1, 'rocioesp', '', '698219', 1, 4, 1, 1, -35, -58, 'principiante', '2023-11-06 10:38:53');
 
 --
@@ -519,7 +534,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `partida`
 --
 ALTER TABLE `partida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
@@ -543,7 +558,7 @@ ALTER TABLE `preguntassugeridas`
 -- AUTO_INCREMENT de la tabla `preguntasusadas`
 --
 ALTER TABLE `preguntasusadas`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=380;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=390;
 
 --
 -- AUTO_INCREMENT de la tabla `respuestas`
