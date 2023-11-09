@@ -30,56 +30,122 @@ class AdminModel
         return $this->database->query($sql);
     }
 
-    public function obtenerUsuariosPorPais()
-    {
-        $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuarios GROUP BY pais";
+    public function obtenerUsuariosPorPaisFiltradoPorFecha($fechaRegistro = null,$idRol){
+    $whereClause = '';
 
-        $query = $this->database->query($consulta);
-
-        $cabecera = ['Pais', 'Cantidad'];
-
-        return $this->convertirArrayAJSON($query, $cabecera);
+    if (!empty($fechaRegistro)) {
+        $whereClause = "WHERE DATE(fechaRegistro) = DATE('$fechaRegistro')";
+        $whereClause .= " AND idRol = $idRol";
     }
 
-    public function obtenerUsuariosPorSexo()
-    {
-        $consulta = "SELECT sexo, COUNT(*) AS cantidad FROM usuarios GROUP BY sexo";
+    $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuarios $whereClause GROUP BY pais";
 
-        $query = $this->database->query($consulta);
+    $query = $this->database->query($consulta);
 
-        $cabecera = ['Sexo', 'Cantidad'];
+    $cabecera = ['Pais', 'Cantidad'];
 
-        return $this->convertirArrayAJSON($query, $cabecera);
+    return $this->convertirArrayAJSON($query, $cabecera);
+}
+
+public function obtenerUsuariosPorPais($idRol)
+{
+    $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuarios WHERE idRol = $idRol GROUP BY pais";
+
+    $query = $this->database->query($consulta);
+
+    $cabecera = ['Pais', 'Cantidad'];
+
+    return $this->convertirArrayAJSON($query, $cabecera);
+}
+
+public function obtenerUsuariosPorSexoFiltradoPorFechaYRol($fechaRegistro = null, $idRol)
+{
+    $whereClause = '';
+
+    if (!empty($fechaRegistro)) {
+        $whereClause .= " WHERE DATE(fechaRegistro) = DATE('$fechaRegistro')";
+        $whereClause .= " AND idRol = $idRol";
     }
-    public function obtenerUsuariosPorEdad()
-    {
-        $consulta = "SELECT CASE WHEN DATEDIFF(CURDATE(), anio) < 6570 THEN 'Menores' 
-    WHEN DATEDIFF(CURDATE(), anio) >= 6570 AND DATEDIFF(CURDATE(), anio) <= 21900 THEN 'Mayores' 
-    WHEN DATEDIFF(CURDATE(), anio) > 21900 THEN 'Jubilados' 
-    END AS Grupo, COUNT(*) AS Cantidad FROM usuarios GROUP BY Grupo";
 
-        $query = $this->database->query($consulta);
+    $consulta = "SELECT sexo, COUNT(*) AS cantidad FROM usuarios $whereClause GROUP BY sexo";
 
-        $cabecera = ['Grupo', 'Cantidad'];
+    $query = $this->database->query($consulta);
 
-        return $this->convertirArrayAJSON($query, $cabecera);
-    }
-    public function obtenerRespuestasCorrectasPorUsuario($fechaRegistro = null){
-        $whereClause = '';
+    $cabecera = ['Sexo', 'Cantidad'];
+
+    return $this->convertirArrayAJSON($query, $cabecera);
+}
+
+public function obtenerUsuariosPorSexoYRol($idRol)
+{
+    $consulta = "SELECT sexo, COUNT(*) AS cantidad FROM usuarios WHERE idRol = $idRol GROUP BY sexo";
+
+    $query = $this->database->query($consulta);
+
+    $cabecera = ['Sexo', 'Cantidad'];
+
+    return $this->convertirArrayAJSON($query, $cabecera);
+}
     
-        if (!empty($fechaRegistro)) {
-            $whereClause = "WHERE DATE(fechaRegistro) = DATE('$fechaRegistro')";
-        }
-        $consulta = "SELECT nombre, (SUM(cantRespuestasCorrectas) / SUM(cantRespuestas)) * 100 AS porcentajeRespuestasCorrectas FROM usuarios GROUP BY nombre";
+public function obtenerUsuariosPorEdadFiltradoPorFecha($fechaRegistro = null, $idRol)
+{
+    $whereClause = '';
 
-        $query = $this->database->query($consulta);
-
-        $cabecera = ['nombre', 'porcentajeRespuestasCorrectas'];
-
-        return $this->convertirArrayAJSON($query, $cabecera);
+    if (!empty($fechaRegistro)) {
+        $whereClause .= "WHERE DATE(fechaRegistro) = DATE('$fechaRegistro')";
+        // Agrega el filtro para idRol
+        $whereClause .= " AND idRol = $idRol";
     }
 
-    public function obtenerUsuariosNuevos(){
+    $consulta = "SELECT CASE WHEN DATEDIFF(CURDATE(), anio) < 6570 THEN 'Menores' 
+        WHEN DATEDIFF(CURDATE(), anio) >= 6570 AND DATEDIFF(CURDATE(), anio) <= 21900 THEN 'Mayores' 
+        WHEN DATEDIFF(CURDATE(), anio) > 21900 THEN 'Jubilados' 
+        END AS Grupo, COUNT(*) AS Cantidad FROM usuarios $whereClause GROUP BY Grupo";
+
+    $query = $this->database->query($consulta);
+
+    $cabecera = ['Grupo', 'Cantidad'];
+
+    return $this->convertirArrayAJSON($query, $cabecera);
+}
+
+public function obtenerUsuariosPorEdad($idRol)
+{
+    $consulta = "SELECT CASE WHEN DATEDIFF(CURDATE(), anio) < 6570 THEN 'Menores' 
+        WHEN DATEDIFF(CURDATE(), anio) >= 6570 AND DATEDIFF(CURDATE(), anio) <= 21900 THEN 'Mayores' 
+        WHEN DATEDIFF(CURDATE(), anio) > 21900 THEN 'Jubilados' 
+        END AS Grupo, COUNT(*) AS Cantidad FROM usuarios WHERE idRol = $idRol GROUP BY Grupo";
+
+    $query = $this->database->query($consulta);
+
+    $cabecera = ['Grupo', 'Cantidad'];
+
+    return $this->convertirArrayAJSON($query, $cabecera);
+}
+
+public function obtenerRespuestasCorrectasPorUsuario($fechaRegistro = null, $idRol)
+{
+    $whereClause = '';
+
+    if (!empty($fechaRegistro)) {
+        $whereClause = "WHERE DATE(fechaRegistro) = DATE('$fechaRegistro') AND idRol = $idRol";
+    } else {
+        // Si no se proporciona una fecha, solo aplicar el filtro de idRol
+        $whereClause = "WHERE idRol = $idRol";
+    }
+
+    $consulta = "SELECT nombre, (SUM(cantRespuestasCorrectas) / SUM(cantRespuestas)) * 100 AS porcentajeRespuestasCorrectas FROM usuarios $whereClause GROUP BY nombre";
+
+    $query = $this->database->query($consulta);
+
+    $cabecera = ['nombre', 'porcentajeRespuestasCorrectas'];
+
+    return $this->convertirArrayAJSON($query, $cabecera);
+}
+   
+
+
+    public function obtenerUsuariosNuevos($idRol){
         $consulta = "SELECT * FROM usuarios WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 3 DAY)";
         return $this->database->query($consulta);
     }

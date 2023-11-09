@@ -78,54 +78,116 @@ class AdminController
         $this->renderer->render('listadoPartidas', $datosPartidas);
        }
 
-
     public function listadoPaises(){
-
-        $usuariosPorPaises = $this->model->obtenerUsuariosPorPais();
-
-        $datos_json['usuariosPorPaises'] = $usuariosPorPaises;
-
-        $this->renderer->render('graficoPorPais', $datos_json);
-
+  
+    $fechaRegistro = null;
+ 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      
+        $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
     }
 
-    public function listadoPorSexo(){
-
-        $usuariosPorSexo = $this->model->obtenerUsuariosPorSexo();
-
-        $datos_json['usuariosPorSexo'] = $usuariosPorSexo;
-
-        $this->renderer->render('graficoPorSexo', $datos_json);
-
-    }
-    public function listadoPorGrupoDeEdad(){
-
-        $usuariosPorEdad = $this->model->obtenerUsuariosPorEdad();
-
-
-        $datos_json['usuariosPorEdad'] = $usuariosPorEdad;
-
-        $this->renderer->render('graficoPorEdad', $datos_json);
-
-    }
-
-    public function respuestasCorrectasPorUsuario(){
-        
-        $fechaRegistro = $_GET['fechaRegistro']; // Obtén la fecha del formulario
-
-        // Verifica si se proporcionó una fecha y si es válida
-        if (!empty($fechaRegistro) && strtotime($fechaRegistro)) {
-            $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario($fechaRegistro);
-        } else {
-            // Si no se proporcionó una fecha válida, muestra los datos sin filtro
-            $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario();
-        }
+   
+    if ($fechaRegistro !== null) {
+        $usuariosPorPaises = $this->model->obtenerUsuariosPorPaisFiltradoPorFecha($fechaRegistro,1);
+    } else {
        
-
-        $datos_json['respuestasCorrectasPorUsuario'] = $respuestasPorUsuario;
-
-        $this->renderer->render('graficoPorRespuestas', $datos_json);
+        $usuariosPorPaises = $this->model->obtenerUsuariosPorPais(1);
     }
+
+   
+    $datos = [
+        'usuariosPorPaises' => $usuariosPorPaises,
+        'fechaIngresada' => $fechaRegistro,
+    ];
+
+    $this->renderer->render('graficoPorPais', $datos);
+}
+
+
+public function listadoPorSexo()
+{
+    
+    $fechaRegistro = null;
+
+   
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+        $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
+    }
+
+    
+    if ($fechaRegistro !== null) {
+        $usuariosPorSexo = $this->model->obtenerUsuariosPorSexoFiltradoPorFechaYRol($fechaRegistro, 1);
+    } else {
+       
+        $usuariosPorSexo = $this->model->obtenerUsuariosPorSexoYRol(1);
+    }
+
+    
+    $datos = [
+        'usuariosPorSexo' => $usuariosPorSexo,
+        'fechaIngresada' => $fechaRegistro,
+    ];
+
+    $this->renderer->render('graficoPorSexo', $datos);
+}
+
+    public function listadoPorGrupoDeEdad()
+    {
+        $fechaRegistro = null;
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+           
+            $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
+    
+           
+            $usuariosPorEdad = $this->model->obtenerUsuariosPorEdadFiltradoPorFecha($fechaRegistro,1);
+        } else {
+           
+            $usuariosPorEdad = $this->model->obtenerUsuariosPorEdad(1);
+        }
+    
+       
+        $datos = [
+            'usuariosPorEdad' => $usuariosPorEdad,
+            'fechaIngresada' => $fechaRegistro,
+        ];
+    
+        $this->renderer->render('graficoPorEdad', $datos);
+    }
+
+    public function respuestasCorrectasPorUsuario()
+{
+    // Verifica si se ha enviado el formulario con la fecha seleccionada
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Obtén la fecha del formulario
+        $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
+
+        // Llama a la función del modelo con el parámetro de fecha
+        $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario($fechaRegistro, 1);
+
+        // Renderiza la vista con los datos filtrados y la fecha ingresada
+        $datos = [
+            'respuestasCorrectasPorUsuario' => $respuestasPorUsuario,
+            'fechaIngresada' => $fechaRegistro,
+        ];
+
+        $this->renderer->render('graficoPorRespuestas', $datos);
+    } else {
+        // Si no se ha enviado el formulario, obtén todos los resultados sin filtrar por fecha
+        $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario(null, 1);
+
+        // Renderiza la vista con todos los resultados
+        $datos = [
+            'respuestasCorrectasPorUsuario' => $respuestasPorUsuario,
+            'fechaIngresada' => null, // Puedes establecer la fecha en null o cualquier otro valor predeterminado
+        ];
+
+        $this->renderer->render('graficoPorRespuestas', $datos);
+    }
+}
+   
 
     public function traerUsuariosNuevos(){
         $usuariosNuevos = $this->model->obtenerUsuariosNuevos();
