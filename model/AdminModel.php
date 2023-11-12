@@ -155,6 +155,10 @@ public function obtenerRespuestasCorrectasPorUsuario($fechaRegistro = null, $idR
         $result = $this->database->print($sql);
         return $result;
     }
+    public function mostrarTodasLasPartidas(){
+        $query = "SELECT DISTINCT * FROM partida";
+        return $this->database->print($query);
+    }
 
     //Métodos privados
 

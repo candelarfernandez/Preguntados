@@ -199,7 +199,7 @@ public function listadoPorSexo()
 
 
     //-- Crear reportes en PDF --
-    public function ReporteDeUsuarios(){
+    public function reporteDeUsuarios(){
         require ("helpers/JugadoresTotales.php");
 
         $pdf = new JugadoresTotales("L");
@@ -225,6 +225,28 @@ public function listadoPorSexo()
         $pdf->Output('JugadoresTotales.pdf', 'I');
     }
 
+    public function partidasTotalesPDF(){
+        require ("helpers/PartidasTotales.php");
+
+        $pdf = new PartidasTotales();
+        $pdf->AddPage();
+        $pdf->AliasNbPages();
+
+        $tablaPartidas = $this->model->mostrarTodasLasPartidas();
+        $pdf->SetFont('Arial', '',12 );
+        $pdf->SetDrawColor(163, 163, 163);
+
+        foreach ($tablaPartidas as $fila) {
+            $pdf->Ln(); // Salto de línea después de cada fila
+            $pdf->Cell(45, 10, ($fila["idUsuario"]), 1, 0, 'C', 0);
+            $pdf->Cell(45, 10, ($fila["puntaje"]), 1, 0, 'C', 0);
+            $pdf->Cell(70, 10, ($fila["fecha"]), 1, 0, 'C', 0);
+            if ($pdf->GetY() > 250) {
+                $pdf->AddPage();
+            }
+        }
+        $pdf->Output('TotalGames.pdf', 'I');
+    }
 
 
 }
