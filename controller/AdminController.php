@@ -196,7 +196,10 @@ public function listadoPorSexo()
         ];
         $this->renderer->render('listadoUsuariosNuevos', $nuevosUsuarios);
     }
-    public function crearReporteUsuarios(){
+
+
+    //-- Crear reportes en PDF --
+    public function ReporteDeUsuarios(){
         require ("helpers/JugadoresTotales.php");
 
         $pdf = new JugadoresTotales("L");
@@ -221,5 +224,7 @@ public function listadoPorSexo()
 
         $pdf->Output('JugadoresTotales.pdf', 'I');
     }
+
+
 
 }
