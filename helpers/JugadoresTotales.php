@@ -15,26 +15,29 @@ class JugadoresTotales extends fpdf
         $this->SetTextColor(0, 0, 0); //color
         $this->Ln(15); // Salto de línea
 
-        /* TITULO DE LA TABLA */
+        /*TITULO*/
         //color
-        $this->SetTextColor(228, 100, 0);
+        $this->SetTextColor(139, 92, 246);
         $this->Cell(50); // mover a la derecha
         $this->SetFont('Arial', 'B', 15);
         $this->Cell(180, 10, utf8_decode("REPORTE DE JUGADORES "), 0, 1, 'C', 0);
         $this->Ln(4);
 
-        /* CAMPOS DE LA TABLA */
-        //color
-        $this->SetFillColor(228, 100, 0); //colorFondo
-        $this->SetTextColor(255, 255, 255); //colorTexto
-        $this->SetDrawColor(163, 163, 163); //colorBorde
+        /*CAMPOS*/
+
+        //colorFondo
+        $this->SetFillColor(139, 92, 246);
+        //colorTexto
+        $this->SetTextColor(255, 255, 255);
+        //colorBorde
+        $this->SetDrawColor(209, 209, 209);
         $this->SetFont('Arial', 'B', 9);
-        $this->Cell(20, 10, utf8_decode('Id'), 1, 0, 'C', 1);
-        $this->Cell(50,10, utf8_decode('Nombre de Usuario'), 1, 0, 'C', 1);
-        $this->Cell(70, 10, utf8_decode('Email'), 1, 0, 'C', 1);
+        $this->Cell(25, 10, utf8_decode('Id'), 1, 0, 'C', 1);
+        $this->Cell(45,10, utf8_decode('Nombre de Usuario'), 1, 0, 'C', 1);
+        $this->Cell(60, 10, utf8_decode('Email'), 1, 0, 'C', 1);
         $this->Cell(30, 10, utf8_decode('Género'), 1, 0, 'C', 1);
-        $this->Cell(35, 10, utf8_decode('Fecha de Nac.'), 1, 0, 'C', 1);
-        $this->Cell(35, 10, utf8_decode('Fecha Registro'), 1, 0, 'C', 1);
+        $this->Cell(30, 10, utf8_decode('Fecha de Nac.'), 1, 0, 'C', 1);
+        $this->Cell(50, 10, utf8_decode('Fecha Registro'), 1, 0, 'C', 1);
         $this->Cell(35, 10, utf8_decode('Respuestas Correctas'), 1, 0, 'C', 1);
         $this->Ln();
     }

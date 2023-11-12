@@ -199,9 +199,10 @@ public function listadoPorSexo()
     public function crearReporteUsuarios(){
         require ("helpers/JugadoresTotales.php");
 
-        $pdf = new fpdf("L");
+        $pdf = new JugadoresTotales("L");
         $pdf->AddPage();
         $pdf->AliasNbPages();
+
         $tablaUsuarios = $this->model->imprimirTodosLosUsuariosParaPDF();
 
         $pdf->SetFont('Arial', '', 12);
