@@ -66,36 +66,36 @@ class AdminController
             $nombreUsuario = $this->model->traerNombrePorId($idUsuario);
             $nombresUsuarios[$idUsuario] = $nombreUsuario;
         }
-    
+
         $totalPartidas = count($partidas);
-    
+
         $datosPartidas = [
             'partidas' => $partidas,
             'totalPartidas' => $totalPartidas,
             'nombresUsuarios' => $nombresUsuarios,
         ];
-    
+
         $this->renderer->render('listadoPartidas', $datosPartidas);
        }
 
     public function listadoPaises(){
-  
+
     $fechaRegistro = null;
- 
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      
+
         $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
     }
 
-   
+
     if ($fechaRegistro !== null) {
         $usuariosPorPaises = $this->model->obtenerUsuariosPorPaisFiltradoPorFecha($fechaRegistro,1);
     } else {
-       
+
         $usuariosPorPaises = $this->model->obtenerUsuariosPorPais(1);
     }
 
-   
+
     $datos = [
         'usuariosPorPaises' => $usuariosPorPaises,
         'fechaIngresada' => $fechaRegistro,
@@ -107,24 +107,24 @@ class AdminController
 
 public function listadoPorSexo()
 {
-    
+
     $fechaRegistro = null;
 
-   
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
+
         $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
     }
 
-    
+
     if ($fechaRegistro !== null) {
         $usuariosPorSexo = $this->model->obtenerUsuariosPorSexoFiltradoPorFechaYRol($fechaRegistro, 1);
     } else {
-       
+
         $usuariosPorSexo = $this->model->obtenerUsuariosPorSexoYRol(1);
     }
 
-    
+
     $datos = [
         'usuariosPorSexo' => $usuariosPorSexo,
         'fechaIngresada' => $fechaRegistro,
@@ -136,24 +136,24 @@ public function listadoPorSexo()
     public function listadoPorGrupoDeEdad()
     {
         $fechaRegistro = null;
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-           
+
             $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
-    
-           
+
+
             $usuariosPorEdad = $this->model->obtenerUsuariosPorEdadFiltradoPorFecha($fechaRegistro,1);
         } else {
-           
+
             $usuariosPorEdad = $this->model->obtenerUsuariosPorEdad(1);
         }
-    
-       
+
+
         $datos = [
             'usuariosPorEdad' => $usuariosPorEdad,
             'fechaIngresada' => $fechaRegistro,
         ];
-    
+
         $this->renderer->render('graficoPorEdad', $datos);
     }
 
@@ -187,7 +187,7 @@ public function listadoPorSexo()
         $this->renderer->render('graficoPorRespuestas', $datos);
     }
 }
-   
+
 
     public function traerUsuariosNuevos(){
         $usuariosNuevos = $this->model->obtenerUsuariosNuevos();
@@ -196,6 +196,29 @@ public function listadoPorSexo()
         ];
         $this->renderer->render('listadoUsuariosNuevos', $nuevosUsuarios);
     }
+    public function crearReporteUsuarios(){
+        require ("helpers/JugadoresTotales.php");
 
+        $pdf = new fpdf("L");
+        $pdf->AddPage();
+        $pdf->AliasNbPages();
+        $tablaUsuarios = $this->model->imprimirTodosLosUsuariosParaPDF();
+
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->SetDrawColor(163, 163, 163);
+
+        foreach ($tablaUsuarios as $fila ){
+            $pdf->Cell(25,25,($fila["id"]),1, 0, 'C', 0);
+            $pdf->Cell(45,25,($fila["nombreUsuario"]),1, 0, 'C', 0);
+            $pdf->Cell(60,25,($fila["mail"]),1, 0, 'C', 0);
+            $pdf->Cell(30,25,($fila["sexo"]),1, 0, 'C', 0);
+            $pdf->Cell(30,25,($fila["anio"]),1, 0, 'C', 0);
+            $pdf->Cell(50,25,($fila["fechaRegistro"]),1, 0, 'C', 0);
+            $pdf->Cell(35,25,($fila["cantRespuestasCorrectas"]),1, 0, 'C', 0);
+            $pdf->Ln();
+        }
+
+        $pdf->Output('JugadoresTotales.pdf', 'I');
+    }
 
 }

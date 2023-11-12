@@ -44,6 +44,11 @@ class MySqlDatabase {
     public function lastInsertId(){
         return mysqli_insert_id($this->connection);
     }
+    public function print($sql)
+    {
+        $result = mysqli_query($this->connection, $sql);
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
    
     
 }

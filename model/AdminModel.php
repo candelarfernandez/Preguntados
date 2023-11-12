@@ -150,6 +150,11 @@ public function obtenerRespuestasCorrectasPorUsuario($fechaRegistro = null, $idR
         return $this->database->query($consulta);
     }
 
+    public function imprimirTodosLosUsuariosParaPDF(){
+        $sql = "SELECT * FROM usuarios WHERE idRol = 1";
+        $result = $this->database->print($sql);
+        return $result;
+    }
 
     //Métodos privados
 
