@@ -245,8 +245,30 @@ public function listadoPorSexo()
                 $pdf->AddPage();
             }
         }
-        $pdf->Output('TotalGames.pdf', 'I');
+        $pdf->Output('PartidasTotales.pdf', 'I');
     }
+    public function listadoDePreguntas(){
+        require("helpers/ListadoDePreguntas.php");
 
+        $pdf = new ListadoDePreguntas("L");
+        $pdf->AddPage();
+        $pdf->AliasNbPages();
+
+        $tablaPreguntas = $this->model->mostrarTodasLasPreguntas();
+        $pdf->SetFont('Arial', '',12 );
+        $pdf->SetDrawColor(163, 163, 163);
+
+        foreach ($tablaPreguntas as $fila) {
+            $pdf->Ln(); // Salto de línea después de cada fila
+            $pdf->Cell(10, 10, ($fila["id"]), 1, 0, 'C', 0);
+            $pdf->Cell(240, 10, ($fila["pregunta"]), 1, 0, 'C', 0);
+            $pdf->Cell(20, 10, ($fila["dificultad"]), 1, 0, 'C', 0);
+
+            if ($pdf->GetY() > 150) {
+                $pdf->AddPage();
+            }
+        }
+        $pdf->Output('PreguntasTotales.pdf', 'I');
+    }
 
 }
