@@ -4,10 +4,12 @@ class PartidaController {
 
     private $renderer;
     private $model;
+    private $tiempoAgotado;
 
     public function __construct($model, $renderer) {
         $this->model = $model;
         $this->renderer = $renderer;
+        $this->tiempoAgotado = false;
     }
 
     public function list() {
@@ -63,7 +65,10 @@ class PartidaController {
            
         }
         else {
-
+            if($this->tiempoAgotado){
+                header('location: //lobby/list?tiempoAgotado=true');
+            }
+            else{
             $this->model->guardarPuntaje($datosPartida);
             $this->restablecerPartida();
             unset($_SESSION['preguntaActual']);
@@ -72,15 +77,17 @@ class PartidaController {
             }
 
 
-        }
+            }
        
-
+        }
     }
 
     public function tiempoAgotado() {
+        $this->tiempoAgotado = true;
 
         $datosPartida = [
             'idUsuario' => $_SESSION['usuarioId'],
+            //Actualmente si contesta una pregunta y se le acaba el tiempo, se le suma 1 punto
             'puntaje' => $_SESSION['puntaje'],
             'idPartida' => $_SESSION['partidaId']
         ];
