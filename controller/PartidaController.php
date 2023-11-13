@@ -4,14 +4,10 @@ class PartidaController {
 
     private $renderer;
     private $model;
-    // private $puntaje;
-    // private $tiempoRestante;
 
     public function __construct($model, $renderer) {
         $this->model = $model;
         $this->renderer = $renderer;
-        // $this->puntaje = 0;
-        // $this->tiempoRestante = 20;
     }
 
     public function list() {
@@ -67,21 +63,19 @@ class PartidaController {
            
         }
         else {
-            if($tiempoAgotado){
-                $this->tiempoAgotado();
-                
-            } else {
-                header('location: /lobby/list?rtaIncorrecta=true');
-            }
 
             $this->model->guardarPuntaje($datosPartida);
             $this->restablecerPartida();
             unset($_SESSION['preguntaActual']);
+            header('location: /lobby/list?rtaIncorrecta=true');
             exit();
+            }
+
+
         }
        
 
-    }}
+    }
 
     public function tiempoAgotado() {
 
