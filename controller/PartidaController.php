@@ -35,6 +35,8 @@ class PartidaController {
             
             $datosPregunta = $_SESSION['preguntaActual'];
         }
+
+        $datosPregunta['reportar'] = true;
        
         $this->renderer->render('partida', $datosPregunta);
     }
@@ -109,10 +111,11 @@ class PartidaController {
     }      
    
     public function reportarPregunta(){
-        $datos = $_GET;
-        $this->model->agregarPreguntaReportada($datos['idPregunta']);
-        header('location: /lobby/list?preguntaReportada=true');
+        $idPregunta = $_POST['idPregunta'];
+        $this->model->agregarPreguntaReportada($idPregunta);
+        echo json_encode(['status' => 'success']);
+        exit;
     }
-
+    
 
 }  
