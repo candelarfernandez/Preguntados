@@ -101,7 +101,6 @@ function guardarTiempoRestante() {
                 url: "/partida/reportarPregunta",
                 data: { idPregunta: idPregunta },
                 success: function(response) {
-                    console.log(response);
                     window.location.href = "/lobby/list?preguntaReportada=true";
                 },
                 error: function(error) {

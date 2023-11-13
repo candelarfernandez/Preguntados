@@ -30,12 +30,11 @@ class AdminModel
         return $this->database->query($sql);
     }
 
-    public function obtenerUsuariosPorPaisFiltradoPorFecha($fechaRegistro = null,$idRol){
+    public function obtenerUsuariosPorPaisFiltradoPorFecha($fechaDesde = null, $fechaHasta = null,$idRol){
     $whereClause = '';
 
-    if (!empty($fechaRegistro)) {
-        $whereClause = "WHERE DATE(fechaRegistro) = DATE('$fechaRegistro')";
-        $whereClause .= " AND idRol = $idRol";
+    if (!empty($fechaDesde && !empty($fechaHasta))) {
+        $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND idRol = $idRol";
     }
 
     $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuarios $whereClause GROUP BY pais";
@@ -58,12 +57,12 @@ public function obtenerUsuariosPorPais($idRol)
     return $this->convertirArrayAJSON($query, $cabecera);
 }
 
-public function obtenerUsuariosPorSexoFiltradoPorFechaYRol($fechaRegistro = null, $idRol)
+public function obtenerUsuariosPorSexoFiltradoPorFechaYRol($fechaDesde = null, $fechaHasta = null, $idRol)
 {
     $whereClause = '';
 
-    if (!empty($fechaRegistro)) {
-        $whereClause .= " WHERE DATE(fechaRegistro) = DATE('$fechaRegistro')";
+    if (!empty($fechaDesde && !empty($fechaHasta))) {
+        $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND idRol = $idRol";
         $whereClause .= " AND idRol = $idRol";
     }
 
@@ -87,14 +86,12 @@ public function obtenerUsuariosPorSexoYRol($idRol)
     return $this->convertirArrayAJSON($query, $cabecera);
 }
     
-public function obtenerUsuariosPorEdadFiltradoPorFecha($fechaRegistro = null, $idRol)
+public function obtenerUsuariosPorEdadFiltradoPorFecha($fechaDesde = null, $fechaHasta = null, $idRol)
 {
     $whereClause = '';
 
-    if (!empty($fechaRegistro)) {
-        $whereClause .= "WHERE DATE(fechaRegistro) = DATE('$fechaRegistro')";
-        // Agrega el filtro para idRol
-        $whereClause .= " AND idRol = $idRol";
+    if (!empty($fechaDesde && !empty($fechaHasta))) {
+        $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND idRol = $idRol";
     }
 
     $consulta = "SELECT CASE WHEN DATEDIFF(CURDATE(), anio) < 6570 THEN 'Menores' 
@@ -123,12 +120,12 @@ public function obtenerUsuariosPorEdad($idRol)
     return $this->convertirArrayAJSON($query, $cabecera);
 }
 
-public function obtenerRespuestasCorrectasPorUsuario($fechaRegistro = null, $idRol)
+public function obtenerRespuestasCorrectasPorUsuario($fechaDesde = null, $fechaHasta = null, $idRol)
 {
     $whereClause = '';
 
-    if (!empty($fechaRegistro)) {
-        $whereClause = "WHERE DATE(fechaRegistro) = DATE('$fechaRegistro') AND idRol = $idRol";
+    if (!empty($fechaDesde && !empty($fechaHasta))) {
+        $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND idRol = $idRol";
     } else {
         // Si no se proporciona una fecha, solo aplicar el filtro de idRol
         $whereClause = "WHERE idRol = $idRol";
@@ -145,8 +142,15 @@ public function obtenerRespuestasCorrectasPorUsuario($fechaRegistro = null, $idR
    
 
 
-    public function obtenerUsuariosNuevos($idRol){
-        $consulta = "SELECT * FROM usuarios WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 3 DAY)";
+    public function obtenerUsuariosNuevos($fechaDesde = null, $fechaHasta = null){
+        $whereClause = '';
+
+        if (!empty($fechaDesde && !empty($fechaHasta))) {
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
+        } else {
+            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 10 DAY)";
+        }
+        $consulta = "SELECT * FROM usuarios $whereClause";
         return $this->database->query($consulta);
     }
 
