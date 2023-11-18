@@ -16,8 +16,19 @@ class RankingController {
             exit();
         }
         $data['usuarios'] = $this->model->cargarUsuarios();
-        $data['primerosPuestos'] = $this->model->cargarPrimerosPuestos();
+
+        $data['primerosPuestos'] = $this->cargarPrimerosPuestosAjax();
+
         $this->renderer->render('ranking', $data);
+
+
+    }
+
+    public function cargarPrimerosPuestosAjax(){
+        $puestos = $this->model->cargarPrimerosPuestos();
+        header('Content-Type: application/json');
+        echo json_encode(['usuarios' => $puestos]);
+
     }
 
     public function verUsuario() {
@@ -34,5 +45,7 @@ class RankingController {
         }
         $this->renderer->render('jugador', $usuario);
     }
+
+
 
 }
