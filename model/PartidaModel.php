@@ -46,11 +46,9 @@ class PartidaModel {
             'idUsuario'=> $_SESSION['usuarioId'],
             'puntaje'=>  $_SESSION['puntaje']
         ];
-        //Crear la partida
         $sql = "INSERT INTO `partida` (`idUsuario`, `puntaje`, `fecha`) VALUES ('{$datosPartida['idUsuario']}', '{$datosPartida['puntaje']}', NOW())";
         $this->database->execute($sql);
 
-        //Obtener el id de la partida creada
         $partida = $this->consultarIdPartida($datosPartida['idUsuario']);
 
         $_SESSION['partidaId'] = $partida;

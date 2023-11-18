@@ -38,7 +38,6 @@ class AdminController
         $jugadores = $this->model->traerTodosLosJugadores();
         $totalUsuarios = count($jugadores);
 
-        // Calcular el porcentaje para cada jugador
         foreach ($jugadores as &$jugador) {
             if ($jugador['cantRespuestas'] > 0) {
                 $jugador['porcentaje'] = ($jugador['cantRespuestasCorrectas'] / $jugador['cantRespuestas']) * 100;
@@ -80,25 +79,21 @@ class AdminController
 
     public function listadoPaises(){
 
-    $fechaRegistro = null;
+    $fechaDesde = null;
+    $fechaHasta = null;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
+        $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
+        $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
     }
 
-
-    if ($fechaRegistro !== null) {
-        $usuariosPorPaises = $this->model->obtenerUsuariosPorPaisFiltradoPorFecha($fechaRegistro,1);
-    } else {
-
-        $usuariosPorPaises = $this->model->obtenerUsuariosPorPais(1);
-    }
-
+    $usuariosPorPaises = $this->model->obtenerUsuariosPorPaisFiltradoPorFecha($fechaDesde,$fechaHasta,1);
 
     $datos = [
         'usuariosPorPaises' => $usuariosPorPaises,
-        'fechaIngresada' => $fechaRegistro,
+        'fechaDesde' => $fechaDesde,
+        'fechaHasta' => $fechaHasta,
     ];
 
     $this->renderer->render('graficoPorPais', $datos);
@@ -108,26 +103,21 @@ class AdminController
 public function listadoPorSexo()
 {
 
-    $fechaRegistro = null;
-
+    $fechaDesde = null;
+    $fechaHasta = null;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
+        $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
+        $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
     }
 
-
-    if ($fechaRegistro !== null) {
-        $usuariosPorSexo = $this->model->obtenerUsuariosPorSexoFiltradoPorFechaYRol($fechaRegistro, 1);
-    } else {
-
-        $usuariosPorSexo = $this->model->obtenerUsuariosPorSexoYRol(1);
-    }
-
-
+    $usuariosPorSexo = $this->model->obtenerUsuariosPorSexoFiltradoPorFechaYRol($fechaDesde,$fechaHasta, 1);
+   
     $datos = [
         'usuariosPorSexo' => $usuariosPorSexo,
-        'fechaIngresada' => $fechaRegistro,
+        'fechaDesde' => $fechaDesde,
+        'fechaHasta' => $fechaHasta,
     ];
 
     $this->renderer->render('graficoPorSexo', $datos);
@@ -135,59 +125,59 @@ public function listadoPorSexo()
 
     public function listadoPorGrupoDeEdad()
     {
-        $fechaRegistro = null;
-
+        $fechaDesde = null;
+        $fechaHasta = null;
+    
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
-
-
-            $usuariosPorEdad = $this->model->obtenerUsuariosPorEdadFiltradoPorFecha($fechaRegistro,1);
-        } else {
-
-            $usuariosPorEdad = $this->model->obtenerUsuariosPorEdad(1);
+            $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
+            $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
         }
-
-
+    
+        $usuariosPorEdad = $this->model->obtenerUsuariosPorEdadFiltradoPorFecha($fechaDesde,$fechaHasta,1);   
+       
         $datos = [
             'usuariosPorEdad' => $usuariosPorEdad,
-            'fechaIngresada' => $fechaRegistro,
+            'fechaDesde' => $fechaDesde,
+            'fechaHasta' => $fechaHasta,
         ];
 
         $this->renderer->render('graficoPorEdad', $datos);
     }
 
-    public function respuestasCorrectasPorUsuario()
-{
+    public function respuestasCorrectasPorUsuario(){
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
-
-        $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario($fechaRegistro, 1);
-
+        $fechaDesde = null;
+        $fechaHasta = null;
+    
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
+            $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
+        }
+        
+        $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario($fechaDesde,$fechaHasta,1);
+    
         $datos = [
             'respuestasCorrectasPorUsuario' => $respuestasPorUsuario,
-            'fechaIngresada' => $fechaRegistro,
-        ];
-
-        $this->renderer->render('graficoPorRespuestas', $datos);
-    } else {
- 
-        $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario(null, 1);
-
-        $datos = [
-            'respuestasCorrectasPorUsuario' => $respuestasPorUsuario,
-            'fechaIngresada' => null, 
+            'fechaDesde' => $fechaDesde,
+            'fechaHasta' => $fechaHasta,
         ];
 
         $this->renderer->render('graficoPorRespuestas', $datos);
     }
-}
 
 
     public function traerUsuariosNuevos(){
-        $usuariosNuevos = $this->model->obtenerUsuariosNuevos();
+
+        $fechaDesde = null;
+        $fechaHasta = null;
+    
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
+            $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
+        }
+
+        $usuariosNuevos = $this->model->obtenerUsuariosNuevos($fechaDesde,$fechaHasta);
+
         $nuevosUsuarios = [
             'usuariosNuevos' => $usuariosNuevos
         ];
@@ -195,7 +185,7 @@ public function listadoPorSexo()
     }
 
 
-    //-- Crear reportes en PDF --
+    //Crear reportes en PDF
     public function reporteDeUsuarios(){
         require ("helpers/JugadoresTotales.php");
 
