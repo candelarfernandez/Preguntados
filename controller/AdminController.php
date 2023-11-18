@@ -159,15 +159,13 @@ public function listadoPorSexo()
 
     public function respuestasCorrectasPorUsuario()
 {
-    // Verifica si se ha enviado el formulario con la fecha seleccionada
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Obtén la fecha del formulario
+
         $fechaRegistro = isset($_POST['fechaRegistro']) ? $_POST['fechaRegistro'] : null;
 
-        // Llama a la función del modelo con el parámetro de fecha
         $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario($fechaRegistro, 1);
 
-        // Renderiza la vista con los datos filtrados y la fecha ingresada
         $datos = [
             'respuestasCorrectasPorUsuario' => $respuestasPorUsuario,
             'fechaIngresada' => $fechaRegistro,
@@ -175,13 +173,12 @@ public function listadoPorSexo()
 
         $this->renderer->render('graficoPorRespuestas', $datos);
     } else {
-        // Si no se ha enviado el formulario, obtén todos los resultados sin filtrar por fecha
+ 
         $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario(null, 1);
 
-        // Renderiza la vista con todos los resultados
         $datos = [
             'respuestasCorrectasPorUsuario' => $respuestasPorUsuario,
-            'fechaIngresada' => null, // Puedes establecer la fecha en null o cualquier otro valor predeterminado
+            'fechaIngresada' => null, 
         ];
 
         $this->renderer->render('graficoPorRespuestas', $datos);

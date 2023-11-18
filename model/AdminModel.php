@@ -145,7 +145,7 @@ public function obtenerRespuestasCorrectasPorUsuario($fechaRegistro = null, $idR
    
 
 
-    public function obtenerUsuariosNuevos($idRol){
+    public function obtenerUsuariosNuevos(){
         $consulta = "SELECT * FROM usuarios WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 3 DAY)";
         return $this->database->query($consulta);
     }
