@@ -275,15 +275,16 @@ public function listadoPorSexo()
         $pdf = new Graficos();
         $pdf->AliasNbPages();
         $pdf->AddPage();
-        $pdf->SetTitle("Paises de los usuarios");
+        $tituloPDF = $_POST['tituloPDF'];
+        $titulo = $_POST['titulo'];
+        $pdf->SetTitle($tituloPDF);
         $pdf->SetFont('Arial', 'B', 15);
-
-        $pdf->Cell(190,30,'Reporte usuarios por pais',0,1,'C',0);
+        $pdf->Cell(190,30,$titulo,0,1,'C',0);
 
         $grafico = $_POST['graficoImagen'];
 
         $pdf->image($grafico, 0, 50, 200, 0, 'png');
         $pdf->Output();
     }
-    
+
 }

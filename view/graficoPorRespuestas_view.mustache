@@ -20,6 +20,8 @@
 
             var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
             chart.draw(data, options);
+            document.getElementById('graficoImagen').value = chart.getImageURI();
+
         }
     </script>
 </head>
@@ -43,6 +45,12 @@
 <a href="/admin/list" class="absolute top-4 left-4">
     <button class="bg-violet-700 rounded-full p-2 text-white">Volver <i class="fas fa-sign-out-alt text-white"></i></button>
 </a>
+<form method="post" action="/admin/graficoPorPais">
+    <button type="submit" class="bg-violet-500 table-auto w-full text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Reporte PDF</button>
+    <input type="hidden" name="graficoImagen" id="graficoImagen">
+    <input type="hidden" name="tituloPDF" id="tituloPDF" value="Respuesta correctas por usuario">
+    <input type="hidden" name="titulo" id="titulo" value="Porcentaje correcto por usuario">
 
+</form>
 </body>
 </html>
