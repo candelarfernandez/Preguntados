@@ -163,6 +163,16 @@ public function obtenerRespuestasCorrectasPorUsuario($fechaDesde = null, $fechaH
         $query = "SELECT DISTINCT * FROM partida";
         return $this->database->print($query);
     }
+    public function mostrarTodasLasPreguntas(){
+        $query = "SELECT * FROM preguntas";
+        $result = $this->database->print($query);
+        return $result;
+    }
+    public function mostrarTodasLasPreguntasSugeridas(){
+        $sql = "SELECT * FROM preguntassugeridas";
+        $result = $this->database->print($sql);
+        return $result;
+    }
 
     //Métodos privados
 

@@ -1,28 +1,30 @@
 <?php
-
 require ("third-party/FPDF/fpdf.php");
-class PartidasTotales extends fpdf
+class ListadoDePreguntas extends FPDF
 {
     function Header()
     {
         $this->SetFont('Arial', 'B', 19);
+        $this->Cell(45);
         $this->SetTextColor(0, 0, 0);
         $this->Ln(15);
 
         $this->SetTextColor(139, 92, 246);
+        $this->Cell(50);
         $this->SetFont('Arial', 'B', 15);
-        $this->Cell(200, 10, utf8_decode("REPORTE DE PARTIDAS "), 0, 1, 'C', 0);
+        $this->Cell(180, 10, utf8_decode("Lista de preguntas "), 0, 1, 'C', 0);
         $this->Ln(4);
 
         $this->SetFillColor(139,92,246);
         $this->SetTextColor(255,255,255);
         $this->SetDrawColor(209, 209, 209);
         $this->SetFont('Arial', 'B', 11);
-        $this->SetX(22.5);
-        $this->Cell(25,10, utf8_decode('Id partida'), 1 ,0 ,'C', 1);
-        $this->Cell(25,10, utf8_decode('Usuario ID'), 1, 0, 'C', 1);
-        $this->Cell(45, 10, utf8_decode('Puntaje'), 1, 0, 'C', 1);
-        $this->Cell(70, 10, utf8_decode('Fecha y Hora'), 1, 0, 'C', 1);
+
+        $this->Cell(10,10, utf8_decode('Id'), 1, 0, 'C', 1);
+        $this->Cell(240, 10, utf8_decode('Pregunta'), 1, 0, 'C', 1);
+        $this->Cell(30, 10, utf8_decode('Dificultad'), 1, 0, 'C', 1);
+
+
     }
 
     function Footer()
@@ -36,4 +38,5 @@ class PartidasTotales extends fpdf
         $hoy = date('d/m/Y');
         $this->Cell(355, 10, utf8_decode($hoy), 0, 0, 'C');
     }
+
 }
