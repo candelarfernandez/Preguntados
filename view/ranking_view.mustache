@@ -1,3 +1,45 @@
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js"></script>
+<script>
+   $(document).ready(function() {
+    $.ajax({
+        type: 'GET',
+        url: '/ranking/traerUsuariosPorPuntajeAjax', 
+        dataType: 'json',
+        success: function(data) {
+            if (data && data.usuarios) {
+                renderizarHTML(data.usuarios);
+            }
+        },
+        error: function(error) {
+            console.error('Error en la llamada Ajax', error);
+        }
+    });
+
+    function renderizarHTML(usuarios) {
+        var html = '';
+        usuarios.forEach(function(usuario) {
+            html += `
+                <div class="bg-white rounded-md m-2 flex flex-row items-center justify-center p-8 shadow-md w-3/4 h-min">
+                    <p></p>
+                    <a href="/ranking/verUsuario&id=${usuario.id}">
+                        <div class="mb-2 flex flex-row">
+                            <div>
+                                <img src="/${usuario.foto}" alt="Foto de perfil" class="w-16 h-16 mx-auto rounded-full mr-4">
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">${usuario.nombre}</h3>
+                                <div class="text-gray-500 text-xs">${usuario.puntajeTotal} puntos</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            `;
+        });
+        $('#contenedorUsuarios').html(html);
+    }
+});
+</script>
 <div class="bg-center flex flex-col items-center justify-center" style="background-image: url('https://esports.eldesmarque.com/wp-content/uploads/2022/05/recompensas-pre-registro-Fall-Guys.jpg')">
    
     <div class="bg-violet-100 rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md w-2/4 relative">
@@ -31,26 +73,9 @@
     </div>
 
     <h1 class="text-xl">Ranking</h1>
+
+    <div id="contenedorUsuarios"></div>
     
- {{#usuarios}}
-
-    <div class="bg-white rounded-md m-2 flex flex-row items-center justify-center p-8 shadow-md w-3/4 h-min">
-        <p></p>
-        <a href="/ranking/verUsuario&id={{id}}">
-        <div class="mb-2 flex flex-row">
-        <div>
-            <img src="\{{foto}}" alt="Foto de perfil" class="w-16 h-16 mx-auto rounded-full mr-4">
-        </div>
-        <div>
-            <h3 class="font-semibold"> {{nombre}}</h3>
-            <div class="text-gray-500 text-xs">{{puntajeTotal}} puntos</div>
-        </div>
-        </div>
-        </a>
-    </div>
-
-{{/usuarios}}
-
     </div>
   
 </div>
