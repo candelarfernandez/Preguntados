@@ -13,28 +13,33 @@ class AdminController
         $this->model = $model;
         $this->renderer = $renderer;
     }
-    public function list() {
+
+    public function list()
+    {
         $this->renderer->render('admin');
     }
 
-     public function traerPreguntas(){
-      $preguntas = $this->model->traerPreguntas();
-         $preguntasDelJuego = [
-             'preguntasDelJuego' => $preguntas
-         ];
-         $this->renderer->render('PreguntasListado', $preguntasDelJuego);
-     }
+    public function traerPreguntas()
+    {
+        $preguntas = $this->model->traerPreguntas();
+        $preguntasDelJuego = [
+            'preguntasDelJuego' => $preguntas
+        ];
+        $this->renderer->render('PreguntasListado', $preguntasDelJuego);
+    }
 
-     public function traerPreguntasCreadas(){
+    public function traerPreguntasCreadas()
+    {
         $preguntasSug = $this->model->traerPreguntasSugeridas();
         $preguntasSugeridas = [
             'preguntasSugeridas' => $preguntasSug
         ];
         $this->renderer->render('preguntasSugeridasListado', $preguntasSugeridas);
-     }
+    }
 
 
-    public function traerJugadores() {
+    public function traerJugadores()
+    {
         $jugadores = $this->model->traerTodosLosJugadores();
         $totalUsuarios = count($jugadores);
 
@@ -55,7 +60,8 @@ class AdminController
     }
 
 
-    public function traerPartidas(){
+    public function traerPartidas()
+    {
         //intentamos que se muestre el nombre del usuario en vez del id, pero no se muestra nada
         $partidas = $this->model->traerTodasLasPartidas();
         $nombresUsuarios = [];
@@ -75,66 +81,67 @@ class AdminController
         ];
 
         $this->renderer->render('listadoPartidas', $datosPartidas);
-       }
-
-    public function listadoPaises(){
-
-    $fechaDesde = null;
-    $fechaHasta = null;
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
-        $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
     }
 
-    $usuariosPorPaises = $this->model->obtenerUsuariosPorPaisFiltradoPorFecha($fechaDesde,$fechaHasta,1);
+    public function listadoPaises()
+    {
 
-    $datos = [
-        'usuariosPorPaises' => $usuariosPorPaises,
-        'fechaDesde' => $fechaDesde,
-        'fechaHasta' => $fechaHasta,
-    ];
+        $fechaDesde = null;
+        $fechaHasta = null;
 
-    $this->renderer->render('graficoPorPais', $datos);
-}
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+            $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
+            $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
+        }
 
-public function listadoPorSexo()
-{
+        $usuariosPorPaises = $this->model->obtenerUsuariosPorPaisFiltradoPorFecha($fechaDesde, $fechaHasta, 1);
 
-    $fechaDesde = null;
-    $fechaHasta = null;
+        $datos = [
+            'usuariosPorPaises' => $usuariosPorPaises,
+            'fechaDesde' => $fechaDesde,
+            'fechaHasta' => $fechaHasta,
+        ];
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
-        $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
+        $this->renderer->render('graficoPorPais', $datos);
     }
 
-    $usuariosPorSexo = $this->model->obtenerUsuariosPorSexoFiltradoPorFechaYRol($fechaDesde,$fechaHasta, 1);
-   
-    $datos = [
-        'usuariosPorSexo' => $usuariosPorSexo,
-        'fechaDesde' => $fechaDesde,
-        'fechaHasta' => $fechaHasta,
-    ];
 
-    $this->renderer->render('graficoPorSexo', $datos);
-}
+    public function listadoPorSexo()
+    {
+
+        $fechaDesde = null;
+        $fechaHasta = null;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
+            $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
+        }
+
+        $usuariosPorSexo = $this->model->obtenerUsuariosPorSexoFiltradoPorFechaYRol($fechaDesde, $fechaHasta, 1);
+
+        $datos = [
+            'usuariosPorSexo' => $usuariosPorSexo,
+            'fechaDesde' => $fechaDesde,
+            'fechaHasta' => $fechaHasta,
+        ];
+
+        $this->renderer->render('graficoPorSexo', $datos);
+    }
 
     public function listadoPorGrupoDeEdad()
     {
         $fechaDesde = null;
         $fechaHasta = null;
-    
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
             $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
         }
-    
-        $usuariosPorEdad = $this->model->obtenerUsuariosPorEdadFiltradoPorFecha($fechaDesde,$fechaHasta,1);   
-       
+
+        $usuariosPorEdad = $this->model->obtenerUsuariosPorEdadFiltradoPorFecha($fechaDesde, $fechaHasta, 1);
+
         $datos = [
             'usuariosPorEdad' => $usuariosPorEdad,
             'fechaDesde' => $fechaDesde,
@@ -144,18 +151,19 @@ public function listadoPorSexo()
         $this->renderer->render('graficoPorEdad', $datos);
     }
 
-    public function respuestasCorrectasPorUsuario(){
+    public function respuestasCorrectasPorUsuario()
+    {
 
         $fechaDesde = null;
         $fechaHasta = null;
-    
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $fechaDesde = isset($_POST['fechaDesde']) ? $_POST['fechaDesde'] : null;
             $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
         }
-        
-        $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario($fechaDesde,$fechaHasta,1);
-    
+
+        $respuestasPorUsuario = $this->model->obtenerRespuestasCorrectasPorUsuario($fechaDesde, $fechaHasta, 1);
+
         $datos = [
             'respuestasCorrectasPorUsuario' => $respuestasPorUsuario,
             'fechaDesde' => $fechaDesde,
@@ -166,7 +174,8 @@ public function listadoPorSexo()
     }
 
 
-    public function traerUsuariosNuevos(){
+    public function traerUsuariosNuevos()
+    {
 
         $fechaDesde = null;
         $fechaHasta = null;
@@ -176,7 +185,7 @@ public function listadoPorSexo()
             $fechaHasta = isset($_POST['fechaHasta']) ? $_POST['fechaHasta'] : null;
         }
 
-        $usuariosNuevos = $this->model->obtenerUsuariosNuevos($fechaDesde,$fechaHasta);
+        $usuariosNuevos = $this->model->obtenerUsuariosNuevos($fechaDesde, $fechaHasta);
 
         $nuevosUsuarios = [
             'usuariosNuevos' => $usuariosNuevos
@@ -186,8 +195,9 @@ public function listadoPorSexo()
 
 
     //Crear reportes en PDF
-    public function reporteDeUsuarios(){
-        require ("helpers/JugadoresTotales.php");
+    public function reporteDeUsuarios()
+    {
+        require("helpers/JugadoresTotales.php");
 
         $pdf = new JugadoresTotales("L");
         $pdf->AddPage();
@@ -198,29 +208,30 @@ public function listadoPorSexo()
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
 
-        foreach ($tablaUsuarios as $fila ){
-            $pdf->Cell(25,25,($fila["id"]),1, 0, 'C', 0);
-            $pdf->Cell(45,25,($fila["nombreUsuario"]),1, 0, 'C', 0);
-            $pdf->Cell(60,25,($fila["mail"]),1, 0, 'C', 0);
-            $pdf->Cell(30,25,($fila["sexo"]),1, 0, 'C', 0);
-            $pdf->Cell(30,25,($fila["anio"]),1, 0, 'C', 0);
-            $pdf->Cell(50,25,($fila["fechaRegistro"]),1, 0, 'C', 0);
-            $pdf->Cell(35,25,($fila["cantRespuestasCorrectas"]),1, 0, 'C', 0);
+        foreach ($tablaUsuarios as $fila) {
+            $pdf->Cell(25, 25, ($fila["id"]), 1, 0, 'C', 0);
+            $pdf->Cell(45, 25, ($fila["nombreUsuario"]), 1, 0, 'C', 0);
+            $pdf->Cell(60, 25, ($fila["mail"]), 1, 0, 'C', 0);
+            $pdf->Cell(30, 25, ($fila["sexo"]), 1, 0, 'C', 0);
+            $pdf->Cell(30, 25, ($fila["anio"]), 1, 0, 'C', 0);
+            $pdf->Cell(50, 25, ($fila["fechaRegistro"]), 1, 0, 'C', 0);
+            $pdf->Cell(35, 25, ($fila["cantRespuestasCorrectas"]), 1, 0, 'C', 0);
             $pdf->Ln();
         }
 
         $pdf->Output('JugadoresTotales.pdf', 'D');
     }
 
-    public function partidasTotalesPDF(){
-        require ("helpers/PartidasTotales.php");
+    public function partidasTotalesPDF()
+    {
+        require("helpers/PartidasTotales.php");
 
         $pdf = new PartidasTotales();
         $pdf->AddPage();
         $pdf->AliasNbPages();
 
         $tablaPartidas = $this->model->mostrarTodasLasPartidas();
-        $pdf->SetFont('Arial', '',12 );
+        $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
 
         foreach ($tablaPartidas as $fila) {
@@ -234,7 +245,9 @@ public function listadoPorSexo()
         }
         $pdf->Output('PartidasTotales.pdf', 'I');
     }
-    public function listadoDePreguntas(){
+
+    public function listadoDePreguntas()
+    {
         require("helpers/ListadoDePreguntas.php");
 
         $pdf = new ListadoDePreguntas("L");
@@ -242,7 +255,7 @@ public function listadoPorSexo()
         $pdf->AliasNbPages();
 
         $tablaPreguntas = $this->model->mostrarTodasLasPreguntas();
-        $pdf->SetFont('Arial', '',12 );
+        $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
 
         foreach ($tablaPreguntas as $fila) {
@@ -257,7 +270,9 @@ public function listadoPorSexo()
         }
         $pdf->Output('PreguntasTotales.pdf', 'I');
     }
-    public function grafico(){
+
+    public function grafico()
+    {
         require('helpers/Graficos.php');
         $pdf = new Graficos();
         $pdf->AliasNbPages();
@@ -266,7 +281,7 @@ public function listadoPorSexo()
         $titulo = $_POST['titulo'];
         $pdf->SetTitle($tituloPDF);
         $pdf->SetFont('Arial', 'B', 15);
-        $pdf->Cell(190,30,$titulo,0,1,'C',0);
+        $pdf->Cell(190, 30, $titulo, 0, 1, 'C', 0);
 
         $grafico = $_POST['graficoImagen'];
 
@@ -274,4 +289,25 @@ public function listadoPorSexo()
         $pdf->Output();
     }
 
+    public function reportePreguntasSugeridas()
+    {
+        require('helpers/PreguntasSugeridas.php');
+
+        $pdf = new PreguntasSugeridas("L");
+        $pdf->AddPage();
+        $pdf->AliasNbPages();
+        $pdf->SetTitle("Preguntas Sugeridas");
+        $tablaPreguntas = $this->model->mostrarTodasLasPreguntasSugeridas();
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->SetDrawColor(163, 163, 163);
+
+        foreach ($tablaPreguntas as $fila) {
+            $pdf->Ln(); // Salto de línea después de cada fila
+            $pdf->Cell(25, 10, ($fila["id"]), 1, 0, 'C', 0);
+            $pdf->Cell(230, 10, ($fila["descripcion"]), 1, 0, 'C', 0);
+
+        }
+        $pdf->Output('PreguntasSugeridas.pdf', 'I');
+
+    }
 }

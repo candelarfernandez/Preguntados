@@ -168,6 +168,11 @@ public function obtenerRespuestasCorrectasPorUsuario($fechaDesde = null, $fechaH
         $result = $this->database->print($query);
         return $result;
     }
+    public function mostrarTodasLasPreguntasSugeridas(){
+        $sql = "SELECT * FROM preguntassugeridas";
+        $result = $this->database->print($sql);
+        return $result;
+    }
 
     //Métodos privados
 
