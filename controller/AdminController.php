@@ -190,7 +190,7 @@ public function listadoPorSexo()
 
 
     public function traerUsuariosNuevos(){
-        $usuariosNuevos = $this->model->obtenerUsuariosNuevos();
+        $usuariosNuevos = $this->model->obtenerUsuariosNuevos(1);
         $nuevosUsuarios = [
             'usuariosNuevos' => $usuariosNuevos
         ];
@@ -222,7 +222,7 @@ public function listadoPorSexo()
             $pdf->Ln();
         }
 
-        $pdf->Output('JugadoresTotales.pdf', 'I');
+        $pdf->Output('JugadoresTotales.pdf', 'D');
     }
 
     public function partidasTotalesPDF(){
@@ -270,5 +270,20 @@ public function listadoPorSexo()
         }
         $pdf->Output('PreguntasTotales.pdf', 'I');
     }
+    public function graficoPorPais(){
+        require('helpers/Graficos.php');
+        $pdf = new Graficos();
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetTitle("Paises de los usuarios");
+        $pdf->SetFont('Arial', 'B', 15);
 
+        $pdf->Cell(190,30,'Reporte usuarios por pais',0,1,'C',0);
+
+        $grafico = $_POST['graficoImagen'];
+
+        $pdf->image($grafico, 0, 50, 200, 0, 'png');
+        $pdf->Output();
+    }
+    
 }
