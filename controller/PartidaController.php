@@ -4,14 +4,12 @@ class PartidaController {
 
     private $renderer;
     private $model;
-    // private $puntaje;
-    // private $tiempoRestante;
+    private $tiempoAgotado;
 
     public function __construct($model, $renderer) {
         $this->model = $model;
         $this->renderer = $renderer;
-        // $this->puntaje = 0;
-        // $this->tiempoRestante = 20;
+        $this->tiempoAgotado = false;
     }
 
     public function list() {
@@ -35,6 +33,8 @@ class PartidaController {
             
             $datosPregunta = $_SESSION['preguntaActual'];
         }
+
+        $datosPregunta['reportar'] = true;
        
         $this->renderer->render('partida', $datosPregunta);
     }
@@ -65,26 +65,29 @@ class PartidaController {
            
         }
         else {
-            if($tiempoAgotado){
-                $this->tiempoAgotado();
-                
-            } else {
-                header('location: /lobby/list?rtaIncorrecta=true');
+            if($this->tiempoAgotado){
+                header('location: //lobby/list?tiempoAgotado=true');
             }
-
+            else{
             $this->model->guardarPuntaje($datosPartida);
             $this->restablecerPartida();
             unset($_SESSION['preguntaActual']);
+            header('location: /lobby/list?rtaIncorrecta=true');
             exit();
-        }
-       
+            }
 
-    }}
+
+            }
+       
+        }
+    }
 
     public function tiempoAgotado() {
+        $this->tiempoAgotado = true;
 
         $datosPartida = [
             'idUsuario' => $_SESSION['usuarioId'],
+            //Actualmente si contesta una pregunta y se le acaba el tiempo, se le suma 1 punto
             'puntaje' => $_SESSION['puntaje'],
             'idPartida' => $_SESSION['partidaId']
         ];
@@ -109,10 +112,11 @@ class PartidaController {
     }      
    
     public function reportarPregunta(){
-        $datos = $_GET;
-        $this->model->agregarPreguntaReportada($datos['idPregunta']);
-        header('location: /lobby/list?preguntaReportada=true');
+        $idPregunta = $_POST['idPregunta'];
+        $this->model->agregarPreguntaReportada($idPregunta);
+        echo json_encode(['status' => 'success']);
+        exit;
     }
-
+    
 
 }  

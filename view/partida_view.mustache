@@ -61,8 +61,8 @@ function guardarTiempoRestante() {
     {{/respuestas}}
     {{#reportar}}  
     <form action="/partida/reportarPregunta" method="get">
-    <button class="flex m-auto bg-orange-500 my-4 text-white py-2 px-4 rounded-md hover:bg-orange-600" type="submit" id="reportar" name="reportar">Reportar</button> 
-     <input type="hidden" id="idPregunta" name="idPregunta" value="{{pregunta.id}}">
+    <button class="flex m-auto bg-orange-500 my-4 text-white py-2 px-4 rounded-md hover:bg-orange-600" type="button" id="reportarBtn">Reportar</button>
+    <input type="hidden" id="idPregunta" name="idPregunta" value="{{pregunta.id}}">
     </form>
    {{/reportar}}  
   
@@ -85,3 +85,28 @@ function guardarTiempoRestante() {
 
     </div>
     </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#reportarBtn").on("click", function() {
+            reportarPreguntaAjax();
+        });
+
+        function reportarPreguntaAjax() {
+            var idPregunta = $("#idPregunta").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/partida/reportarPregunta",
+                data: { idPregunta: idPregunta },
+                success: function(response) {
+                    window.location.href = "/lobby/list?preguntaReportada=true";
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }
+    });
+</script>
