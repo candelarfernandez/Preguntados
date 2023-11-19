@@ -1,3 +1,26 @@
+<script>
+
+    function guardarDatos(){
+        let fechaDesdeValue = document.getElementById("fechaDesde").value;
+        let fechaHastaValue = document.getElementById("fechaHasta").value;
+
+        localStorage.setItem("fechaDesdeValue" , fechaDesdeValue);
+        localStorage.setItem("fechaHastaValue" , fechaHastaValue);
+        console.log(fechaDesdeValue);
+    }
+    window.addEventListener('load' , actualizarCampoHidden);
+
+    function actualizarCampoHidden(){
+     document.getElementById("fechaDesdeH").value = localStorage.getItem("fechaDesdeValue");
+     document.getElementById("fechaHastaH").value = localStorage.getItem("fechaHastaValue");
+    }
+    function borrarLocalStorage(){
+        localStorage.removeItem("fechaDesdeValue");
+        localStorage.removeItem("fechaHastaValue");
+
+    }
+</script>
+
 <div class="bg-violet-100 flex flex-col items-center h-screen">
     <a href="/login/cerrarSesion" class="absolute top-4 right-4">
         <button class="bg-violet-700 rounded-full p-2 text-white">Cerrar Sesión
@@ -16,10 +39,10 @@
         <form action="" method="post" class="mb-4">
             <p>Seleccione un rango de fechas para filtrar - Según la fecha de los registros de usuarios</p>
             <label for="fechaDesde" class="block text-gray-600 text-sm font-medium mb-2">Elija fecha desde:</label>
-            <input type="date" name="fechaDesde" class="w-full p-2 border rounded-md" required>
+            <input type="date" name="fechaDesde" class="w-full p-2 border rounded-md" id="fechaDesde" onchange="guardarDatos()" required>
             <label for="fechaHasta" class="block text-gray-600 text-sm font-medium mb-2">Elija fecha hasta:</label>
-            <input type="date" name="fechaHasta" class="w-full p-2 border rounded-md" required>
-            <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <input type="date" name="fechaHasta" class="w-full p-2 border rounded-md" id="fechaHasta" onchange="guardarDatos()" required>
+            <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"  >
                 Filtrar
             </button>
         </form>
@@ -43,5 +66,11 @@
             {{/usuariosNuevos}}
             </tbody>
         </table>
+        <form method="post", action="/admin/reporteUsuariosNuevos">
+            <button type="submit" class="bg-violet-500 mt-2 table-auto w-full text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600" onclick="borrarLocalStorage()" >Reporte PDF</button>
+            <input type="hidden" name="fechaDesdeH" id="fechaDesdeH" >
+            <input type="hidden" name="fechaHastaH" id="fechaHastaH" >
+
+        </form>
     </div>
 </div>
