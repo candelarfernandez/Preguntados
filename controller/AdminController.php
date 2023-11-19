@@ -270,7 +270,7 @@ public function listadoPorSexo()
         }
         $pdf->Output('PreguntasTotales.pdf', 'I');
     }
-    public function graficoPorPais(){
+    public function grafico(){
         require('helpers/Graficos.php');
         $pdf = new Graficos();
         $pdf->AliasNbPages();
