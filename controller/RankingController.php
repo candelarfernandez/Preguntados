@@ -15,9 +15,14 @@ class RankingController {
             header('location: /login/list');
             exit();
         }
-        $data['usuarios'] = $this->model->cargarUsuarios();
         $data['primerosPuestos'] = $this->model->cargarPrimerosPuestos();
         $this->renderer->render('ranking', $data);
+    }
+
+    public function traerUsuariosPorPuntajeAjax(){
+        $usuarios = $this->model->cargarUsuarios();
+        header('Content-Type: application/json');
+        echo json_encode(['usuarios' => $usuarios]);
     }
 
     public function verUsuario() {
