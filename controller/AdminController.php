@@ -202,7 +202,7 @@ class AdminController
         $pdf = new JugadoresTotales("L");
         $pdf->AddPage();
         $pdf->AliasNbPages();
-
+        $pdf->SetTitle("Usuarios registrados");
         $tablaUsuarios = $this->model->imprimirTodosLosUsuariosParaPDF();
 
         $pdf->SetFont('Arial', '', 12);
@@ -219,7 +219,7 @@ class AdminController
             $pdf->Ln();
         }
 
-        $pdf->Output('JugadoresTotales.pdf', 'D');
+        $pdf->Output('JugadoresTotales.pdf', 'I');
     }
 
     public function partidasTotalesPDF()
@@ -230,13 +230,20 @@ class AdminController
         $pdf->AddPage();
         $pdf->AliasNbPages();
 
+        $pdf->SetTitle("Partidas totales realizadas");
         $tablaPartidas = $this->model->mostrarTodasLasPartidas();
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
 
+        //Centrar tabla
+        $anchoTotalTabla = 25 + 25 + 45 + 70;
+        $margenIzquierdo = ($pdf->GetPageWidth() - $anchoTotalTabla) / 2;
+
         foreach ($tablaPartidas as $fila) {
             $pdf->Ln(); // Salto de línea después de cada fila
-            $pdf->Cell(45, 10, ($fila["idUsuario"]), 1, 0, 'C', 0);
+            $pdf->SetX($margenIzquierdo);
+            $pdf->Cell(25, 10, ($fila["id"]), 1, 0, 'C', 0);
+            $pdf->Cell(25, 10, ($fila["idUsuario"]), 1, 0, 'C', 0);
             $pdf->Cell(45, 10, ($fila["puntaje"]), 1, 0, 'C', 0);
             $pdf->Cell(70, 10, ($fila["fecha"]), 1, 0, 'C', 0);
             if ($pdf->GetY() > 250) {
@@ -257,12 +264,14 @@ class AdminController
         $tablaPreguntas = $this->model->mostrarTodasLasPreguntas();
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
+        $pdf->SetTitle("Lista de preguntas");
 
         foreach ($tablaPreguntas as $fila) {
             $pdf->Ln(); // Salto de línea después de cada fila
             $pdf->Cell(10, 10, ($fila["id"]), 1, 0, 'C', 0);
             $pdf->Cell(240, 10, ($fila["pregunta"]), 1, 0, 'C', 0);
-            $pdf->Cell(20, 10, ($fila["dificultad"]), 1, 0, 'C', 0);
+            $fila["dificultad"] = $this->convertirEnStringLadificultad($fila['dificultad']);
+            $pdf->Cell(30, 10, ($fila["dificultad"]), 1, 0, 'C', 0);
 
             if ($pdf->GetY() > 150) {
                 $pdf->AddPage();
@@ -301,8 +310,12 @@ class AdminController
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
 
+        $anchoTotalTabla = 25 + 230;
+        $margenIzquierdo = ($pdf->GetPageWidth() - $anchoTotalTabla) / 2;
+
         foreach ($tablaPreguntas as $fila) {
             $pdf->Ln(); // Salto de línea después de cada fila
+            $pdf->SetX($margenIzquierdo);
             $pdf->Cell(25, 10, ($fila["id"]), 1, 0, 'C', 0);
             $pdf->Cell(230, 10, ($fila["descripcion"]), 1, 0, 'C', 0);
 
@@ -310,4 +323,14 @@ class AdminController
         $pdf->Output('PreguntasSugeridas.pdf', 'I');
 
     }
+    private function convertirEnStringLadificultad($dificultadNumero) {
+    $niveles = [
+        1 => "facil",
+        2 => "intermedio",
+        3 => "dificil"
+    ];
+
+    return $niveles[$dificultadNumero] ?? "desconocido";
+}
+
 }

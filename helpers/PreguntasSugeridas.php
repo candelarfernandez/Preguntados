@@ -20,6 +20,7 @@ class PreguntasSugeridas extends FPDF
         $this->SetDrawColor(209, 209, 209);
         $this->SetFont('Arial', 'B', 11);
 
+        $this->SetX(21);
         $this->Cell(25,10, utf8_decode('PreguntaID'), 1, 0, 'C', 1);
         $this->Cell(230, 10, utf8_decode('Pregunta'), 1, 0, 'C', 1);
     }

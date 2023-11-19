@@ -12,7 +12,7 @@ class ListadoDePreguntas extends FPDF
         $this->SetTextColor(139, 92, 246);
         $this->Cell(50);
         $this->SetFont('Arial', 'B', 15);
-        $this->Cell(100, 10, utf8_decode("Listado de preguntas "), 0, 1, 'C', 0);
+        $this->Cell(180, 10, utf8_decode("Lista de preguntas "), 0, 1, 'C', 0);
         $this->Ln(4);
 
         $this->SetFillColor(139,92,246);
@@ -22,7 +22,7 @@ class ListadoDePreguntas extends FPDF
 
         $this->Cell(10,10, utf8_decode('Id'), 1, 0, 'C', 1);
         $this->Cell(240, 10, utf8_decode('Pregunta'), 1, 0, 'C', 1);
-        $this->Cell(20, 10, utf8_decode('Dificultad'), 1, 0, 'C', 1);
+        $this->Cell(30, 10, utf8_decode('Dificultad'), 1, 0, 'C', 1);
 
 
     }
