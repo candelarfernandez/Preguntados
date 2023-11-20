@@ -87,7 +87,6 @@ class PartidaController {
 
         $datosPartida = [
             'idUsuario' => $_SESSION['usuarioId'],
-            //Actualmente si contesta una pregunta y se le acaba el tiempo, se le suma 1 punto
             'puntaje' => $_SESSION['puntaje'],
             'idPartida' => $_SESSION['partidaId']
         ];

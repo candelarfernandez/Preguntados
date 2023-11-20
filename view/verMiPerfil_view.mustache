@@ -1,0 +1,122 @@
+<div class="bg-violet-100 flex flex-col items-center justify-center h-screen">
+<a href="/lobby/list" class="absolute top-4 right-4">
+            <button class="bg-violet-700 rounded-full p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+            </button>
+        </a> 
+ <div class="bg-white rounded-md m-4 flex flex-col items-center justify-center p-8 shadow-md w-2/4 relative">  
+        <div class="flex flex-col md:flex-row">
+            <div class="mb-6 text-center">
+              {{#usuarioModificado}}
+                <div class="bg-green-400 rounded-md py-2 my-2 text-sm w-2/4 mensaje mx-auto flex justify-between">
+                <p class="text-white font-medium text-center p-4"> Usuario modificada con éxito. </p>
+                <button class="text-white pr-4" onclick="toggleMensaje()">X</button>
+                </div>
+               {{/usuarioModificado}}
+                 <h1 class="text-3xl font-bold mb-4 text-violet-500">{{usuario.nombreUsuario}}</h1>
+                 <img src="\{{usuario.foto}}" alt="Foto de perfil" class="w-32 h-32 mx-auto rounded-full mb-2">
+                <p class="text-lg m-2"><span class="font-semibold">Nombre:</span> {{usuario.nombre}}</p>
+                <p class="text-lg m-2"><span class="font-semibold">País:</span> {{usuario.pais}}</p>
+                <div id="map" class="mt-4" style="width: 400px; height: 200px;"></div>
+                <p class="text-lg m-2"><span class="font-semibold">Correo Electrónico:</span> {{usuario.mail}}</p>
+                <p class="text-lg m-2"><span class="text-white bg-violet-500 rounded-md p-1 text-lg px-2">Puntaje Total: {{usuario.puntajeTotal}}</span></p>
+                {{#mostrarPartidas}}
+                <h1>Mejores partidas</h1>
+             {{#partidas}}
+                <div class="m-2 border-b border-gray-300 py-2 flex flex-row">
+                <p class="m-2 text-gray-500">{{fecha}} - </p>
+                <p class="text-gray-700 m-2"><span class="font-semibold">{{puntaje}}</span> puntos</p>
+                </div>
+             {{/partidas}}
+             {{/mostrarPartidas}}
+             <button class="bg-green-500 text-white px-4 py-2 rounded mb-4" onclick="editarPerfil()">Editar perfil</button>
+              
+        </div>
+    </div>
+
+    </div>
+  
+</div>
+
+<!-- Modal para editar usuario -->
+<div id="modalEditarPerfil" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+        <div class="modal-content py-4 text-left px-6">
+            <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold">Editar usuario</p>
+                <div class="modal-close cursor-pointer z-50" onclick="cerrarModal()">
+                    <svg class="fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M13.415 12l4.293 4.293a1 1 0 0 1-1.414 1.414L12 13.415l-4.293 4.292a1 1 0 1 1-1.414-1.414L10.586 12l-4.293-4.293a1 1 0 0 1 1.414-1.414L12 10.585l4.293-4.292a1 1 0 0 1 1.414 1.414L13.414 12z"/>
+                    </svg>
+                </div>
+            </div>
+            {{#menorDeEdad}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Lo lamento, debes ser mayor de edad para jugar </p>
+            </div>        
+        {{/menorDeEdad}}
+
+        {{#contraseniaInvalida}}
+            <div class="bg-red-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> Ups, parece que las contraseñas no coinciden </p>
+            </div>        
+        {{/contraseniaInvalida}}           
+        
+            <form action="/lobby/editarUsuario" method="POST">
+
+        <label for="nombre" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Nombre Completo:</label>
+        <input type="text" name="usuario[nombre]" class="w-full p-2 border rounded-md" required>
+
+        <label for="anio" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Fecha de Nacimiento:</label>
+        <input type="date" name="usuario[anio]" class="w-full p-2 border rounded-md" required>
+        
+        <label for="ciudad" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Ciudad:</label>
+        <input type="text" id="ciudad" name="usuario[ciudad]" class="w-full p-2 border rounded-md" required>
+    
+        <label for="contrasenia" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Contraseña:</label>
+        <input type="password" id="contrasenia" name="usuario[contrasenia]" class="w-full p-2 border rounded-md" required>
+        
+        <label for="confirmar_contrasena" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Confirmar Contraseña:</label>
+        <input type="password" id="confirmar_contrasena" name="usuario[confirmar_contrasena]" class="w-full p-2 border rounded-md" required>
+        
+        <label for="nombreUsuario" class="block text-gray-600 text-sm font-medium mb-2 mt-2">Nombre de Usuario:</label>
+        <input type="text" id="nombreUsuario" name="usuario[nombreUsuario]" class="w-full p-2 border rounded-md" required>
+        
+        <input type="submit" value="Modificar" class="flex mt-4 bg-violet-500 text-white py-2 px-4 rounded-md hover:bg-violet-600">        
+ 
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+  var map = L.map('map').setView([{{usuario.latitud}}, {{usuario.longitud}}], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+  }).addTo(map);
+
+  var marker = L.marker([{{usuario.latitud}}, {{usuario.longitud}}]).addTo(map);
+
+  //modal de editar perfil
+  
+    function cerrarModal() {
+    document.getElementById("modalEditarPerfil").classList.add("hidden");
+    }
+    function editarPerfil() {
+    document.getElementById("modalEditarPerfil").classList.remove("hidden");
+    if (map) {
+      map.remove();
+    }
+    }
+     function toggleMensaje() {
+        var mensaje = document.querySelector('.mensaje');
+        if (mensaje.classList.contains('hidden')) {
+            mensaje.classList.remove('hidden');
+        } else {
+            mensaje.classList.add('hidden');
+        }
+    }
+</script>

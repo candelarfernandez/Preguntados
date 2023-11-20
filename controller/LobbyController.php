@@ -53,6 +53,34 @@ class LobbyController
         header('location: /login/list');
         exit();
     }
+    public function verMiPerfil() {
+        if ($_SESSION['usuario'] == null) {
+            $urlOriginal = $_SERVER['REQUEST_URI'];
+            $_SESSION['redirect_url'] = $urlOriginal;
+            header('location: /login/list');
+            exit();
+        }
+        $usuario = $this->model->obtenerDatosDelUsuarioPorID($_SESSION['usuarioId']);
+        if(count($usuario['partidas']) > 0){
+            $usuario['mostrarPartidas'] = true;
+        }
+        $this->renderer->render('verMiPerfil', $usuario);
+    
+    }
+
+    public function editarUsuario(){
+        if ($datos = $_POST['usuario']) {  
+            $errores = $this->model->ejecutarValidaciones($datos);
+
+            if (empty($errores)) {
+                    $errores['usuarioModificado'] = true;
+                header('location: /lobby/verMiPerfil?usuarioModificado=true');
+                exit();
+            } else {
+                $this->renderer->render("verMiPerfil", $errores);
+            }
+        }
+    }
 
 }
 

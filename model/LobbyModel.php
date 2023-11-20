@@ -45,4 +45,68 @@ class LobbyModel {
             QRcode::png($content, $filename, $level, $size, $frameSize);
         }
     }
+
+    
+    public function obtenerDatosDelUsuarioPorID($id){
+        $sql = "SELECT * FROM usuarios WHERE id = '{$id}'";
+        $resultado['usuario'] = $this->database->queryUnSoloRegistro($sql);
+        $resultado['partidas'] = $this->obtenerPartidasDelUsuario($id);
+        return $resultado;
+    }
+    private function obtenerPartidasDelUsuario($id){
+        $sql = "SELECT * FROM partida WHERE idUsuario = '{$id}' ORDER BY puntaje DESC LIMIT 5 ";
+        $partidas = $this->database->query($sql);
+        return $partidas;
+    }
+
+    public function modificarUsuario($datos){
+        $idUsuarioModificada = $_SESSION['usuarioId'];
+        $nuevoNombre = $datos['nombre'];
+        $nuevaFecha = $datos['anio'];
+        $nuevaContrasenia = $datos['contrasenia'];
+        $nuevaCiudad = $datos['ciudad'];
+        $nuevoNombreUsuario = $datos['nombreUsuario'];
+        //if(!empty($nuevoNombre) || !empty($nuevaFecha) || !empty($nuevaContrasenia) || !empty($nuevaCiudad) || !empty($nuevoNombreUsuario)){
+            $sql = "UPDATE `usuarios` SET `nombre` = '$nuevoNombre', `anio` = '$nuevaFecha', `ciudad` = '$nuevaCiudad' ,`contrasenia` = '$nuevaContrasenia',  `nombreUsuario` = '$nuevoNombreUsuario'
+            WHERE `id` = $idUsuarioModificada";
+       // }
+        $this->database->execute($sql);
+        header('location: /lobby/verMiPerfil?usuarioModificado=true');
+
+    }
+    
+    public function validarFechaDeNacimiento($datos){
+        return true;
+    }
+    public function validarContraseña($datos){
+        $contrasenia = $datos['contrasenia'];
+        $contraseniaRepetida = $datos['confirmar_contrasena'];
+        if($contrasenia == $contraseniaRepetida){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function ejecutarValidaciones($datos){
+
+        $errores = [];
+
+        if(!$this->validarFechaDeNacimiento($datos)){
+            $errores['menorDeEdad'] = true;
+        }
+
+        if(!$this->validarContraseña($datos)){
+            $errores['contraseniaInvalida'] = true;
+        }
+
+        $datos['contrasenia'] = md5($datos['contrasenia']);
+
+        if(empty($errores)){
+            $this->modificarUsuario($datos);
+        }
+
+        return $errores;
+    }
 }
