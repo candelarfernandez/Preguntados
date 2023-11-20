@@ -154,6 +154,18 @@ public function obtenerRespuestasCorrectasPorUsuario($fechaDesde = null, $fechaH
         return $this->database->query($consulta);
     }
 
+
+    public function obtenerUsuariosNuevosPDF($fechaDesde = null, $fechaHasta= null){
+        $whereClause = '';
+
+        if (!empty($fechaDesde && !empty($fechaHasta))) {
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
+        } else {
+            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 10 DAY)";
+        }
+        $consulta = "SELECT * FROM usuarios $whereClause";
+        return $this->database->print($consulta);
+    }
     public function imprimirTodosLosUsuariosParaPDF(){
         $sql = "SELECT * FROM usuarios WHERE idRol = 1";
         $result = $this->database->print($sql);

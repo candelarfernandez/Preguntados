@@ -226,12 +226,15 @@ class AdminController
     {
         require("helpers/PartidasTotales.php");
 
+        $fechaDesde = $_POST["fechaDesde"];
+        $fechaHasta = $_POST["fechaHasta"];
+
         $pdf = new PartidasTotales();
         $pdf->AddPage();
         $pdf->AliasNbPages();
 
         $pdf->SetTitle("Partidas totales realizadas");
-        $tablaPartidas = $this->model->mostrarTodasLasPartidas();
+        $tablaPartidas = $this->model->mostrarTodasLasPartidas($fechaDesde, $fechaHasta);
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
 
@@ -323,6 +326,41 @@ class AdminController
         $pdf->Output('PreguntasSugeridas.pdf', 'I');
 
     }
+    public function reporteUsuariosNuevos(){
+        require("helpers/UsuariosNuevos.php");
+
+        $pdf = new UsuariosNuevos("L");
+        $pdf->AddPage();
+        $pdf->AliasNbPages();
+        $pdf->SetTitle("Usuarios nuevos");
+        $fechaDesde = $_POST["fechaDesdeH"];
+        $fechaHasta = $_POST["fechaHastaH"];
+
+
+
+        $tablaPreguntas = $this->model->obtenerUsuariosNuevosPDF($fechaDesde, $fechaHasta);
+
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->SetDrawColor(163, 163, 163);
+
+        $anchoTotalTabla = 50+40+100+30;
+        $margenIzquierdo = ($pdf->GetPageWidth() - $anchoTotalTabla) / 2;
+
+
+        foreach ($tablaPreguntas as $fila) {
+            $pdf->Ln();
+            $pdf->SetX($margenIzquierdo);
+            $pdf->Cell(50, 10, ($fila["nombre"]), 1, 0, 'C', 0);
+            $pdf->Cell(40, 10, ($fila["nombreUsuario"]), 1, 0, 'C', 0);
+            $pdf->Cell(100, 10, ($fila["mail"]), 1, 0, 'C', 0);
+            $pdf->Cell(30, 10, ($fila["nivel"]), 1, 0, 'C', 0);
+        }
+        $pdf->Output('UsuariosNuevos.pdf', 'D');
+
+    }
+
+
+
     private function convertirEnStringLadificultad($dificultadNumero) {
     $niveles = [
         1 => "facil",

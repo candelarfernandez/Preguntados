@@ -19,7 +19,7 @@
         }
     </script>
 </head>
-<body>
+<body class="bg-violet-100">
   <div class="container mx-auto p-6 flex justify-center items-center h-screen">
     <div class="bg-white rounded-lg shadow-md p-6 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
          <form action="" method="post" class="mb-4">
@@ -33,6 +33,12 @@
             </button>
         </form>
         <div id="donutchart" style="width: 100%; height: 400px;"></div>
+          <form method="post" action="/admin/grafico">
+            <button type="submit" class="bg-violet-500 table-auto text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Reporte PDF</button>
+            <input type="hidden" name="graficoImagen" id="graficoImagen">
+            <input type="hidden" name="tituloPDF" id="tituloPDF" value="Usuarios por sexo">
+            <input type="hidden" name="titulo" id="titulo" value="Sexo de los usuarios">
+        </form>
     </div>
 </div>
 <a href="/admin/list" class="absolute top-4 left-4">
@@ -40,12 +46,6 @@
         <i class="fas fa-sign-out-alt text-white"></i>
     </button>
 </a>
-  <form method="post" action="/admin/grafico">
-      <button type="submit" class="bg-violet-500 table-auto w-full text-white py-2 px-4 rounded-md mb-4 hover:bg-violet-600">Reporte PDF</button>
-      <input type="hidden" name="graficoImagen" id="graficoImagen">
-      <input type="hidden" name="tituloPDF" id="tituloPDF" value="Usuarios por sexo">
-      <input type="hidden" name="titulo" id="titulo" value="Sexo de los usuarios">
-  </form>
 </body>
 </html>
 
