@@ -45,9 +45,9 @@ class AdminController
 
         foreach ($jugadores as &$jugador) {
             if ($jugador['cantRespuestas'] > 0) {
-                $jugador['porcentaje'] = ($jugador['cantRespuestasCorrectas'] / $jugador['cantRespuestas']) * 100;
+                $jugador['porcentaje'] = ($jugador['cantRespuestasCorrectas'] / $jugador['cantRespuestas']) * 100; //traemos el porcentaje de respuestas correctas por las respuestas totales
             } else {
-                $jugador['porcentaje'] = 0; // Evita la división por cero si cantRespuestas es cero
+                $jugador['porcentaje'] = 0; // Si el jugador no tiene respuestas, no se calcula el porcentaje
             }
         }
 
@@ -62,22 +62,13 @@ class AdminController
 
     public function traerPartidas()
     {
-        //intentamos que se muestre el nombre del usuario en vez del id, pero no se muestra nada
         $partidas = $this->model->traerTodasLasPartidas();
-        $nombresUsuarios = [];
-
-        foreach ($partidas as $partida) {
-            $idUsuario = $partida['idUsuario'];
-            $nombreUsuario = $this->model->traerNombrePorId($idUsuario);
-            $nombresUsuarios[$idUsuario] = $nombreUsuario;
-        }
 
         $totalPartidas = count($partidas);
 
         $datosPartidas = [
             'partidas' => $partidas,
             'totalPartidas' => $totalPartidas,
-            'nombresUsuarios' => $nombresUsuarios,
         ];
 
         $this->renderer->render('listadoPartidas', $datosPartidas);

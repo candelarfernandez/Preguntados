@@ -85,6 +85,7 @@ class PreguntaController {
 
     public function darDeAltaCategoria(){
         $datos = $_POST;
+        var_dump($datos);
         $datos['foto'] = $_FILES['foto'];
         $this->model->agregarCategoria($datos);
     }

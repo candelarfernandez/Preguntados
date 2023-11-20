@@ -118,8 +118,6 @@ class PartidaModel {
     }
 
     private function ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($partidaId, $idPregunta){
-        /* $idPregunta = (string)$idPregunta; // Convierte a cadena si es necesario
-         $partidaId = (string)$partidaId;   // Convierte a cadena si es necesario*/
  
          $sql = "SELECT * FROM `preguntasusadas` WHERE idPartida = '{$partidaId}' and idPregunta = '{$idPregunta}' ;";
          $resultado = $this->database->queryUnSoloRegistro($sql);

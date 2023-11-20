@@ -69,6 +69,7 @@ class PreguntaModel {
             $rta4 = "INSERT INTO `respuestas` (`idPregunta`, `respuesta`, `esCorrecta`) VALUES ('{$idPreguntaNueva}', '{$respuestas[3]['respuesta']}', 'false')";
             $this->database->execute($rta4);
         }
+        $this->eliminarPreguntaSugeridaAprobada($idPregunta);
         header('location: /pregunta/editorList?preguntaSugeridaAprobada=true');
     }
 
@@ -92,6 +93,13 @@ class PreguntaModel {
         $sql2 = "DELETE FROM `respuestas` WHERE idPregunta = {$idPregunta}";
         $this->database->execute($sql2);
         header('location: /pregunta/editorList?preguntaEliminada=true');
+    }
+    public function eliminarPreguntaSugeridaAprobada($idPregunta){
+        $sql2 = "DELETE FROM `respuestassugeridas` WHERE idPreguntaSugerida = {$idPregunta}";
+        $this->database->execute($sql2);
+        $sql = "DELETE FROM `preguntassugeridas` WHERE id = {$idPregunta}";
+        $this->database->execute($sql);
+      
     }
 
     public function agregarPregunta($datos){
@@ -117,13 +125,17 @@ class PreguntaModel {
         $idPreguntaModificada = $datos['idPregunta'];
         $nuevaDescripcion = $datos['descripcion'];
         $idCategoriaModificada = $datos['idCategoria'];
-        $sql = "UPDATE `preguntas` SET `pregunta` = '$nuevaDescripcion', `id_categoria` = $idCategoriaModificada WHERE `id` = $idPreguntaModificada";
+        if(!empty($nuevaDescripcion)){
+            $sql = "UPDATE `preguntas` SET `pregunta` = '$nuevaDescripcion', `id_categoria` = $idCategoriaModificada WHERE `id` = $idPreguntaModificada";
+        }else{
+            $sql = "UPDATE `preguntas` SET `id_categoria` = $idCategoriaModificada WHERE `id` = $idPreguntaModificada";
+        }
+      
         $this->database->execute($sql);
         header('location: /pregunta/editorList?preguntaModificada=true');
     }
     
     public function agregarCategoria($datos){
-        var_dump($datos);
         $datos['foto'] = $_FILES['foto'];
         $nombre = $datos["datos"]["nombre"];
 
@@ -166,17 +178,19 @@ class PreguntaModel {
     }
     
     private function subirFotoCategoria($foto){
-
         $archivo_temporal = $foto['tmp_name'];
         $nombre = $foto['name'];
         $carpeta_destino = "/public/img/";
-
-        if(move_uploaded_file($archivo_temporal, $carpeta_destino.$nombre)){
-            return $carpeta_destino . $nombre;
+ 
+        //Por si no existe la carpeta
+        if (!file_exists($_SERVER['DOCUMENT_ROOT'] . $carpeta_destino)) {
+            mkdir($_SERVER['DOCUMENT_ROOT'] . $carpeta_destino, 0777, true);
         }
-        else{
+   
+        if(move_uploaded_file($archivo_temporal, $_SERVER['DOCUMENT_ROOT'] . $carpeta_destino . $nombre)){
+            return $carpeta_destino . $nombre;
+        } else {
             return false;
         }
-
     }
 }
