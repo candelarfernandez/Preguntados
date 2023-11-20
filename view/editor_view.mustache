@@ -233,11 +233,9 @@
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="idCategoria">Categoría:</label>
                     <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idCategoria" name="datos[idCategoria]">
-                        <option value="1">Programacion</option>
-                        <option value="2">Historia</option>
-                        <option value="3">Deportes</option>
-                        <option value="4">Espectaculos</option>
-                        <option value="5">Ciencias Naturales</option>
+                        {{#categoriasDelJuego}}
+                        <option value="{{id_categoria}}">{{nombre_categoria}}</option>
+                        {{/categoriasDelJuego}}
                     </select>
                 </div>
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
@@ -270,11 +268,9 @@
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="idCategoria">Categoría:</label>
                     <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idCategoria" name="pregunta[idCategoria]">
-                        <option value="1">Programacion</option>
-                        <option value="2">Historia</option>
-                        <option value="3">Deportes</option>
-                        <option value="4">Espectaculos</option>
-                        <option value="5">Ciencias Naturales</option>
+                        {{#categoriasDelJuego}}
+                        <option value="{{id_categoria}}">{{nombre_categoria}}</option>
+                        {{/categoriasDelJuego}}
                     </select>
                 </div>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
@@ -320,11 +316,9 @@
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="idCategoria">Categoría:</label>
                     <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idCategoria" name="datos[idCategoria]">
-                        <option value="1">Programacion</option>
-                        <option value="2">Historia</option>
-                        <option value="3">Deportes</option>
-                        <option value="4">Espectaculos</option>
-                        <option value="5">Ciencias Naturales</option>
+                        {{#categoriasDelJuego}}
+                        <option value="{{id_categoria}}">{{nombre_categoria}}</option>
+                        {{/categoriasDelJuego}}
                     </select>
                 </div>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
