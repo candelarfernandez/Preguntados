@@ -73,7 +73,9 @@ class LobbyController
             $errores = $this->model->ejecutarValidaciones($datos);
 
             if (empty($errores)) {
+                if (isset($_GET['usuarioModificado'])) {
                     $errores['usuarioModificado'] = true;
+                }
                 header('location: /lobby/verMiPerfil?usuarioModificado=true');
                 exit();
             } else {
