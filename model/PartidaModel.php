@@ -17,7 +17,7 @@ class PartidaModel {
         $attempts = 0;
 
         do {
-            $pregunta = $this->traerPreguntaAleatoria($idUsuario);
+                $pregunta = $this->traerPreguntaAleatoria($idUsuario);
                 $estaUsadaLapregunta = $this->ValidarQueNoSeHayaUsadoLaPreguntaEnLaPartida($idPartid, $pregunta["id"]);
                 $attempts++;
                 if ($attempts >= $maxAttempts) {

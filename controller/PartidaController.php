@@ -43,14 +43,12 @@ class PartidaController {
         $alertas = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $datos = $_POST;
-
-
-           $datosPartida =[
+        $datosPartida =[
                 'idUsuario'=> $_SESSION['usuarioId'],
                 'puntaje'=> $_SESSION['puntaje'],
                 'idPartida'=> $_SESSION['partidaId']
-                ];
-            $this->model->calcularTiempoDeRespuesta($datosPartida);
+        ];
+        $this->model->calcularTiempoDeRespuesta($datosPartida);
         $idUsuario = $_SESSION['usuarioId'];
         $esCorrecta = $this->model->verSiEsCorrecta($datos,$idUsuario);
 

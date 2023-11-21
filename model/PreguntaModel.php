@@ -182,7 +182,6 @@ class PreguntaModel {
         $nombre = $foto['name'];
         $carpeta_destino = "/public/img/";
  
-        //Por si no existe la carpeta
         if (!file_exists($_SERVER['DOCUMENT_ROOT'] . $carpeta_destino)) {
             mkdir($_SERVER['DOCUMENT_ROOT'] . $carpeta_destino, 0777, true);
         }
