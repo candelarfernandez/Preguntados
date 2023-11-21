@@ -37,6 +37,9 @@ class LobbyController
             $usuario['preguntaSugerida'] = true;
         }
 
+        if (isset($_GET['usuarioModificado'])) {
+            $usuario['usuarioModificado'] = true;
+        }
         if (isset($_GET['preguntaReportada'])) {
             $usuario['preguntaReportada'] = true;
         }
@@ -63,6 +66,9 @@ class LobbyController
         $usuario = $this->model->obtenerDatosDelUsuarioPorID($_SESSION['usuarioId']);
         if(count($usuario['partidas']) > 0){
             $usuario['mostrarPartidas'] = true;
+        }
+        if (isset($_GET['usuarioModificado'])) {
+            $usuario['usuarioModificado'] = true;
         }
         $this->renderer->render('verMiPerfil', $usuario);
     
