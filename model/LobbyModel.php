@@ -66,9 +66,10 @@ class LobbyModel {
         $nuevaContrasenia = $datos['contrasenia'];
         $nuevaCiudad = $datos['ciudad'];
         $nuevoNombreUsuario = $datos['nombreUsuario'];
+        $nuevaFoto = $datos['foto'];
         //if(!empty($nuevoNombre) || !empty($nuevaFecha) || !empty($nuevaContrasenia) || !empty($nuevaCiudad) || !empty($nuevoNombreUsuario)){
             $sql = "UPDATE `usuarios` SET `nombre` = '$nuevoNombre', `anio` = '$nuevaFecha', `ciudad` = '$nuevaCiudad' ,`contrasenia` = '$nuevaContrasenia',  `nombreUsuario` = '$nuevoNombreUsuario'
-            WHERE `id` = $idUsuarioModificada";
+            ,  `foto` = '$nuevaFoto' WHERE `id` = $idUsuarioModificada";
        // }
         $this->database->execute($sql);
         header('location: /lobby/verMiPerfil?usuarioModificado=true');
@@ -88,10 +89,25 @@ class LobbyModel {
             return false;
         }
     }
+    public function subirFotoDePerfil($foto){
+
+        $archivo_temporal = $foto['tmp_name'];
+        $nombre = $foto['name'];
+        $carpeta_destino = "./public/img/";
+
+        if(move_uploaded_file($archivo_temporal, $carpeta_destino.$nombre)){
+            return $carpeta_destino . $nombre;
+        }
+        else{
+            return false;
+        }
+
+    }
 
     public function ejecutarValidaciones($datos){
 
         $errores = [];
+        $datos['foto'] = $_FILES['foto'];
 
         if(!$this->validarFechaDeNacimiento($datos)){
             $errores['menorDeEdad'] = true;
@@ -100,6 +116,9 @@ class LobbyModel {
         if(!$this->validarContraseña($datos)){
             $errores['contraseniaInvalida'] = true;
         }
+        $urlFoto = $this->subirFotoDePerfil($datos['foto']);
+
+        $datos['foto'] = $urlFoto;
 
         $datos['contrasenia'] = md5($datos['contrasenia']);
 
