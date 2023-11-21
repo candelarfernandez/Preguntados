@@ -11,7 +11,11 @@ class PreguntaController {
     }
 
     public function list() {
-        $this->renderer->render('preguntaSugerida');
+        $categoriasDelJuego = $this->model->traerCategorias();
+        $data = [
+            'categoriasDelJuego' => $categoriasDelJuego
+        ];
+        $this->renderer->render('preguntaSugerida', $data);
     }
     public function editorList() {
         $preguntasSugeridas = $this->model->traerPreguntasSugeridas();

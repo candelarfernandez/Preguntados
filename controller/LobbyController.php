@@ -37,7 +37,6 @@ class LobbyController
             $usuario['preguntaSugerida'] = true;
         }
 
-       
         if (isset($_GET['preguntaReportada'])) {
             $usuario['preguntaReportada'] = true;
         }

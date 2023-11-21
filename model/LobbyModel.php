@@ -67,19 +67,14 @@ class LobbyModel {
         $nuevaCiudad = $datos['ciudad'];
         $nuevoNombreUsuario = $datos['nombreUsuario'];
         $nuevaFoto = $datos['foto'];
-        //if(!empty($nuevoNombre) || !empty($nuevaFecha) || !empty($nuevaContrasenia) || !empty($nuevaCiudad) || !empty($nuevoNombreUsuario)){
-            $sql = "UPDATE `usuarios` SET `nombre` = '$nuevoNombre', `anio` = '$nuevaFecha', `ciudad` = '$nuevaCiudad' ,`contrasenia` = '$nuevaContrasenia',  `nombreUsuario` = '$nuevoNombreUsuario'
-            ,  `foto` = '$nuevaFoto' WHERE `id` = $idUsuarioModificada";
-       // }
-        $this->database->execute($sql);
+        $sql = "UPDATE `usuarios` SET `nombre` = '$nuevoNombre', `anio` = '$nuevaFecha', `ciudad` = '$nuevaCiudad' ,`contrasenia` = '$nuevaContrasenia',  `nombreUsuario` = '$nuevoNombreUsuario'
+        ,  `foto` = '$nuevaFoto' WHERE `id` = $idUsuarioModificada";
+          $this->database->execute($sql);
         header('location: /lobby/verMiPerfil?usuarioModificado=true');
 
     }
     
-    public function validarFechaDeNacimiento($datos){
-        return true;
-    }
-    public function validarContraseña($datos){
+       public function validarContraseña($datos){
         $contrasenia = $datos['contrasenia'];
         $contraseniaRepetida = $datos['confirmar_contrasena'];
         if($contrasenia == $contraseniaRepetida){
@@ -108,10 +103,6 @@ class LobbyModel {
 
         $errores = [];
         $datos['foto'] = $_FILES['foto'];
-
-        if(!$this->validarFechaDeNacimiento($datos)){
-            $errores['menorDeEdad'] = true;
-        }
 
         if(!$this->validarContraseña($datos)){
             $errores['contraseniaInvalida'] = true;

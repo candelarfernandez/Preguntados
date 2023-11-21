@@ -98,7 +98,7 @@ class UsuariosModel {
 
     public function validarFechaDeNacimiento($datos){
         return true;
-    }
+    }//ver que hacemos con esto
 
     public function ejecutarValidaciones($datos){
 
