@@ -12,7 +12,6 @@ class LoginController {
 
     public function list() {
         $data['activarCuenta'] = isset($_SESSION['activarCuenta']) ? $_SESSION['activarCuenta'] : false;
-        var_dump($this->model->traerIdConMail("andreasosaortiz94@gmail.com"));
         $this->renderer->render('login' , $data);
     }
 
@@ -27,7 +26,6 @@ class LoginController {
             exit();
         }
     }
-   
 
 
     public function verificarDatos(){
@@ -37,15 +35,22 @@ class LoginController {
             $errores = $this->model->ejecutarValidaciones($datos);
 
             if (empty($errores)) {
+                $_SESSION['usuario'] = $datos['mail'];
                 $email = $datos['mail'];
-            $usuarioId = $this->model->traerIdConMail($email);
-                $_SESSION['idUsuario']=  $this->$usuarioId;
-                header('location: /lobby/list');
+                $usuarioId = $this->model->traerIdConMail($email);
+                $_SESSION['usuarioId'] =  $usuarioId;
 
-                exit();
+                if (isset($_SESSION['redirect_url'])) {
+                    $redirectUrl = $_SESSION['redirect_url'];
+                    unset($_SESSION['redirect_url']); 
+                    header('location: ' . $redirectUrl);
+                    exit();
+                }else{
+                    $this->model->verificarRol($email);
+                }
             } else{
                 $this->renderer->render("login", $errores);
             }
         }
     }
-}
+    }

@@ -1,41 +1,127 @@
-<div class="bg-violet-100 flex items-center justify-center h-screen">
-<div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-    <div class="text-center">
-        <img src="\public\img\login.png" alt="Logo" class="w-40 h-40 mx-auto mb-4">
-        <h1 class="text-2xl font-semibold">Hora de responder</h1>
-    </div>
+<script>
+let tiempoRestante = parseInt(localStorage.getItem("tiempoRestante")) || 10;
 
+const interval = setInterval(function() {
+    tiempoRestante--;
+    document.getElementById("tiempo-restante").textContent = tiempoRestante;
+
+    if (tiempoRestante <= 0) {
+        clearInterval(interval);
+
+        fetch('/partida/tiempoAgotado', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/lobby/list?tiempoAgotado=true';
+            }
+        });
+        
+        localStorage.removeItem("tiempoRestante");
+    } else {
+        localStorage.setItem("tiempoRestante", tiempoRestante.toString());
+    }
+}, 1000);
+
+function guardarTiempoRestante() {
+    localStorage.setItem("tiempoRestante", tiempoRestante.toString());
+}
+
+window.addEventListener('beforeunload', guardarTiempoRestante);
+</script>
+
+
+<div class="bg-violet-100 flex items-center justify-center h-screen" style="background-color:{{categoria}}">
+<div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+
+        {{#mostrarImagen}}
+        <div class="mb-6 text-center">
+             <h1 class="text-3xl font-semibold text-violet-500"><span class="text-3xl font-semibold text-violet-500" id="tiempo-restante"></span></h1>    
+        </div>
+
+        <div class="text-center">
+            <img src="{{pregunta.categoria.urlImagen}}" alt="{{pregunta.pregunta}}" class="w-40 mx-auto mb-4 rounded-md">
+            <p class="text-violet-500 font-medium m-4">{{pregunta.categoria.nombre_categoria}}</p>
+        </div>
+        {{/mostrarImagen}}
 
     <div>
 
-        {{#mensaje}}
-            <div class="bg-green-400 rounded-md py-2 my-2 text-sm">
-                <p class="text-white font-medium text-center"> Respuesta correcta </p>
-            </div>        
-            {{/mensaje}}
-
-        <h2>{{pregunta.pregunta}}</h2>
+        <h2 class="text-2xl font-semibold">{{pregunta.pregunta}}</h2>
 
     </div>
-    {{#respuestas}}
+   {{#respuestas}}
         <form class="mt-6" action="/partida/respuesta" method="POST" >
             <div class="flex m-auto bg-violet-500 my-8 text-white py-2 px-4 rounded-md hover:bg-violet-600">
                 <button type="submit"> {{respuesta}} </button>
                 <input type="hidden" name="id" value="{{id}}">
                 <input type="hidden" name="respuesta" value="{{respuesta}}">
             </div>
-
         </form>
     {{/respuestas}}
+    {{#reportar}}  
+    <form action="/partida/reportarPregunta" method="get">
+    <button class="flex m-auto bg-orange-500 my-4 text-white py-2 px-4 rounded-md hover:bg-orange-600" type="button" id="reportarBtn">Reportar</button>
+    <input type="hidden" id="idPregunta" name="idPregunta" value="{{pregunta.id}}">
+    </form>
+   {{/reportar}}  
+  
     {{#seguirJugando}}
+            <img src="\public\img\correcto.png" alt="Ganaste" class="w-40 mx-auto mb-4">
+            {{#mensaje}}
+            <div class="bg-green-400 rounded-md py-2 my-2 text-sm">
+                <p class="text-white font-medium text-center"> ¡RESPUESTA CORRECTA! </p>
+            </div>        
+            {{/mensaje}}
             <form class="mt-6" action="/partida/jugar" method="get" >
-            <div class="flex m-auto bg-yellow-500 my-8 text-white py-2 px-4 rounded-md hover:bg-violet-600">
-                <button type="submit">Siguiente Pregunta</button>
+            <div>
+                <button type="submit" id="seguirJugandoBtn" class="flex text-white font-medium text-center mx-auto bg-yellow-500 my-8 text-white py-2 px-4 rounded-md hover:bg-yellow-600">Seguir jugando</button>
             </div>
-            </form>      
-            {{/seguirJugando}}
+            </form>
+            <div>
+               <p class="text-purple-400 text-center">Puntaje: <span class="font-bold"> {{puntaje}}</span></p>
+            </div>
+    {{/seguirJugando}}
 
     </div>
     </div>
 
-            
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#reportarBtn").on("click", function() {
+            reportarPreguntaAjax();
+        });
+
+        function reportarPreguntaAjax() {
+            var idPregunta = $("#idPregunta").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/partida/reportarPregunta",
+                data: { idPregunta: idPregunta },
+                success: function(response) {
+                    window.location.href = "/lobby/list?preguntaReportada=true";
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }
+    });
+</script>
+<script>
+
+function avanzarSiguientePregunta() {
+    tiempoRestante = 10;
+    localStorage.setItem("tiempoRestante", tiempoRestante.toString());
+}
+
+document.getElementById("seguirJugandoBtn").addEventListener("click", function() {
+    avanzarSiguientePregunta();
+});
+</script>

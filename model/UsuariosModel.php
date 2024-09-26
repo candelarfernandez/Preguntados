@@ -9,7 +9,7 @@ class UsuariosModel {
     }
 
     public function registrarUsuario($datos) {
-        $sql = "INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo` ) 
+        $sql = "INSERT INTO `usuarios`( `nombre`, `anio`, `sexo`, `pais`, `ciudad`, `mail`, `contrasenia`, `nombreUsuario`, `foto`, `codigo`, `latitud`, `longitud` ) 
                 VALUES ( '{$datos['nombre']}',
                 '{$datos['anio']}',
                 '{$datos['sexo']}',
@@ -19,7 +19,9 @@ class UsuariosModel {
                 '{$datos['contrasenia']}',
                 '{$datos['nombreUsuario']}',
                 '{$datos['foto']}',
-                '{$datos['codigo']}')";
+                '{$datos['codigo']}',
+                '{$datos['lat']}',
+                '{$datos['lng']}')";
 
         $this->database->execute($sql);
 
@@ -73,23 +75,19 @@ class UsuariosModel {
             }
     }
 
-//public function subirFotoDePerfil($imagen){}
-    public function subirFotoDePerfil($datos){
 
-        if (isset($datos['foto']['name']) && $datos['foto']['name']) {
-            $imagen = $datos['foto'];
-            $extensionesPermitidas = array("jpeg", "jpg", "png");
+    public function subirFotoDePerfil($foto){
 
-            $nombreImagen = basename($imagen['name']);
-            $extension = pathinfo($nombreImagen, PATHINFO_EXTENSION);
+        $archivo_temporal = $foto['tmp_name'];
+        $nombre = $foto['name'];
+        $carpeta_destino = "./public/img/";
 
-            if (in_array($extension, $extensionesPermitidas)) {
-                $imagenPath = "./public/fotos-de-perfil/" . $nombreImagen;
-                if (move_uploaded_file($imagen['tmp_name'], $imagenPath)) {
-                    return $nombreImagen;
-                } 
-            } 
-        }return false;
+        if(move_uploaded_file($archivo_temporal, $carpeta_destino.$nombre)){
+            return $carpeta_destino . $nombre;
+        }
+        else{
+            return false;
+        }
 
     }
 
@@ -100,11 +98,12 @@ class UsuariosModel {
 
     public function validarFechaDeNacimiento($datos){
         return true;
-    }
+    }//ver que hacemos con esto
 
     public function ejecutarValidaciones($datos){
 
         $errores = [];
+        $datos['foto'] = $_FILES['foto'];
 
         if(!$this->validarQueNoHayaCamposVacios($datos)){
             $errores['camposVacios'] = true;
@@ -125,11 +124,11 @@ class UsuariosModel {
         if(!$this->validarContraseña($datos)){
             $errores['contraseniaInvalida'] = true;
         }
-        if(isset($datos['foto']['name']) && $datos['foto']['name']){
-            if(!$this->subirFotoDePerfil($datos)){
-                $errores['imagenInvalida'] = true;
-            }
-        }
+
+        $urlFoto = $this->subirFotoDePerfil($datos['foto']);
+
+        $datos['foto'] = $urlFoto;
+
         $datos['codigo'] = $this->generarCodigoDeValidacion();
 
         $datos['contrasenia'] = md5($datos['contrasenia']);

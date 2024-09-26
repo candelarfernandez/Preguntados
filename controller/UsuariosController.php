@@ -13,21 +13,13 @@ class UsuariosController {
     public function list(){
         $data = [];
         $this->renderer->render("registro", $data);
-}
+    }
 
     public function verificarDatos(){
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $datos = $_POST['registro'];
-            if (isset($_FILES['registro']['foto']) && $_FILES['registro']['foto']['name']) {
-                $imagenNombre = $this->model->subirFotoDePerfil($_FILES['registro']['foto']);
-                $datos['foto'] = $imagenNombre; 
-            }
-
+        if ($datos = $_POST['registro']) {  
             $errores = $this->model->ejecutarValidaciones($datos);
 
-
             if (empty($errores)) {
-
                 header('location: /mail/sendMail&usuario=' . urldecode($_POST['registro']['mail']));
                 exit();
             } else {
@@ -35,7 +27,4 @@ class UsuariosController {
             }
         }
     }
-
-
-    
 }
